@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="上篇介绍了注册的基本流程，下篇简单的讲讲登录的流程以及Cookie的出现  实现登录的小功能当你在浏览器的输入框里输入localhost:8080/sign_in的时候，会发起GET请求，去访问sign_in.html 1234567if (path === &apos;/sign_up&apos; &amp;amp;&amp;amp; method === &apos;GET&apos;) &amp;#123;  let string = fs.readF">
+<meta name="keywords" content="HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一块小饼干的故事-Cookie-的故事-下篇">
+<meta property="og:url" content="https://codevvvv9.github.io/2018/02/09/一块小饼干的故事-Cookie-的故事-下篇/index.html">
+<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
+<meta property="og:description" content="上篇介绍了注册的基本流程，下篇简单的讲讲登录的流程以及Cookie的出现  实现登录的小功能当你在浏览器的输入框里输入localhost:8080/sign_in的时候，会发起GET请求，去访问sign_in.html 1234567if (path === &apos;/sign_up&apos; &amp;amp;&amp;amp; method === &apos;GET&apos;) &amp;#123;  let string = fs.readF">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-2-9/21324547.jpg">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-2-9/39633071.jpg">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-2-9/34957386.jpg">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-2-9/61442859.jpg">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-2-9/85533637.jpg">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-2-9/88982109.jpg">
+<meta property="og:updated_time" content="2018-11-18T09:46:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一块小饼干的故事-Cookie-的故事-下篇">
+<meta name="twitter:description" content="上篇介绍了注册的基本流程，下篇简单的讲讲登录的流程以及Cookie的出现  实现登录的小功能当你在浏览器的输入框里输入localhost:8080/sign_in的时候，会发起GET请求，去访问sign_in.html 1234567if (path === &apos;/sign_up&apos; &amp;amp;&amp;amp; method === &apos;GET&apos;) &amp;#123;  let string = fs.readF">
+<meta name="twitter:image" content="http://p3tha6q4v.bkt.clouddn.com/18-2-9/21324547.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://codevvvv9.github.io/2018/02/09/一块小饼干的故事-Cookie-的故事-下篇/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>一块小饼干的故事-Cookie-的故事-下篇 | WuShaoLin's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WuShaoLin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/02/09/一块小饼干的故事-Cookie-的故事-下篇/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaolin-wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuShaoLin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一块小饼干的故事-Cookie-的故事-下篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-02-09 23:33:53" itemprop="dateCreated datePublished" datetime="2018-02-09T23:33:53+08:00">2018-02-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/HTTP高级知识/" itemprop="url" rel="index"><span itemprop="name">HTTP高级知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>上篇介绍了注册的基本流程，下篇简单的讲讲登录的流程以及Cookie的出现</p>
+</blockquote>
+<h2 id="实现登录的小功能"><a href="#实现登录的小功能" class="headerlink" title="实现登录的小功能"></a>实现登录的小功能</h2><p>当你在浏览器的输入框里输入<code>localhost:8080/sign_in</code>的时候，会发起<code>GET</code>请求，去访问<code>sign_in.html</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (path === <span class="string">'/sign_up'</span> &amp;&amp; method === <span class="string">'GET'</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> string = fs.readFileSync(<span class="string">'./sign_up.html'</span>, <span class="string">'utf8'</span>)</span><br><span class="line">  response.statusCode = <span class="number">200</span></span><br><span class="line">  response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">  response.write(string)</span><br><span class="line">  response.end()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>CSS布局与上篇的布局基本一样，略去不表～</p>
+<a id="more"></a>
+<h3 id="比对用户的信息与数据库里面的信息是否匹配"><a href="#比对用户的信息与数据库里面的信息是否匹配" class="headerlink" title="比对用户的信息与数据库里面的信息是否匹配"></a>比对用户的信息与数据库里面的信息是否匹配</h3><p>依然是上篇的套路，获得用户formdata后，分析数据，和数据库里面的比对</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> users = fs.readFileSync(<span class="string">'./db/users'</span>, <span class="string">'utf8'</span>)</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	users = <span class="built_in">JSON</span>.parse(users) <span class="comment">//[] JSON也支持数组</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">	users = []</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> found </span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; users.length; i++) &#123;</span><br><span class="line"><span class="keyword">if</span> (users[i].email === email &amp;&amp; users[i].password === password) &#123;</span><br><span class="line">  found = <span class="literal">true</span></span><br><span class="line">  <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (found) &#123;</span><br><span class="line">  response.setHeader(<span class="string">'Set-Cookie'</span>, <span class="string">`sign_in_email=<span class="subst">$&#123;email&#125;</span>;HTTPOnly`</span>)</span><br><span class="line">  response.statusCode = <span class="number">200</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  response.statusCode = <span class="number">401</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不同的是引入了一个<code>header</code>，也就是今天的主角–<strong>Cookie</strong></p>
+<p>其实这和平常上网的情形类似的，有时候我们访问一些购物网站，并没有登录，但是你在购物车里面添加东西了，当你逛了以后再回来的时候，发现购物车里面有你的记录，帮你做这个事的也是cookie。</p>
+<blockquote>
+<p>因为<a href="https://zh.wikipedia.org/wiki/HTTP" target="_blank" rel="noopener">HTTP协议</a>是无状态的，即<a href="https://zh.wikipedia.org/wiki/%E6%9C%8D%E5%8A%A1%E5%99%A8" target="_blank" rel="noopener">服务器</a>不知道用户上一次做了什么，这严重阻碍了<a href="https://zh.wikipedia.org/w/index.php?title=%E4%BA%A4%E4%BA%92%E5%BC%8FWeb%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">交互式Web应用程序</a>的实现。在典型的网上购物场景中，用户浏览了几个页面，买了一盒饼干和两瓶饮料。最后结帐时，由于HTTP的无状态性，不通过额外的手段，服务器并不知道用户到底买了什么，所以Cookie就是用来绕开HTTP的无状态性的“额外手段”之一。服务器可以设置或读取Cookies中包含信息，借此维护用户跟服务器<a href="https://zh.wikipedia.org/wiki/%E4%BC%9A%E8%AF%9D_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">会话</a>)中的状态。</p>
+</blockquote>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-9/21324547.jpg" alt="设置头"></p>
+<p>可以看出，当你在sign_in发起<code>GET</code>请求并设置了<code>Set-Cookie</code>之后，其他的同源的页面，又都会带上<code>Cookie</code>，也就能保证同源的网页向服务器发起请求的时候，服务器能够明白，你己经是登录的用户了，与那些没有拿到cookie的页面区别开来。</p>
+<h2 id="Cookie的入门"><a href="#Cookie的入门" class="headerlink" title="Cookie的入门"></a>Cookie的入门</h2><p>为什么要在cookie里面写上<code>HttpOnly</code>呢，因为这个可以防止有些牛人使用<code>JS</code>修改Cookie的内容。</p>
+<ul>
+<li>如果不写这个的话，可以使用<code>js</code>修改的</li>
+</ul>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-9/39633071.jpg" alt="js修改cookie"></p>
+<p>写了<code>HttpOnly</code>之后将无法修改</p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-9/34957386.jpg" alt="无法修改"></p>
+<h3 id="ga是啥"><a href="#ga是啥" class="headerlink" title="_ga是啥"></a>_ga是啥</h3><p>这个是Chrome的功能，用于分析cookie的</p>
+<p>每一部分的作用详见<a href="https://stackoverflow.com/questions/16102436/what-are-the-values-in-ga-cookie" target="_blank" rel="noopener">这里</a></p>
+<h3 id="Cookie的特点"><a href="#Cookie的特点" class="headerlink" title="Cookie的特点"></a>Cookie的特点</h3><p>通过上述的例子，可以总结几点重要的特点</p>
+<ol>
+<li>服务器通过 Set-Cookie 响应头设置 Cookie</li>
+<li>浏览器得到 Cookie 之后，每次请求都要带上 Cookie</li>
+<li>服务器读取 Cookie 就知道登录用户的信息（email）</li>
+</ol>
+<p>当然了，还有几个问题需要解答一下。</p>
+<ol>
+<li>Cookie 存在哪<br>存在硬盘的一个文件里面</li>
+<li>Cookie会被用户篡改吗？<br>可以，也就是说它并不安全的。</li>
+</ol>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-9/61442859.jpg" alt="不安全"></p>
+<ol start="3">
+<li>Cookie 有效期吗？</li>
+</ol>
+<p>默认有效期20分钟左右，不同浏览器策略不同<br>后端可以强制设置有效期</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Expires=&lt;date&gt;</span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Max-Age=&lt;non-zero-digit&gt;</span><br></pre></td></tr></table></figure>
+<p>具体语法看 <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie" target="_blank" rel="noopener">Set-Cookie</a></p>
+<h3 id="用户登录后，首页显示不同"><a href="#用户登录后，首页显示不同" class="headerlink" title="用户登录后，首页显示不同"></a>用户登录后，首页显示不同</h3><p>既然你成功登录，理应跳转到首页，并显示相应的界面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.post(<span class="string">'/sign_in'</span>, hash)</span><br><span class="line">.then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">window</span>.location.href = <span class="string">'/'</span></span><br><span class="line">&#125;, </span><br><span class="line">(request) =&gt; &#123;</span><br><span class="line">  alert(<span class="string">'邮箱与密码不匹配'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>然后首页的信息应该根据用户信息做出相应的变化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> cookies = request.headers.cookie.split(<span class="string">'; '</span>) <span class="comment">//['email=..@..', 'a=1']</span></span><br><span class="line"><span class="keyword">let</span> hash = &#123;&#125;</span><br><span class="line">cookies.forEach(<span class="function">(<span class="params">cookie</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> parts = cookie.split(<span class="string">'='</span>)</span><br><span class="line">  <span class="keyword">let</span> key = parts[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">let</span> value = parts[<span class="number">1</span>]</span><br><span class="line">  hash[key] = value</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">let</span> email = hash.sign_in_email</span><br><span class="line"><span class="keyword">let</span> users = fs.readFileSync(<span class="string">'./db/users'</span>, <span class="string">'utf8'</span>)</span><br><span class="line">users = <span class="built_in">JSON</span>.parse(users)</span><br><span class="line"><span class="keyword">let</span> foundUser</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; users.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (users[i].email === email) &#123;</span><br><span class="line">    foundUser = users[i]</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (foundUser) &#123;</span><br><span class="line">  string = string.replace(<span class="string">'email'</span>, foundUser.email)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  string = string.replace(<span class="string">'恭喜，email你已成功登录'</span>, <span class="string">'没有该用户'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的代码逻辑与上篇的基本一致，唯一的不同在于第一行代码</p>
+<p><code>let cookies = request.headers.cookie.split(&#39;; &#39;) //[&#39;email=..@..&#39;, &#39;a=1&#39;]</code></p>
+<p>为什么用<code>；</code>字符来分割呢，这是因为可以有多个cookie</p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-9/85533637.jpg" alt="多个cookie"></p>
+<h3 id="Cookie的两个作用"><a href="#Cookie的两个作用" class="headerlink" title="Cookie的两个作用"></a>Cookie的两个作用</h3><p>一般来说常见的作用有如下两个：</p>
+<ol>
+<li>识别用户的身份。当用户A去访问<code>localhost:8080</code>的时候，服务器会给A一个独一无二的<code>id=00A</code>(这就是cookie)，当用户A访问<code>localhost:8080</code>的其他网页的时候，都会带着那个独一无二的id。当B用户来访问<code>localhost:8080</code>的时候，服务器发现他没有任何标识，也会给他一个独一无二的<code>id=00B</code>，所以借助cookie服务器端就能够分清楚谁是谁了。</li>
+<li>记录你的浏览历史。最常见的需求就是你去逛购物网站，你添加到购物车里面的东西过几天一定会在，而不会凭空消失了。例如A用户去<code>taobao.com</code>去买点东西，添加了一个热水壶、一部小米手机到购物车里面，那么服务器端可以改写你上面的cookie使之具体化「id=00A; cart=A1,A2」，表示你购物车里面买了俩东西。你过几天想起来了，去购物车里面看，热水壶、小米手机还在里面。浏览器并不会删除你存到硬盘上的cookie。</li>
+</ol>
+<h3 id="一张图总结注册登录的过程"><a href="#一张图总结注册登录的过程" class="headerlink" title="一张图总结注册登录的过程"></a>一张图总结注册登录的过程</h3><p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-9/88982109.jpg" alt="登录注册的过程"></p>
+<p>接下来可以去搞一搞其他的，像什么<code>session</code> <code>LocalStorage</code>……(<em>@ο@</em>) 哇～</p>
+<p>代码链接<a href="https://github.com/codevvvv9/AJAXDemo_nodeJsServer/blob/master/sign_in.html" target="_blank" rel="noopener">sign_in.html</a></p>
+<p><a href="https://github.com/codevvvv9/AJAXDemo_nodeJsServer/blob/master/server.js" target="_blank" rel="noopener">server.js</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/09/一块小饼干-Cookie-的故事-上篇/" rel="next" title="一块小饼干-Cookie-的故事-上篇">
+                <i class="fa fa-chevron-left"></i> 一块小饼干-Cookie-的故事-上篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/11/持久化存储与HTTP缓存/" rel="prev" title="持久化存储与HTTP缓存">
+                持久化存储与HTTP缓存 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shaolin-wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现登录的小功能"><span class="nav-number">1.</span> <span class="nav-text">实现登录的小功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#比对用户的信息与数据库里面的信息是否匹配"><span class="nav-number">1.1.</span> <span class="nav-text">比对用户的信息与数据库里面的信息是否匹配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookie的入门"><span class="nav-number">2.</span> <span class="nav-text">Cookie的入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ga是啥"><span class="nav-number">2.1.</span> <span class="nav-text">_ga是啥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie的特点"><span class="nav-number">2.2.</span> <span class="nav-text">Cookie的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户登录后，首页显示不同"><span class="nav-number">2.3.</span> <span class="nav-text">用户登录后，首页显示不同</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie的两个作用"><span class="nav-number">2.4.</span> <span class="nav-text">Cookie的两个作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一张图总结注册登录的过程"><span class="nav-number">2.5.</span> <span class="nav-text">一张图总结注册登录的过程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shaolin-wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

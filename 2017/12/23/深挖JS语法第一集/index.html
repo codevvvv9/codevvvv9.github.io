@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="从今天开始用重新认识JS，毕竟前端是靠JS吃饭的，开始深挖一下细节，在这个过程中也反思了一下，为啥java没学好。果然是基础不牢，地动山摇啊，古人诚不欺我也！  1. JS的数据类型有哪几种？以前一直说会JS,却连这个问题没好好搞过，给自己两耳光……    数据类型 名称     1. 基本数据类型(也叫简单数据类型) number string boolean symbol undefined">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深挖JS语法第一集">
+<meta property="og:url" content="https://codevvvv9.github.io/2017/12/23/深挖JS语法第一集/index.html">
+<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
+<meta property="og:description" content="从今天开始用重新认识JS，毕竟前端是靠JS吃饭的，开始深挖一下细节，在这个过程中也反思了一下，为啥java没学好。果然是基础不牢，地动山摇啊，古人诚不欺我也！  1. JS的数据类型有哪几种？以前一直说会JS,却连这个问题没好好搞过，给自己两耳光……    数据类型 名称     1. 基本数据类型(也叫简单数据类型) number string boolean symbol undefined">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5422064-b7a4686b8d1ce2dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5422064-1bc2ad05fbfc9599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5422064-836d5d72870a893d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5422064-1c1ba092b1a5689a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-18T09:46:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深挖JS语法第一集">
+<meta name="twitter:description" content="从今天开始用重新认识JS，毕竟前端是靠JS吃饭的，开始深挖一下细节，在这个过程中也反思了一下，为啥java没学好。果然是基础不牢，地动山摇啊，古人诚不欺我也！  1. JS的数据类型有哪几种？以前一直说会JS,却连这个问题没好好搞过，给自己两耳光……    数据类型 名称     1. 基本数据类型(也叫简单数据类型) number string boolean symbol undefined">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5422064-b7a4686b8d1ce2dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="https://codevvvv9.github.io/2017/12/23/深挖JS语法第一集/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>深挖JS语法第一集 | WuShaoLin's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WuShaoLin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2017/12/23/深挖JS语法第一集/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaolin-wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuShaoLin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深挖JS语法第一集
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-12-23 18:15:26" itemprop="dateCreated datePublished" datetime="2017-12-23T18:15:26+08:00">2017-12-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>从今天开始用重新认识JS，毕竟前端是靠JS吃饭的，开始深挖一下细节，在这个过程中也反思了一下，为啥java没学好。果然是基础不牢，地动山摇啊，古人诚不欺我也！</p>
+</blockquote>
+<h4 id="1-JS的数据类型有哪几种？"><a href="#1-JS的数据类型有哪几种？" class="headerlink" title="1. JS的数据类型有哪几种？"></a>1. JS的数据类型有哪几种？</h4><p>以前一直说会JS,却连这个问题没好好搞过，给自己两耳光……</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 基本数据类型(也叫简单数据类型)</td>
+<td>number string boolean symbol undefined null</td>
+</tr>
+<tr>
+<td>2. 复杂数据类型</td>
+<td>object</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>注意，array和function属于object类型;symbol是ES6的内容。<a id="more"></a>
+<h4 id="2-几个大坑"><a href="#2-几个大坑" class="headerlink" title="2. 几个大坑"></a>2. 几个大坑</h4></li>
+<li>长字符串里面的大坑<br>长字符串可以用<code>+</code>连接符，优雅易懂。但是还可以这么写</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var longStr = &apos;agggggg\</span><br><span class="line">bgggggg\</span><br><span class="line">cgggggg\</span><br><span class="line">d&apos;</span><br><span class="line">//结果依然是aggggggbggggggcggggggd</span><br></pre></td></tr></table></figure>
+<p>上述代码不报错的前提是<code>\</code>后面不能有除了换行符以外的任何字符，即使一个空格就报错<br><img src="http://upload-images.jianshu.io/upload_images/5422064-b7a4686b8d1ce2dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="长字符串的坑.png"></p>
+<ul>
+<li>字符串的length属性和字符集<ul>
+<li>字符串的length<strong><em>属性</em></strong>是不可更改的,你爱写啥写啥，length属性不变。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-1bc2ad05fbfc9599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="length属性.png"></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>java的8个基本数据类型：byte short int long float double char boolean<br>java里面的判断长度的方法只有三个</p>
+<ul>
+<li>字符串的length属性</li>
+<li>数组的length()方法</li>
+<li>集合类的size()方法</li>
+</ul>
+<hr>
+<ul>
+<li>字符串的字符集</li>
+</ul>
+<blockquote>
+<p>由于JavaScript引擎（严格说是ES5规格）不能自动识别辅助平面（编号大于0xFFFF）的Unicode字符，导致所有字符串处理函数遇到这类字符，都会产生错误的结果（详见《标准库》一章的String对象章节）。如果要完成字符串相关操作，就必须判断字符是否落在0xD800到0xDFFF这个区间。<br>替换（String.prototype.replace）、截取子字符串（String.prototype.substring, String.prototype.slice）等其他字符串操作，都必须做类似的处理。</p>
+</blockquote>
+<p>代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function getSymbols(string) &#123;</span><br><span class="line">  var length = string.length;</span><br><span class="line">  var index = -1;</span><br><span class="line">  var output = [];</span><br><span class="line">  var character;</span><br><span class="line">  var charCode;</span><br><span class="line">  while (++index &lt; length) &#123;</span><br><span class="line">    character = string.charAt(index);</span><br><span class="line">    charCode = character.charCodeAt(0);</span><br><span class="line">    if (charCode &gt;= 0xD800 &amp;&amp; charCode &lt;= 0xDBFF) &#123;</span><br><span class="line">      output.push(character + string.charAt(++index));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      output.push(character);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var symbols = getSymbols(&apos;𝌆&apos;);</span><br><span class="line"></span><br><span class="line">symbols.forEach(function(symbol) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>JavaScript原生提供两个Base64相关方法。<blockquote>
+<p><strong>Base64</strong>是一种基于64个可打印字符来表示<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6" title="二进制" target="_blank" rel="noopener">二进制数据</a>的表示方法。由于2的6次方等于64，所以每6个<a href="https://zh.wikipedia.org/wiki/%E4%BD%8D%E5%85%83" title="比特" target="_blank" rel="noopener">比特</a>为一个单元，对应某个可打印字符。三个<a href="https://zh.wikipedia.org/wiki/%E5%AD%97%E8%8A%82" target="_blank" rel="noopener">字节</a>有24个比特，对应于4个Base64单元，即3个字节可表示4个可打印字符。它可用来作为<a href="https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6" title="电子邮件" target="_blank" rel="noopener">电子邮件</a>的传输编码。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9，这样共有62个字符，此外两个可打印符号在不同的系统中而不同。</p>
+</blockquote>
+</li>
+</ul>
+<p>两个方法<br>btoa()：字符串或二进制值转为Base64编码<br>atob()：Base64编码转为原来的编码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var string = &apos;Hello World!&apos;;</span><br><span class="line">btoa(string) // &quot;SGVsbG8gV29ybGQh&quot;</span><br><span class="line">atob(&apos;SGVsbG8gV29ybGQh&apos;) // &quot;Hello World!&quot;</span><br></pre></td></tr></table></figure></p>
+<p>这两个方法不适合非ASCII码的字符，会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btoa(&apos;你好&apos;)</span><br><span class="line">VM1195:1 Uncaught DOMException: Failed to execute &apos;btoa&apos; on &apos;Window&apos;: The string to be encoded contains characters outside of the Latin1 range.</span><br><span class="line">    at &lt;anonymous&gt;:1:1</span><br></pre></td></tr></table></figure>
+<p><strong><em>要将非ASCII码字符转为Base64编码，必须中间插入一个转码环节，再使用这两个方法</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function b64Encode(str) &#123;</span><br><span class="line">  return btoa(encodeURIComponent(str));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function b64Decode(str) &#123;</span><br><span class="line">  return decodeURIComponent(atob(str));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b64Encode(&apos;你好&apos;) // &quot;JUU0JUJEJUEwJUU1JUE1JUJE&quot;</span><br><span class="line">b64Decode(&apos;JUU0JUJEJUEwJUU1JUE1JUJE&apos;) // &quot;你好&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>undefined和null的区别？<br>这是一个历史遗留问题。<a href="https://twitter.com/BrendanEich/status/333008305461006336" target="_blank" rel="noopener">JS之父在Twitter上的话，需要FQ才能看</a><br>我们应该如何区分呢</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>两个角度来看待</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 语法规范</td>
+<td>变量没有值，就是undefined。事实上，你在console上随便写一个语句，都是undefined</td>
+</tr>
+<tr>
+<td>2. 习惯上理解</td>
+<td>如果有一个对象，你声明了，但是此时不给他赋值，让他等于null;如果你有一个非对象的变量，你此时不想赋值，就让他等于undefined。</td>
+</tr>
+</tbody>
+</table>
+<p>var obj = null,别人一眼就能看出你是想声明一个对象,不过此时不想赋值；var a = undefinded，别人一眼就能看出你是想声明一个非对象，此时不想赋值</p>
+<ul>
+<li>对象的key的问题<br>对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。<br>你用for…in的时候那个顺序的<strong><em>随机的</em></strong><br>大坑来啦……如下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">   &apos;name&apos;: &apos;wushao&apos;, </span><br><span class="line">   &apos;age&apos;: 8&#125;</span><br><span class="line">for (var key in obj)&#123;</span><br><span class="line">    console.log(obj.key)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>你是想打印出’wushao’和8来，结果屁都没有。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-836d5d72870a893d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="key的陷阱.png"></p>
+<ul>
+<li>注意  [ ]运算符里面<strong><em>必须是字符串，而且是对象的键</em></strong>。这个例子中，key才是字符串，而且是obj的key;你obj.key相当于obj[‘key’]，obj没有这个叫key的键。<br>对象的基本结构式{key: value}<br>key必须是字符串，valu是那7种 的任意一个。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  &apos; &apos;: &apos;frank&apos;</span><br><span class="line">  没问题</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关于key加不加引号的问题。<br>你保证你的key符合标识符规范，可以不加，但是有个默认的引号在上面。如果不符合标识符规范的，必须加引号<br>同理，obj[ ]括号里面不符合标识符规范的，必须加引号。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">  &apos;09a&apos;: &apos;我不符合标识符规范,key必须加引号保护，否则就报错&apos;,</span><br><span class="line">  name: &apos;我符合标识符规范,引号加不加都可以，反正key一定是个字符串&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/5422064-1c1ba092b1a5689a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="key的写法.png"></p>
+<p>-还有啊，对象的每个key-value的结束，一定记得加逗号啊！！！！，能多写不能少写，最新的ES6可以都写逗号，不报错</p>
+<p>总之，记住一个公式</p>
+<blockquote>
+<p>obj.name 等同于 obj.[‘name’]</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/23/深挖JavaScript语法第二集/" rel="next" title="深挖JavaScript第二集">
+                <i class="fa fa-chevron-left"></i> 深挖JavaScript第二集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/24/CSS的五个奇怪特性/" rel="prev" title="CSS的五个奇怪特性">
+                CSS的五个奇怪特性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shaolin-wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-JS的数据类型有哪几种？"><span class="nav-number">1.</span> <span class="nav-text">1. JS的数据类型有哪几种？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-几个大坑"><span class="nav-number">2.</span> <span class="nav-text">2. 几个大坑</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shaolin-wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

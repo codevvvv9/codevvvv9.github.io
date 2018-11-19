@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="如何自学前端，以及应该学习的顺序……自己想了下，总结一下 仅代表初级前端能找到一份养家糊口的工作，至少需要一年多的理解，如果有过其他编程基础，可能需要8个月吧。">
+<meta name="keywords" content="Dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级前端打怪升级之路">
+<meta property="og:url" content="https://codevvvv9.github.io/2018/03/30/初级前端打怪升级之路/index.html">
+<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
+<meta property="og:description" content="如何自学前端，以及应该学习的顺序……自己想了下，总结一下 仅代表初级前端能找到一份养家糊口的工作，至少需要一年多的理解，如果有过其他编程基础，可能需要8个月吧。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-3-30/68367727.jpg">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-3-30/73671415.jpg">
+<meta property="og:image" content="http://p3tha6q4v.bkt.clouddn.com/18-3-30/82209459.jpg">
+<meta property="og:updated_time" content="2018-11-18T09:46:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初级前端打怪升级之路">
+<meta name="twitter:description" content="如何自学前端，以及应该学习的顺序……自己想了下，总结一下 仅代表初级前端能找到一份养家糊口的工作，至少需要一年多的理解，如果有过其他编程基础，可能需要8个月吧。">
+<meta name="twitter:image" content="http://p3tha6q4v.bkt.clouddn.com/18-3-30/68367727.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://codevvvv9.github.io/2018/03/30/初级前端打怪升级之路/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>初级前端打怪升级之路 | WuShaoLin's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WuShaoLin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/03/30/初级前端打怪升级之路/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaolin-wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuShaoLin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初级前端打怪升级之路
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-30 22:14:29" itemprop="dateCreated datePublished" datetime="2018-03-30T22:14:29+08:00">2018-03-30</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/前端之外/" itemprop="url" rel="index"><span itemprop="name">前端之外</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>如何自学前端，以及应该学习的顺序……自己想了下，总结一下</p>
+<p><strong>仅代表初级前端能找到一份养家糊口的工作，至少需要一年多的理解，如果有过其他编程基础，可能需要8个月吧。</strong></p>
+<a id="more"></a>
+<h3 id="零基础的学习计划"><a href="#零基础的学习计划" class="headerlink" title="零基础的学习计划"></a>零基础的学习计划</h3><ol>
+<li>安装vscode 先学 html 5，用MDN文档去学，废弃的属性不需要去看，大跨步的前进，xhtml的那些东西不需要去学了，记住MDN文档里面写的那些新属性，这些是以后面试时经常问的问题。学习是着重注意html 5语义化的含义，体会下。</li>
+<li>接着学习 CSS 3，对于新的属性格外注意，各种特殊情况包括各种居中怎们做，花点时间，记住吧，这个css要多敲代码，看的再多也没用。css是区分优秀前端和其他兼职前端的分界线。</li>
+<li>此时模仿你喜欢的网站做点静态页面。</li>
+<li>继续学习ES 5，这是javascript基础知识，此时进入前端的瓶颈了，多花点时间理解吧，例如函数、闭包、this、作用域、原型链重点理解。</li>
+</ol>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-3-30/68367727.jpg" alt="img"></p>
+<h3 id="精进的计划"><a href="#精进的计划" class="headerlink" title="精进的计划"></a>精进的计划</h3><ol>
+<li>学点MVC思想与面向对象的基础知识，方便后面的jq的理解。</li>
+<li>学习ajax，引出跨域的概念，以及破解跨域的另一个解决方案JSONP，学习主流的数据交换格式JSON。</li>
+<li>进军jquery与bootstrap。jq是第一个你需要接触的框架，减少很多代码量，提升自信心。bootstrap的思想值得细细品味。</li>
+<li>此时有了前端基础和框架，做一个一个完整的项目吧。学会前端工程化的目录结构。</li>
+</ol>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-3-30/73671415.jpg" alt="img"></p>
+<hr>
+<p>以上算是前端的小小入门。接下来是升华阶段。</p>
+<h3 id="升华阶段"><a href="#升华阶段" class="headerlink" title="升华阶段"></a>升华阶段</h3><ol>
+<li>补充http的知识，cookie、session、localstorage、sessionstorage。学习缓存机制以及持久化化存储。</li>
+<li>学习从MVC到MVVM的转换，目前主流的都是MVVM。学习axios库替换jq去操作ajax。</li>
+<li>学习ES 6,这是现在主流框架以及工作要用到的js规范。</li>
+<li>学习前端自动打包器-webpack不用学其他的了，其他的都淘汰了！！！！</li>
+<li>安装webstorm，学习Vue，以及它的全家桶系列。不要学angular，初学者千万不要学它，也不用先学typescript。</li>
+<li>做一个基于Vue全家桶的项目。</li>
+</ol>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-3-30/82209459.jpg" alt="img"></p>
+<p>以上是现代化前端必备的知识体系！！！</p>
+<hr>
+<p>注：锦上添花的是学会react以及小程序开发～，这一步不是必备的</p>
+<p>未来一年努力夯实基础知识，争取早日到达中级前端！！！！！！！！！</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Dev/" rel="tag"># Dev</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/29/前端必备网站/" rel="next" title="前端必备网站">
+                <i class="fa fa-chevron-left"></i> 前端必备网站
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/07/Vue的组件间通信/" rel="prev" title="Vue的组件间通信">
+                Vue的组件间通信 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shaolin-wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#零基础的学习计划"><span class="nav-number">1.</span> <span class="nav-text">零基础的学习计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#精进的计划"><span class="nav-number">2.</span> <span class="nav-text">精进的计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升华阶段"><span class="nav-number">3.</span> <span class="nav-text">升华阶段</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shaolin-wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

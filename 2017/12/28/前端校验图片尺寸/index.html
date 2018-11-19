@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="这篇文章主要记录最近实习工作中遇到的前端检查图片尺寸的问题，在这个过程明白的一些道理。  我由于目前的水平有限，只能借助网络来完成这个功能。在这个查找的过程中，发现很多博客都写的有问题，虽然表面完成了，但是一测试，很多不对的地方，感觉都是抄的别人的，没抄完整。那么我希望我写的文章，读者都是可以完美复写的。 先上完美运行的代码以下是我亲测可以运行的代码。连我这种前端0.1年的人都能学会。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端校验图片尺寸">
+<meta property="og:url" content="https://codevvvv9.github.io/2017/12/28/前端校验图片尺寸/index.html">
+<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
+<meta property="og:description" content="这篇文章主要记录最近实习工作中遇到的前端检查图片尺寸的问题，在这个过程明白的一些道理。  我由于目前的水平有限，只能借助网络来完成这个功能。在这个查找的过程中，发现很多博客都写的有问题，虽然表面完成了，但是一测试，很多不对的地方，感觉都是抄的别人的，没抄完整。那么我希望我写的文章，读者都是可以完美复写的。 先上完美运行的代码以下是我亲测可以运行的代码。连我这种前端0.1年的人都能学会。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5422064-6d0f63240bb59fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-18T09:46:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端校验图片尺寸">
+<meta name="twitter:description" content="这篇文章主要记录最近实习工作中遇到的前端检查图片尺寸的问题，在这个过程明白的一些道理。  我由于目前的水平有限，只能借助网络来完成这个功能。在这个查找的过程中，发现很多博客都写的有问题，虽然表面完成了，但是一测试，很多不对的地方，感觉都是抄的别人的，没抄完整。那么我希望我写的文章，读者都是可以完美复写的。 先上完美运行的代码以下是我亲测可以运行的代码。连我这种前端0.1年的人都能学会。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5422064-6d0f63240bb59fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="https://codevvvv9.github.io/2017/12/28/前端校验图片尺寸/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>前端校验图片尺寸 | WuShaoLin's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WuShaoLin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2017/12/28/前端校验图片尺寸/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaolin-wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuShaoLin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端校验图片尺寸
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-12-28 01:00:13" itemprop="dateCreated datePublished" datetime="2017-12-28T01:00:13+08:00">2017-12-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这篇文章主要记录最近实习工作中遇到的前端检查图片尺寸的问题，在这个过程明白的一些道理。</p>
+</blockquote>
+<p>我由于目前的水平有限，只能借助网络来完成这个功能。在这个查找的过程中，发现很多博客都写的有问题，虽然表面完成了，但是一测试，很多不对的地方，感觉都是抄的别人的，没抄完整。<br>那么我希望我写的文章，读者都是可以完美复写的。</p>
+<h3 id="先上完美运行的代码"><a href="#先上完美运行的代码" class="headerlink" title="先上完美运行的代码"></a>先上完美运行的代码</h3><p>以下是我亲测可以运行的代码。连我这种前端0.1年的人都能学会。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;  </span><br><span class="line">&lt;head&gt;  </span><br><span class="line">    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;  </span><br><span class="line">    &lt;title&gt;&lt;/title&gt;  </span><br><span class="line">    &lt;script&gt;  </span><br><span class="line">        function setImg() &#123;  </span><br><span class="line">            var docObj = document.getElementById(&quot;imgPath&quot;);   //获得上传的文件的数组形式</span><br><span class="line">            var files = document.getElementById(&quot;imgPath&quot;).value;  </span><br><span class="line">            console.log(docObj.files)</span><br><span class="line">            console.log(files)</span><br><span class="line">               </span><br><span class="line">            if (docObj.files &amp;&amp; docObj.files[0]) &#123;  </span><br><span class="line">                    var img = new Image();  </span><br><span class="line">                    img.onload = function()&#123;      </span><br><span class="line">                    var width = img.width;  //图片的宽</span><br><span class="line">                    var height=img.height;   //图片的高</span><br><span class="line">                    var filesize = img </span><br><span class="line">                    console.log(width)</span><br><span class="line">                    console.log(height)</span><br><span class="line">                    console.log(filesize) </span><br><span class="line">                   if (width != 257 || height != 100)&#123;</span><br><span class="line">				alert(&apos;图片尺寸不符合规范，请更新宽高比为257*100的图片&apos;);</span><br><span class="line">			&#125; else&#123;</span><br><span class="line">				//后续代码</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		   if(docObj.files[0].size &gt; maxSize)&#123;</span><br><span class="line">		      alert(&apos;您上传的图片大小超过了50k，请更新符合规范的图片&apos;);</span><br><span class="line">		    &#125;</span><br><span class="line">                 &#125;;  </span><br><span class="line">                img.onerror=function()&#123;  </span><br><span class="line">                    alert(&quot;error!&quot;);  </span><br><span class="line">                &#125;;  </span><br><span class="line">                img.src=window.URL.createObjectURL(docObj.files[0]);  </span><br><span class="line">                console.log(img.src);</span><br><span class="line">            &#125;     </span><br><span class="line">        &#125;  </span><br><span class="line">    &lt;/script&gt;  </span><br><span class="line">  &lt;/head&gt;  </span><br><span class="line">&lt;body&gt;  </span><br><span class="line">    &lt;input id=&quot;imgPath&quot; type=&quot;file&quot;  onchange=&quot;setImg()&quot;/&gt;  </span><br><span class="line">&lt;/body&gt;  </span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>上述代码的image和file的操作在历经寻找多个不合适的博客之后终于成功了。</p>
+<h3 id="File-API以及Image对象"><a href="#File-API以及Image对象" class="headerlink" title="File API以及Image对象"></a>File API以及Image对象</h3><p>如果input的type=file，就可以选择文件从本地上传到网页。<br>读取文件内容按照<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/File/Using_files_from_web_applications" target="_blank" rel="noopener">MDN操作files的方法</a>如下所示</p>
+<ul>
+<li>1.使用普通的类选择器选择要操作的input元素里面的文件<br>var files = document.getElementById(‘imgpath’).files;<br>要注意获得的是一个file的数组！！！<br><img src="http://upload-images.jianshu.io/upload_images/5422064-6d0f63240bb59fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="files数组的内容.png"></li>
+</ul>
+<p>如果只要一个文件，就可以用var file = files[0];获得file的所有信息。<br>input元素后面写上multiple，就可以上传多个文件。同理多个文件的第一个文件也使用这个方法。</p>
+<ul>
+<li>2.通过change事件来访问被选择的文件，即为onchange绑定一个函数<br>只要用户选择了一个文件，那么就会传入这个file对象。</li>
+<li>3.再创建一个image对象，一定要先onload。</li>
+<li>4.给img赋上地址img.src=window.URL.createObjectURL(docObj.files[0]);</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/27/深挖JS语法第三集/" rel="next" title="深挖JS语法第三集">
+                <i class="fa fa-chevron-left"></i> 深挖JS语法第三集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/29/margin为负的理解/" rel="prev" title="margin为负的理解">
+                margin为负的理解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shaolin-wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#先上完美运行的代码"><span class="nav-number">1.</span> <span class="nav-text">先上完美运行的代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#File-API以及Image对象"><span class="nav-number">2.</span> <span class="nav-text">File API以及Image对象</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shaolin-wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="什么是函数函数是对象的一种，也是一段可以重复使用的代码块，开发人员为了完成某项功能，把相关代码块放到一起。 函数内部可以传参，也可以被当做参数传递">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探JS的函数">
+<meta property="og:url" content="https://codevvvv9.github.io/2018/01/05/初探JS的函数/index.html">
+<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
+<meta property="og:description" content="什么是函数函数是对象的一种，也是一段可以重复使用的代码块，开发人员为了完成某项功能，把相关代码块放到一起。 函数内部可以传参，也可以被当做参数传递">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/5/160c5838728cf39e?w=1006&h=621&f=png&s=37670">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/5/160c583872bdbfb8?w=1170&h=754&f=png&s=53669">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/5/160c583872944cc1?w=821&h=459&f=png&s=24060">
+<meta property="og:updated_time" content="2018-11-18T09:46:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初探JS的函数">
+<meta name="twitter:description" content="什么是函数函数是对象的一种，也是一段可以重复使用的代码块，开发人员为了完成某项功能，把相关代码块放到一起。 函数内部可以传参，也可以被当做参数传递">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/1/5/160c5838728cf39e?w=1006&h=621&f=png&s=37670">
+
+
+
+
+
+
+  <link rel="canonical" href="https://codevvvv9.github.io/2018/01/05/初探JS的函数/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>初探JS的函数 | WuShaoLin's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WuShaoLin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">悟已往之不谏，知来者之可追</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/01/05/初探JS的函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaolin-wu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WuShaoLin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初探JS的函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-01-05 23:20:38" itemprop="dateCreated datePublished" datetime="2018-01-05T23:20:38+08:00">2018-01-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h3><p>函数是对象的一种，也是一段可以重复使用的代码块，开发人员为了完成某项功能，把相关代码块放到一起。</p>
+<p><strong>函数内部可以传参，也可以被当做参数传递</strong></p>
+<a id="more"></a>
+<p>目前定义函数有五种方法</p>
+<h4 id="具名函数来定义"><a href="#具名函数来定义" class="headerlink" title="具名函数来定义"></a>具名函数来定义</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line">f.name <span class="comment">//'f'</span></span><br></pre></td></tr></table></figure>
+<h4 id="匿名函数来定义"><a href="#匿名函数来定义" class="headerlink" title="匿名函数来定义"></a>匿名函数来定义</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f</span><br><span class="line">f = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line">f.name <span class="comment">//'f'</span></span><br></pre></td></tr></table></figure>
+<h4 id="具名函数定义了又赋值给了变量"><a href="#具名函数定义了又赋值给了变量" class="headerlink" title="具名函数定义了又赋值给了变量"></a>具名函数定义了又赋值给了变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f1</span><br><span class="line">f1 = <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line">f1.name <span class="comment">//'f'</span></span><br></pre></td></tr></table></figure>
+<p>要注意：虽然<code>f1.name=&#39;f&#39;</code>，但是f只在函数内部可用，实际上函数的名字还是f1</p>
+<h4 id="window-Function来构造"><a href="#window-Function来构造" class="headerlink" title="window.Function来构造"></a>window.Function来构造</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'return x + y'</span>)</span><br><span class="line">f2.name <span class="comment">//'anonymous'</span></span><br></pre></td></tr></table></figure>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f3 = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;<span class="keyword">return</span> x - y&#125;</span><br><span class="line"><span class="keyword">var</span> sum = <span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y <span class="comment">//函数体内只有一行代码，可以省略大括号和return</span></span><br><span class="line"><span class="keyword">var</span> n2 = <span class="function"><span class="params">n</span> =&gt;</span> n*n <span class="comment">//只有一个参数，可以省略小括号</span></span><br></pre></td></tr></table></figure>
+<p>常用的定义方法是1、2、5这三种方法。</p>
+<h3 id="函数的一些必备知识"><a href="#函数的一些必备知识" class="headerlink" title="函数的一些必备知识"></a>函数的一些必备知识</h3><h4 id="函数的name属性"><a href="#函数的name属性" class="headerlink" title="函数的name属性"></a>函数的name属性</h4><p>由上面的五种定义方法，我们可以知道函数具有<code>name</code>属性，而且不同的定义方法，name属性也很奇葩。</p>
+<h4 id="函数如何调用"><a href="#函数如何调用" class="headerlink" title="函数如何调用"></a>函数如何调用</h4><p>为了理解后面的this，推荐使用<code>call()</code>方法，而不是使用常见的<code>f()</code></p>
+<p>以第一种定义方法为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>call()方法的第一个参数就是this,后面的参数才是函数的执行参数。</p>
+<p>下面用代码检验一下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">f1.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line">Window &#123;<span class="attr">postMessage</span>: ƒ, <span class="attr">blur</span>: ƒ, <span class="attr">focus</span>: ƒ, <span class="attr">close</span>: ƒ, <span class="attr">frames</span>: Window, …&#125; <span class="comment">//不是应该打印undefined，为啥是window呢？</span></span><br><span class="line"><span class="number">4</span> <span class="comment">//这才是函数的执行内容</span></span><br></pre></td></tr></table></figure>
+<p>执行f1.call(undefined, 1, 3)后，this不是应该打印出undefined吗，为啥打印了Window呢（注意实际上是个小写的window,不是浏览器打印的大写的Window）,可以用代码验证打印的就是小写的window</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span> === <span class="built_in">window</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">f1.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="literal">true</span> <span class="comment">//说明是小写的window</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span> === Window)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">f1.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="literal">false</span> <span class="comment">//并不是大写的Window</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>我真是服啦，那window和Window有啥区别呢。真是蛋疼啊，竟然考虑这个问题……</p>
+<p>答案就是 var object = new Object，那var window = new Window。而且Window毫无探讨的意义，倒是这个window是个全局属性，多少有点用。</p>
+<hr>
+<p>有时候自己真是有点钻牛角尖，钻进去后，还不会举一反三。如果立刻想到obj的例子就不用浪费时间了。</p>
+<hr>
+<h4 id="这就是藏着的this"><a href="#这就是藏着的this" class="headerlink" title="这就是藏着的this"></a>这就是藏着的this</h4><p>这是因为浏览器捣的鬼，他把undefined变成了window。接下来使用严格模式，让undefined现身</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line"><span class="meta">	'use strict'</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">f1.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="literal">undefined</span> <span class="comment">//这个undefined就是call()方法的第一个参数undefined</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>而且call()的第一个参数是啥，this就是啥</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line"><span class="meta">	'use strict'</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line">undefine</span><br><span class="line">f1.call(<span class="string">'我是啥this就是啥'</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line">我是啥<span class="keyword">this</span>就是啥 <span class="comment">//打印的依然是call()的第一个参数</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<h4 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h4><p>前面分析了call()的第一个参数，那后俩参数是啥呢。</p>
+<p>对，你没猜错，那就是arguments。</p>
+<p>当你写<code>call(undefined, 1, 3)</code>的时候。<code>undefined</code>可以被认为是<code>this</code>，<code>[1, 3]</code>就是<code>arguments</code></p>
+<h3 id="函数的call-stack"><a href="#函数的call-stack" class="headerlink" title="函数的call stack"></a>函数的call stack</h3><p>上面我们接触了call()方法，现在我们学习一下当有多个函数调用的时候，JavaScript解析器是如何调用栈的。</p>
+<p>MDN的解释如下</p>
+<blockquote>
+<p> 调用栈是解析器(如浏览器中的的javascript解析器)的一种机制，可以在脚本调用多个<a href="https://developer.mozilla.org/en-US/docs/Glossary/function" target="_blank" rel="noopener">函数</a>时，跟踪每个函数在完成执行时应该返回控制的点。（如什么函数正在执行，什么函数被这个函数调用，下一个调用的函数是谁）</p>
+<ul>
+<li>当脚本要调用一个函数时，解析器把该函数添加到栈中并且执行这个函数。</li>
+<li>任何被这个函数调用的函数会进一步添加到调用栈中，并且运行到它们被上个程序调用的位置。</li>
+<li>当函数运行结束后，解释器将它从堆栈中取出，并在主代码列表中继续执行代码。</li>
+<li>如果栈占用的空间比分配给它的空间还大，那么则会导致“堆栈溢出”错误。</li>
+</ul>
+</blockquote>
+<p>以下是通过三个方面去理解call stack这个概念的。</p>
+<h4 id="普通调用"><a href="#普通调用" class="headerlink" title="普通调用"></a><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2EnKQogIHJldHVybiAnYScgIAp9CgpmdW5jdGlvbiBiKCl7CiAgICBjb25zb2xlLmxvZygnYicpCiAgICByZXR1cm4gJ2InCn0KCmZ1bmN0aW9uIGMoKXsKICAgIGNvbnNvbGUubG9nKCdjJykKICAgIHJldHVybiAnYycKfQoKYS5jYWxsKCkKYi5jYWxsKCkKYy5jYWxsKCk%3D!!!" target="_blank" rel="noopener">普通调用</a></h4><p>代码如下，直观的动图可以看上述的链接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'a'</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'b'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'c'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'c'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a.call()</span><br><span class="line">b.call()</span><br><span class="line">c.call()</span><br></pre></td></tr></table></figure>
+<p>如上的代码，先有三个函数声明，然后是三个调用。浏览器先执行a.call()，然后执行b.call()，c.call()，下面结合图具体详细分析。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c5838728cf39e?w=1006&amp;h=621&amp;f=png&amp;s=37670" alt="普通调用"></p>
+<ul>
+<li>第一步：浏览器入口是a.call(),a函数入栈，执行a函数内部代码</li>
+<li>第二步：console.log(‘a’)执行完毕，就出栈，接着a函数结束，出栈死亡</li>
+<li>第三步：b.call()入栈，执行b函数内部代码</li>
+<li>第四步： console.log(‘b’)执行完毕就出栈，接着b函数结束，出栈死亡</li>
+<li>第五步：c.call()入栈，执行c函数内部代码</li>
+<li>第六步：console.log(‘c’)执行完毕就出栈，接着c函数结束，出栈死亡。</li>
+<li>整个代码结束，浏览器恢复平静。</li>
+</ul>
+<h4 id="嵌套调用"><a href="#嵌套调用" class="headerlink" title="嵌套调用"></a><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2ExJykKICAgIGIuY2FsbCgpCiAgICBjb25zb2xlLmxvZygnYTInKQogIHJldHVybiAnYScgIAp9CmZ1bmN0aW9uIGIoKXsKICAgIGNvbnNvbGUubG9nKCdiMScpCiAgICBjLmNhbGwoKQogICAgY29uc29sZS5sb2coJ2IyJykKICAgIHJldHVybiAnYicKfQpmdW5jdGlvbiBjKCl7CiAgICBjb25zb2xlLmxvZygnYycpCiAgICByZXR1cm4gJ2MnCn0KYS5jYWxsKCkKY29uc29sZS5sb2coJ2VuZCcp!!!" target="_blank" rel="noopener">嵌套调用</a></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a1'</span>)</span><br><span class="line">    b.call()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a2'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'a'</span>  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b1'</span>)</span><br><span class="line">    c.call()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b2'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'b'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'c'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'c'</span></span><br><span class="line">&#125;</span><br><span class="line">a.call()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'end'</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c583872bdbfb8?w=1170&amp;h=754&amp;f=png&amp;s=53669" alt="嵌套调用"></p>
+<ul>
+<li>第一步：浏览器的入口还是a.call()，a.call()入栈，执行a函数内部的代码</li>
+<li>第二步： a函数的第一行语句console.log(‘a1’)，入栈，打印出a1，这句话就出栈死亡。此时a函数继续执行下面的代码。</li>
+<li>第三步： a函数的第二行语句b.call()入栈。执行b函数内部的代码。<ul>
+<li>第四步：进入b函数内部，b函数的第一行语句console.log(‘b1’)入栈，打印出b1，就出栈死亡。</li>
+<li>第五步：b函数的第二行c.call()入栈，又进入c函数内部<ul>
+<li>第六步：进入c函数的内部，第一行语句console.log(‘c’)入栈，打印出c,就出栈死亡。</li>
+<li>第七步：c函数执行完毕，出栈死亡。</li>
+</ul>
+</li>
+<li>第八步：回到b函数内部，执行第三行代码console.log(‘b2’)入栈，打印出b2，出栈死亡。</li>
+<li>第九步： b函数执行完毕，出栈死亡。</li>
+</ul>
+</li>
+<li>第十步： 回到a函数内部，执行第三行代码console.log(‘a2’)，入栈，打印出a2，就出栈死亡。</li>
+<li>第十一步：a函数执行完毕，出栈死亡。</li>
+<li>第十二步：console.log(‘end’)入栈，打印出end,出栈死亡。</li>
+<li>整个代码运行完，浏览器归于平静。</li>
+</ul>
+<h4 id="递归调用"><a href="#递归调用" class="headerlink" title="递归调用"></a><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gc3VtKG4pewogICAgaWYobj09MSl7CiAgICAgICAgcmV0dXJuIDEKICAgIH1lbHNlewogICAgICAgIHJldHVybiBuICsgc3VtLmNhbGwodW5kZWZpbmVkLCBuLTEpCiAgICB9Cn0KCnN1bS5jYWxsKHVuZGVmaW5lZCw1KQ%3D%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D" target="_blank" rel="noopener">递归调用</a></h4><p>递归调用就是上面的嵌套调用的复杂变化，细心点，分析就能明白具体的代码顺序。</p>
+<h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h3><p>除了全局变量，其他变量只能在自己的函数内部被访问到，其他区域无法访问。通过几个面试题来学习一下。</p>
+<ul>
+<li>第一道面试题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(a) <span class="comment">// 是多少</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">f1.call()</span><br></pre></td></tr></table></figure>
+<p>问：alert出什么东西？</p>
+<p>这种题切忌上去就做，容易打错成了 <strong>a是2</strong> 一定要先把变量提升。变成如下这样的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> 	<span class="keyword">var</span> a </span><br><span class="line">    alert(a) </span><br><span class="line">    a = <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">f1.call()</span><br></pre></td></tr></table></figure>
+<p>这样一提升就知道啦，<strong>答案：a是undefined</strong>。</p>
+<ul>
+<li>第二道面试题</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    f2.call()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a) <span class="comment">// 是多少</span></span><br><span class="line">&#125;</span><br><span class="line">f1.call()</span><br></pre></td></tr></table></figure>
+<p>问：a是多少</p>
+<p>这个题用就近原则好做。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c583872944cc1?w=821&amp;h=459&amp;f=png&amp;s=24060" alt="树形结构"></p>
+<p>用树形结构来分析，当上面的代码被浏览器渲染之后</p>
+<ul>
+<li>全局变量里面有：var a = 1，f1、f2函数</li>
+<li>f1函数作用域里面又重新声明了一个var a = 2</li>
+<li>f2函数作用域里面是console.log(a)</li>
+</ul>
+<p>所以打印的那个a就是全局的a，答案是<strong>a=1</strong></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/02/JavaScript标准库之数组/" rel="next" title="JavaScript标准库之数组">
+                <i class="fa fa-chevron-left"></i> JavaScript标准库之数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/07/原生DOM入门学习/" rel="prev" title="原生DOM入门学习">
+                原生DOM入门学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shaolin-wu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是函数"><span class="nav-number">1.</span> <span class="nav-text">什么是函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#具名函数来定义"><span class="nav-number">1.1.</span> <span class="nav-text">具名函数来定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名函数来定义"><span class="nav-number">1.2.</span> <span class="nav-text">匿名函数来定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具名函数定义了又赋值给了变量"><span class="nav-number">1.3.</span> <span class="nav-text">具名函数定义了又赋值给了变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#window-Function来构造"><span class="nav-number">1.4.</span> <span class="nav-text">window.Function来构造</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.5.</span> <span class="nav-text">箭头函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的一些必备知识"><span class="nav-number">2.</span> <span class="nav-text">函数的一些必备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数的name属性"><span class="nav-number">2.1.</span> <span class="nav-text">函数的name属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数如何调用"><span class="nav-number">2.2.</span> <span class="nav-text">函数如何调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这就是藏着的this"><span class="nav-number">2.3.</span> <span class="nav-text">这就是藏着的this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arguments"><span class="nav-number">2.4.</span> <span class="nav-text">arguments</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的call-stack"><span class="nav-number">3.</span> <span class="nav-text">函数的call stack</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#普通调用"><span class="nav-number">3.1.</span> <span class="nav-text">普通调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#嵌套调用"><span class="nav-number">3.2.</span> <span class="nav-text">嵌套调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归调用"><span class="nav-number">3.3.</span> <span class="nav-text">递归调用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数作用域"><span class="nav-number">4.</span> <span class="nav-text">函数作用域</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shaolin-wu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
