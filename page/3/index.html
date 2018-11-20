@@ -2,15 +2,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
   
 
 
@@ -18,13 +9,17 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
 
-
-
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -39,6 +34,13 @@
 
 
 
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/25e11642.js","daovoice")
+  daovoice('init', {
+  app_id: "25e11642"
+  });
+  daovoice('update');
+  </script>
 
 
 
@@ -50,6 +52,57 @@
 
 
 
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
@@ -58,25 +111,44 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
-
-
-
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
 
 
 
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="WuShaoLin's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="WuShaoLin&#39;s Blog">
+<meta property="og:url" content="https://codevvvv9.github.io/page/3/index.html">
+<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WuShaoLin&#39;s Blog">
 
 
 
@@ -85,13 +157,15 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.5.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -103,33 +177,12 @@
 </script>
 
 
-  
-
-
-
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WuShaoLin&#39;s Blog">
-<meta property="og:url" content="https://codevvvv9.github.io/page/3/index.html">
-<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WuShaoLin&#39;s Blog">
-
-
-
-
-
 
   <link rel="canonical" href="https://codevvvv9.github.io/page/3/">
 
 
 
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
+
 
   <title>WuShaoLin's Blog</title>
   
@@ -140,36 +193,6 @@
 
 
 
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
 
 </head>
 
@@ -183,6 +206,7 @@
   <div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
+    <a href="https://github.com/codevvvv9"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -196,15 +220,13 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
       
         <p class="site-subtitle">悟已往之不谏，知来者之可追</p>
       
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -212,55 +234,65 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
-
-  </li>
-
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -268,20 +300,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -294,8 +318,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -306,7 +328,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -320,51 +342,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/01/09/一个优秀的项目经理与JQuery的故事/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">一个优秀的项目经理与JQuery的故事</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/01/09/一个优秀的项目经理与JQuery的故事/" itemprop="url">一个优秀的项目经理与JQuery的故事</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2018-01-09 23:14:23" itemprop="dateCreated datePublished" datetime="2018-01-09T23:14:23+08:00">2018-01-09</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-09T23:14:23+08:00">
+                2018-01-09
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -377,10 +385,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/jQuery学习/" itemprop="url" rel="index"><span itemprop="name">jQuery学习</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/jQuery学习/" itemprop="url" rel="index">
+                    <span itemprop="name">jQuery学习</span>
+                  </a>
+                </span>
 
                 
                 
@@ -419,29 +431,21 @@
 <p>本文是对jQuery的起源的初步探索。先通过两个函数来扩展原生DOM的操作，然后引入命名空间以及对其重构，接着将该命名空间扩大到Node上，改造一个自己的Node2，引出jQuery。</p>
 </blockquote>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/01/09/一个优秀的项目经理与JQuery的故事/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/09/一个优秀的项目经理与JQuery的故事/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -474,8 +478,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -486,7 +488,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -500,51 +502,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/01/07/原生DOM入门学习/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">原生DOM入门学习</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/01/07/原生DOM入门学习/" itemprop="url">原生DOM入门学习</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2018-01-07 23:46:24" itemprop="dateCreated datePublished" datetime="2018-01-07T23:46:24+08:00">2018-01-07</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-07T23:46:24+08:00">
+                2018-01-07
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -557,10 +545,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS语法详解/" itemprop="url" rel="index">
+                    <span itemprop="name">JS语法详解</span>
+                  </a>
+                </span>
 
                 
                 
@@ -602,29 +594,21 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-Hans"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>以上就是最简单的HTML 5的结构。一般我们会把它处理成一棵树，一棵节点树。
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/01/07/原生DOM入门学习/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/07/原生DOM入门学习/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </p></div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -657,8 +641,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -669,7 +651,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -683,51 +665,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/01/05/初探JS的函数/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">初探JS的函数</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/01/05/初探JS的函数/" itemprop="url">初探JS的函数</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2018-01-05 23:20:38" itemprop="dateCreated datePublished" datetime="2018-01-05T23:20:38+08:00">2018-01-05</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T23:20:38+08:00">
+                2018-01-05
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -740,10 +708,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS语法详解/" itemprop="url" rel="index">
+                    <span itemprop="name">JS语法详解</span>
+                  </a>
+                </span>
 
                 
                 
@@ -781,29 +753,21 @@
           <h3 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h3><p>函数是对象的一种，也是一段可以重复使用的代码块，开发人员为了完成某项功能，把相关代码块放到一起。</p>
 <p><strong>函数内部可以传参，也可以被当做参数传递</strong></p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/01/05/初探JS的函数/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/05/初探JS的函数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -836,8 +800,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -848,7 +810,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -862,51 +824,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2018/01/02/JavaScript标准库之数组/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">JavaScript标准库之数组</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2018/01/02/JavaScript标准库之数组/" itemprop="url">JavaScript标准库之数组</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2018-01-02 22:42:38" itemprop="dateCreated datePublished" datetime="2018-01-02T22:42:38+08:00">2018-01-02</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T22:42:38+08:00">
+                2018-01-02
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -919,10 +867,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS语法详解/" itemprop="url" rel="index">
+                    <span itemprop="name">JS语法详解</span>
+                  </a>
+                </span>
 
                 
                 
@@ -960,29 +912,21 @@
           <blockquote>
 <p>学习任何编程语言，数组都是绕不过去的坎，每个编程语言都在其标准库里面内置了功能强大的Array对象。通过参考阮一峰教程和MDN,我把数组常见的方法以及一些误区总结如下，内容较多，而且会继续补充，希望这一篇文章可以把数组的知识一网打尽。<br>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/01/02/JavaScript标准库之数组/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/02/JavaScript标准库之数组/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </p></blockquote></div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -1015,8 +959,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1027,7 +969,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -1041,51 +983,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2017/12/29/margin为负的理解/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">margin为负的理解</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/12/29/margin为负的理解/" itemprop="url">margin为负的理解</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-12-29 21:36:55" itemprop="dateCreated datePublished" datetime="2017-12-29T21:36:55+08:00">2017-12-29</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T21:36:55+08:00">
+                2017-12-29
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -1098,10 +1026,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CSS学习/" itemprop="url" rel="index"><span itemprop="name">CSS学习</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS学习/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS学习</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1140,29 +1072,21 @@
 <li>解决一个问题的关键在于马上着手去解决这个问题。我们都觉得CSS难学，那么就抓紧时间去学，去学，去学<h3 id="margin的概念"><a href="#margin的概念" class="headerlink" title="margin的概念"></a>margin的概念</h3>margin是盒模型中一个很重要的概念，是border之外的区域，我们通常称作外边距，有margin-top,margin-right,margin-bottom.moargin-left四个外边距。注意我书写的顺序是从上开始顺时针的顺序。</li>
 </ul>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/12/29/margin为负的理解/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/29/margin为负的理解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -1195,8 +1119,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1207,7 +1129,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -1221,51 +1143,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2017/12/28/前端校验图片尺寸/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">前端校验图片尺寸</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/12/28/前端校验图片尺寸/" itemprop="url">前端校验图片尺寸</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-12-28 01:00:13" itemprop="dateCreated datePublished" datetime="2017-12-28T01:00:13+08:00">2017-12-28</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-28T01:00:13+08:00">
+                2017-12-28
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -1278,10 +1186,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS语法详解/" itemprop="url" rel="index">
+                    <span itemprop="name">JS语法详解</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1322,29 +1234,21 @@
 <p>我由于目前的水平有限，只能借助网络来完成这个功能。在这个查找的过程中，发现很多博客都写的有问题，虽然表面完成了，但是一测试，很多不对的地方，感觉都是抄的别人的，没抄完整。<br>那么我希望我写的文章，读者都是可以完美复写的。</p>
 <h3 id="先上完美运行的代码"><a href="#先上完美运行的代码" class="headerlink" title="先上完美运行的代码"></a>先上完美运行的代码</h3><p>以下是我亲测可以运行的代码。连我这种前端0.1年的人都能学会。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/12/28/前端校验图片尺寸/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/28/前端校验图片尺寸/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -1377,8 +1281,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1389,7 +1291,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -1403,51 +1305,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2017/12/27/深挖JS语法第三集/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">深挖JS语法第三集</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/12/27/深挖JS语法第三集/" itemprop="url">深挖JS语法第三集</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-12-27 20:24:59" itemprop="dateCreated datePublished" datetime="2017-12-27T20:24:59+08:00">2017-12-27</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T20:24:59+08:00">
+                2017-12-27
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -1460,10 +1348,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS语法详解/" itemprop="url" rel="index">
+                    <span itemprop="name">JS语法详解</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1566,18 +1458,12 @@
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -1610,8 +1496,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1622,7 +1506,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -1636,51 +1520,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2017/12/24/CSS的五个奇怪特性/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">CSS的五个奇怪特性</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/12/24/CSS的五个奇怪特性/" itemprop="url">CSS的五个奇怪特性</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-12-24 22:08:36" itemprop="dateCreated datePublished" datetime="2017-12-24T22:08:36+08:00">2017-12-24</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-24T22:08:36+08:00">
+                2017-12-24
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -1693,10 +1563,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/CSS学习/" itemprop="url" rel="index"><span itemprop="name">CSS学习</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS学习/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS学习</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1733,29 +1607,21 @@
         
           <h3 id="margin会受到border和display的影响"><a href="#margin会受到border和display的影响" class="headerlink" title="margin会受到border和display的影响"></a>margin会受到border和display的影响</h3><p>以div元素为例<br>三个并列的div，必然是上下排列，外边距是10px,也就是我们通常说的上下间隔10px<br><a href="http://js.jirengu.com/vokixegofo/1/edit?html,output" target="_blank" rel="noopener">demo</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;JS Bin&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .demo&#123;</span><br><span class="line">      border: 1px solid red;</span><br><span class="line">      height: 100px;</span><br><span class="line">      margin: 10px;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div class=&quot;demo&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;!-- &lt;div class=&quot;demo2&quot; style=&quot;border: 0.1px solid green&quot;&gt;&lt;/div&gt; --&gt;</span><br><span class="line">  &lt;div style=&quot;display: flex&quot; class=&quot;demo2&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;demo&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;demo&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/12/24/CSS的五个奇怪特性/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/24/CSS的五个奇怪特性/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -1788,8 +1654,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -1800,7 +1664,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -1814,51 +1678,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2017/12/23/深挖JS语法第一集/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">深挖JS语法第一集</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/12/23/深挖JS语法第一集/" itemprop="url">深挖JS语法第一集</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-12-23 18:15:26" itemprop="dateCreated datePublished" datetime="2017-12-23T18:15:26+08:00">2017-12-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T18:15:26+08:00">
+                2017-12-23
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -1871,10 +1721,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS语法详解/" itemprop="url" rel="index">
+                    <span itemprop="name">JS语法详解</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1934,29 +1788,21 @@
 <ul>
 <li>注意，array和function属于object类型;symbol是ES6的内容。
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2017/12/23/深挖JS语法第一集/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-         
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/23/深挖JS语法第一集/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </li></ul></div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -1989,8 +1835,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
@@ -2001,7 +1845,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaolin-wu">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -2015,51 +1859,37 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/2017/12/23/深挖JavaScript语法第二集/" class="post-title-link" itemprop="https://codevvvv9.github.io/page/3/index.html">深挖JavaScript第二集</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/2017/12/23/深挖JavaScript语法第二集/" itemprop="url">深挖JavaScript第二集</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-12-23 18:15:26" itemprop="dateCreated datePublished" datetime="2017-12-23T18:15:26+08:00">2017-12-23</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T18:15:26+08:00">
+                2017-12-23
+              </time>
             
 
             
-              
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
               
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+                <span class="post-meta-item-text">更新于&#58;</span>
               
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">
+                2018-11-18
+              </time>
             
           </span>
 
@@ -2072,10 +1902,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/JS语法详解/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS语法详解/" itemprop="url" rel="index">
+                    <span itemprop="name">JS语法详解</span>
+                  </a>
+                </span>
 
                 
                 
@@ -2220,18 +2054,12 @@
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-       
-    
     
 
     
@@ -2260,12 +2088,15 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
+          
+
+
           
 
         </div>
@@ -2292,127 +2123,94 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="shaolin-wu">
+            
               <p class="site-author-name" itemprop="name">shaolin-wu</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">38</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
+          <nav class="site-state motion-element">
 
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">16</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">16</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-          
-
-          
             
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
           
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/codevvvv9" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.jianshu.com/u/15af43443bdb" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-rss-square"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-balance-scale"></i>掘金</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/wu-lin-25-41/posts" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-book"></i>知乎</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
           
 
         </div>
@@ -2432,33 +2230,33 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">shaolin-wu</span>
 
   
-
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
   
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
 
 
 
 
         
-
 
 
 
@@ -2474,14 +2272,13 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
     
-	
-    
 
-    
   </div>
 
   
@@ -2500,11 +2297,7 @@
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -2524,6 +2317,16 @@
 
   
   
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -2532,58 +2335,20 @@
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
-
-
-
   
   
-
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
-
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
 
-  
-
-
-
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
 
 
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
   
@@ -2592,9 +2357,82 @@
 
   
 
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
   
 
   
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
