@@ -7,7 +7,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>node-sass安装失败的解决方法.md | WuShaoLin&#39;s Blog</title>
+  <title>node-sass安装失败的究极解决方法.md | WuShaoLin&#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -18,7 +18,7 @@
   <meta name="description" content="记录一下安装node-sass的过程.关于CSS是不是一门编程语言,这里不讨论,但是它没有变量 语句 函数(反正我觉得他不是编程语言).于是程序员们发明了CSS预处理器(css preprocessor),它是一种专门的编程语言,可以使用你会的基本的编程知识进行编程,然后再转化成css文件.  12月更新本次重新安装node-sass是因为电脑换了固态重装系统了，在新系统下很长时间内没有用过sa">
 <meta name="keywords" content="Sass">
 <meta property="og:type" content="article">
-<meta property="og:title" content="node-sass安装失败的解决方法.md">
+<meta property="og:title" content="node-sass安装失败的究极解决方法.md">
 <meta property="og:url" content="https://codevvvv9.github.io/2018/01/19/node-sass安装失败的究极解决方法/index.html">
 <meta property="og:site_name" content="WuShaoLin&#39;s Blog">
 <meta property="og:description" content="记录一下安装node-sass的过程.关于CSS是不是一门编程语言,这里不讨论,但是它没有变量 语句 函数(反正我觉得他不是编程语言).于是程序员们发明了CSS预处理器(css preprocessor),它是一种专门的编程语言,可以使用你会的基本的编程知识进行编程,然后再转化成css文件.  12月更新本次重新安装node-sass是因为电脑换了固态重装系统了，在新系统下很长时间内没有用过sa">
@@ -27,9 +27,9 @@
 <meta property="og:image" content="https://i.loli.net/2018/12/01/5c0263e5ad309.png">
 <meta property="og:image" content="https://i.loli.net/2018/12/01/5c02637aed955.png">
 <meta property="og:image" content="https://i.loli.net/2018/12/01/5c0266bae321d.png">
-<meta property="og:updated_time" content="2018-12-01T10:49:10.765Z">
+<meta property="og:updated_time" content="2018-12-01T10:53:56.745Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="node-sass安装失败的解决方法.md">
+<meta name="twitter:title" content="node-sass安装失败的究极解决方法.md">
 <meta name="twitter:description" content="记录一下安装node-sass的过程.关于CSS是不是一门编程语言,这里不讨论,但是它没有变量 语句 函数(反正我觉得他不是编程语言).于是程序员们发明了CSS预处理器(css preprocessor),它是一种专门的编程语言,可以使用你会的基本的编程知识进行编程,然后再转化成css文件.  12月更新本次重新安装node-sass是因为电脑换了固态重装系统了，在新系统下很长时间内没有用过sa">
 <meta name="twitter:image" content="https://i.loli.net/2018/12/01/5c02610b47259.png">
 
@@ -149,7 +149,7 @@
 <div class="content content-post CENTER">
    <article id="post-node-sass安装失败的究极解决方法" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">node-sass安装失败的解决方法.md</h1>
+    <h1 class="post-title">node-sass安装失败的究极解决方法.md</h1>
 
     <div class="article-meta">
       <span>
@@ -202,7 +202,7 @@
 <li>终于发现了，直接使用下载好的<code>Realease</code>包去安装，先去<a href="https://github.com/sass/node-sass/releases" target="_blank" rel="noopener">node-sass主页</a>下载系统需要的类型，这个完全可以解决系统不同的问题，很具用普适性。</li>
 <li>到底你的系统需要那个具体的包呢，这个就是最关键的了，我的方式是：先安装，失败后会提示你<code>哪个版本的node包</code>无法下载，这个时候再去下载这个包。通过如下代码去安装：</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g node-sass@4.9.3 --sass_binary_path=你下载的包的路径</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -g node-sass@4.9.3 --sass_binary_path=/home/wsl/Downloads/chromeDownloads/linux-x64-64_binding.node</span><br><span class="line"><span class="meta">#</span> path需要替换成你系统的那个包名字</span><br></pre></td></tr></table></figure>
 <p><code>But</code>我以为下载成功了，就万事大吉了呢，发现我真是太天真了。安装完后第一件事就是检验安装的包能不能用，<code>node-sass -v</code>一下，最不济出现个<code>node-sass not found</code>这种类似的初级错误啊，结果报了个无语的错误。</p>
 <p><img src="https://i.loli.net/2018/12/01/5c02610b47259.png" alt="找不到vendor目录"></p>
 <p>这个目录是<code>node-sass</code>规定的</p>
