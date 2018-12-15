@@ -1,1446 +1,230 @@
 <!DOCTYPE html>
-<html style="display: none;" lang="zh">
-    <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="utf-8">
-    <!--
-        © Material Theme
-        https://github.com/viosey/hexo-theme-material
-        Version: 1.5.6 -->
-    <script>
-        window.materialVersion = "1.5.6"
-        // Delete localstorage with these tags
-        window.oldVersion = [
-            'codestartv1',
-            '1.3.4',
-            '1.4.0',
-            '1.4.0b1',
-            '1.5.0',
-            '1.5.2',
-            '1.5.5'
-        ]
-    </script>
-
-    <!-- dns prefetch -->
-    <meta http-equiv="x-dns-prefetch-control" content="on">
 
 
+  <html class="light page-home">
 
 
-
-    <link rel="dns-prefetch" href="https://imsun.github.io">
-
-
-
-
-
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-
-
-
-
-
-    <!-- Meta & Info -->
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-    <!-- Title -->
-    
-    <title>
-        
-        WuShaoLin&#39;s Blog
-    </title>
-
-    <!-- Favicons -->
-    <link rel="icon shortcut" type="image/ico" href="/img/tiger.png">
-    <link rel="icon" href="/img/tiger.png">
-
-    <meta name="format-detection" content="telephone=no">
-    <meta name="description" itemprop="description" content="">
-    <meta name="keywords" content="">
-    <meta name="theme-color" content="#0097A7">
-
-    <!-- Disable Fucking Bloody Baidu Tranformation -->
-    <meta http-equiv="Cache-Control" content="no-transform">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-
-    <!--[if lte IE 9]>
-        <link rel="stylesheet" href="/css/ie-blocker.css">
-
-        
-            <script src="/js/ie-blocker.zhCN.js"></script>
-        
-    <![endif]-->
-
-    <!-- Import lsloader -->
-    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
-
-    <!-- Import queue -->
-    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
-
-    <!-- Import CSS -->
-    
-        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-
-        
-
-    
-
-    
-
-    <!-- Config CSS -->
-
-<!-- Other Styles -->
-<style>
-  body, html {
-    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
-    overflow-x: hidden !important;
-  }
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
   
-  code {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  }
+  <title>WuShaoLin&#39;s Blog</title>
 
-  a {
-    color: #00838F;
-  }
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  .mdl-card__media,
-  #search-label,
-  #search-form-label:after,
-  #scheme-Paradox .hot_tags-count,
-  #scheme-Paradox .sidebar_archives-count,
-  #scheme-Paradox .sidebar-colored .sidebar-header,
-  #scheme-Paradox .sidebar-colored .sidebar-badge{
-    background-color: #0097A7 !important;
-  }
+  
+    <meta name="keywords" content="前端,前端开发,用户体验,设计,frontend,design,nodejs,JavaScript">
+  
 
-  /* Sidebar User Drop Down Menu Text Color */
-  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
-  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
-    color: #0097A7 !important;
-  }
+  <meta property="og:type" content="website">
+<meta property="og:title" content="WuShaoLin&#39;s Blog">
+<meta property="og:url" content="https://codevvvv9.github.io/page/2/index.html">
+<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WuShaoLin&#39;s Blog">
 
-  #post_entry-right-info,
-  .sidebar-colored .sidebar-nav li:hover > a,
-  .sidebar-colored .sidebar-nav li:hover > a i,
-  .sidebar-colored .sidebar-nav li > a:hover,
-  .sidebar-colored .sidebar-nav li > a:hover i,
-  .sidebar-colored .sidebar-nav li > a:focus i,
-  .sidebar-colored .sidebar-nav > .open > a,
-  .sidebar-colored .sidebar-nav > .open > a:hover,
-  .sidebar-colored .sidebar-nav > .open > a:focus,
-  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
-    color: #0097A7 !important;
-  }
+  
 
-  .toTop {
-    background: #757575 !important;
-  }
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
 
-  .material-layout .material-post>.material-nav,
-  .material-layout .material-index>.material-nav,
-  .material-nav a {
-    color: #757575;
-  }
-
-  #scheme-Paradox .MD-burger-layer {
-    background-color: #757575;
-  }
-
-  #scheme-Paradox #post-toc-trigger-btn {
-    color: #757575;
-  }
-
-  .post-toc a:hover {
-    color: #00838F;
-    text-decoration: underline;
-  }
-
-</style>
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
 
 
-<!-- Theme Background Related-->
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
 
-    <style>
-      body{
-        background-image: url(/img/bg.png);
-      }
-    </style>
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
 
 
 
-
-<!-- Fade Effect -->
-
-    <style>
-      .fade {
-        transition: all 800ms linear;
-        -webkit-transform: translate3d(0,0,0);
-        -moz-transform: translate3d(0,0,0);
-        -ms-transform: translate3d(0,0,0);
-        -o-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
-        opacity: 1;
-      }
-
-      .fade.out{
-        opacity: 0;
-      }
-    </style>
-
-
-<!-- Import Font -->
-<!-- Import Roboto -->
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-
-
-<!-- Import Material Icons -->
-
-
-    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
-
-
-
-
-    <!-- Import jQuery -->
-    
-        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
-    
-
-    <!-- WebAPP Icons -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="WuShaoLin&#39;s Blog">
-    <meta name="msapplication-starturl" content="https://codevvvv9.github.io/page/2/">
-    <meta name="msapplication-navbutton-color" content="#0097A7">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="WuShaoLin&#39;s Blog">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="apple-touch-icon" href="/img/tiger.png">
-
-    <!-- Site Verification -->
-    
-    
-
-    <!-- RSS -->
-    
-
-    <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://codevvvv9.github.io/page/2/">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="WuShaoLin&#39;s Blog">
-    <meta property="og:image" content="/img/tiger.png">
-    <meta property="og:description" content="">
-    
-
-    
-
-    <!-- The Twitter Card protocol -->
-    <meta name="twitter:card" content="summary_large_image">
-
-    <!-- Add canonical link for SEO -->
-    
-        <link rel="canonical" href="https://codevvvv9.github.io/page/2/index.html">
-    
-
-    <!-- Structured-data for SEO -->
-    
-        
-
-
-
-    
-
-    <!-- Analytics -->
-    
-    
-    
-
-    <!-- Custom Head -->
-    
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
 
 </head>
+</html>
+<body>
 
 
+  
+
+  
+  <div class="content-home text-center">
+  <a class="avatar" href="/">
+    <img src="/images/avatar.jpeg" alt="">
+  </a>
+  <h1 class="name" style="font-family: calligraffittiregular">
+    吴少林
+  </h1>
+  <div class="slogan">
+    悟已往之不谏，知来者之可追。
+  </div>
+
+  <hr>
+
+  <ul class="text-center nav">
     
-        <body id="scheme-Paradox" class="lazy">
-            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
-                
-
-                <!-- Main Container -->
-                <main class="material-layout__content" id="main">
-
-                    <!-- Top Anchor -->
-                    <div id="top"></div>
-
-                    
-                        <!-- Hamburger Button -->
-                        <button class="MD-burger-icon sidebar-toggle">
-                            <span id="MD-burger-id" class="MD-burger-layer"></span>
-                        </button>
-                    
-
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
+      <li class="item">
+        
+          <a href="/archives">Blog</a>
+        
+        <span>|</span>
+      </li>
     
-    <div class="locate-thumbnail-symbol"></div>
-
-    <!-- Pin on top -->
+      <li class="item">
+        
+          <a href="/project/" rel="noopener noreferrer" target="_blank">Project</a>
+        
+        <span>|</span>
+      </li>
     
-
-    <!-- Normal Post -->
+      <li class="item">
+        
+          <a href="https://github.com/codevvvv9" rel="noopener noreferrer" target="_blank">Github</a>
+        
+        <span>|</span>
+      </li>
     
+      <li class="item">
         
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+          <a href="https://twitter.com/shaolinwu1" rel="noopener noreferrer" target="_blank">Twitter</a>
+        
+        <span>|</span>
+      </li>
     
+      <li class="item">
         
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+          <a href="https://www.zhihu.com/people/wu-lin-25-41/activities" rel="noopener noreferrer" target="_blank">知乎</a>
         
+        <span>|</span>
+      </li>
     
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/02/13/爱搞事情的webpack/">爱搞事情的webpack</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
+      <li class="item">
         
-            webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。
-
-当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。
-基本安装
-局部安装,官方也是推荐安装到项目目录下
-
-1234mkdir webpack-demo-1cd webpack-demo-1npm init -y //生成package.json,并且一路同意,如果没啥个性化的内容则省了你一路狂按enternpm install --save-dev webpack //安装到开发环境里面(devDependicies)
-
-webpack基本配置文件
+          <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" rel="noopener noreferrer" target="_blank">掘金</a>
         
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/02/13/爱搞事情的webpack/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>2月 13, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/自动打包工具/">自动打包工具</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
+        <span>|</span>
+      </li>
     
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+  </ul>
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/02/11/持久化存储与HTTP缓存/">持久化存储与HTTP缓存</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-本文主要学习一下一些高级的HTTP知识，例如Session LocalStorage Cache-Control Expires ETag
-其实主要就是涉及到了持久化存储与缓存的技术
-
-在此之前已经学习了Cookie的相关知识，其中Cookie有个缺点可以人为修改，有一定的安全隐患。
-所以，针对这个缺点，诞生了Session
-Session一般来说Session是基于Cookie实现的，它利用一个sessionId把用户的敏感数据隐藏起来，除非暴力穷举才有可能获得敏感数据。
-sessionId我们使用Cookie的时候，一般是服务器给用户一个响应头，设置Cookie
-1response.setHeader('Set-Cookie', 'sign_in_email=...;HTTPOnly')
-既然Session还是基于Cookie实现的，那么还是应该在Set-Cookie上搞事情。
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/02/11/持久化存储与HTTP缓存/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>2月 11, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/HTTP高级知识/">HTTP高级知识</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/02/09/一块小饼干的故事-Cookie-的故事-下篇/">一块小饼干的故事-Cookie-的故事-下篇</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-上篇介绍了注册的基本流程，下篇简单的讲讲登录的流程以及Cookie的出现
-
-实现登录的小功能当你在浏览器的输入框里输入localhost:8080/sign_in的时候，会发起GET请求，去访问sign_in.html
-1234567if (path === '/sign_up' &amp;&amp; method === 'GET') &#123;  let string = fs.readFileSync('./sign_up.html', 'utf8')  response.statusCode = 200  response.setHeader('Content-Type', 'text/html;charset=utf-8')  response.write(string)  response.end()&#125;
-CSS布局与上篇的布局基本一样，略去不表～
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/02/09/一块小饼干的故事-Cookie-的故事-下篇/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>2月 09, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/HTTP高级知识/">HTTP高级知识</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/02/09/一块小饼干-Cookie-的故事-上篇/">一块小饼干-Cookie-的故事-上篇</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由网景的创始人之一的卢 蒙特利在93年发明。
-上篇是熟悉一下注册的大致流程，下篇熟悉登录流程以及真正的Cookie
-
-实现基本的注册功能我们打开网站，浏览网站，最常见的两个操作就是注册以及登录，所以有必要探索一下这两个功能如何实现的。
-本地模拟，当输入localhost:8080/sign_up的时候，浏览器发起get请求，服务器给你响应sign_up.html
-12345678//服务器端代码if (path === '/sign_up' &amp;&amp; method === 'GET') &#123;    let string = fs.readFileSync('./sign_up.html', 'utf8')    response.statusCode = 200    response.setHeader('Content-Type', 'text/html;charset=utf-8')    response.write(string)    response.end() &#125;
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/02/09/一块小饼干-Cookie-的故事-上篇/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>2月 09, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/HTTP高级知识/">HTTP高级知识</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/02/03/科学上网/">科学上网</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            科学上网
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/02/03/科学上网/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>2月 03, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Linux入门/">Linux入门</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/31/AJAX的出现与跨域/">AJAX的出现与跨域</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-XMLHttpRequest JSON AJAX CORS  四个名词来开会
-
-如何发请求在前端的世界里也逛荡了不少日子了，目前已经get到大约5种发起请求的方式，主流的、非主流的。
-
-
-
-何种方式
-请求方法
-
-
-
-
-
-最常见的form表单
-默认GET，多用POST,只此两种
-会刷新页面或者新开页面
-
-
-a 标签
-GET请求
-也会刷新页面或者新开页面
-
-
-img的src属性
-GET
-只能以图片的形式展现
-
-
-link标签
-GET
-只能以CSS、favicon的形式展现
-
-
-script标签
-GET
-只能以脚本的形式运行
-
-
-
-可是
-
-我们可能想用GET POST PUT DELETE 方法
-不想刷新整个页面，想用一种更易于理解的方式来响应
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/31/AJAX的出现与跨域/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>1月 31, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/同源的问题及解决思路/">同源的问题及解决思路</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/23/破解浏览器同源政策利器之JSONP/">破解浏览器同源政策利器之JSONP</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-本文是在了解了浏览器的同源规则之后，学习了破解这个规则的一个简单有效的方法-&gt;JSONP。主要通过阮一峰老师的博客学习
-
-浏览器的同源规则
-有这样一个背景，如果你通过银行的网站进行的取钱的交易，而其他用户可以通过某个渠道获得你在银行网站的信息，那将是很可怕的。
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/23/破解浏览器同源政策利器之JSONP/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>1月 23, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/同源的问题以及解决思路/">同源的问题以及解决思路</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/19/node-sass安装失败的究极解决方法/">node-sass安装失败的究极解决方法.md</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-记录一下安装node-sass的过程.关于CSS是不是一门编程语言,这里不讨论,但是它没有变量 语句 函数(反正我觉得他不是编程语言).于是程序员们发明了CSS预处理器(css preprocessor),它是一种专门的编程语言,可以使用你会的基本的编程知识进行编程,然后再转化成css文件.
-
-12月更新本次重新安装node-sass是因为电脑换了固态重装系统了，在新系统下很长时间内没有用过sass，一切都是那个风平浪静，直到11月的最后一晚，想折腾一下博客，看到一个好看的主题，这个主题需要安装两个插件，其中有一个需要node-sass的加持。
-123$ git clone https://github.com/tufu9441/maupassant-hexo.git themes/maupassant$ npm install hexo-renderer-pug --save$ npm install hexo-renderer-sass --save  #就是这货
-不出意外的，国内不采取特殊途径，hexo-renderer-sass安装报错，根据log日志，很容易的发现，他需`node-sass@4.10.0`支持，但是下载失败。
-
-解决方案1：先在global下安装node-sass
-
-重装后我全是采用的nvm管理的node版本，所有的包都在.nvm目录下，避免权限不够的错误(或者采取分割线以下的阮一峰老师的方法避免包权限的问题)。
-配置.npmrc，先touch ~/.npmrc。这次直接采取node-sass的官方推荐的方式，npm install -g mirror-config-china --registry=http://registry.npm.taobao.org，所有的国内有问题的包全都避免了。
-结果竟然无法下载，log日志提醒我可能是代理的问题，可能是我的FQ的系统代理有问题，去控制台一看，果然SOCKETS 有个错误，尝试使用npm添加代理的方式，均告失败，毕竟以后也不能总靠代理过日子，这个方式不可取。这次想找个一劳永逸的方式彻底解决这个垃圾问题。
-终于发现了，直接使用下载好的Realease包去安装，先去node-sass主页下载系统需要的类型，这个完全可以解决系统不同的问题，很具用普适性。
-到底你的系统需要那个具体的包呢，这个就是最关键的了，我的方式是：先安装，失败后会提示你哪个版本的node包无法下载，这个时候再去下载这个包。通过如下代码去安装：
-
-12npm i -g node-sass@4.9.3 --sass_binary_path=/home/wsl/Downloads/chromeDownloads/linux-x64-64_binding.node# path需要替换成你系统的那个包名字
-But我以为下载成功了，就万事大吉了呢，发现我真是太天真了。安装完后第一件事就是检验安装的包能不能用，node-sass -v一下，最不济出现个node-sass not found这种类似的初级错误啊，结果报了个无语的错误。
-
-这个目录是node-sass规定的
-
-为啥没有这个目录呢，因为通过 我采用的是设置本地下载路径，没有通过网上的下载。所以需要手动建立一个vendor目录（issues里面通过npm rebulid node-sass可以解决，但是我没生效），接着会报第二个新错误，这就很合理了，报错一点不可怕，能看懂并解决掉就很是进步。
-
-
-
-新的错误是需要binding.node文件，刚才建立的vendor是个空目录所以找不到，在其内部建立二级目录，并把刚才下载的包改名为binding.node，即vendor/linux-X64-64/binding.node
-至此，本地安装node-sass完毕，以后可以随便玩node-sass了，管你能不能翻墙，能不能设置镜像。
-
-本来以为全局安装完毕就可以在博客目录下直接安装hexo-renderer-sass，竟然还是报错。没办法，在newBlog目录下又按照上述的方法安装了一个`node-sass@4.10.0，因为hexo-render-sass`需要4.10.0版本。最后终于成功了。
-
-
-分割线以下为传统解决方法，尤其针对Linux用户
-
-介绍主流的CSS预处理器有8种,我们今天介绍sass.它的官网,不过需要安装ruby.
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/19/node-sass安装失败的究极解决方法/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>1月 19, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Sass使用/">Sass使用</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/17/理解Event的冒泡模型/">理解Event的冒泡模型</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-本文探索一下Event的冒泡过程和初学遇到的几个小bug
-
-DOM Event概述Event接口是检测在DOM中的发生的所有事件，我们一直在用，而且从DOM的很早的版本就一直在用着。早期的网景(后来的火狐)和IE是各自为战，直到W3C一统江湖，DOM版本一路发展而来，经历了DOM-0(洪荒时代)、DOM-1(只有两章核心内容)、DOM-2(划时代的一个版本，我们学的Event就在这个版本，而且目前的用的也是这个版本)、DOM-3、DOM-4(草案阶段)。
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/17/理解Event的冒泡模型/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>1月 17, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/JS语法详解/">JS语法详解</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/01/13/从win7到Linux/">从win7到Linux</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-终于换到liunx啦
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/01/13/从win7到Linux/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.jpeg" width="44px" height="44px" alt="shaolin-wu's avatar">
-            </div>
-            <div>
-                <strong>shaolin-wu</strong>
-                <span>1月 13, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/Linux入门/">Linux入门</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-    <!-- Index nav -->
-        <nav class="material-nav mdl-cell mdl-cell--12-col">
-            <a class="extend prev" rel="prev" href="/"><button aria-label="Last page" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_back</i></button></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><button aria-label="Next page" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"><i class="material-icons" role="presentation">arrow_forward</i></button></a>
-        </nav>
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 15 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
-    $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
-</script>
-
-    
 </div>
 
 
-                    
-                        <!-- Overlay For Active Sidebar -->
-<div class="sidebar-overlay"></div>
 
-<!-- Material sidebar -->
-<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
-    <div id="sidebar-main">
-        <!-- Sidebar Header -->
-        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
-    <!-- Top bar -->
-    <div class="top-bar"></div>
 
-    <!-- Sidebar toggle button -->
-    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
-        <i class="material-icons">clear_all</i>
-        <span class="mdl-button__ripple-container">
-            <span class="mdl-ripple">
-            </span>
-        </span>
-    </button>
 
-    <!-- Sidebar Avatar -->
-    <div class="sidebar-image">
-        <img src="/img/avatar.jpeg" alt="shaolin-wu's avatar">
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
     </div>
-
-    <!-- Sidebar Email -->
-    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
-        wslsdust@163.com
-        <b class="caret"></b>
-    </a>
-</div>
-
-
-        <!-- Sidebar Navigation  -->
-        <ul class="nav sidebar-nav">
-    <!-- User dropdown  -->
-    <li class="dropdown">
-        <ul id="settings-dropdown" class="dropdown-menu">
-            
-                <li>
-                    <a href="wslsdust@163.com" target="_blank" title="Email Me">
-                        
-                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
-                        
-                        Email Me
-                    </a>
-                </li>
-            
-        </ul>
-    </li>
-
-    <!-- Homepage -->
-    
-        <li id="sidebar-first-li">
-            <a href="/">
-                
-                    <i class="material-icons sidebar-material-icons">home</i>
-                
-                主页
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
             </a>
-        </li>
+          </li>
         
-    
-
-    <!-- Archives  -->
-    
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">inbox</i>
-                
-                    归档
-                <b class="caret"></b>
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/categories/" rel="noopener noreferrer" target="_blank">
+              分类
             </a>
-            <ul class="dropdown-menu">
-            <li>
-                <a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/02/">二月 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">14</span></a>
-            </li></ul>
-        </li>
+          </li>
         
-    
-
-    <!-- Categories  -->
-    
-        <li class="dropdown">
-            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
-                
-                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
-                
-                分类
-                <b class="caret"></b>
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tags/" rel="noopener noreferrer" target="_blank">
+              标签
             </a>
-            <ul class="dropdown-menu">
-                <li>
-                <a class="sidebar_archives-link" href="/categories/CSS学习/">CSS学习<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/HTML学习/">HTML学习<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/HTTP入门/">HTTP入门<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/HTTP高级知识/">HTTP高级知识<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/JS语法详解/">JS语法详解<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/Linux入门/">Linux入门<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Sass使用/">Sass使用<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Vue的学习/">Vue的学习<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/jQuery学习/">jQuery学习<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/三省吾身/">三省吾身<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/云音乐/">云音乐<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端之外/">前端之外<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/同源的问题以及解决思路/">同源的问题以及解决思路<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/同源的问题及解决思路/">同源的问题及解决思路<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/服务器原理学习/">服务器原理学习<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/自动打包工具/">自动打包工具<span class="sidebar_archives-count">1</span></a>
-            </li></ul>
-        </li>
+          </li>
         
-    
-
-    <!-- Pages  -->
-    
-        <li>
-            <a href="/about" title="About">
-                
-                    <i class="material-icons sidebar-material-icons">person</i>
-                
-                About
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
             </a>
-        </li>
+          </li>
         
-    
-
-    <!-- Article Number  -->
-    
-        <li>
-            <a href="/archives">
-                文章总数
-                <span class="sidebar-badge">38</span>
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_blank">
+              搜索
             </a>
-        </li>
+          </li>
         
-    
-</ul>
-
-
-        <!-- Sidebar Footer -->
-        <!--
-I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
-If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
-It will not impact the appearance and can give developers a lot of support :)
-
-很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
-如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
-它不会影响美观并可以给开发者很大的支持和动力。 :)
--->
-
-<!-- Sidebar Divider -->
-
-
-<!-- Theme Material -->
-
-
-<!-- Help & Support -->
-<!--
-
--->
-
-<!-- Feedback -->
-<!--
-
--->
-
-<!-- About Theme -->
-<!--
-
--->
+      </ul>
 
     </div>
-
-    <!-- Sidebar Image -->
-    
-
-</aside>
-
-                    
-
-                    
-                        <!-- Footer Top Button -->
-                        <div id="back-to-top" class="toTop-wrap">
-    <a href="#top" class="toTop">
-        <i class="material-icons footer_top-i">expand_less</i>
-    </a>
-</div>
-
-                    
-
-                    <!--Footer-->
-<footer class="mdl-mini-footer" id="bottom">
-    
-        <!-- Paradox Footer Left Section -->
-        <div class="mdl-mini-footer--left-section sns-list">
-    <!-- Twitter -->
-    
-        <a href="https://twitter.com/shaolinwu1" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
-                <span class="visuallyhidden">Twitter</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Facebook -->
-    
-
-    <!-- Google + -->
-    
-
-    <!-- Weibo -->
-    
-
-    <!-- Instagram -->
-    
-
-    <!-- Tumblr -->
-    
-
-    <!-- Github -->
-    
-        <a href="https://github.com/codevvvv9" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
-                <span class="visuallyhidden">Github</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- LinkedIn -->
-    
-
-    <!-- Zhihu -->
-    
-        <a href="https://www.zhihu.com/people/wu-lin-25-41/activities" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
-                <span class="visuallyhidden">Zhihu</span>
-            </button><!--
-     --></a>
-    
-
-    <!-- Bilibili -->
-    
-
-    <!-- Telegram -->
-    
-
-    <!-- V2EX -->
-    
-
-    <!-- Segmentfault -->
-    
-        <a href="https://segmentfault.com/u/codevvvv9" target="_blank">
-            <button class="mdl-mini-footer--social-btn social-btn footer-sns-segmentfault">
-                <span class="visuallyhidden">Segmentfault</span>
-            </button><!--
-     --></a>
-    
+  </div>
 </div>
 
 
-        <!--Copyright-->
-        <div id="copyright">
-            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;WuShaoLin's Blog
-            
-        </div>
 
-        <!-- Paradox Footer Right Section -->
+  
 
-        <!--
-        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
-        It will not impact the appearance and can give developers a lot of support :)
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
 
-        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
-        它不会影响美观并可以给开发者很大的支持。 :)
-        -->
-
-        <div class="mdl-mini-footer--right-section">
-            <div>
-                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
-                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
-            </div>
-        </div>
-    
-</footer>
-
-
-                    <!-- Import JS File -->
-
-    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
-
-
-
-    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
-
-
-
-    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
-
-
-<script type="text/ls-javascript" id="NProgress-script">
-    NProgress.configure({
-        showSpinner: true
-    });
-    NProgress.start();
-    $('#nprogress .bar').css({
-        'background': '#29d'
-    });
-    $('#nprogress .peg').css({
-        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
-    });
-    $('#nprogress .spinner-icon').css({
-        'border-top-color': '#29d',
-        'border-left-color': '#29d'
-    });
-    setTimeout(function() {
-        NProgress.done();
-        $('.fade').removeClass('out');
-    }, 800);
-</script>
-
-
-
-
-
-
-
-
-
-   <!-- Gitment -->
-
-
-
-
-
-<!-- UC Browser Compatible -->
-<script>
-	var agent = navigator.userAgent.toLowerCase();
-	if(agent.indexOf('ucbrowser')>0) {
-		document.write('<link rel="stylesheet" href="/css/uc.css">');
-	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-	}
-</script>
-
-<!-- Import prettify js  -->
-
-
-
-<!-- Window Load -->
-<!-- add class for prettify -->
-<script type="text/ls-javascript" id="window-load">
-    $(window).on('load', function() {
-        // Post_Toc parent position fixed
-        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
-    });
-
-    
-    
-</script>
-
-<!-- MathJax Load-->
-
-
-<!-- Bing Background -->
-
-
-<script type="text/ls-javascript" id="lazy-load">
-    // Offer LazyLoad
-    queue.offer(function(){
-        $('.lazy').lazyload({
-            effect : 'show'
-        });
-    });
-
-    // Start Queue
-    $(document).ready(function(){
-        setInterval(function(){
-            queue.execNext();
-        },200);
-    });
-</script>
-
-<!-- Custom Footer -->
-
-
-
-<script>
-    var copyrightNow = new Date().getFullYear();
-    var textContent = document.querySelector('span[year]')
-
-    copyrightSince = 2017;
-    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
-        textContent.textContent = copyrightNow
-    } else {
-        textContent.textContent = copyrightSince + ' - ' + copyrightNow
-    }
-
-    (function(){
-        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
-
-        for (var i = 0; i < scriptList.length; ++i) {
-            var item = scriptList[i];
-            lsloader.runInlineScript(item.id,item.id);
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
         }
-    })()
-console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
 </script>
 
-                </main>
-            </div>
-        </body>
-    
+</body>
 </html>
