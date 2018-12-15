@@ -34,7 +34,7 @@
   
 
   
-    <link rel="icon" href="/images/favicon.ico">
+    <link rel="icon" href="/images/cham.png">
   
 
   <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
@@ -199,7 +199,7 @@
 <p>具体一点的写法是：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'share'</span>, &#123;</span><br><span class="line">  props: [<span class="string">'shareLink'</span>],</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div class="share" v-cloak&gt;</span></span><br><span class="line"><span class="string">      &lt;h2&gt;</span></span><br><span class="line"><span class="string">        请将下面链接分享给面试官</span></span><br><span class="line"><span class="string">      &lt;/h2&gt;</span></span><br><span class="line"><span class="string">      &lt;div&gt;</span></span><br><span class="line"><span class="string">        &lt;textarea readonly&gt;&#123;&#123;shareLink&#125;&#125;&lt;/textarea&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>其中<code>props</code>中是参数的名字，接受别的组件传递的信息。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;share v-bind:share-link=<span class="string">"shareLink"</span> v-show=<span class="string">"shareVisible"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">share</span>&gt;</span></span></span><br><span class="line"><span class="comment">//在html的页面中这样写</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;share v-bind:share-link=<span class="string">"shareLink"</span> v-show=<span class="string">"shareVisible"</span>&gt;&lt;/share&gt;</span><br><span class="line"><span class="comment">//在html的页面中这样写</span></span><br></pre></td></tr></table></figure>
 <p><code>v-bind</code>将参数的名字绑定上，值是通过app.js获得的shareLink</p>
 <h3 id="简单的对应规则"><a href="#简单的对应规则" class="headerlink" title="简单的对应规则"></a>简单的对应规则</h3><table>
 <thead>
