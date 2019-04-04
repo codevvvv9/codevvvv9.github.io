@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codevvvv9.github.io/"/>
-  <updated>2019-01-09T15:59:13.187Z</updated>
+  <updated>2019-04-04T15:50:05.881Z</updated>
   <id>https://codevvvv9.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://codevvvv9.github.io/2019/01/09/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E6%9D%82%E8%B0%88/"/>
     <id>https://codevvvv9.github.io/2019/01/09/编程思想杂谈/</id>
     <published>2019-01-09T15:53:35.000Z</published>
-    <updated>2019-01-09T15:59:13.187Z</updated>
+    <updated>2019-04-04T15:50:05.881Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ul><li>面向对象是老生常谈的一个话题了。</li><li>可以自定义数据类型，工具类、实体类、将代码细节进行封装，易于编程。</li></ul><h2 id="用函数来编程"><a href="#用函数来编程" class="headerlink" title="用函数来编程"></a>用函数来编程</h2><ul><li>首先参数一定要验证</li><li>把逻辑实现，并拆分代码</li></ul><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul><li>单例</li><li>适配器</li><li>IOC</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ul><li>面向对象是老生常谈的一个话题了。</li><li>可以自定义数据类型，工具类、实体类、将代码细节进行封装，易于编程。</li></ul><h2 id="用函数来编程"><a href="#用函数来编程" class="headerlink" title="用函数来编程"></a>用函数来编程</h2><ul><li>首先参数一定要验证</li><li>把逻辑实现，并拆分代码</li></ul><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul><li>单例</li><li>适配器</li><li>IOC</li><li>工程模式</li></ul>]]></content>
     
     <summary type="html">
     
