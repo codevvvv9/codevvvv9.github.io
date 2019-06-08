@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>移动端-响应式布局初涉 | WuShaoLin&#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="CSS,">
+  
+
+  <meta name="description" content="响应式布局五个基本点 媒体查询 移动端对应的设计图 隐藏某些在PC端需要的元素 添加meta标签  1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&amp;gt;  交互方式与PC端不同，没有hover、滑动效果、滚动条、resize。替代的是touch和使用两点坐标来模拟滑动效果。">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端-响应式布局初涉">
+<meta property="og:url" content="https://codevvvv9.github.io/2019/06/08/移动端-响应式布局初涉/index.html">
+<meta property="og:site_name" content="WuShaoLin&#39;s Blog">
+<meta property="og:description" content="响应式布局五个基本点 媒体查询 移动端对应的设计图 隐藏某些在PC端需要的元素 添加meta标签  1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&amp;gt;  交互方式与PC端不同，没有hover、滑动效果、滚动条、resize。替代的是touch和使用两点坐标来模拟滑动效果。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-08T07:45:36.307Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端-响应式布局初涉">
+<meta name="twitter:description" content="响应式布局五个基本点 媒体查询 移动端对应的设计图 隐藏某些在PC端需要的元素 添加meta标签  1&amp;lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&amp;gt;  交互方式与PC端不同，没有hover、滑动效果、滚动条、resize。替代的是touch和使用两点坐标来模拟滑动效果。">
+
+  
+
+  
+    <link rel="icon" href="/images/1.png">
+  
+
+  <link href="/css/styles.css?v=c114cbeddx" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+</head>
+</html>
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/categories/" rel="noopener noreferrer" target="_blank">
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/tags/" rel="noopener noreferrer" target="_blank">
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_blank">
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#响应式布局五个基本点"><span class="toc-text">响应式布局五个基本点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#媒体查询"><span class="toc-text">媒体查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用style标签进行查询"><span class="toc-text">使用style标签进行查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用link标签加载所需的尺寸的css"><span class="toc-text">使用link标签加载所需的尺寸的css</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移动端单独的设计图"><span class="toc-text">移动端单独的设计图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隐藏某些元素"><span class="toc-text">隐藏某些元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#手机端不同于PC端的操作"><span class="toc-text">手机端不同于PC端的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#viewport的作用"><span class="toc-text">viewport的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些经常忘的小知识"><span class="toc-text">一些经常忘的小知识</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#清除浮动"><span class="toc-text">清除浮动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#绝对定位"><span class="toc-text">绝对定位</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-移动端-响应式布局初涉" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">移动端-响应式布局初涉</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2019.06.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>shaolin-wu</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/CSS学习/">CSS学习</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="响应式布局五个基本点"><a href="#响应式布局五个基本点" class="headerlink" title="响应式布局五个基本点"></a>响应式布局五个基本点</h2><ol>
+<li>媒体查询</li>
+<li>移动端对应的设计图</li>
+<li>隐藏某些在PC端需要的元素</li>
+<li>添加<code>meta</code>标签</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>交互方式与PC端不同，没有<code>hover</code>、滑动效果、滚动条、resize。替代的是<code>touch</code>和使用两点坐标来模拟滑动效果。<a id="more"></a>
+</li>
+</ol>
+<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><p>通常响应式布局有几个尺寸，320px（small）、375px（medium）、425px(large)、768px、1024px、1440px、2560px</p>
+<h3 id="使用style标签进行查询"><a href="#使用style标签进行查询" class="headerlink" title="使用style标签进行查询"></a>使用style标签进行查询</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> (max-width: <span class="number">320px</span>) &#123;</span><br><span class="line">        <span class="selector-tag">body</span> &#123;</span><br><span class="line">          <span class="attribute">background</span>: red;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      @<span class="keyword">media</span> (min-width: <span class="number">321px</span>) and (max-width: <span class="number">375px</span>) &#123;</span><br><span class="line">        <span class="selector-tag">body</span> &#123;</span><br><span class="line">          <span class="attribute">background</span>: green;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      @<span class="keyword">media</span> (min-width: <span class="number">376px</span>) and (max-width: <span class="number">425px</span>) &#123;</span><br><span class="line">        <span class="selector-tag">body</span> &#123;</span><br><span class="line">          <span class="attribute">background</span>: blue;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      @<span class="keyword">media</span> (min-width: <span class="number">426px</span>) and (max-width: <span class="number">768px</span>) &#123;</span><br><span class="line">        <span class="selector-tag">body</span> &#123;</span><br><span class="line">          <span class="attribute">background</span>: purple;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      @<span class="keyword">media</span> (min-width: <span class="number">769px</span>) &#123;</span><br><span class="line">        <span class="selector-tag">body</span> &#123;</span><br><span class="line">          <span class="attribute">background</span>: orange;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用link标签加载所需的尺寸的css"><a href="#使用link标签加载所需的尺寸的css" class="headerlink" title="使用link标签加载所需的尺寸的css"></a>使用<code>link</code>标签加载所需的尺寸的<code>css</code></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./medium.css"</span> <span class="attr">media</span>=<span class="string">"(min-width: 321px) and (max-width: 375px)"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上述标签的意思就是：只有在屏幕尺寸在321px-375px之间的时候<code>medium.css</code>才会生效</p>
+<h3 id="移动端单独的设计图"><a href="#移动端单独的设计图" class="headerlink" title="移动端单独的设计图"></a>移动端单独的设计图</h3><p>要想做移动端的适配，设计图必须单独给一份。</p>
+<h3 id="隐藏某些元素"><a href="#隐藏某些元素" class="headerlink" title="隐藏某些元素"></a>隐藏某些元素</h3><p>手机的屏幕较PC端小，所以容纳的可视区域必然小，例如导航栏在PC端时可以完全显示，但是移动端只能显示一个按钮，不能完整的显示。</p>
+<h3 id="手机端不同于PC端的操作"><a href="#手机端不同于PC端的操作" class="headerlink" title="手机端不同于PC端的操作"></a>手机端不同于PC端的操作</h3><p>手机端明显没有<code>hover</code>效果，采用<code>click</code>来模拟</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// html部分</span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"menu"</span>&gt;</span>菜单<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"nav"</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>导航1<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>导航2<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>导航3<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>导航4<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>导航5<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">// css部分</span><br><span class="line">.nav &#123;display: none&#125;</span><br><span class="line">.nav.active &#123;display: block&#125;</span><br><span class="line">//js部分</span><br><span class="line">menu.onclick = function() &#123;</span><br><span class="line">	nav.classList.toggle('active')</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码中<code>classList</code>具有<code>toggle</code>方法，如果有某个类名就去掉，没有这个类名就加上。</p>
+<p><code>js</code>代码不应该去控制样式，应该只改变状态而已，样式改变交给<code>css</code>去控制。</p>
+<h3 id="viewport的作用"><a href="#viewport的作用" class="headerlink" title="viewport的作用"></a><code>viewport</code>的作用</h3><p>传统的移动端开发时会进行缩放，以国内主流的尺寸<code>980px</code>来进行缩放，如果不加<code>viewport</code>标签，可以通过以下方式来查看屏幕的宽度。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.documentElement.clientWidth() <span class="comment">// 980px</span></span><br></pre></td></tr></table></figure>
+<h3 id="一些经常忘的小知识"><a href="#一些经常忘的小知识" class="headerlink" title="一些经常忘的小知识"></a>一些经常忘的小知识</h3><h4 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">	<span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">	<span class="attribute">clear</span>: both;</span><br><span class="line">	<span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="绝对定位"><a href="#绝对定位" class="headerlink" title="绝对定位"></a>绝对定位</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">top</span>: 10<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">left</span>: 20<span class="selector-tag">px</span>;</span><br><span class="line">// 某个元素绝对定位了，位置是相对于它的某个position: relative的父元素</span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+
+</article>
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2019/01/09/编程思想杂谈/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/archives/" rel="noopener noreferrer" target="_self">
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/categories/" rel="noopener noreferrer" target="_blank">
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/tags/" rel="noopener noreferrer" target="_blank">
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/about/" rel="noopener noreferrer" target="_self">
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a class="CIRCLE" href="/search/" rel="noopener noreferrer" target="_blank">
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+
+<!-- Gitalk评论插件通用代码 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script>
+const gitalk = new Gitalk({
+  clientID: 'eaa718397d7fb04087e1',
+  clientSecret: '4a3ec626703295108b5194694ecbe378502287eb',
+  repo: 'gitalk-comments',
+  owner: 'codevvvv9',
+  // 在这里设置一下截取前50个字符串, 这是因为 github 对 label 的长度有了要求, 如果超过
+  // 50个字符串则会报错.
+  // id: location.pathname.split('/').pop().substring(0, 49),
+  id: location.pathname,
+  admin: ['codevvvv9'],
+  // facebook-like distraction free mode
+  distractionFreeMode: false
+})
+gitalk.render('gitalk-container')
+</script>
+<!-- Gitalk代码结束 -->
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
