@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdpulf9tj312k0bmq4g.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdux3t36j31ek0z6470.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdwzjigtj315m0r6tdr.jpg">
-<meta property="og:updated_time" content="2019-07-28T03:23:14.919Z">
+<meta property="og:updated_time" content="2019-07-28T09:26:41.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go入门">
 <meta name="twitter:description" content="go的几个特点可以粗略的认为go = c + python  从C语言中继承了很多理念，尤其是指针的运用  123func testPtr(num *int) &amp;#123;  *num = 20&amp;#125;  引入包的概念，用于组织程序结构。单独的go文件必须存在于package中  垃圾回收制度，内存自动回收。  语言层面天然支持高并发使用了goroutine的语法，轻量级线程，高效利用多核">
@@ -140,7 +140,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#go的几个特点"><span class="toc-text">go的几个特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的go命令"><span class="toc-text">常见的go命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在VSCode下搭建开发环境"><span class="toc-text">在VSCode下搭建开发环境</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#go的几个特点"><span class="toc-text">go的几个特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的go命令"><span class="toc-text">常见的go命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在VSCode下搭建开发环境"><span class="toc-text">在VSCode下搭建开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go的注意事项"><span class="toc-text">go的注意事项</span></a></li></ol>
   </div>
 
 
@@ -234,6 +234,15 @@
 <p>在<code>VScode</code>的output会发现正在安装(当然上述的过程可能也会失败几次，不一定17个依赖全部一次性<code>Succeed</code>但是只要golang.org/x里面的安装安装对了，这一部就是看网络了，总会安装成功，运气不好的话多安装几次)</p>
 <p><img src="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdwzjigtj315m0r6tdr.jpg" alt="安装所有的依赖包"></p>
 <p>👌，You’re readey to GO :）.</p>
+<h2 id="go的注意事项"><a href="#go的注意事项" class="headerlink" title="go的注意事项"></a>go的注意事项</h2><ol>
+<li>毫无疑问，后缀只能是go，入口文件必须是main()，严格区分大小写。</li>
+<li>凡是定义过的变量、引入的包必须在原文件中被使用，否则编译不通过。</li>
+<li>逐行写代码，不要两行写到一块，因为编译器会自动在末尾加分号。</li>
+<li>左大括号禁止换行。</li>
+<li>main函数必须存在package main中，而且不能重复定义，也就是一个package中只能有一个main函数。</li>
+<li>go的转义符(escape char)，<code>\r</code>回车的意思是，替换掉本行开头的字符，例如 小明出去吃饭了\r小刚，最终打印结果是： 小刚出去吃饭了</li>
+<li>如果一行字符实在太长了，可以使用<code>,</code>来进行换行，效果等同于<code>+</code></li>
+</ol>
 
     
   </div>
@@ -248,7 +257,7 @@
     <a class="show pull-left" href="/2019/07/22/工作小结-2/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="hide pull-right" href="/">
+    <a class="show pull-right" href="/2019/07/28/go变量和数据类型/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
