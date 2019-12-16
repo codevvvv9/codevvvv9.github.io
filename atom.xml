@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>WuShaoLin&#39;s Blog</title>
   
-  <subtitle>悟已往之不谏，知来者之可追</subtitle>
+  <subtitle>我来，我见，我征服！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codevvvv9.github.io/"/>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>go变量和数据类型</title>
-    <link href="https://codevvvv9.github.io/2019/07/28/go%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
-    <id>https://codevvvv9.github.io/2019/07/28/go变量和数据类型/</id>
+    <link href="https://codevvvv9.github.io/2019/07/28/go-bian-liang-he-shu-ju-lei-xing/"/>
+    <id>https://codevvvv9.github.io/2019/07/28/go-bian-liang-he-shu-ju-lei-xing/</id>
     <published>2019-07-28T11:06:53.000Z</published>
     <updated>2019-07-28T13:39:24.814Z</updated>
     
@@ -47,8 +47,8 @@
   
   <entry>
     <title>go入门</title>
-    <link href="https://codevvvv9.github.io/2019/07/27/go%E5%85%A5%E9%97%A8/"/>
-    <id>https://codevvvv9.github.io/2019/07/27/go入门/</id>
+    <link href="https://codevvvv9.github.io/2019/07/27/go-ru-men/"/>
+    <id>https://codevvvv9.github.io/2019/07/27/go-ru-men/</id>
     <published>2019-07-27T15:16:52.000Z</published>
     <updated>2019-07-28T09:26:41.369Z</updated>
     
@@ -74,8 +74,8 @@
   
   <entry>
     <title>工作小结-2</title>
-    <link href="https://codevvvv9.github.io/2019/07/22/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E7%BB%93-2/"/>
-    <id>https://codevvvv9.github.io/2019/07/22/工作小结-2/</id>
+    <link href="https://codevvvv9.github.io/2019/07/22/gong-zuo-xiao-jie-2/"/>
+    <id>https://codevvvv9.github.io/2019/07/22/gong-zuo-xiao-jie-2/</id>
     <published>2019-07-22T13:35:00.000Z</published>
     <updated>2019-07-22T15:31:28.822Z</updated>
     
@@ -98,8 +98,8 @@
   
   <entry>
     <title>移动端-响应式布局初涉</title>
-    <link href="https://codevvvv9.github.io/2019/06/08/%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E5%88%9D%E6%B6%89/"/>
-    <id>https://codevvvv9.github.io/2019/06/08/移动端-响应式布局初涉/</id>
+    <link href="https://codevvvv9.github.io/2019/06/08/yi-dong-duan-xiang-ying-shi-bu-ju-chu-she/"/>
+    <id>https://codevvvv9.github.io/2019/06/08/yi-dong-duan-xiang-ying-shi-bu-ju-chu-she/</id>
     <published>2019-06-08T07:39:12.000Z</published>
     <updated>2019-06-08T07:45:36.307Z</updated>
     
@@ -128,8 +128,8 @@
   
   <entry>
     <title>编程思想杂谈</title>
-    <link href="https://codevvvv9.github.io/2019/01/09/%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E6%9D%82%E8%B0%88/"/>
-    <id>https://codevvvv9.github.io/2019/01/09/编程思想杂谈/</id>
+    <link href="https://codevvvv9.github.io/2019/01/09/bian-cheng-si-xiang-za-tan/"/>
+    <id>https://codevvvv9.github.io/2019/01/09/bian-cheng-si-xiang-za-tan/</id>
     <published>2019-01-09T15:53:35.000Z</published>
     <updated>2019-04-04T15:50:05.881Z</updated>
     
@@ -155,8 +155,8 @@
   
   <entry>
     <title>一个理想主义者的独白</title>
-    <link href="https://codevvvv9.github.io/2018/12/31/%E4%B8%80%E4%B8%AA%E7%90%86%E6%83%B3%E4%B8%BB%E4%B9%89%E8%80%85%E7%9A%84%E7%8B%AC%E7%99%BD/"/>
-    <id>https://codevvvv9.github.io/2018/12/31/一个理想主义者的独白/</id>
+    <link href="https://codevvvv9.github.io/2018/12/31/yi-ge-li-xiang-zhu-yi-zhe-de-du-bai/"/>
+    <id>https://codevvvv9.github.io/2018/12/31/yi-ge-li-xiang-zhu-yi-zhe-de-du-bai/</id>
     <published>2018-12-31T12:28:44.000Z</published>
     <updated>2019-01-01T04:08:57.000Z</updated>
     
@@ -183,8 +183,8 @@
   
   <entry>
     <title>Deepin配置Java环境</title>
-    <link href="https://codevvvv9.github.io/2018/12/29/Deepin%E9%85%8D%E7%BD%AEJava%E7%8E%AF%E5%A2%83/"/>
-    <id>https://codevvvv9.github.io/2018/12/29/Deepin配置Java环境/</id>
+    <link href="https://codevvvv9.github.io/2018/12/29/deepin-pei-zhi-java-huan-jing/"/>
+    <id>https://codevvvv9.github.io/2018/12/29/deepin-pei-zhi-java-huan-jing/</id>
     <published>2018-12-29T13:56:32.000Z</published>
     <updated>2018-12-29T14:17:07.000Z</updated>
     
@@ -209,8 +209,8 @@
   
   <entry>
     <title>记录用户状态</title>
-    <link href="https://codevvvv9.github.io/2018/10/21/%E8%AE%B0%E5%BD%95%E7%94%A8%E6%88%B7%E7%8A%B6%E6%80%81/"/>
-    <id>https://codevvvv9.github.io/2018/10/21/记录用户状态/</id>
+    <link href="https://codevvvv9.github.io/2018/10/21/ji-lu-yong-hu-zhuang-tai/"/>
+    <id>https://codevvvv9.github.io/2018/10/21/ji-lu-yong-hu-zhuang-tai/</id>
     <published>2018-10-21T14:56:12.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -232,8 +232,8 @@
   
   <entry>
     <title>虚拟DOM</title>
-    <link href="https://codevvvv9.github.io/2018/09/19/%E8%99%9A%E6%8B%9FDOM/"/>
-    <id>https://codevvvv9.github.io/2018/09/19/虚拟DOM/</id>
+    <link href="https://codevvvv9.github.io/2018/09/19/xu-ni-dom/"/>
+    <id>https://codevvvv9.github.io/2018/09/19/xu-ni-dom/</id>
     <published>2018-09-19T15:46:07.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -258,8 +258,8 @@
   
   <entry>
     <title>SEO不完全指北</title>
-    <link href="https://codevvvv9.github.io/2018/09/02/SEO%E4%B8%8D%E5%AE%8C%E5%85%A8%E6%8C%87%E5%8C%97/"/>
-    <id>https://codevvvv9.github.io/2018/09/02/SEO不完全指北/</id>
+    <link href="https://codevvvv9.github.io/2018/09/02/seo-bu-wan-quan-zhi-bei/"/>
+    <id>https://codevvvv9.github.io/2018/09/02/seo-bu-wan-quan-zhi-bei/</id>
     <published>2018-09-02T13:49:34.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -284,8 +284,8 @@
   
   <entry>
     <title>最强的团队</title>
-    <link href="https://codevvvv9.github.io/2018/08/31/%E6%9C%80%E5%BC%BA%E7%9A%84%E5%9B%A2%E9%98%9F/"/>
-    <id>https://codevvvv9.github.io/2018/08/31/最强的团队/</id>
+    <link href="https://codevvvv9.github.io/2018/08/31/zui-qiang-de-tuan-dui/"/>
+    <id>https://codevvvv9.github.io/2018/08/31/zui-qiang-de-tuan-dui/</id>
     <published>2018-08-31T13:33:32.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -306,8 +306,8 @@
   
   <entry>
     <title>工作小结-1</title>
-    <link href="https://codevvvv9.github.io/2018/08/28/%E5%B7%A5%E4%BD%9C%E5%B0%8F%E7%BB%93-1/"/>
-    <id>https://codevvvv9.github.io/2018/08/28/工作小结-1/</id>
+    <link href="https://codevvvv9.github.io/2018/08/28/gong-zuo-xiao-jie-1/"/>
+    <id>https://codevvvv9.github.io/2018/08/28/gong-zuo-xiao-jie-1/</id>
     <published>2018-08-28T15:22:20.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -330,12 +330,12 @@
   
   <entry>
     <title>Vue的组件间通信</title>
-    <link href="https://codevvvv9.github.io/2018/05/07/Vue%E7%9A%84%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/"/>
-    <id>https://codevvvv9.github.io/2018/05/07/Vue的组件间通信/</id>
+    <link href="https://codevvvv9.github.io/2018/05/07/vue-de-zu-jian-jian-tong-xin/"/>
+    <id>https://codevvvv9.github.io/2018/05/07/vue-de-zu-jian-jian-tong-xin/</id>
     <published>2018-05-07T09:51:51.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
-    <content type="html"><![CDATA[<p>组件是插槽式的，例如某个页面有两个组件，其中搜索作为其中一个组件，当它作为组件的时候，它作为子组件的时候需要把参数通过属性的方式传递进来，通知父组件的时候通过触发事件来进行通信。</p><p>以上是组件化的简单描述，与模块化的组要区别在于组件化课深度定制不同的属性，借助父组件的参数值。</p><p>那么问题来了，组件间如何进行通信呢？<a id="more"></a></p><h2 id="父子组件通信"><a href="#父子组件通信" class="headerlink" title="父子组件通信"></a>父子组件通信</h2><p>最经典的通信方式就是：父组件与子组件之间进行通信。</p><h3 id="组件的基本写法"><a href="#组件的基本写法" class="headerlink" title="组件的基本写法"></a>组件的基本写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'shareLink'</span>, &#123;</span><br><span class="line">  data() &#123;&#125;,</span><br><span class="line">  props: [<span class="string">'shareLink'</span>],</span><br><span class="line">  methods: &#123;&#125;,</span><br><span class="line">  template: <span class="string">``</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>上述的代码就创建了一个名为<code>shareLink</code>的组件，并且可传递一个名为<code>shareLink</code>的参数值。</p><p>但是注意：</p><ul><li>HTML的规范规定，标签名与属性名都必须是小写字母，所以上述的组件在HTML代码里面默认写成<code>share-link</code></li><li>组件里面的<code>data</code>必须是函数，而不是app.js中的对象写法。</li></ul><p>具体一点的写法是：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'share'</span>, &#123;</span><br><span class="line">  props: [<span class="string">'shareLink'</span>],</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div class="share" v-cloak&gt;</span></span><br><span class="line"><span class="string">      &lt;h2&gt;</span></span><br><span class="line"><span class="string">        请将下面链接分享给面试官</span></span><br><span class="line"><span class="string">      &lt;/h2&gt;</span></span><br><span class="line"><span class="string">      &lt;div&gt;</span></span><br><span class="line"><span class="string">        &lt;textarea readonly&gt;&#123;&#123;shareLink&#125;&#125;&lt;/textarea&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>其中<code>props</code>中是参数的名字，接受别的组件传递的信息。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;share v-bind:share-link=<span class="string">"shareLink"</span> v-show=<span class="string">"shareVisible"</span>&gt;&lt;/share&gt;</span><br><span class="line"><span class="comment">//在html的页面中这样写</span></span><br></pre></td></tr></table></figure><p><code>v-bind</code>将参数的名字绑定上，值是通过app.js获得的shareLink</p><h3 id="简单的对应规则"><a href="#简单的对应规则" class="headerlink" title="简单的对应规则"></a>简单的对应规则</h3><table><thead><tr><th>v-bind</th><th>:share-link</th><th>= “shareLink”</th><th></th></tr></thead><tbody><tr><td>对应的</td><td>props: [‘shareLink’]</td><td>app.js中{shareLink: ‘ ‘}</td></tr></tbody></table><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><ol><li>子组件想改父组件的<code>data</code>。例如登录后的关闭按钮无用的例子。</li></ol><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">login</span> <span class="attr">v-show</span>=<span class="string">"loginVisible"</span>&gt;</span><span class="tag">&lt;/<span class="name">login</span>&gt;</span> </span><br><span class="line">//这是父组件的写法，loginVisible是父组件的变量,很明显儿子无法修改爸爸的数据啊</span><br></pre></td></tr></table></figure><ol start="2"><li>但是儿子特别像修改爸爸的数据</li><li>那么唯一的解决方案就是叫爸爸去修改</li></ol><p>解决方案：</p><ol><li>子组件通过事件告诉爸爸，我需要你做一些改变。</li></ol><p><code>@click=&quot;$emit(&#39;close&#39;)&quot;</code></p><ul><li>注意：在<code>methods</code>中需要使用<code>this.$emit(&#39;&#39;)</code>，但是在<code>@click</code>中不需要用<code>this</code></li></ul><ol start="2"><li>那么爸爸根据儿子的需要做出如下改变</li></ol><p><code>&lt;login v-show=&quot;loginVisible&quot; @close=&quot;loginVisible = false&quot;&gt;</code></p><p><code>@close</code>等同于<code>v-on:close</code></p><p>父子组件通信的demo<a href="http://jsbin.com/logoyoqema/edit?html,js,output" target="_blank" rel="noopener">链接</a></p><p><img src="http://p3tha6q4v.bkt.clouddn.com/18-5-7/17176263.jpg" alt="父子组件通信图示"></p><h2 id="爷孙组件间的通信"><a href="#爷孙组件间的通信" class="headerlink" title="爷孙组件间的通信"></a>爷孙组件间的通信</h2><h3 id="需求分析-1"><a href="#需求分析-1" class="headerlink" title="需求分析"></a>需求分析</h3><ol><li>爷爷看不到孙子在哪里</li><li>但是呢，爷爷就是想控制孙子</li><li>所以呢，借助爸爸来间接的去控制孙子就好啦</li></ol><p>本质上Vue只有父子间通信，<strong>爷孙间通信需要使用两次父子间通信</strong>。</p><h3 id="爷爷只控制孙子"><a href="#爷爷只控制孙子" class="headerlink" title="爷爷只控制孙子"></a>爷爷只控制孙子</h3><p>该版本中爷爷只能控制孙子的显示，但是目前孙子无法反向操作爷爷。</p><p>demo的<a href="http://jsbin.com/xiyoyubita/edit?html,js,output" target="_blank" rel="noopener">链接</a></p><h3 id="孙子逐级冒泡通知爷爷"><a href="#孙子逐级冒泡通知爷爷" class="headerlink" title="孙子逐级冒泡通知爷爷"></a>孙子逐级冒泡通知爷爷</h3><p>孙子先冒泡到爸爸那里，使用</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'child'</span>, &#123;</span><br><span class="line">  props: [<span class="string">'visible'</span>],</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我是儿子</span></span><br><span class="line"><span class="string">      &lt;grand-child v-show="visible" @close="$emit('close')"&gt;&lt;/grand-child&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'grandChild'</span>, &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我是孙子</span></span><br><span class="line"><span class="string">      &lt;button @click="$emit('close')"&gt;关闭&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>爷爷那里就可以监听到孙子的动作了</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="xxx = true"&gt;打开&lt;/</span>button&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;child :visible=<span class="string">"xxx"</span> @close=<span class="string">"log"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span></span><br><span class="line">  &lt;<span class="regexp">/div&gt; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure><p><a href="http://jsbin.com/xiyoyubita/edit?html,js,output" target="_blank" rel="noopener">demo的链接</a></p><p><img src="http://p3tha6q4v.bkt.clouddn.com/18-5-7/87537231.jpg" alt="爷孙间的通信图示"></p>]]></content>
+    <content type="html"><![CDATA[<p>组件是插槽式的，例如某个页面有两个组件，其中搜索作为其中一个组件，当它作为组件的时候，它作为子组件的时候需要把参数通过属性的方式传递进来，通知父组件的时候通过触发事件来进行通信。</p><p>以上是组件化的简单描述，与模块化的组要区别在于组件化课深度定制不同的属性，借助父组件的参数值。</p><p>那么问题来了，组件间如何进行通信呢？<a id="more"></a></p><h2 id="父子组件通信"><a href="#父子组件通信" class="headerlink" title="父子组件通信"></a>父子组件通信</h2><p>最经典的通信方式就是：父组件与子组件之间进行通信。</p><h3 id="组件的基本写法"><a href="#组件的基本写法" class="headerlink" title="组件的基本写法"></a>组件的基本写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'shareLink'</span>, &#123;</span><br><span class="line">  data() &#123;&#125;,</span><br><span class="line">  props: [<span class="string">'shareLink'</span>],</span><br><span class="line">  methods: &#123;&#125;,</span><br><span class="line">  template: <span class="string">``</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>上述的代码就创建了一个名为<code>shareLink</code>的组件，并且可传递一个名为<code>shareLink</code>的参数值。</p><p>但是注意：</p><ul><li>HTML的规范规定，标签名与属性名都必须是小写字母，所以上述的组件在HTML代码里面默认写成<code>share-link</code></li><li>组件里面的<code>data</code>必须是函数，而不是app.js中的对象写法。</li></ul><p>具体一点的写法是：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'share'</span>, &#123;</span><br><span class="line">  props: [<span class="string">'shareLink'</span>],</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div class="share" v-cloak&gt;</span></span><br><span class="line"><span class="string">      &lt;h2&gt;</span></span><br><span class="line"><span class="string">        请将下面链接分享给面试官</span></span><br><span class="line"><span class="string">      &lt;/h2&gt;</span></span><br><span class="line"><span class="string">      &lt;div&gt;</span></span><br><span class="line"><span class="string">        &lt;textarea readonly&gt;&#123;&#123;shareLink&#125;&#125;&lt;/textarea&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>其中<code>props</code>中是参数的名字，接受别的组件传递的信息。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;share v-bind:share-link=<span class="string">"shareLink"</span> v-show=<span class="string">"shareVisible"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">share</span>&gt;</span></span></span><br><span class="line"><span class="comment">//在html的页面中这样写</span></span><br></pre></td></tr></table></figure><p><code>v-bind</code>将参数的名字绑定上，值是通过app.js获得的shareLink</p><h3 id="简单的对应规则"><a href="#简单的对应规则" class="headerlink" title="简单的对应规则"></a>简单的对应规则</h3><table><thead><tr><th>v-bind</th><th>:share-link</th><th>= “shareLink”</th><th></th></tr></thead><tbody><tr><td>对应的</td><td>props: [‘shareLink’]</td><td>app.js中{shareLink: ‘ ‘}</td></tr></tbody></table><h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><ol><li>子组件想改父组件的<code>data</code>。例如登录后的关闭按钮无用的例子。</li></ol><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">login</span> <span class="attr">v-show</span>=<span class="string">"loginVisible"</span>&gt;</span><span class="tag">&lt;/<span class="name">login</span>&gt;</span> </span><br><span class="line">//这是父组件的写法，loginVisible是父组件的变量,很明显儿子无法修改爸爸的数据啊</span><br></pre></td></tr></table></figure><ol start="2"><li>但是儿子特别像修改爸爸的数据</li><li>那么唯一的解决方案就是叫爸爸去修改</li></ol><p>解决方案：</p><ol><li>子组件通过事件告诉爸爸，我需要你做一些改变。</li></ol><p><code>@click=&quot;$emit(&#39;close&#39;)&quot;</code></p><ul><li>注意：在<code>methods</code>中需要使用<code>this.$emit(&#39;&#39;)</code>，但是在<code>@click</code>中不需要用<code>this</code></li></ul><ol start="2"><li>那么爸爸根据儿子的需要做出如下改变</li></ol><p><code>&lt;login v-show=&quot;loginVisible&quot; @close=&quot;loginVisible = false&quot;&gt;</code></p><p><code>@close</code>等同于<code>v-on:close</code></p><p>父子组件通信的demo<a href="http://jsbin.com/logoyoqema/edit?html,js,output" target="_blank" rel="noopener">链接</a></p><p><img src="http://p3tha6q4v.bkt.clouddn.com/18-5-7/17176263.jpg" alt="父子组件通信图示"></p><h2 id="爷孙组件间的通信"><a href="#爷孙组件间的通信" class="headerlink" title="爷孙组件间的通信"></a>爷孙组件间的通信</h2><h3 id="需求分析-1"><a href="#需求分析-1" class="headerlink" title="需求分析"></a>需求分析</h3><ol><li>爷爷看不到孙子在哪里</li><li>但是呢，爷爷就是想控制孙子</li><li>所以呢，借助爸爸来间接的去控制孙子就好啦</li></ol><p>本质上Vue只有父子间通信，<strong>爷孙间通信需要使用两次父子间通信</strong>。</p><h3 id="爷爷只控制孙子"><a href="#爷爷只控制孙子" class="headerlink" title="爷爷只控制孙子"></a>爷爷只控制孙子</h3><p>该版本中爷爷只能控制孙子的显示，但是目前孙子无法反向操作爷爷。</p><p>demo的<a href="http://jsbin.com/xiyoyubita/edit?html,js,output" target="_blank" rel="noopener">链接</a></p><h3 id="孙子逐级冒泡通知爷爷"><a href="#孙子逐级冒泡通知爷爷" class="headerlink" title="孙子逐级冒泡通知爷爷"></a>孙子逐级冒泡通知爷爷</h3><p>孙子先冒泡到爸爸那里，使用</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'child'</span>, &#123;</span><br><span class="line">  props: [<span class="string">'visible'</span>],</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我是儿子</span></span><br><span class="line"><span class="string">      &lt;grand-child v-show="visible" @close="$emit('close')"&gt;&lt;/grand-child&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'grandChild'</span>, &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我是孙子</span></span><br><span class="line"><span class="string">      &lt;button @click="$emit('close')"&gt;关闭&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>爷爷那里就可以监听到孙子的动作了</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="xxx = true"&gt;打开&lt;/</span>button&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;child :visible=<span class="string">"xxx"</span> @close=<span class="string">"log"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span></span><br><span class="line">  &lt;<span class="regexp">/div&gt; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure><p><a href="http://jsbin.com/xiyoyubita/edit?html,js,output" target="_blank" rel="noopener">demo的链接</a></p><p><img src="http://p3tha6q4v.bkt.clouddn.com/18-5-7/87537231.jpg" alt="爷孙间的通信图示"></p>]]></content>
     
     <summary type="html">
     
@@ -354,8 +354,8 @@
   
   <entry>
     <title>初级前端打怪升级之路</title>
-    <link href="https://codevvvv9.github.io/2018/03/30/%E5%88%9D%E7%BA%A7%E5%89%8D%E7%AB%AF%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7%E4%B9%8B%E8%B7%AF/"/>
-    <id>https://codevvvv9.github.io/2018/03/30/初级前端打怪升级之路/</id>
+    <link href="https://codevvvv9.github.io/2018/03/30/chu-ji-qian-duan-da-guai-sheng-ji-zhi-lu/"/>
+    <id>https://codevvvv9.github.io/2018/03/30/chu-ji-qian-duan-da-guai-sheng-ji-zhi-lu/</id>
     <published>2018-03-30T14:14:29.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -377,8 +377,8 @@
   
   <entry>
     <title>前端必备网站</title>
-    <link href="https://codevvvv9.github.io/2018/03/29/%E5%89%8D%E7%AB%AF%E5%BF%85%E5%A4%87%E7%BD%91%E7%AB%99/"/>
-    <id>https://codevvvv9.github.io/2018/03/29/前端必备网站/</id>
+    <link href="https://codevvvv9.github.io/2018/03/29/qian-duan-bi-bei-wang-zhan/"/>
+    <id>https://codevvvv9.github.io/2018/03/29/qian-duan-bi-bei-wang-zhan/</id>
     <published>2018-03-29T13:58:16.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -401,8 +401,8 @@
   
   <entry>
     <title>云音乐-2</title>
-    <link href="https://codevvvv9.github.io/2018/02/25/%E4%BA%91%E9%9F%B3%E4%B9%90-2/"/>
-    <id>https://codevvvv9.github.io/2018/02/25/云音乐-2/</id>
+    <link href="https://codevvvv9.github.io/2018/02/25/yun-yin-le-2/"/>
+    <id>https://codevvvv9.github.io/2018/02/25/yun-yin-le-2/</id>
     <published>2018-02-25T13:53:39.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -424,8 +424,8 @@
   
   <entry>
     <title>云音乐-1</title>
-    <link href="https://codevvvv9.github.io/2018/02/21/%E4%BA%91%E9%9F%B3%E4%B9%90-1/"/>
-    <id>https://codevvvv9.github.io/2018/02/21/云音乐-1/</id>
+    <link href="https://codevvvv9.github.io/2018/02/21/yun-yin-le-1/"/>
+    <id>https://codevvvv9.github.io/2018/02/21/yun-yin-le-1/</id>
     <published>2018-02-21T03:37:49.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -451,8 +451,8 @@
   
   <entry>
     <title>爱搞事情的webpack</title>
-    <link href="https://codevvvv9.github.io/2018/02/13/%E7%88%B1%E6%90%9E%E4%BA%8B%E6%83%85%E7%9A%84webpack/"/>
-    <id>https://codevvvv9.github.io/2018/02/13/爱搞事情的webpack/</id>
+    <link href="https://codevvvv9.github.io/2018/02/13/ai-gao-shi-qing-de-webpack/"/>
+    <id>https://codevvvv9.github.io/2018/02/13/ai-gao-shi-qing-de-webpack/</id>
     <published>2018-02-13T14:06:29.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -481,8 +481,8 @@
   
   <entry>
     <title>持久化存储与HTTP缓存</title>
-    <link href="https://codevvvv9.github.io/2018/02/11/%E6%8C%81%E4%B9%85%E5%8C%96%E5%AD%98%E5%82%A8%E4%B8%8EHTTP%E7%BC%93%E5%AD%98/"/>
-    <id>https://codevvvv9.github.io/2018/02/11/持久化存储与HTTP缓存/</id>
+    <link href="https://codevvvv9.github.io/2018/02/11/chi-jiu-hua-cun-chu-yu-http-huan-cun/"/>
+    <id>https://codevvvv9.github.io/2018/02/11/chi-jiu-hua-cun-chu-yu-http-huan-cun/</id>
     <published>2018-02-11T15:50:34.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
@@ -512,8 +512,8 @@
   
   <entry>
     <title>一块小饼干的故事-Cookie-的故事-下篇</title>
-    <link href="https://codevvvv9.github.io/2018/02/09/%E4%B8%80%E5%9D%97%E5%B0%8F%E9%A5%BC%E5%B9%B2%E7%9A%84%E6%95%85%E4%BA%8B-Cookie-%E7%9A%84%E6%95%85%E4%BA%8B-%E4%B8%8B%E7%AF%87/"/>
-    <id>https://codevvvv9.github.io/2018/02/09/一块小饼干的故事-Cookie-的故事-下篇/</id>
+    <link href="https://codevvvv9.github.io/2018/02/09/yi-kuai-xiao-bing-gan-de-gu-shi-cookie-de-gu-shi-xia-pian/"/>
+    <id>https://codevvvv9.github.io/2018/02/09/yi-kuai-xiao-bing-gan-de-gu-shi-cookie-de-gu-shi-xia-pian/</id>
     <published>2018-02-09T15:33:53.000Z</published>
     <updated>2018-11-18T09:46:05.000Z</updated>
     
