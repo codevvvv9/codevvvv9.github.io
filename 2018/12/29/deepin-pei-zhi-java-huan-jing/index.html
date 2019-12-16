@@ -12,7 +12,8 @@ Oracle官网下载，地址
 配置环境变量
 下载完之后，解压，记住目录
 
-12345678//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码export JAVA_HOME=/">
+//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码
+export JAVA_HOME=/home/ws">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -446,7 +447,7 @@ Oracle官网下载，地址
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    175
+                    224
                 </div>
                 
 
@@ -476,11 +477,26 @@ Oracle官网下载，地址
 <h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><ul>
 <li>下载完之后，解压，记住目录</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码</span></span><br><span class="line">export JAVA_HOME=/home/wsl/Documents/jdk1.8.0_191</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br><span class="line"><span class="comment">// etc要想生效还要source</span></span><br><span class="line">sudo vim /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码</span>
+export JAVA_HOME<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>wsl<span class="token operator">/</span>Documents<span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token punctuation">.</span>0_191
+export JRE_HOME<span class="token operator">=</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>jre
+export CLASSPATH<span class="token operator">=</span><span class="token punctuation">.</span><span class="token punctuation">:</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>lib<span class="token operator">:</span>$<span class="token punctuation">{</span>JRE_HOME<span class="token punctuation">}</span><span class="token operator">/</span>lib
+export PATH<span class="token operator">=</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>bin<span class="token operator">:</span>$PATH
+<span class="token comment" spellcheck="true">// etc要想生效还要source</span>
+sudo vim <span class="token operator">/</span>etc<span class="token operator">/</span>profile
+source <span class="token operator">/</span>etc<span class="token operator">/</span>profile
+</code></pre>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
 <li><code>deepin</code>有内置的<code>openJDK</code>，会影响<code>Oracle</code>的<code>JDK</code></li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查看版本多了一个_JAVA_OPTIONS</span></span><br><span class="line">java -version</span><br><span class="line"> </span><br><span class="line">Picked up _JAVA_OPTIONS:   -Dawt.useSystemAAFontSettings=gasp</span><br><span class="line">java version <span class="string">"1.8.0_05"</span></span><br><span class="line">Java(TM) <span class="function">SE Runtime <span class="title">Environment</span> <span class="params">(build <span class="number">1.8</span><span class="number">.0</span>_05-b13)</span></span></span><br><span class="line"><span class="function">Java <span class="title">HotSpot</span><span class="params">(TM)</span> 64-Bit Server <span class="title">VM</span> <span class="params">(build <span class="number">25.5</span>-b02, mixed mode)</span></span></span><br></pre></td></tr></table></figure>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//查看版本多了一个_JAVA_OPTIONS</span>
+java <span class="token operator">-</span>version
+
+Picked up _JAVA_OPTIONS<span class="token operator">:</span>   <span class="token operator">-</span>Dawt<span class="token punctuation">.</span>useSystemAAFontSettings<span class="token operator">=</span>gasp
+java version <span class="token string">"1.8.0_05"</span>
+<span class="token function">Java</span><span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime <span class="token function">Environment</span> <span class="token punctuation">(</span>build <span class="token number">1.8</span><span class="token punctuation">.</span>0_05<span class="token operator">-</span>b13<span class="token punctuation">)</span>
+Java <span class="token function">HotSpot</span><span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span><span class="token operator">-</span>Bit Server <span class="token function">VM</span> <span class="token punctuation">(</span>build <span class="token number">25.5</span><span class="token operator">-</span>b02<span class="token punctuation">,</span> mixed mode<span class="token punctuation">)</span>
+</code></pre>
 <p><img src="https://i.loli.net/2018/12/29/5c27810304718.png" alt=""></p>
 <ul>
 <li>多余文件的文本内容</li>
@@ -489,8 +505,28 @@ Oracle官网下载，地址
 <ul>
 <li>终极解决方案</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在上面配置的环境变量前面添加</span></span><br><span class="line">unset _JAVA_OPTIONS</span><br></pre></td></tr></table></figure>
-
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//在上面配置的环境变量前面添加</span>
+unset _JAVA_OPTIONS
+</code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -999,7 +1035,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

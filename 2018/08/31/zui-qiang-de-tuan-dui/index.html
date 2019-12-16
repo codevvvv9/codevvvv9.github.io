@@ -484,7 +484,25 @@
 </blockquote>
 <h4 id="集腋成裘"><a href="#集腋成裘" class="headerlink" title="集腋成裘"></a>集腋成裘</h4><p>提早规避错误，每日提交代码，使用git管理代码，这就引出了持续集成——<strong>CI</strong>的概念，我们前端每日凌晨4点自动bulid,通过后才会打包一个包，如果当前节点有问题，及时修改，不至于到了后期，一整合，发现错误时已经尾大不掉，无法及时有效定位错误了，即使能定位，也会花费大量时间在测试上，以上我对持续集成的简单理解。</p>
 <p>具体执行起来使用<strong><a href="https://jenkins.io/" target="_blank" rel="noopener">Jenkins</a></strong>。这又是一个大话题了，后期会继续深入。</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -785,7 +803,7 @@ SEO指 Search Engine Optimization，意指搜索引擎优化的意思，通过�
 
 仅仅使用document.body.scrollTop来进行滑动距离的判断，会失效 
 
-1234567if 
+if (docume
                         
                     </div>
                     <div class="publish-info">
@@ -994,7 +1012,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

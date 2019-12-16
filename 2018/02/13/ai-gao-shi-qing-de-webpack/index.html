@@ -441,7 +441,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.5k
+                    4.6k
                 </div>
                 
 
@@ -470,38 +470,122 @@
 <h2 id="基本安装"><a href="#基本安装" class="headerlink" title="基本安装"></a>基本安装</h2><ol>
 <li>局部安装,官方也是推荐安装到项目目录下</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir webpack-demo<span class="number">-1</span></span><br><span class="line">cd webpack-demo<span class="number">-1</span></span><br><span class="line">npm init -y <span class="comment">//生成package.json,并且一路同意,如果没啥个性化的内容则省了你一路狂按enter</span></span><br><span class="line">npm install --save-dev webpack <span class="comment">//安装到开发环境里面(devDependicies)</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">mkdir webpack<span class="token operator">-</span>demo<span class="token number">-1</span>
+cd webpack<span class="token operator">-</span>demo<span class="token number">-1</span>
+npm init <span class="token operator">-</span>y <span class="token comment" spellcheck="true">//生成package.json,并且一路同意,如果没啥个性化的内容则省了你一路狂按enter</span>
+npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev webpack <span class="token comment" spellcheck="true">//安装到开发环境里面(devDependicies)</span>
+</code></pre>
 <ol start="2">
-<li>webpack基本配置文件 <a id="more"></a><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">touch webpack.config.js</span><br><span class="line">vi webpack.config.js</span><br></pre></td></tr></table></figure>
-</li>
+<li>webpack基本配置文件 <a id="more"></a><pre class=" language-javascript"><code class="language-javascript">touch webpack<span class="token punctuation">.</span>config<span class="token punctuation">.</span>js
+vi webpack<span class="token punctuation">.</span>config<span class="token punctuation">.</span>js
+</code></pre>
+配置文件内容如下<br><code>`</code>javascript<br>const path = require(‘path’);</li>
 </ol>
-<p>配置文件内容如下<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./src/index.js'</span>, <span class="comment">// 这里应用程序开始执行,webpack 开始打包</span></span><br><span class="line">  output: &#123;</span><br><span class="line">    <span class="comment">// webpack 如何输出结果的相关选项</span></span><br><span class="line">    filename: <span class="string">'bundle.js'</span>,<span class="comment">//输出资源块的名字(asset chunk)</span></span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>) <span class="comment">// 所有输出文件的目标路径,我的就是./dist/bundle.js</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-11/81006787.jpg" alt="基本使用"></p>
-<p>把当前目录的src下的index.js打包到了dist目录下，并且生成了(emmited)一个改头换面的<code>bundle.js</code>，里面的代码面目全非啊。</p>
-<h3 id="可以有多个入口-entry"><a href="#可以有多个入口-entry" class="headerlink" title="可以有多个入口(entry)"></a>可以有多个入口(entry)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">entry: &#123;</span><br><span class="line">    scss: <span class="string">'./src/css/main.scss'</span>,  <span class="comment">//对象的键名scss 就是输出文件的name</span></span><br><span class="line">    bundle: <span class="string">'./src/js/app.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">   </span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">"[name].js"</span>,</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist/js'</span>)</span><br><span class="line">    <span class="comment">// publicPath: "/output/"</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-<p>多个入口最好写成对象的形式，官网说如果写成了数组，输出的内容会是数组的第一个。</p>
+<p>module.exports = {<br>  entry: ‘./src/index.js’, // 这里应用程序开始执行,webpack 开始打包<br>  output: {<br>    // webpack 如何输出结果的相关选项<br>    filename: ‘bundle.js’,//输出资源块的名字(asset chunk)<br>    path: path.resolve(__dirname, ‘dist’) // 所有输出文件的目标路径,我的就是./dist/bundle.js<br>  }<br>};</p>
+<pre><code>![基本使用](http://p3tha6q4v.bkt.clouddn.com/18-2-11/81006787.jpg)
+
+把当前目录的src下的index.js打包到了dist目录下，并且生成了(emmited)一个改头换面的`bundle.js`，里面的代码面目全非啊。
+
+### 可以有多个入口(entry)
+
+```javascript
+entry: {
+    scss: './src/css/main.scss',  //对象的键名scss 就是输出文件的name
+    bundle: './src/js/app.js'
+  },
+
+  output: {
+    filename: "[name].js",
+    path: path.resolve(__dirname, 'dist/js')
+    // publicPath: "/output/"
+  },
+</code></pre><p>多个入口最好写成对象的形式，官网说如果写成了数组，输出的内容会是数组的第一个。</p>
 <p>上述代码会在<code>dist/js</code>目录下生成<code>scss.js和bundle.js</code></p>
 <h3 id="path"><a href="#path" class="headerlink" title="path"></a>path</h3><p>其中，配置文件的第一行代码使用了Node的内置模块<code>path</code>,并且在它前面加上 <code>__dirname</code>这个全局变量(也就是第七行代码)。可以防止不同操作系统之间的文件路径问题，并且可以使相对路径按照预期工作。<br>即使你的index.js内容为空，bundle.js里面也有一些基本的打包代码。</p>
 <ol start="3">
-<li>基本的使用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种方法，使用当前目录的node_modules里面的webpack</span></span><br><span class="line">./node_modules/.bin/webpack </span><br><span class="line"><span class="comment">//第二种方法使用npm脚本</span></span><br><span class="line"><span class="comment">//首先在你的package.json里面添加下列代码</span></span><br><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"webpack"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//然后，使用下列代码即可</span></span><br><span class="line">npm run bulid</span><br><span class="line"><span class="comment">//第三种方法，高版本的npm自带了npx</span></span><br><span class="line">npx webpack <span class="comment">//npx会自动查找当前依赖包中的可执行文件，如果找不到，就会去 PATH 里找。如果依然找不到，就会帮你安装！</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>所以说呢，我选择了第三种使用方法。</p>
-<h2 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h2><p>ES6或其他版本js转换成通用js代码，毫无疑问应该使用<code>babel</code>，不过在<code>webpack</code>的世界里面统一使用<code>loader</code>，所以我们<code>google webpack babel-loader</code>。<br>loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p>
-<h3 id="有个坑，很容易搞错的坑"><a href="#有个坑，很容易搞错的坑" class="headerlink" title="有个坑，很容易搞错的坑"></a>有个坑，很容易搞错的坑</h3><p><code>babel-loader</code>不同版本的安装脚本、配置文件是不同的……<br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-11/72818242.jpg" alt="小心点"><br>(<em>@ο@</em>) 哇～你搜出的最新的文档用这么小的文字告诉你，你用<code>webpack 3.x babel-loader 7.x | babel 6.x</code>的去这个<a href="https://github.com/babel/babel-loader/tree/7.x" target="_blank" rel="noopener">链接</a>,<code>webpack 3.x | babel-loader 8.x | babel 7.x</code>的去<a href="https://github.com/babel/babel-loader" target="_blank" rel="noopener">当前的这链接链接</a>。<br>好吧，我用上一版本的吧。<br>所以我的安装脚本是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev babel-loader babel-core babel-preset-env webpack</span><br></pre></td></tr></table></figure></p>
-<p>配置文件是<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//依然属于webpack.config.js配置的一部分，</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  <span class="comment">//这是关于模块的配置</span></span><br><span class="line">  rules: [</span><br><span class="line">    <span class="comment">//模块规则（配置 loader、解析器等选项）</span></span><br><span class="line">    &#123;</span><br><span class="line">      test: <span class="regexp">/\.js$/</span>, <span class="comment">//使用正则判断后缀是js的文件</span></span><br><span class="line">      exclude: <span class="regexp">/(node_modules|bower_components)/</span>, </span><br><span class="line">      <span class="comment">//除了这两目录下的node_modules|bower_components</span></span><br><span class="line">      use: &#123;</span><br><span class="line">        loader: <span class="string">'babel-loader'</span>, <span class="comment">//用这个loader处理.js的文件</span></span><br><span class="line">        options: &#123;</span><br><span class="line">          presets: [<span class="string">'env'</span>] <span class="comment">//选项，还记得单独使用babel的时候建立的那个.babelrc嘛，就是那个作用。</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>借此可以得到<code>loader</code>的两个作用：</p>
-<ol>
+<li>基本的使用<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//第一种方法，使用当前目录的node_modules里面的webpack</span>
+<span class="token punctuation">.</span><span class="token regex">/node_modules/</span><span class="token punctuation">.</span>bin<span class="token operator">/</span>webpack 
+<span class="token comment" spellcheck="true">//第二种方法使用npm脚本</span>
+<span class="token comment" spellcheck="true">//首先在你的package.json里面添加下列代码</span>
+<span class="token punctuation">{</span>
+<span class="token operator">...</span>
+<span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+ <span class="token string">"build"</span><span class="token punctuation">:</span> <span class="token string">"webpack"</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token operator">...</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//然后，使用下列代码即可</span>
+npm run bulid
+<span class="token comment" spellcheck="true">//第三种方法，高版本的npm自带了npx</span>
+npx webpack <span class="token comment" spellcheck="true">//npx会自动查找当前依赖包中的可执行文件，如果找不到，就会去 PATH 里找。如果依然找不到，就会帮你安装！</span>
+</code></pre>
+所以说呢，我选择了第三种使用方法。<h2 id="babel-loader"><a href="#babel-loader" class="headerlink" title="babel-loader"></a>babel-loader</h2>ES6或其他版本js转换成通用js代码，毫无疑问应该使用<code>babel</code>，不过在<code>webpack</code>的世界里面统一使用<code>loader</code>，所以我们<code>google webpack babel-loader</code>。<br>loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。<h3 id="有个坑，很容易搞错的坑"><a href="#有个坑，很容易搞错的坑" class="headerlink" title="有个坑，很容易搞错的坑"></a>有个坑，很容易搞错的坑</h3><code>babel-loader</code>不同版本的安装脚本、配置文件是不同的……<br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-11/72818242.jpg" alt="小心点"><br>(<em>@ο@</em>) 哇～你搜出的最新的文档用这么小的文字告诉你，你用<code>webpack 3.x babel-loader 7.x | babel 6.x</code>的去这个<a href="https://github.com/babel/babel-loader/tree/7.x" target="_blank" rel="noopener">链接</a>,<code>webpack 3.x | babel-loader 8.x | babel 7.x</code>的去<a href="https://github.com/babel/babel-loader" target="_blank" rel="noopener">当前的这链接链接</a>。<br>好吧，我用上一版本的吧。<br>所以我的安装脚本是<pre class=" language-javascript"><code class="language-javascript">npm install <span class="token operator">--</span>save<span class="token operator">-</span>dev babel<span class="token operator">-</span>loader babel<span class="token operator">-</span>core babel<span class="token operator">-</span>preset<span class="token operator">-</span>env webpack
+</code></pre>
+配置文件是<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//依然属于webpack.config.js配置的一部分，</span>
+module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+<span class="token comment" spellcheck="true">//这是关于模块的配置</span>
+rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+ <span class="token comment" spellcheck="true">//模块规则（配置 loader、解析器等选项）</span>
+ <span class="token punctuation">{</span>
+   test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//使用正则判断后缀是js的文件</span>
+   exclude<span class="token punctuation">:</span> <span class="token regex">/(node_modules|bower_components)/</span><span class="token punctuation">,</span> 
+   <span class="token comment" spellcheck="true">//除了这两目录下的node_modules|bower_components</span>
+   use<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+     loader<span class="token punctuation">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//用这个loader处理.js的文件</span>
+     options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+       presets<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'env'</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//选项，还记得单独使用babel的时候建立的那个.babelrc嘛，就是那个作用。</span>
+     <span class="token punctuation">}</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+借此可以得到<code>loader</code>的两个作用：</li>
 <li>识别出应该被对应的 loader 进行转换的那些文件。(使用 test 属性)</li>
 <li>转换这些文件，从而使其能够被添加到依赖中（并且最终添加到 bundle 中）(use 属性)<br>在<code>./src/js/</code>有<code>module-1.js、module-2.js、app.js</code>三个文件，都是新的语法，用的模块化写法，有的浏览器不支持，所以需要转化。</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//module-1.js代码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> fn</span><br><span class="line"><span class="comment">//module-2.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> fn</span><br><span class="line"><span class="comment">//app.js</span></span><br><span class="line"><span class="keyword">import</span> x <span class="keyword">from</span> <span class="string">'./module-1.js'</span></span><br><span class="line"><span class="keyword">import</span> y <span class="keyword">from</span> <span class="string">'./module-2.js'</span></span><br><span class="line">x()</span><br><span class="line">y()</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//module-1.js代码</span>
+<span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> fn
+<span class="token comment" spellcheck="true">//module-2.js</span>
+<span class="token keyword">function</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> fn
+<span class="token comment" spellcheck="true">//app.js</span>
+<span class="token keyword">import</span> x <span class="token keyword">from</span> <span class="token string">'./module-1.js'</span>
+<span class="token keyword">import</span> y <span class="token keyword">from</span> <span class="token string">'./module-2.js'</span>
+<span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">y</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre>
 <hr>
 <p><em>最终效果，打开的<a href="https://codevvvv9.github.io/webpack-demo-1/dist/index.html">我的预览链接</a></em>,使用<code>ctrl+shift+J</code>，会看到打印出1和2</p>
 <hr>
-<h2 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h2><p>如果使用了预编译的scss语言，要把scss文件变成css并加入到html里面，思路同上，<code>google webpack scss</code><br>得到如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install sass-loader node-sass webpack --save-dev</span><br></pre></td></tr></table></figure></p>
-<p>模块配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// webpack.config.js</span><br><span class="line">module.exports = &#123;</span><br><span class="line">	...</span><br><span class="line">    module: &#123;</span><br><span class="line">        rules: [&#123;</span><br><span class="line">            test: /\.scss$/,</span><br><span class="line">            use: [&#123;</span><br><span class="line">                loader: &quot;style-loader&quot; // creates style nodes from JS strings</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                loader: &quot;css-loader&quot; // translates CSS into CommonJS</span><br><span class="line">            &#125;, &#123;</span><br><span class="line">                loader: &quot;sass-loader&quot; // compiles Sass to CSS</span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>这个官方的就比较给力了，很清楚地用法</p>
+<h2 id="sass-loader"><a href="#sass-loader" class="headerlink" title="sass-loader"></a>sass-loader</h2><p>如果使用了预编译的scss语言，要把scss文件变成css并加入到html里面，思路同上，<code>google webpack scss</code><br>得到如下代码</p>
+<pre><code>npm install sass-loader node-sass webpack --save-dev
+</code></pre><p>模块配置文件</p>
+<pre><code>// webpack.config.js
+module.exports = {
+    ...
+    module: {
+        rules: [{
+            test: /\.scss$/,
+            use: [{
+                loader: "style-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS
+            }, {
+                loader: "sass-loader" // compiles Sass to CSS
+            }]
+        }]
+    }
+};
+</code></pre><p>这个官方的就比较给力了，很清楚地用法</p>
 <ul>
 <li>先用sass-loader把<code>./src/csa/main.scss</code>编译成main.css</li>
 <li>再用css-loader把main.css变成符合CommonJS规范的</li>
@@ -510,13 +594,45 @@
 <p>不过坑爹依旧☺……用的时候报错喽～</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-11/2444698.jpg" alt="缺俩文件"></p>
 <p>第一次就说缺style-loader，好吧……自觉点把另一个一起安装了把。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i --save-dev css-loader style-loader</span><br></pre></td></tr></table></figure>
-<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-11/60086288.jpg" alt="style标签"></p>
+<pre><code>npm i --save-dev css-loader style-loader
+</code></pre><p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-11/60086288.jpg" alt="style标签"></p>
 <hr>
 <p>所以，打开<a href="https://codevvvv9.github.io/webpack-demo-1/dist/index.html">我的预览链接</a>，会看到我的预览的背景是灰色的。</p>
 <hr>
-<h3 id="此时的webpack-config-js最终代码"><a href="#此时的webpack-config-js最终代码" class="headerlink" title="此时的webpack.config.js最终代码"></a>此时的webpack.config.js最终代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &apos;./src/js/app.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &apos;bundle.js&apos;,</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist/js/&apos;)</span><br><span class="line">  &#125;,</span><br><span class="line">  module: &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      test: /\.js$/,</span><br><span class="line">      exclude: /(node_modules|bower_components)/,</span><br><span class="line">      use: &#123;</span><br><span class="line">        loader: &apos;babel-loader&apos;,</span><br><span class="line">        options: &#123;</span><br><span class="line">          presets: [&apos;env&apos;]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">	    test: /\.scss$/,</span><br><span class="line">	    use: [&#123;</span><br><span class="line">	        loader: &quot;style-loader&quot; // creates style nodes from JS strings</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">	        loader: &quot;css-loader&quot; // translates CSS into CommonJS</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">	        loader: &quot;sass-loader&quot; // compiles Sass to CSS</span><br><span class="line">        &#125;]</span><br><span class="line">	    &#125;	  </span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>所以借助webpack强大的模块化，通过其构建的依赖关系图(dependency graph)把js、scss都搞到了bundle.js里面，真是牛～</p>
+<h3 id="此时的webpack-config-js最终代码"><a href="#此时的webpack-config-js最终代码" class="headerlink" title="此时的webpack.config.js最终代码"></a>此时的webpack.config.js最终代码</h3><pre><code>const path = require('path');
+
+module.exports = {
+  entry: './src/js/app.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist/js/')
+  },
+  module: {
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['env']
+        }
+      }
+    },
+    {
+        test: /\.scss$/,
+        use: [{
+            loader: "style-loader" // creates style nodes from JS strings
+        }, {
+            loader: "css-loader" // translates CSS into CommonJS
+        }, {
+            loader: "sass-loader" // compiles Sass to CSS
+        }]
+        }      
+  ]
+}
+};
+</code></pre><p>所以借助webpack强大的模块化，通过其构建的依赖关系图(dependency graph)把js、scss都搞到了bundle.js里面，真是牛～</p>
 <h2 id="html-loader"><a href="#html-loader" class="headerlink" title="html-loader"></a>html-loader</h2><p>本来搞了一个html-loader，优化html，把空格、注释都给压缩掉，提高性能，可是实际使用中也没有报错，也没啥效果，比较尴尬……自己埋个坑后面补一补。</p>
 <h2 id="Copy-Webpack-Plugin"><a href="#Copy-Webpack-Plugin" class="headerlink" title="Copy Webpack Plugin"></a>Copy Webpack Plugin</h2><p>目前呢，前面的loader用的都很爽。在src目录下修改完了代码，一个npx webpack，刷新就可以看到效果了，体验很棒。<br>但是今天坐在电脑前面，回想代码，以前在前端工程话的道路上，scss、js、html都是被监视着(wacth)，开四个命令行窗口，只要src下一有风吹草动，就会把修改后的代码更新过去。</p>
 <ul>
@@ -525,67 +641,122 @@
 </ul>
 <p>哎呀，是个<code>plugin</code>，终于webpack的四大基本概念都到齐了,前面搞了<code>entry output loder</code>，今天用一下<code>plugin</code>。</p>
 <blockquote>
-<p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。<br>基本安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D copy-webpack-plugin</span><br></pre></td></tr></table></figure></p>
+<p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。<br>基本安装</p>
+<pre><code>npm i -D copy-webpack-plugin
+</code></pre><p>Copy Webpack Plugin配置文件(plugin的和loader的配置文件可不是一个套路。loader是在module.rules数组的每一个对象里面(即rules数组的每一个value)，而plugin是在module的plugins数组里面)<br><code>`</code><br>//依然在webpack.config.js<br>const CopyWebpackPlugin = require(‘copy-webpack-plugin’)</p>
 </blockquote>
-<p>Copy Webpack Plugin配置文件(plugin的和loader的配置文件可不是一个套路。loader是在module.rules数组的每一个对象里面(即rules数组的每一个value)，而plugin是在module的plugins数组里面)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//依然在webpack.config.js</span><br><span class="line">const CopyWebpackPlugin = require(&apos;copy-webpack-plugin&apos;)</span><br><span class="line"></span><br><span class="line">const config = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    new CopyWebpackPlugin([ ...patterns ], options)</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://github.com/webpack-contrib/copy-webpack-plugin#to" target="_blank" rel="noopener">Copy Webpack Plugin的github</a>给的代码，一开始把我搞蒙了，和webpack官网的代码不大一样啊。后来才发现原来用了<code>module.exports = config;</code><br>在我的小demo里使用的是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    new CopyWebpackPlugin([ &#123;</span><br><span class="line">      //原来一个plugin就是一个对象啊，使用的时候实例化对象即可</span><br><span class="line">      from: &apos;src/index.html&apos;, //从src/index.html目录下复制</span><br><span class="line">      to: &apos;../index.html&apos;,  //到dist/index.html</span><br><span class="line">      toType: &apos;file&apos; //复制类型是文件</span><br><span class="line">    &#125;], &#123; copyUnmodified: true &#125;) //把未修改的部分也复制过去</span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></p>
-<p>这个插件可以实现很多功能，具体的细节看<a href="https://github.com/webpack-contrib/copy-webpack-plugin#to" target="_blank" rel="noopener">这里</a></p>
-<h3 id="关于目录的一个小问题"><a href="#关于目录的一个小问题" class="headerlink" title="关于目录的一个小问题"></a>关于目录的一个小问题</h3><p>上面代码为什么这么写呢<code>to: &#39;../index.html&#39;,</code> ，试了好几遍发现没有报错，就是没有结果，最后搞明白了是路径的问题……<br>还记得 四大基本概念的<code>output</code>里面的path吗，回头看一开始的<a href="#path">path</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    filename: &apos;bundle.js&apos;,</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist/js/&apos;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
-<p>项目的path是<code>dist/js</code>下，所以应该复制到上一级目录下<code>../</code>也就是<code>dist/</code>目录下了。</p>
-<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-13/89134482.jpg" alt="效果"></p>
-<h3 id="可以看到预览链接里面的文字啦"><a href="#可以看到预览链接里面的文字啦" class="headerlink" title="可以看到预览链接里面的文字啦"></a>可以看到<a href="https://codevvvv9.github.io/webpack-demo-1/dist/index.html">预览链接</a>里面的文字啦</h3><p>动态效果可以看下图<br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-12/50816812.jpg" alt="动态效果"></p>
-<h2 id="postcss-loader"><a href="#postcss-loader" class="headerlink" title="postcss-loader"></a>postcss-loader</h2><p>上述代码有个小问题使用了<code>display： flex</code>把<code>ul&gt;li</code>变成了横排，但是这玩意有兼容性。当初我的<a href="https://segmentfault.com/a/1190000013231817" target="_blank" rel="noopener">一篇文章</a>唯一的一个评论就是这么说我的……</p>
-<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-13/6879679.jpg" alt="没有考虑兼容性"></p>
-<p>检查兼容性(虽然这是严谨要求，我还是老忘)，可以去<a href="https://caniuse.com/#feat=flexbox" target="_blank" rel="noopener">caniuse</a> 看一下,(<em>@ο@</em>) 哇～IE没有绿的哎，支持太差了。( ⊙ o ⊙ )！万一以后我项目搞大了，IE的用户、老安卓的用户想看我项目咋办呢，只能加一下前缀优化一下啦。<br>有个挺牛的<a href="https://autoprefixer.github.io/" target="_blank" rel="noopener">在线的autoprefixer</a>，也可以去在线转换。<br>既然使用了webpack就<code>Google webpack autoprefixer</code>，遗憾的发现<code>autoprefixer</code>官方推荐使用<code>postcss-loader</code><br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-12/79391220.jpg" alt="autoprefixer过期了"></p>
-<h3 id="postcss-loader解决兼容性问题"><a href="#postcss-loader解决兼容性问题" class="headerlink" title="postcss-loader解决兼容性问题"></a>postcss-loader解决兼容性问题</h3><p>先吐槽一下，这货的文档也是稀烂……</p>
-<ol>
-<li>官方安装脚本</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D postcss-loader</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>需要单独配置文件postcss.config.js，官方的写法是下面这个（最无语的就是这个……，<strong>下面的必错，写出来就是警告大家，官方的也不一定对</strong>）</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  parser: &apos;sugarss&apos;, // 铪？？？？解析器是sugarss???</span><br><span class="line">  plugins: &#123;</span><br><span class="line">    &apos;postcss-import&apos;: &#123;&#125;,</span><br><span class="line">    &apos;postcss-cssnext&apos;: &#123;&#125;,</span><br><span class="line">    &apos;cssnano&apos;: &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在webpack.config.js的添加时还要注意下面的几点</p>
-<blockquote>
-<p>After setting up your postcss.config.js, add postcss-loader to your webpack.config.js. You can use it standalone or in conjunction with css-loader (recommended). Use it after css-loader and style-loader, but before other preprocessor loaders like e.g sass|less|stylus-loader, if you use any.</p>
-</blockquote>
-<p>这段文档的要点就是让你注意<code>postcss-loader</code>应该在<code>css-loader style-loader</code>之后，但是一定要在其他的预处理器<code>preprocessor loaders</code>之前，例如<br><code>sass|less|stylus-loader</code>。</p>
-<ol start="3">
-<li>官方给了一个推荐的配置代码</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//依然是webpack.config.js</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: /\.css$/,</span><br><span class="line">        use: [</span><br><span class="line">          &apos;style-loader&apos;,</span><br><span class="line">          &#123; loader: &apos;css-loader&apos;, options: &#123; importLoaders: 1 &#125; &#125;,</span><br><span class="line">          &apos;postcss-loader&apos;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>本项目用的是<code>.src/css/main.scss</code>,只能尝试着将上述代码加到相应的位置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">    ...</span><br><span class="line">	&#123;</span><br><span class="line">		test: /\.scss$/,</span><br><span class="line">		use: [&#123;</span><br><span class="line">			loader: &quot;style-loader&quot; // creates style nodes from JS strings</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			loader: &quot;css-loader&quot;, options: &#123; importLoaders: 1 &#125;// translates CSS into CommonJS</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			loader: &quot;postcss-loader&quot;</span><br><span class="line">		&#125;, &#123;</span><br><span class="line">			loader: &quot;sass-loader&quot; // compiles Sass to CSS</span><br><span class="line">		&#125;]</span><br><span class="line">	&#125;,</span><br><span class="line">   ...</span><br><span class="line">   ]</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>下面的几点可都是官网文档没写的，只能自己踩一踩的坑……</p>
-<hr>
-<ol start="4">
-<li>运行<code>npx webpack</code>,<em>连续报错</em>，不过是缺必备的module的错误,也就是缺postcss.config.js里面的<code>postcss-import postcss-cssnext cssnano sugarss</code> 。<br>没办法，先<code>npm i -D 上面的四个模块名字</code>，依然报错，这次是语法错误<br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-12/21058876.jpg" alt="语法错误"><br>(⊙v⊙)嗯？？？它说我不必要的大括号？？？我这标准的scss语法啊，又不是sass的语法(它省略了大括号和分号)，先Google一波这个错误。<br>终于在在postcss的<a href="https://github.com/postcss/postcss/issues/1062" target="_blank" rel="noopener">issue</a>里面发现了蛛丝马迹,问题果然出在那个令我疑惑的<code>postcss.config.js</code>里面<h3 id="错误原因分析"><a href="#错误原因分析" class="headerlink" title="错误原因分析"></a>错误原因分析</h3></li>
-<li>错误的使用了<a href="https://github.com/postcss/sugarss" target="_blank" rel="noopener">sugarss</a>的解析器(这货和sass类似，没有大括号，所以它说我大括号错了，它的特点是Indent-based CSS syntax for PostCSS.SugarSS MIME-type is text/x-sugarss with .sss file extension.)，而我写的是scss语法。</li>
-<li><code>postcss-loader</code>哪来的勇气确定大家都是用的<code>.sss</code>后缀的sugarss语法呢，还敢直接在文档的醒目位置推荐<code>稀烂的postcss.config.js</code>，O__O “…</li>
-<li>那么多的预编译的css语法，果然需要webpack打包工具啊，找到合适的loader去解析啊。</li>
-</ol>
-<p>注释掉<code>parser: &#39;sugarss&#39;,</code>这句代码，可以使用默认的解析器去解析了，正常运行了。<br>不过查看代码，发现好像转换后的css有点小<strong>丑</strong><br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-12/6839932.jpg" alt="不好看"></p>
-<h3 id="autoprefixer冗余"><a href="#autoprefixer冗余" class="headerlink" title="autoprefixer冗余"></a>autoprefixer冗余</h3><p>仔细观察命令行，发现有线索，一个警告<br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-12/77557219.jpg" alt="警告"><br>警告信息提示我说：postcss-cssnext发现有个冗余的<code>autoprefixer</code>插件在我的postcss插件里面，这个可能有不良影响，我应该移除它，因为它已经包括在了postcss-cssnext里面。</p>
-<p>webpack的警告说的很明白，postcss-cssnext是无辜的，而且我确定按照官网代码走的，没有安装<code>autoprefixer</code>插件，错误必然在剩下的两个插件里面了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//修改后的postcss.config.js只剩下这些了</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  plugins: &#123;</span><br><span class="line">    &apos;postcss-import&apos;: &#123;&#125;, //1.它错了？</span><br><span class="line">    &apos;postcss-cssnext&apos;: &#123;&#125;, //webpack告诉我它是清白的</span><br><span class="line">    &apos;cssnano&apos;: &#123;&#125; //2.它错了？</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我选择了排除法：</p>
-<ol>
-<li>先注释<code>&#39;postcss-import&#39;: {},</code>，发现无法转换后的css代码不对，说明它是无辜的。</li>
-<li>那么问题必然是最后一个插件，注释掉<code>&#39;cssnano&#39;: {}</code>，终于完美了，而且代码很优美。<br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-12/85971803.jpg" alt="消除警告"></li>
-</ol>
-<p>本着打破砂锅问到底的精神，我搜了一下<code>cssnano</code>,在其<a href="http://cssnano.co/optimisations/autoprefixer/" target="_blank" rel="noopener">官网</a>看到了真实的错误原因，webpack很明智啊，诚不欺我，果然冗余插件了。<br><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-13/83651219.jpg" alt="警告的原因"></p>
-<p>cssnano里面有<code>autoprefixer</code>导致了冗余。</p>
-<h2 id="extract-text-webpack-plugin"><a href="#extract-text-webpack-plugin" class="headerlink" title="extract-text-webpack-plugin"></a>extract-text-webpack-plugin</h2><p>webpack 把所有的资源都当成了一个模块, CSS、JS 文件 都是资源, 都可以打包到一个 bundle.js 文件中.<br>但是有时候需要把样式 单独的打包成一个文件需要抽离出css文件到单独的<code>css/</code>下。</p>
-<p>使用<a href="https://github.com/webpack-contrib/extract-text-webpack-plugin" target="_blank" rel="noopener">extract-text-webpack-plugin插件</a>可以做到。</p>
-<ol>
-<li>安装脚本</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install extract-text-webpack-plugin --save-dev</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>配置webpack.config.js，官方推荐的配置如下，但是需要结合自己的项目修改一下……</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">"extract-text-webpack-plugin"</span>); <span class="comment">//插件的套路。都要require进来</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        use: ExtractTextPlugin.extract(&#123;</span><br><span class="line">          fallback: <span class="string">"style-loader"</span>, <span class="comment">//失败了就用它解析</span></span><br><span class="line">          use: <span class="string">"css-loader"</span> <span class="comment">//是css文件，就用这个处理</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> ExtractTextPlugin(<span class="string">"styles.css"</span>),</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="目前的问题"><a href="#目前的问题" class="headerlink" title="目前的问题"></a>目前的问题</h3><p>我如果使用的是scss，就很尴尬了</p>
+<p>const config = {<br>  plugins: [<br>    new CopyWebpackPlugin([ …patterns ], options)<br>  ]<br>}</p>
+<pre><code>[Copy Webpack Plugin的github](https://github.com/webpack-contrib/copy-webpack-plugin#to)给的代码，一开始把我搞蒙了，和webpack官网的代码不大一样啊。后来才发现原来用了`module.exports = config;`
+在我的小demo里使用的是
+</code></pre><p>plugins: [<br>    new CopyWebpackPlugin([ {<br>      //原来一个plugin就是一个对象啊，使用的时候实例化对象即可<br>      from: ‘src/index.html’, //从src/index.html目录下复制<br>      to: ‘../index.html’,  //到dist/index.html<br>      toType: ‘file’ //复制类型是文件<br>    }], { copyUnmodified: true }) //把未修改的部分也复制过去<br>  ]</p>
+<pre><code>这个插件可以实现很多功能，具体的细节看[这里](https://github.com/webpack-contrib/copy-webpack-plugin#to)
+### 关于目录的一个小问题
+上面代码为什么这么写呢` to: '../index.html',` ，试了好几遍发现没有报错，就是没有结果，最后搞明白了是路径的问题……
+还记得 四大基本概念的`output`里面的path吗，回头看一开始的[path](#path)
+</code></pre><p>output: {<br>    filename: ‘bundle.js’,<br>    path: path.resolve(__dirname, ‘dist/js/‘)<br>},</p>
+<pre><code>项目的path是`dist/js`下，所以应该复制到上一级目录下`../`也就是`dist/`目录下了。
+
+![效果](http://p3tha6q4v.bkt.clouddn.com/18-2-13/89134482.jpg)
+
+### 可以看到[预览链接](https://codevvvv9.github.io/webpack-demo-1/dist/index.html)里面的文字啦
+动态效果可以看下图
+![动态效果](http://p3tha6q4v.bkt.clouddn.com/18-2-12/50816812.jpg)
+## postcss-loader
+上述代码有个小问题使用了`display： flex`把`ul&gt;li`变成了横排，但是这玩意有兼容性。当初我的[一篇文章](https://segmentfault.com/a/1190000013231817)唯一的一个评论就是这么说我的……
+
+![没有考虑兼容性](http://p3tha6q4v.bkt.clouddn.com/18-2-13/6879679.jpg)
+
+检查兼容性(虽然这是严谨要求，我还是老忘)，可以去[caniuse](https://caniuse.com/#feat=flexbox) 看一下,(*@ο@*) 哇～IE没有绿的哎，支持太差了。( ⊙ o ⊙ )！万一以后我项目搞大了，IE的用户、老安卓的用户想看我项目咋办呢，只能加一下前缀优化一下啦。
+有个挺牛的[在线的autoprefixer](https://autoprefixer.github.io/)，也可以去在线转换。
+既然使用了webpack就`Google webpack autoprefixer`，遗憾的发现`autoprefixer`官方推荐使用`postcss-loader`
+![autoprefixer过期了](http://p3tha6q4v.bkt.clouddn.com/18-2-12/79391220.jpg)
+
+### postcss-loader解决兼容性问题
+先吐槽一下，这货的文档也是稀烂……
+1. 官方安装脚本
+
+</code></pre><p>npm i -D postcss-loader</p>
+<pre><code>2. 需要单独配置文件postcss.config.js，官方的写法是下面这个（最无语的就是这个……，**下面的必错，写出来就是警告大家，官方的也不一定对**）
+
+</code></pre><p>module.exports = {<br>  parser: ‘sugarss’, // 铪？？？？解析器是sugarss???<br>  plugins: {<br>    ‘postcss-import’: {},<br>    ‘postcss-cssnext’: {},<br>    ‘cssnano’: {}<br>  }<br>}</p>
+<pre><code>在webpack.config.js的添加时还要注意下面的几点
+&gt; After setting up your postcss.config.js, add postcss-loader to your webpack.config.js. You can use it standalone or in conjunction with css-loader (recommended). Use it after css-loader and style-loader, but before other preprocessor loaders like e.g sass|less|stylus-loader, if you use any.
+
+这段文档的要点就是让你注意`postcss-loader`应该在`css-loader style-loader`之后，但是一定要在其他的预处理器`preprocessor loaders`之前，例如
+`sass|less|stylus-loader`。
+
+3. 官方给了一个推荐的配置代码
+
+</code></pre><p>//依然是webpack.config.js<br>module.exports = {<br>  module: {<br>    rules: [<br>      {<br>        test: /.css$/,<br>        use: [<br>          ‘style-loader’,<br>          { loader: ‘css-loader’, options: { importLoaders: 1 } },<br>          ‘postcss-loader’<br>        ]<br>      }<br>    ]<br>  }<br>}</p>
+<pre><code>本项目用的是`.src/css/main.scss`,只能尝试着将上述代码加到相应的位置
+</code></pre><p>rules: [<br>    …<br>    {<br>        test: /.scss$/,<br>        use: [{<br>            loader: “style-loader” // creates style nodes from JS strings<br>        }, {<br>            loader: “css-loader”, options: { importLoaders: 1 }// translates CSS into CommonJS<br>        }, {<br>            loader: “postcss-loader”<br>        }, {<br>            loader: “sass-loader” // compiles Sass to CSS<br>        }]<br>    },<br>   …<br>   ]</p>
+<pre><code>***
+下面的几点可都是官网文档没写的，只能自己踩一踩的坑……
+***
+4. 运行`npx webpack`,*连续报错*，不过是缺必备的module的错误,也就是缺postcss.config.js里面的`postcss-import postcss-cssnext cssnano sugarss` 。
+  没办法，先`npm i -D 上面的四个模块名字`，依然报错，这次是语法错误
+  ![语法错误](http://p3tha6q4v.bkt.clouddn.com/18-2-12/21058876.jpg)
+  (⊙v⊙)嗯？？？它说我不必要的大括号？？？我这标准的scss语法啊，又不是sass的语法(它省略了大括号和分号)，先Google一波这个错误。
+  终于在在postcss的[issue](https://github.com/postcss/postcss/issues/1062)里面发现了蛛丝马迹,问题果然出在那个令我疑惑的`postcss.config.js`里面
+### 错误原因分析
+1. 错误的使用了[sugarss](https://github.com/postcss/sugarss)的解析器(这货和sass类似，没有大括号，所以它说我大括号错了，它的特点是Indent-based CSS syntax for PostCSS.SugarSS MIME-type is text/x-sugarss with .sss file extension.)，而我写的是scss语法。
+2. `postcss-loader`哪来的勇气确定大家都是用的`.sss`后缀的sugarss语法呢，还敢直接在文档的醒目位置推荐`稀烂的postcss.config.js`，O__O "…
+3. 那么多的预编译的css语法，果然需要webpack打包工具啊，找到合适的loader去解析啊。
+
+注释掉`parser: 'sugarss',`这句代码，可以使用默认的解析器去解析了，正常运行了。
+不过查看代码，发现好像转换后的css有点小**丑**
+![不好看](http://p3tha6q4v.bkt.clouddn.com/18-2-12/6839932.jpg)
+
+### autoprefixer冗余
+
+仔细观察命令行，发现有线索，一个警告
+![警告](http://p3tha6q4v.bkt.clouddn.com/18-2-12/77557219.jpg)
+警告信息提示我说：postcss-cssnext发现有个冗余的`autoprefixer`插件在我的postcss插件里面，这个可能有不良影响，我应该移除它，因为它已经包括在了postcss-cssnext里面。
+
+webpack的警告说的很明白，postcss-cssnext是无辜的，而且我确定按照官网代码走的，没有安装`autoprefixer`插件，错误必然在剩下的两个插件里面了。
+</code></pre><p>//修改后的postcss.config.js只剩下这些了<br>module.exports = {<br>  plugins: {<br>    ‘postcss-import’: {}, //1.它错了？<br>    ‘postcss-cssnext’: {}, //webpack告诉我它是清白的<br>    ‘cssnano’: {} //2.它错了？<br>  }<br>}</p>
+<pre><code>我选择了排除法：
+1. 先注释`'postcss-import': {},`，发现无法转换后的css代码不对，说明它是无辜的。
+2. 那么问题必然是最后一个插件，注释掉`'cssnano': {}`，终于完美了，而且代码很优美。
+  ![消除警告](http://p3tha6q4v.bkt.clouddn.com/18-2-12/85971803.jpg)
+
+本着打破砂锅问到底的精神，我搜了一下`cssnano`,在其[官网](http://cssnano.co/optimisations/autoprefixer/)看到了真实的错误原因，webpack很明智啊，诚不欺我，果然冗余插件了。
+![警告的原因](http://p3tha6q4v.bkt.clouddn.com/18-2-13/83651219.jpg)
+
+cssnano里面有`autoprefixer`导致了冗余。
+
+## extract-text-webpack-plugin
+
+webpack 把所有的资源都当成了一个模块, CSS、JS 文件 都是资源, 都可以打包到一个 bundle.js 文件中.
+但是有时候需要把样式 单独的打包成一个文件需要抽离出css文件到单独的`css/`下。
+
+使用[extract-text-webpack-plugin插件](https://github.com/webpack-contrib/extract-text-webpack-plugin)可以做到。
+
+1. 安装脚本
+
+</code></pre><p>npm install extract-text-webpack-plugin –save-dev</p>
+<pre><code>
+2. 配置webpack.config.js，官方推荐的配置如下，但是需要结合自己的项目修改一下……
+
+```javascript
+const ExtractTextPlugin = require("extract-text-webpack-plugin"); //插件的套路。都要require进来
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader", //失败了就用它解析
+          use: "css-loader" //是css文件，就用这个处理
+        })
+      }
+    ]
+  },
+  plugins: [
+    new ExtractTextPlugin("styles.css"),
+  ]
+}
+</code></pre><h3 id="目前的问题"><a href="#目前的问题" class="headerlink" title="目前的问题"></a>目前的问题</h3><p>我如果使用的是scss，就很尴尬了</p>
 <p>最开始由一个错误引起</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-13/63857480.jpg" alt="window未定义"></p>
 <p>Google一下，<a href="https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/503" target="_blank" rel="noopener">解决掉error</a>，fallbak里面使用了style-loader，use里面不应该使用了，那么问题又来了</p>
@@ -593,12 +764,31 @@
 <li>问题一：无法使用style-loader把我的main.scss转化后的css代码插入到style标签里面。</li>
 </ol>
 <p>详见代码注释部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        test: /\.scss$/,</span><br><span class="line">        use: ExtractTextPlugin.extract(&#123;</span><br><span class="line">          fallback: &apos;style-loader&apos;,</span><br><span class="line">          //如果在use里面写上style-loader，就报错window未被定义，可是不写的话，我的bundle.js里面就无法把css放到style标签里面，只能手动把分离的css加到index.html，很无语。</span><br><span class="line">          use: [&#123;</span><br><span class="line">              loader: &quot;css-loader&quot;, options: &#123; importLoaders: 1 &#125;// translates CSS into CommonJS</span><br><span class="line">          &#125;, &#123;</span><br><span class="line">              loader: &quot;postcss-loader&quot;</span><br><span class="line">          &#125;, &#123;</span><br><span class="line">              loader: &quot;sass-loader&quot; // compiles Sass to CSS</span><br><span class="line">          &#125;]</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<pre><code>{
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          //如果在use里面写上style-loader，就报错window未被定义，可是不写的话，我的bundle.js里面就无法把css放到style标签里面，只能手动把分离的css加到index.html，很无语。
+          use: [{
+              loader: "css-loader", options: { importLoaders: 1 }// translates CSS into CommonJS
+          }, {
+              loader: "postcss-loader"
+          }, {
+              loader: "sass-loader" // compiles Sass to CSS
+          }]
+        })
+      }
+</code></pre><ol start="2">
 <li>问题2：可以提取出单独的css文件，但是没想到如何放到单独的<code>css/</code>下，很尴尬，代码未提交，还在摸索中。</li>
 </ol>
 <p>问题大约知道应该出现在下面这个函数里面</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> ExtractTextPlugin(&#123;</span><br><span class="line">     filename:  <span class="function">(<span class="params">getPath</span>) =&gt;</span> &#123;</span><br><span class="line">       <span class="keyword">return</span> getPath(<span class="string">'../main.css'</span>).replace(<span class="string">'../js'</span>, <span class="string">'../css'</span>); <span class="comment">// 本意是生成在dist/css/main.css,结果只是在dist/main.css目录下，没有css/</span></span><br><span class="line">     &#125;,</span><br><span class="line">     allChunks: <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">new</span> <span class="token class-name">ExtractTextPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      filename<span class="token punctuation">:</span>  <span class="token punctuation">(</span>getPath<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">getPath</span><span class="token punctuation">(</span><span class="token string">'../main.css'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'../js'</span><span class="token punctuation">,</span> <span class="token string">'../css'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 本意是生成在dist/css/main.css,结果只是在dist/main.css目录下，没有css/</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      allChunks<span class="token punctuation">:</span> <span class="token boolean">true</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>所有的代码都在我的<a href="https://github.com/codevvvv9/webpack-demo-1" target="_blank" rel="noopener">demo</a>里面。</p>
 <h2 id="蛋疼的无力吐槽"><a href="#蛋疼的无力吐槽" class="headerlink" title="蛋疼的无力吐槽"></a>蛋疼的无力吐槽</h2><p>算……是……搞定了webpack的基本使用了……吧，最简单的符合我目前技术栈的各种loader,plugin都会安装了。<br>当然，还有无数的webpack的loader、plugin在前方等着我去探索……各种稀奇古怪的配置文件……痛并快乐着☺</p>
 <p>五花八门的配置文件挺让我糟心的……幸亏有了<strong>node爸爸</strong>帮我啊，webpack爸爸虽然也是比较严厉的，但是省了你用四个命令行窗口的啊，还是很感人的啊。</p>
@@ -631,7 +821,10 @@
 <p>而我当时搞webpack的时候的快速开始至少需要安装webpack、webpack.config.js、修改配置内容、安装插件才能实现上述的功能。</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-13/44326202.jpg" alt="快速开始"></p>
 <h3 id="模块化和scss的解析很方便"><a href="#模块化和scss的解析很方便" class="headerlink" title="模块化和scss的解析很方便"></a>模块化和scss的解析很方便</h3><p>当我在<code>parcel-demo</code>目录下使用<code>parcel index.html</code>的时候，它自动发现我引入了<code>index.js。</code></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./index.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./index.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+</code></pre>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-13/28380182.jpg" alt="模块化"></p>
 <ol>
 <li>里面的内容是模块化的内容，它自动帮我转成了<code>dist/parcel-demo.js</code>，我在webpack的时候需要babel-loader</li>
@@ -644,7 +837,25 @@
 <hr>
 <p>而现在我还是要用<code>webpack</code>的……</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-13/45605477.jpg" alt=""></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -1159,7 +1370,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

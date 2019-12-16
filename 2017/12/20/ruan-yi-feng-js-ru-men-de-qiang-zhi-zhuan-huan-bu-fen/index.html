@@ -471,30 +471,65 @@
 <hr>
 <h3 id="1-简介、基本语法基本没啥问题，和以前的认知相同"><a href="#1-简介、基本语法基本没啥问题，和以前的认知相同" class="headerlink" title="1.  简介、基本语法基本没啥问题，和以前的认知相同"></a>1.  简介、基本语法基本没啥问题，和以前的认知相同</h3><h3 id="2-强制转换-知识"><a href="#2-强制转换-知识" class="headerlink" title="2.  强制转换 知识"></a>2.  强制转换 知识</h3><p>主要指使用<strong>Number</strong>、<strong>String</strong>和<strong>Boolean</strong>三个构造函数，手动将各种类型的值，转换成数字、字符串或者布尔值。</p>
 <h4 id="2-1-Number-函数"><a href="#2-1-Number-函数" class="headerlink" title="2.1 Number()函数"></a>2.1 Number()函数</h4><p>例如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//数值还是数值</span><br><span class="line">Number(42)//42</span><br><span class="line">//字符串 能全转 才能全转</span><br><span class="line">Number(&apos;42&apos;) //42</span><br><span class="line">//空字符串转为0</span><br><span class="line">Number(&apos; &apos;)//0</span><br><span class="line">// 布尔值：true 转成1，false 转成0</span><br><span class="line">Number(&apos; true&apos;)//1</span><br><span class="line">Number(&apos; false&apos;)//0</span><br><span class="line">// undefined：转成 NaN</span><br><span class="line">Number(undefined) // NaN</span><br><span class="line">// null：转成0</span><br><span class="line">Number(null) // 0</span><br></pre></td></tr></table></figure>
-<p>Number()<strong>很严格</strong>，比parseInt()严格。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">parseInt(&apos;42 cats&apos;) // 42</span><br><span class="line">Number(&apos;42 cats&apos;) // NaN 只要有一个不能转的字符就是NaN</span><br></pre></td></tr></table></figure></p>
-<p>Number函数会自动过滤一个字符串前导和后缀的空格。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Number(&apos;\t\v\r12.34\n&apos;) // 12.34</span><br></pre></td></tr></table></figure>
-<p>分割线强力来袭 <del>~</del><del>~</del><del>~</del></p>
+<pre><code>//数值还是数值
+Number(42)//42
+//字符串 能全转 才能全转
+Number('42') //42
+//空字符串转为0
+Number(' ')//0
+// 布尔值：true 转成1，false 转成0
+Number(' true')//1
+Number(' false')//0
+// undefined：转成 NaN
+Number(undefined) // NaN
+// null：转成0
+Number(null) // 0
+</code></pre><p>Number()<strong>很严格</strong>，比parseInt()严格。<br><a id="more"></a></p>
+<pre><code>parseInt('42 cats') // 42
+Number('42 cats') // NaN 只要有一个不能转的字符就是NaN
+</code></pre><p>Number函数会自动过滤一个字符串前导和后缀的空格。</p>
+<pre><code>Number('\t\v\r12.34\n') // 12.34
+</code></pre><p>分割线强力来袭 <del>~</del><del>~</del><del>~</del></p>
 <hr>
 <ul>
 <li>强调一下对象的转换规则<br>简单的规则是 ***简单的规则是，Number方法的参数是对象时，将返回NaN，除非是包含单个数值的数组。<br>举例:</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Number(&#123;a: 1&#125;) // NaN</span><br><span class="line">Number([1, 2, 3]) // NaN</span><br><span class="line">Number([5]) // 5</span><br></pre></td></tr></table></figure>
-<p>接下来了解一下<code>Number()</code>背后的原理。<strong>哇擦嘞,以前真是不注意这些东西，菜鸡一枚啊。</strong></p>
+<pre><code>Number({a: 1}) // NaN
+Number([1, 2, 3]) // NaN
+Number([5]) // 5
+</code></pre><p>接下来了解一下<code>Number()</code>背后的原理。<strong>哇擦嘞,以前真是不注意这些东西，菜鸡一枚啊。</strong></p>
 <blockquote>
 <p>1、调用对象自身的valueOf方法。如果返回原始类型的值，则直接对该值使用Number函数，不再进行后续步<br> 骤。<br>2、如果valueOf方法返回的还是对象，则改为调用对象自身的toString方法。如果toString方法返回原始类型的值，则对该值使用Number函数，不再进行后续步骤。<br>3、如果toString方法返回的是对象，就报错。</p>
 </blockquote>
 <p>原理不好理解，上栗子</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;x: 1&#125;;</span><br><span class="line">Number(obj) // NaN</span><br><span class="line"></span><br><span class="line">// 等同于</span><br><span class="line">if (typeof obj.valueOf() === &apos;object&apos;) &#123;</span><br><span class="line">  Number(obj.toString());</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  Number(obj.valueOf());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
+<pre><code>var obj = {x: 1};
+Number(obj) // NaN
+
+// 等同于
+if (typeof obj.valueOf() === 'object') {
+  Number(obj.toString());
+} else {
+  Number(obj.valueOf());
+}
+</code></pre><blockquote>
 <p>上面的代码意思是：Number函数接收到了obj，先调用obj.valueOf()方法，判断是不是<code>object</code>,结果返回对象自身，于是，继续调用obj.toString方法，这时返回字符串[object Object]，对这个字符串使用Number函数，必然得到NaN</p>
 </blockquote>
 <p>默认情况下，对象的valueOf()方法总是会返回对象自身，所以一般会调用对象的toString()方法，如果toString()方法，返回对象的类型字符串（比如[object Object]），那么Number()，结果就是NaN；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Number(&#123;&#125;) // NaN</span><br></pre></td></tr></table></figure>
-<p>如果toString()方法返回不是原始类型的值，就报错(<strong>这句话的另一层意思也就是toString()方法被重写了啊</strong>)</p>
-<p>依然上栗子<br>obj对象重写了两个方法，注意 toString()方法返回的又是一个对象<br>报的错 <strong>TypeError: Cannot convert object to primitive value</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  valueOf: function () &#123;</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  toString: function () &#123;</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Number(obj)</span><br><span class="line">// TypeError: Cannot convert object to primitive value</span><br></pre></td></tr></table></figure></p>
-<hr>
+<pre><code>Number({}) // NaN
+</code></pre><p>如果toString()方法返回不是原始类型的值，就报错(<strong>这句话的另一层意思也就是toString()方法被重写了啊</strong>)</p>
+<p>依然上栗子<br>obj对象重写了两个方法，注意 toString()方法返回的又是一个对象<br>报的错 <strong>TypeError: Cannot convert object to primitive value</strong></p>
+<pre><code>var obj = {
+  valueOf: function () {
+    return {};
+  },
+  toString: function () {
+    return {};
+  }
+};
+
+Number(obj)
+// TypeError: Cannot convert object to primitive value
+</code></pre><hr>
 <h4 id="2-2-String-函数"><a href="#2-2-String-函数" class="headerlink" title="2.2 String()函数"></a>2.2 String()函数</h4><p>使用String函数，可以将任意类型的值转化成字符串。转换规则如下。</p>
 <ul>
 <li><ol>
@@ -505,32 +540,81 @@
 <blockquote>
 <p>数值：转为相应的字符串。<br>字符串：转换后还是原来的值。<br>布尔值：true转为”true”，false转为”false”。<br>undefined：转为”undefined”。<br>null：转为”null”。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String(123) // &quot;123&quot;</span><br><span class="line">String(&apos;abc&apos;) // &quot;abc&quot;</span><br><span class="line">String(true) // &quot;true&quot;</span><br><span class="line">String(undefined) // &quot;undefined&quot;</span><br><span class="line">String(null) // &quot;null&quot;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>String(123) // "123"
+String('abc') // "abc"
+String(true) // "true"
+String(undefined) // "undefined"
+String(null) // "null"
+</code></pre><ul>
 <li><ol start="2">
 <li>对象的转换<br>String方法的参数如果是对象，返回一个类型字符串；如果是数组，返回该数组的字符串形式。</li>
 </ol>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String(&#123;a: 1&#125;) // &quot;[object Object]&quot;</span><br><span class="line">String([1, 2, 3]) // &quot;1,2,3&quot;</span><br></pre></td></tr></table></figure>
-<hr>
+<pre><code>String({a: 1}) // "[object Object]"
+String([1, 2, 3]) // "1,2,3"
+</code></pre><hr>
 <p>背后的原理基本与Number()相同，只是方法的调用相反</p>
 <blockquote>
 <p>1、先调用对象自身的toString方法。如果返回原始类型的值，则对该值使用String函数，不再进行以下步骤。<br> 2、 如果toString方法返回的是对象，再调用原对象的valueOf方法。如果valueOf方法返回原始类型的值，则对该值使用String函数，不再进行以下步骤。<br>  3、如果valueOf方法返回的是对象，就报错。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String(&#123;a: 1&#125;)</span><br><span class="line">// &quot;[object Object]&quot;</span><br><span class="line"></span><br><span class="line">// 等同于</span><br><span class="line"></span><br><span class="line">String(&#123;a: 1&#125;.toString())</span><br><span class="line">// &quot;[object Object]&quot;</span><br></pre></td></tr></table></figure>
-<p>上面代码先调用对象的toString方法，发现返回的是字符串[object Object]，就不再调用valueOf方法了。</p>
-<p>如果toString法和valueOf方法，返回的都是对象，就会报错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  valueOf: function () &#123;</span><br><span class="line">    console.log(&apos;valueOf&apos;);</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  toString: function () &#123;</span><br><span class="line">    console.log(&apos;toString&apos;);</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">String(obj)</span><br><span class="line">// TypeError: Cannot convert object to primitive value</span><br></pre></td></tr></table></figure></p>
-<hr>
+<pre><code>String({a: 1})
+// "[object Object]"
+
+// 等同于
+
+String({a: 1}.toString())
+// "[object Object]"
+</code></pre><p>上面代码先调用对象的toString方法，发现返回的是字符串[object Object]，就不再调用valueOf方法了。</p>
+<p>如果toString法和valueOf方法，返回的都是对象，就会报错。</p>
+<pre><code>var obj = {
+  valueOf: function () {
+    console.log('valueOf');
+    return {};
+  },
+  toString: function () {
+    console.log('toString');
+    return {};
+  }
+};
+
+String(obj)
+// TypeError: Cannot convert object to primitive value
+</code></pre><hr>
 <h4 id="2-3-Boolean"><a href="#2-3-Boolean" class="headerlink" title="2.3 Boolean()"></a>2.3 Boolean()</h4><p>除了以下六个值的转换结果为false，其他的值全部为true。</p>
 <blockquote>
 <p>undefined<br>null<br>-0<br>0或+0<br>NaN<br>‘ ‘（空字符串）</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Boolean(undefined) // false</span><br><span class="line">Boolean(null) // false</span><br><span class="line">Boolean(0) // false</span><br><span class="line">Boolean(NaN) // false</span><br><span class="line">Boolean(&apos;&apos;) // false</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>Boolean(undefined) // false
+Boolean(null) // false
+Boolean(0) // false
+Boolean(NaN) // false
+Boolean('') // false
+</code></pre><ul>
 <li>注意一下<br>注意，所有对象（包括空对象）的转换结果都是true，甚至连false对应的布尔对象new Boolean(false)也是true。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Boolean(&#123;&#125;) // true</span><br><span class="line">Boolean([]) // true</span><br><span class="line">Boolean(new Boolean(false)) // true</span><br></pre></td></tr></table></figure>
+<pre><code>Boolean({}) // true
+Boolean([]) // true
+Boolean(new Boolean(false)) // true
+</code></pre><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -782,6 +866,7 @@ sf 上都给出了w3c的form标准
 国内的CSDN也给出了可行的解决方案1 解决方案2
 
 
+        documen
                         
                     </div>
                     <div class="publish-info">
@@ -1042,7 +1127,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

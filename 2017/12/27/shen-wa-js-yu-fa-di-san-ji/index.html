@@ -445,7 +445,7 @@ window的属">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    572
+                    630
                 </div>
                 
 
@@ -500,7 +500,13 @@ window的属">
 <h3 id="先认识一下第一种的全局函数"><a href="#先认识一下第一种的全局函数" class="headerlink" title="先认识一下第一种的全局函数"></a>先认识一下第一种的全局函数</h3><ul>
 <li><p>Number</p>
 <p>搞清楚var a = 1 和 var a = new Number(1)的区别是啥</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">typeof</span> a</span><br><span class="line"><span class="string">"number"</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">typeof</span> a</span><br><span class="line"><span class="string">"object"</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">typeof</span> a
+<span class="token string">"number"</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Number</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">typeof</span> a
+<span class="token string">"object"</span>
+</code></pre>
 <p>使用了Number全局函数了，就要画上节课的内存图，来分析</p>
 </li>
 <li><p>String</p>
@@ -528,9 +534,33 @@ window的属">
 <p>以上几个式子中要格外注意Function的那个式子，自己的<strong>proto</strong>又指向了自己的prototype</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">f.__proto__ === <span class="built_in">Function</span>.prototype</span><br><span class="line"><span class="literal">true</span></span><br><span class="line">f.__proto__ === <span class="built_in">Object</span>.prototype</span><br><span class="line"><span class="literal">false</span></span><br><span class="line">f.__proto__.__proto__ === <span class="built_in">Object</span>.prototype</span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">f<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> Function<span class="token punctuation">.</span>prototype
+<span class="token boolean">true</span>
+f<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> Object<span class="token punctuation">.</span>prototype
+<span class="token boolean">false</span>
+f<span class="token punctuation">.</span>__proto__<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> Object<span class="token punctuation">.</span>prototype
+<span class="token boolean">true</span>
+</code></pre>
 <p><strong><em>最有一点要强调的是Object.<strong>proto</strong> 是真的指向了null</em></strong></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -828,7 +858,10 @@ window的属">
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            margin会受到border和display的影响以div元素为例三个并列的div，必然是上下排列，外边距是10px,也就是我们通常说的上下间隔10pxdemo123456789101112131415161718192021&lt;!D
+                            margin会受到border和display的影响以div元素为例三个并列的div，必然是上下排列，外边距是10px,也就是我们通常说的上下间隔10pxdemo
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt
                         
                     </div>
                     <div class="publish-info">
@@ -1037,7 +1070,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

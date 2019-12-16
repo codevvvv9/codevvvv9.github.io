@@ -440,7 +440,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    907
+                    895
                 </div>
                 
 
@@ -467,7 +467,13 @@
 <p>以上是组件化的简单描述，与模块化的组要区别在于组件化课深度定制不同的属性，借助父组件的参数值。</p>
 <p>那么问题来了，组件间如何进行通信呢？<a id="more"></a></p>
 <h2 id="父子组件通信"><a href="#父子组件通信" class="headerlink" title="父子组件通信"></a>父子组件通信</h2><p>最经典的通信方式就是：父组件与子组件之间进行通信。</p>
-<h3 id="组件的基本写法"><a href="#组件的基本写法" class="headerlink" title="组件的基本写法"></a>组件的基本写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'shareLink'</span>, &#123;</span><br><span class="line">  data() &#123;&#125;,</span><br><span class="line">  props: [<span class="string">'shareLink'</span>],</span><br><span class="line">  methods: &#123;&#125;,</span><br><span class="line">  template: <span class="string">``</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="组件的基本写法"><a href="#组件的基本写法" class="headerlink" title="组件的基本写法"></a>组件的基本写法</h3><pre class=" language-javascript"><code class="language-javascript">Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'shareLink'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'shareLink'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  methods<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">``</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>上述的代码就创建了一个名为<code>shareLink</code>的组件，并且可传递一个名为<code>shareLink</code>的参数值。</p>
 <p>但是注意：</p>
 <ul>
@@ -475,9 +481,24 @@
 <li>组件里面的<code>data</code>必须是函数，而不是app.js中的对象写法。</li>
 </ul>
 <p>具体一点的写法是：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'share'</span>, &#123;</span><br><span class="line">  props: [<span class="string">'shareLink'</span>],</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div class="share" v-cloak&gt;</span></span><br><span class="line"><span class="string">      &lt;h2&gt;</span></span><br><span class="line"><span class="string">        请将下面链接分享给面试官</span></span><br><span class="line"><span class="string">      &lt;/h2&gt;</span></span><br><span class="line"><span class="string">      &lt;div&gt;</span></span><br><span class="line"><span class="string">        &lt;textarea readonly&gt;&#123;&#123;shareLink&#125;&#125;&lt;/textarea&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'share'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'shareLink'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    &lt;div class="share" v-cloak>
+      &lt;h2>
+        请将下面链接分享给面试官
+      &lt;/h2>
+      &lt;div>
+        &lt;textarea readonly>{{shareLink}}&lt;/textarea>
+      &lt;/div>
+    &lt;/div>
+  `</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>其中<code>props</code>中是参数的名字，接受别的组件传递的信息。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;share v-bind:share-link=<span class="string">"shareLink"</span> v-show=<span class="string">"shareVisible"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">share</span>&gt;</span></span></span><br><span class="line"><span class="comment">//在html的页面中这样写</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>share v<span class="token operator">-</span>bind<span class="token punctuation">:</span>share<span class="token operator">-</span>link<span class="token operator">=</span><span class="token string">"shareLink"</span> v<span class="token operator">-</span>show<span class="token operator">=</span><span class="token string">"shareVisible"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>share<span class="token operator">></span>
+<span class="token comment" spellcheck="true">//在html的页面中这样写</span>
+</code></pre>
 <p><code>v-bind</code>将参数的名字绑定上，值是通过app.js获得的shareLink</p>
 <h3 id="简单的对应规则"><a href="#简单的对应规则" class="headerlink" title="简单的对应规则"></a>简单的对应规则</h3><table>
 <thead>
@@ -499,7 +520,9 @@
 <h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><ol>
 <li>子组件想改父组件的<code>data</code>。例如登录后的关闭按钮无用的例子。</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">login</span> <span class="attr">v-show</span>=<span class="string">"loginVisible"</span>&gt;</span><span class="tag">&lt;/<span class="name">login</span>&gt;</span> </span><br><span class="line">//这是父组件的写法，loginVisible是父组件的变量,很明显儿子无法修改爸爸的数据啊</span><br></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>login</span> <span class="token attr-name">v-show</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>loginVisible<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>login</span><span class="token punctuation">></span></span> 
+//这是父组件的写法，loginVisible是父组件的变量,很明显儿子无法修改爸爸的数据啊
+</code></pre>
 <ol start="2">
 <li>但是儿子特别像修改爸爸的数据</li>
 <li>那么唯一的解决方案就是叫爸爸去修改</li>
@@ -508,14 +531,14 @@
 <ol>
 <li>子组件通过事件告诉爸爸，我需要你做一些改变。</li>
 </ol>
-<p><code>@click=&quot;$emit(&#39;close&#39;)&quot;</code></p>
+<p><code>@click="$emit('close')"</code></p>
 <ul>
-<li>注意：在<code>methods</code>中需要使用<code>this.$emit(&#39;&#39;)</code>，但是在<code>@click</code>中不需要用<code>this</code></li>
+<li>注意：在<code>methods</code>中需要使用<code>this.$emit('')</code>，但是在<code>@click</code>中不需要用<code>this</code></li>
 </ul>
 <ol start="2">
 <li>那么爸爸根据儿子的需要做出如下改变</li>
 </ol>
-<p><code>&lt;login v-show=&quot;loginVisible&quot; @close=&quot;loginVisible = false&quot;&gt;</code></p>
+<p><code>&lt;login v-show="loginVisible" @close="loginVisible = false"&gt;</code></p>
 <p><code>@close</code>等同于<code>v-on:close</code></p>
 <p>父子组件通信的demo<a href="http://jsbin.com/logoyoqema/edit?html,js,output" target="_blank" rel="noopener">链接</a></p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-5-7/17176263.jpg" alt="父子组件通信图示"></p>
@@ -528,12 +551,56 @@
 <h3 id="爷爷只控制孙子"><a href="#爷爷只控制孙子" class="headerlink" title="爷爷只控制孙子"></a>爷爷只控制孙子</h3><p>该版本中爷爷只能控制孙子的显示，但是目前孙子无法反向操作爷爷。</p>
 <p>demo的<a href="http://jsbin.com/xiyoyubita/edit?html,js,output" target="_blank" rel="noopener">链接</a></p>
 <h3 id="孙子逐级冒泡通知爷爷"><a href="#孙子逐级冒泡通知爷爷" class="headerlink" title="孙子逐级冒泡通知爷爷"></a>孙子逐级冒泡通知爷爷</h3><p>孙子先冒泡到爸爸那里，使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'child'</span>, &#123;</span><br><span class="line">  props: [<span class="string">'visible'</span>],</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我是儿子</span></span><br><span class="line"><span class="string">      &lt;grand-child v-show="visible" @close="$emit('close')"&gt;&lt;/grand-child&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br><span class="line">Vue.component(<span class="string">'grandChild'</span>, &#123;</span><br><span class="line">  template: <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div&gt;</span></span><br><span class="line"><span class="string">      我是孙子</span></span><br><span class="line"><span class="string">      &lt;button @click="$emit('close')"&gt;关闭&lt;/button&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'child'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  props<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'visible'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    &lt;div>
+      我是儿子
+      &lt;grand-child v-show="visible" @close="$emit('close')">&lt;/grand-child>
+    &lt;/div>
+  `</span></span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'grandChild'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    &lt;div>
+      我是孙子
+      &lt;button @click="$emit('close')">关闭&lt;/button>
+    &lt;/div>
+  `</span></span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>爷爷那里就可以监听到孙子的动作了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button @click="xxx = true"&gt;打开&lt;/</span>button&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">    &lt;child :visible=<span class="string">"xxx"</span> @close=<span class="string">"log"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span></span><br><span class="line">  &lt;<span class="regexp">/div&gt; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>body<span class="token operator">></span>
+  <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"app"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>p<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">{</span> message <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">"xxx = true"</span><span class="token operator">></span>打开<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+    <span class="token operator">&lt;</span>hr<span class="token operator">></span>
+    <span class="token operator">&lt;</span>child <span class="token punctuation">:</span>visible<span class="token operator">=</span><span class="token string">"xxx"</span> @close<span class="token operator">=</span><span class="token string">"log"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>child<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span> 
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span>
+</code></pre>
 <p><a href="http://jsbin.com/xiyoyubita/edit?html,js,output" target="_blank" rel="noopener">demo的链接</a></p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-5-7/87537231.jpg" alt="爷孙间的通信图示"></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -783,7 +850,7 @@
 
 仅仅使用document.body.scrollTop来进行滑动距离的判断，会失效 
 
-1234567if 
+if (docume
                         
                     </div>
                     <div class="publish-info">
@@ -1045,7 +1112,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

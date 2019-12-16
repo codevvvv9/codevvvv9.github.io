@@ -446,7 +446,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.6k
                 </div>
                 
 
@@ -482,15 +482,50 @@
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/69890088.jpg" alt="架构图"></p>
 <h2 id="LeanCloud"><a href="#LeanCloud" class="headerlink" title="LeanCloud"></a>LeanCloud</h2><p>一个简单的数据库(比MySQL都简单，主要是更加形象，能与项目迅速的结合并给我很多正反馈)。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>直接去看<a href="https://leancloud.cn/docs/sdk_setup-js.html#hash1620893804" target="_blank" rel="noopener">文档</a></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储服务（包括推送和统计）</span></span><br><span class="line">cd 项目目录</span><br><span class="line">npm install leancloud-storage --save</span><br><span class="line"><span class="comment">// 2. 在html里引入av.min.js</span></span><br><span class="line">&lt;script src=<span class="string">"../node_modules/leancloud-storage/dist/av-min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//存储服务（包括推送和统计）</span>
+cd 项目目录
+npm install leancloud<span class="token operator">-</span>storage <span class="token operator">--</span>save
+<span class="token comment" spellcheck="true">// 2. 在html里引入av.min.js</span>
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"../node_modules/leancloud-storage/dist/av-min.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
 <h3 id="初始化AV对象"><a href="#初始化AV对象" class="headerlink" title="初始化AV对象"></a>初始化AV对象</h3><p>我们使用LeanCloud主要是用的这个AV对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> APP_ID = <span class="string">'0ISMRGDfPWtQcP8WktXGADsl-gzGzoHsz'</span>; <span class="comment">//与项目相关</span></span><br><span class="line"><span class="keyword">var</span> APP_KEY = <span class="string">'FKV4IYQNPyB6C5jFBv8vJ7LT'</span>; <span class="comment">//与项目相关</span></span><br><span class="line"></span><br><span class="line">AV.init(&#123;</span><br><span class="line">  appId: APP_ID,</span><br><span class="line">  appKey: APP_KEY</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre class=" language-JavaScript"><code class="language-JavaScript">var APP_ID = '0ISMRGDfPWtQcP8WktXGADsl-gzGzoHsz'; //与项目相关
+var APP_KEY = 'FKV4IYQNPyB6C5jFBv8vJ7LT'; //与项目相关
+
+AV.init({
+  appId: APP_ID,
+  appKey: APP_KEY
+});
+</code></pre>
 <p>写完上述代码可以简单的测试一下是否成功，最简单的就是直接打印<code>console.log(window.AV)</code></p>
 <p>官方推荐如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> TestObject = AV.Object.extend(<span class="string">'TestObject'</span>);</span><br><span class="line"><span class="keyword">var</span> testObject = <span class="keyword">new</span> TestObject();</span><br><span class="line">testObject.save(&#123;</span><br><span class="line">  words: <span class="string">'Hello World!'</span></span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">object</span>) </span>&#123;</span><br><span class="line">  alert(<span class="string">'LeanCloud Rocks!'</span>); <span class="comment">//成功后将在屏幕上弹出这句话	</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> TestObject <span class="token operator">=</span> AV<span class="token punctuation">.</span>Object<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token string">'TestObject'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> testObject <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TestObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+testObject<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  words<span class="token punctuation">:</span> <span class="token string">'Hello World!'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'LeanCloud Rocks!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//成功后将在屏幕上弹出这句话    </span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>此时会发现LeanCloud的项目应用下多一个表<code>TestObject</code>,表里面有一个字段是<code>words</code>，值是<code>Hello World!</code></p>
 <p>所以可以推测出这个就是LeanCloud提供给我们生成数据库表以及字段的代码，所以我实际中可以如下使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建数据库，只是本地而已</span></span><br><span class="line"><span class="keyword">var</span> TestObject = AV.Object.extend(<span class="string">'Playlist'</span>); </span><br><span class="line"><span class="comment">//创建一条记录</span></span><br><span class="line"><span class="keyword">var</span> testObject = <span class="keyword">new</span> TestObject(); </span><br><span class="line"><span class="comment">//保存记录，LeanCloud端</span></span><br><span class="line">testObject.save(&#123; </span><br><span class="line">  name: <span class="string">'test'</span>,</span><br><span class="line">  cover: <span class="string">'test'</span>,</span><br><span class="line">  creatorId: <span class="string">'test'</span>,</span><br><span class="line">  description: <span class="string">'test'</span>,</span><br><span class="line">  songs: [<span class="string">'1'</span>, <span class="string">'2'</span>]</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">object</span>) </span>&#123; </span><br><span class="line">	alert(<span class="string">'LeanCloud Rocks!'</span>); </span><br><span class="line">&#125;, () =&gt; &#123;</span><br><span class="line">	alert(<span class="string">'failed'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//创建数据库，只是本地而已</span>
+ <span class="token keyword">var</span> TestObject <span class="token operator">=</span> AV<span class="token punctuation">.</span>Object<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token string">'Playlist'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ <span class="token comment" spellcheck="true">//创建一条记录</span>
+ <span class="token keyword">var</span> testObject <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TestObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ <span class="token comment" spellcheck="true">//保存记录，LeanCloud端</span>
+ testObject<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">{</span> 
+   name<span class="token punctuation">:</span> <span class="token string">'test'</span><span class="token punctuation">,</span>
+   cover<span class="token punctuation">:</span> <span class="token string">'test'</span><span class="token punctuation">,</span>
+   creatorId<span class="token punctuation">:</span> <span class="token string">'test'</span><span class="token punctuation">,</span>
+   description<span class="token punctuation">:</span> <span class="token string">'test'</span><span class="token punctuation">,</span>
+   songs<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">]</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+     <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'LeanCloud Rocks!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+ <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+     <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'failed'</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>效果如下图所示</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/57467194.jpg" alt="LeanCloud的变化"></p>
 <p>通过上图可以简单的看出LeanCloud可以存储字符串以及数组。</p>
@@ -499,12 +534,21 @@
 <h2 id="七牛"><a href="#七牛" class="headerlink" title="七牛"></a>七牛</h2><p>这是一个使用云存储的信赖度极高的工具。</p>
 <p>毫无疑问的，先要看<a href="https://developer.qiniu.com/kodo/sdk/1283/javascript" target="_blank" rel="noopener">文档</a>安装</p>
 <h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>目前有1.X和2.X版本，可以预料到版本的问题有可能会产生bug.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install qiniu-js</span><br><span class="line">&lt;script src=<span class="string">"../node_modules/qiniu-js/dist/qiniu.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">npm install qiniu<span class="token operator">-</span>js
+<span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"../node_modules/qiniu-js/dist/qiniu.min.js"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+</code></pre>
 <p>通过sctipt标签引入该文件，会在全局生成名为 <code>qiniu</code> 的对象(2.X版本的)，而这个对象会为后面的上传文件埋下致命的bug。</p>
 <p>可以通过简单的<code>console.log(qiniu)</code>，验证是否成功。</p>
 <p>可以看一下，七牛的<a href="http://jssdk.demo.qiniu.io/" target="_blank" rel="noopener">用例</a></p>
 <h3 id="一个小bug"><a href="#一个小bug" class="headerlink" title="一个小bug"></a>一个小bug</h3><p>在后面的plupload的时候会报错，很奇怪。后来看七牛的用例的源码，在人家的<code>qiniu.min.js</code>的里面发现的<code>Qiniu</code>,而我的没有，所以猜测七牛用例使用的是1.x版本，果断通过更改版本</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"leancloud-storage"</span>: <span class="string">"^3.6.0"</span>,</span><br><span class="line">    <span class="string">"qiniu-js"</span>: <span class="string">"^1.0.2"</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"> <span class="comment">//修改完package.json</span></span><br><span class="line"> npm i</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"leancloud-storage"</span><span class="token punctuation">:</span> <span class="token string">"^3.6.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"qiniu-js"</span><span class="token punctuation">:</span> <span class="token string">"^1.0.2"</span>
+  <span class="token punctuation">}</span>
+
+ <span class="token comment" spellcheck="true">//修改完package.json</span>
+ npm i 
+</code></pre>
 <h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>在页面中引入qiniu.min.js后，初始化uploader，在这之前需要安装plupload,而安装这个有需要安装moxie。</p>
 <p>plupload直接通过npm就可以了，而这个moxie需要去github下载源码自己导入。</p>
 <hr>
@@ -519,18 +563,119 @@
 <p>如上是七牛为了安全性考虑的，必须获得一个token。所以我选择使用node做一个假的服务端，来获取token.</p>
 <h3 id="nodejsServer"><a href="#nodejsServer" class="headerlink" title="nodejsServer"></a>nodejsServer</h3><p>惯例使用七牛的<a href="https://developer.qiniu.com/kodo/sdk/1289/nodejs" target="_blank" rel="noopener">nodejs文档</a></p>
 <p>先安装</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install qiniu</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">npm install qiniu
+</code></pre>
 <p>在<code>server.js</code>里面简单的构建</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (path === <span class="string">'/uptoken'</span>) &#123;</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/json;charset=utf-8'</span>)</span><br><span class="line">    response.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>, <span class="string">'*'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义好其中鉴权对象mac：</span></span><br><span class="line">    <span class="keyword">var</span> config = fs.readFileSync(<span class="string">'./qiniu-key.json'</span>) <span class="comment">//真正的accessKey, secretKey在这里</span></span><br><span class="line">    config = <span class="built_in">JSON</span>.parse(config)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> &#123;accessKey, secretKey&#125; = config</span><br><span class="line">    <span class="keyword">var</span> mac = <span class="keyword">new</span> qiniu.auth.digest.Mac(accessKey, secretKey);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//简单上传的凭证</span></span><br><span class="line">    <span class="keyword">var</span> options = &#123;</span><br><span class="line">      scope: <span class="string">"163-music-demo-1"</span>, <span class="comment">//应用的名字</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">var</span> putPolicy = <span class="keyword">new</span> qiniu.rs.PutPolicy(options);</span><br><span class="line">    <span class="keyword">var</span> uploadToken=putPolicy.uploadToken(mac);</span><br><span class="line">    response.write(<span class="string">`</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">      "uptoken": "<span class="subst">$&#123;uploadToken&#125;</span>"</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">    response.end()</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>path <span class="token operator">===</span> <span class="token string">'/uptoken'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    response<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span>
+    response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/json;charset=utf-8'</span><span class="token punctuation">)</span>
+    response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Access-Control-Allow-Origin'</span><span class="token punctuation">,</span> <span class="token string">'*'</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">//定义好其中鉴权对象mac：</span>
+    <span class="token keyword">var</span> config <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'./qiniu-key.json'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//真正的accessKey, secretKey在这里</span>
+    config <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span>
+
+    <span class="token keyword">let</span> <span class="token punctuation">{</span>accessKey<span class="token punctuation">,</span> secretKey<span class="token punctuation">}</span> <span class="token operator">=</span> config
+    <span class="token keyword">var</span> mac <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">qiniu<span class="token punctuation">.</span>auth<span class="token punctuation">.</span>digest<span class="token punctuation">.</span>Mac</span><span class="token punctuation">(</span>accessKey<span class="token punctuation">,</span> secretKey<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">//简单上传的凭证</span>
+    <span class="token keyword">var</span> options <span class="token operator">=</span> <span class="token punctuation">{</span>
+      scope<span class="token punctuation">:</span> <span class="token string">"163-music-demo-1"</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//应用的名字</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> putPolicy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">qiniu<span class="token punctuation">.</span>rs<span class="token punctuation">.</span>PutPolicy</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> uploadToken<span class="token operator">=</span>putPolicy<span class="token punctuation">.</span><span class="token function">uploadToken</span><span class="token punctuation">(</span>mac<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`
+    {
+      "uptoken": "</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>uploadToken<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">"
+    }
+    `</span></span><span class="token punctuation">)</span>
+    response<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+</code></pre>
 <p>做好这个工作之后，uploader可以工作了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uploader = Qiniu.uploader(&#123;</span><br><span class="line">	...</span><br><span class="line">	uptoken_url: <span class="string">'http://localhost:8888/uptoken'</span>, </span><br><span class="line">	<span class="comment">//只需要注意这一句，其他代码抄文档。以后每次先开一个node server.js 8888</span></span><br><span class="line">	...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> uploader <span class="token operator">=</span> Qiniu<span class="token punctuation">.</span><span class="token function">uploader</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    uptoken_url<span class="token punctuation">:</span> <span class="token string">'http://localhost:8888/uptoken'</span><span class="token punctuation">,</span> 
+    <span class="token comment" spellcheck="true">//只需要注意这一句，其他代码抄文档。以后每次先开一个node server.js 8888</span>
+    <span class="token operator">...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <p>至此所有的代码，可以看这个<a href="https://github.com/codevvvv9/163-music-demo-1/tree/d21fefc6ab09f50393df99de210b9a7ed3eddf58" target="_blank" rel="noopener">版本</a></p>
 <p>既然支持拖曳上传和普通上传，需要做一些简单的css样式的修改以及html的改动。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-tag">p</span>&#123;<span class="attribute">margin</span>: <span class="number">5px</span>; <span class="attribute">padding</span>: <span class="number">0</span>;&#125;</span></span><br><span class="line"><span class="css">  <span class="selector-id">#container</span>&#123;</span></span><br><span class="line"><span class="undefined">  padding: 50px 80px;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">border</span>: 2<span class="selector-tag">px</span> <span class="selector-tag">dashed</span> <span class="selector-id">#ddd</span>;</span></span><br><span class="line"><span class="undefined">  border-radius: 20px;</span></span><br><span class="line"><span class="undefined">  display: flex;</span></span><br><span class="line"><span class="undefined">  justify-content: center;</span></span><br><span class="line"><span class="undefined">  align-items: center;</span></span><br><span class="line"><span class="undefined">  width: 200px;</span></span><br><span class="line"><span class="undefined">  flex-direction: column;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"> </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"pickfiles"</span>&gt;</span>点击或者拖曳文件<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span>文件大小不能超过 40MB<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"uploadStatus"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> uploader = Qiniu.uploader(&#123;</span><br><span class="line">	browse_button: <span class="string">'pickfiles'</span>,       <span class="comment">//上传选择的点选按钮，**必需**</span></span><br><span class="line">	...</span><br><span class="line">    container: <span class="string">'container'</span>,           <span class="comment">//上传区域DOM ID，默认是browser_button的父元素，</span></span><br><span class="line">    max_file_size: <span class="string">'40mb'</span>,           <span class="comment">//最大文件体积限制</span></span><br><span class="line">    dragdrop: <span class="literal">true</span>,                   <span class="comment">//开启可拖曳上传</span></span><br><span class="line">    drop_element: <span class="string">'container'</span>,        <span class="comment">//拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传</span></span><br><span class="line">    auto_start: <span class="literal">true</span>,                 <span class="comment">//选择文件后自动上传，若关闭需要自己绑定事件触发上传</span></span><br><span class="line">    init: &#123;</span><br><span class="line">      <span class="string">'FilesAdded'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">up, files</span>) </span>&#123;</span><br><span class="line">      plupload.each(files, <span class="function"><span class="keyword">function</span> (<span class="params">file</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 文件添加进队列后,处理相关的事情</span></span><br><span class="line">      &#125;);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">'BeforeUpload'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">up, file</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 每个文件上传前,处理相关的事情</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">'UploadProgress'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">up, file</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 每个文件上传时,处理相关的事情</span></span><br><span class="line">        uploadStatus.textContent = <span class="string">'上传中'</span> <span class="comment">//提示用户上传进度的</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">'FileUploaded'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">up, file, info</span>) </span>&#123;</span><br><span class="line">        uploadStatus.textContent = <span class="string">'上传完毕'</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">'Error'</span>: <span class="function"><span class="keyword">function</span> (<span class="params">up, err, errTip</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//上传出错时,处理相关的事情</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">'UploadComplete'</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">//队列文件处理完毕后,处理相关的事情</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
+  <span class="token selector">p</span><span class="token punctuation">{</span><span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span> <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+  <span class="token selector"><span class="token id">#container</span></span><span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">50</span>px <span class="token number">80</span>px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">2</span>px dashed <span class="token hexcode">#ddd</span><span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">200</span>px<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pickfiles<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>点击或者拖曳文件<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>文件大小不能超过 40MB<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>uploadStatus<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> uploader <span class="token operator">=</span> Qiniu<span class="token punctuation">.</span><span class="token function">uploader</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    browse_button<span class="token punctuation">:</span> <span class="token string">'pickfiles'</span><span class="token punctuation">,</span>       <span class="token comment" spellcheck="true">//上传选择的点选按钮，**必需**</span>
+    <span class="token operator">...</span>
+    container<span class="token punctuation">:</span> <span class="token string">'container'</span><span class="token punctuation">,</span>           <span class="token comment" spellcheck="true">//上传区域DOM ID，默认是browser_button的父元素，</span>
+    max_file_size<span class="token punctuation">:</span> <span class="token string">'40mb'</span><span class="token punctuation">,</span>           <span class="token comment" spellcheck="true">//最大文件体积限制</span>
+    dragdrop<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>                   <span class="token comment" spellcheck="true">//开启可拖曳上传</span>
+    drop_element<span class="token punctuation">:</span> <span class="token string">'container'</span><span class="token punctuation">,</span>        <span class="token comment" spellcheck="true">//拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传</span>
+    auto_start<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>                 <span class="token comment" spellcheck="true">//选择文件后自动上传，若关闭需要自己绑定事件触发上传</span>
+    init<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token string">'FilesAdded'</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>up<span class="token punctuation">,</span> files<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      plupload<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span>files<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 文件添加进队列后,处理相关的事情</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string">'BeforeUpload'</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>up<span class="token punctuation">,</span> file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 每个文件上传前,处理相关的事情</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string">'UploadProgress'</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>up<span class="token punctuation">,</span> file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 每个文件上传时,处理相关的事情</span>
+        uploadStatus<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'上传中'</span> <span class="token comment" spellcheck="true">//提示用户上传进度的</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string">'FileUploaded'</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>up<span class="token punctuation">,</span> file<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        uploadStatus<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'上传完毕'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string">'Error'</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>up<span class="token punctuation">,</span> err<span class="token punctuation">,</span> errTip<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//上传出错时,处理相关的事情</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string">'UploadComplete'</span><span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//队列文件处理完毕后,处理相关的事情</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <p>至此，简单的上传文件的效果做完了，全部的<a href="https://github.com/codevvvv9/163-music-demo-1" target="_blank" rel="noopener">代码版本</a></p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/72923380.jpg" alt=""></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -777,7 +922,7 @@
                     <div class="summary block-with-text">
                         
                             获取歌曲的外链通过七牛的文档说明，先去js官方文档，然后通过里面的js源码地址，选择1.0的版本，进入之后，选择示例网站，在获得代码里面，可以发现下面代码
-12345678910111213 'FileUploaded': function
+  'FileUploaded': function(up, file, info)
                         
                     </div>
                     <div class="publish-info">
@@ -1037,7 +1182,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

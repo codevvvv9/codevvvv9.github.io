@@ -440,7 +440,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.3k
                 </div>
                 
 
@@ -528,37 +528,80 @@
 <h3 id="DNS-Domain-Name-System"><a href="#DNS-Domain-Name-System" class="headerlink" title="DNS(Domain Name System)"></a>DNS(Domain Name System)</h3><p>你输入一个网址，先向DNS去问一下，这个网址的ip,返会给你，然后就可以访问到了。</p>
 <ul>
 <li>输入域名</li>
-<li>可以返回对应的IP<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nslookup baidu.com</span><br><span class="line">ping baidu.com</span><br></pre></td></tr></table></figure>
+<li>可以返回对应的IP<pre><code>nslookup baidu.com
+ping baidu.com
+</code></pre>我们可以修改hosts,文件去访问谷歌<pre><code>C:\Windows\System32\drivers\etc\hosts
+# Github Start
+192.30.253.118    gist.github.com
+151.101.72.249    global-ssl.fastly.net
+</code></pre><h3 id="服务器和浏览器的交互-——server-client-HTTP之间的关系"><a href="#服务器和浏览器的交互-——server-client-HTTP之间的关系" class="headerlink" title="服务器和浏览器的交互 ——server client HTTP之间的关系"></a>服务器和浏览器的交互 ——server client HTTP之间的关系</h3>1、client发送请求<pre><code>curl -s -v -H "Frank: xxx" -- "https://www.baidu.com"
+</code></pre><pre><code>//这是get请求
+&gt; GET / HTTP/1.1
+&gt; Host: www.baidu.com
+&gt; User-Agent: curl/7.49.1
+&gt; Accept: */*
+&gt; frank: xxx
+</code></pre><pre><code>curl -X POST -s -v -H "Frank: xxx" -- "https://www.baidu.com"
+//这是post请求
+&gt; POST / HTTP/1.1
+&gt; Host: www.baidu.com
+&gt; User-Agent: curl/7.49.1
+&gt; Accept: */*
+&gt; Frank: xxx
+</code></pre><code>`</code><br>curl -X POST -d “1234567890” -s -v -H “Frank: xxx” – “<a href="https://www.baidu.com&quot;" target="_blank" rel="noopener">https://www.baidu.com"</a><br>//提交一些内容到百度<blockquote>
+<p>POST / HTTP/1.1<br>Host: <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br>User-Agent: curl/7.49.1<br>Accept: <em>/</em><br>Frank: xxx<br>Content-Length: 10<br>Content-Type: application/x-www-form-urlencoded</p>
+</blockquote>
 </li>
 </ul>
-<p>我们可以修改hosts,文件去访问谷歌<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\drivers\etc\hosts</span><br><span class="line"># Github Start</span><br><span class="line">192.30.253.118	gist.github.com</span><br><span class="line">151.101.72.249	global-ssl.fastly.net</span><br></pre></td></tr></table></figure></p>
-<h3 id="服务器和浏览器的交互-——server-client-HTTP之间的关系"><a href="#服务器和浏览器的交互-——server-client-HTTP之间的关系" class="headerlink" title="服务器和浏览器的交互 ——server client HTTP之间的关系"></a>服务器和浏览器的交互 ——server client HTTP之间的关系</h3><p>1、client发送请求<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -v -H &quot;Frank: xxx&quot; -- &quot;https://www.baidu.com&quot;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//这是get请求</span><br><span class="line">&gt; GET / HTTP/1.1</span><br><span class="line">&gt; Host: www.baidu.com</span><br><span class="line">&gt; User-Agent: curl/7.49.1</span><br><span class="line">&gt; Accept: */*</span><br><span class="line">&gt; frank: xxx</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -s -v -H &quot;Frank: xxx&quot; -- &quot;https://www.baidu.com&quot;</span><br><span class="line">//这是post请求</span><br><span class="line">&gt; POST / HTTP/1.1</span><br><span class="line">&gt; Host: www.baidu.com</span><br><span class="line">&gt; User-Agent: curl/7.49.1</span><br><span class="line">&gt; Accept: */*</span><br><span class="line">&gt; Frank: xxx</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -d &quot;1234567890&quot; -s -v -H &quot;Frank: xxx&quot; -- &quot;https://www.baidu.com&quot;</span><br><span class="line">//提交一些内容到百度</span><br><span class="line">&gt; POST / HTTP/1.1</span><br><span class="line">&gt; Host: www.baidu.com</span><br><span class="line">&gt; User-Agent: curl/7.49.1</span><br><span class="line">&gt; Accept: */*</span><br><span class="line">&gt; Frank: xxx</span><br><span class="line">&gt; Content-Length: 10</span><br><span class="line">&gt; Content-Type: application/x-www-form-urlencoded</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果是获得数据用get</li>
-<li>如果是提交数据用post<br>在<a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a> 模仿用户登录，你的密码在 Form Data里面，打开network查看，一定记得 <em>view source</em><br><img src="http://upload-images.jianshu.io/upload_images/5422064-c1620a92f7e3296d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="post请求.png"><br><img src="http://upload-images.jianshu.io/upload_images/5422064-a183fb93224e247e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="post详解.png"><br>在浏览器和服务器交互的那块代码里面，没有带查询参数，下面这个是带参数的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -v  -- &quot;https://www.baidu.com/s...后面一堆参数&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/5422064-872f6dbe064d4207.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="request的路径.png"></p>
-<h3 id="总结一下-请求和响应的基本格式"><a href="#总结一下-请求和响应的基本格式" class="headerlink" title="总结一下 请求和响应的基本格式"></a>总结一下 请求和响应的基本格式</h3><ul>
-<li>请求的基本格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1、动词 路径 协议/版本号</span><br><span class="line">2、key1: value1</span><br><span class="line">2、key2: value2</span><br><span class="line">2、key3: value3</span><br><span class="line">2、key4: value4</span><br><span class="line">2、Content-Type: application/x-www-form-urlencoded</span><br><span class="line">2、Host: www.baidu.com</span><br><span class="line">2、User-Agent: curl/7.54.0</span><br><span class="line">3、 必然是一个换行，用以区分第2部分和第4部分</span><br><span class="line">4、 要上传的数据</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>1.请求最多包含四部分，最少包含三部分。（也就是说第四部分可以为空）<br>2.第三部分永远都是一个回车（\n）<br>3.动词有 GET POST PUT PATCH DELETE HEAD OPTIONS 等<br>4.这里的路径包括「查询参数」，但不包括「锚点」详见上图的请求路径<br>5.如果你没有写路径，那么路径默认为 /<br>6.第 2 部分中的 Content-Type 标注了第 4 部分的格式</p>
-<hr>
-<p>2、服务器开放80端口，接收请求，返回内容(响应)<br>3、浏览器负责下载响应内容</p>
-<ul>
-<li>响应的基本格式<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Accept-Ranges: bytes</span><br><span class="line">Cache-Control: private, no-cache, no-store, proxy-revalidate, no-transform</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Content-Length: 2443</span><br><span class="line">Content-Type: text/html</span><br><span class="line">Date: Tue, 10 Oct 2017 09:14:05 GMT</span><br><span class="line">Etag: &quot;5886041d-98b&quot;</span><br><span class="line">Last-Modified: Mon, 23 Jan 2017 13:24:45 GMT</span><br><span class="line">Pragma: no-cache</span><br><span class="line">Server: bfe/1.0.8.18</span><br><span class="line">Set-Cookie: BDORZ=27315; max-age=86400; domain=.baidu.com; path=/</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt; 后面太长，省略了……</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1、协议/版本 状态码 解释</span><br><span class="line">2、key1: value1</span><br><span class="line">2、key2: value2</span><br><span class="line">2、key3: value3</span><br><span class="line">2、key4: value4</span><br><span class="line">2、Content-Length: 17931</span><br><span class="line">2、Content-Type: text/html</span><br><span class="line">3</span><br><span class="line">4 要下载的内容</span><br></pre></td></tr></table></figure>
-<p>同样的Content-Type规定了第4部分要下载的内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">常见状态码解释</span><br><span class="line">200 ok</span><br><span class="line">301 访问的内容永久转移了</span><br><span class="line">302 暂时的重定向 要求客户端执行临时重定向（原始描述短语为“Moved Temporarily”）。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在Cache-Control或Expires中进行了指定的情况下，这个响应才是可缓存的。</span><br><span class="line">403 服务器已经理解请求，但是拒绝执行它</span><br><span class="line">404 你访问的文件不存在</span><br><span class="line">500 通用错误消息，服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。没有给出具体错误信息</span><br><span class="line">502 服务器关闭 作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应</span><br></pre></td></tr></table></figure>
+<pre><code>* 如果是获得数据用get
+* 如果是提交数据用post
+在https://www.baidu.com 模仿用户登录，你的密码在 Form Data里面，打开network查看，一定记得 *view source*
+![post请求.png](http://upload-images.jianshu.io/upload_images/5422064-c1620a92f7e3296d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![post详解.png](http://upload-images.jianshu.io/upload_images/5422064-a183fb93224e247e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+在浏览器和服务器交互的那块代码里面，没有带查询参数，下面这个是带参数的
+</code></pre><p>curl -s -v  – “<a href="https://www.baidu.com/s...后面一堆参数&quot;" target="_blank" rel="noopener">https://www.baidu.com/s...后面一堆参数"</a></p>
+<pre><code>![request的路径.png](http://upload-images.jianshu.io/upload_images/5422064-872f6dbe064d4207.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+### 总结一下 请求和响应的基本格式
+- 请求的基本格式
+</code></pre><p>1、动词 路径 协议/版本号<br>2、key1: value1<br>2、key2: value2<br>2、key3: value3<br>2、key4: value4<br>2、Content-Type: application/x-www-form-urlencoded<br>2、Host: <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a><br>2、User-Agent: curl/7.54.0<br>3、 必然是一个换行，用以区分第2部分和第4部分<br>4、 要上传的数据</p>
+<pre><code>1.请求最多包含四部分，最少包含三部分。（也就是说第四部分可以为空）
+2.第三部分永远都是一个回车（\n）
+3.动词有 GET POST PUT PATCH DELETE HEAD OPTIONS 等
+4.这里的路径包括「查询参数」，但不包括「锚点」详见上图的请求路径
+5.如果你没有写路径，那么路径默认为 /
+6.第 2 部分中的 Content-Type 标注了第 4 部分的格式
+***
+2、服务器开放80端口，接收请求，返回内容(响应)
+3、浏览器负责下载响应内容
+- 响应的基本格式
+</code></pre><p>HTTP/1.1 200 OK<br>Accept-Ranges: bytes<br>Cache-Control: private, no-cache, no-store, proxy-revalidate, no-transform<br>Connection: Keep-Alive<br>Content-Length: 2443<br>Content-Type: text/html<br>Date: Tue, 10 Oct 2017 09:14:05 GMT<br>Etag: “5886041d-98b”<br>Last-Modified: Mon, 23 Jan 2017 13:24:45 GMT<br>Pragma: no-cache<br>Server: bfe/1.0.8.18<br>Set-Cookie: BDORZ=27315; max-age=86400; domain=.baidu.com; path=/</p>
+<p>&lt;!DOCTYPE html&gt;<br><!--STATUS OK--> <meta name="generator" content="Hexo 3.8.0"> 后面太长，省略了……<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></p>
+<pre><code>
+</code></pre><p>1、协议/版本 状态码 解释<br>2、key1: value1<br>2、key2: value2<br>2、key3: value3<br>2、key4: value4<br>2、Content-Length: 17931<br>2、Content-Type: text/html<br>3<br>4 要下载的内容</p>
+<pre><code>同样的Content-Type规定了第4部分要下载的内容
 
+</code></pre><p>常见状态码解释<br>200 ok<br>301 访问的内容永久转移了<br>302 暂时的重定向 要求客户端执行临时重定向（原始描述短语为“Moved Temporarily”）。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在Cache-Control或Expires中进行了指定的情况下，这个响应才是可缓存的。<br>403 服务器已经理解请求，但是拒绝执行它<br>404 你访问的文件不存在<br>500 通用错误消息，服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。没有给出具体错误信息<br>502 服务器关闭 作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应<br><code>`</code></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
-            <hr>
+            <hr/>
 
             
 
@@ -858,6 +901,9 @@ HTTP是建立在TCP/IP的基础之上
                         
                             如果第一次就仔细点，何必这么多麻烦呢
 
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.da
                         
                     </div>
                     <div class="publish-info">
@@ -1062,7 +1108,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

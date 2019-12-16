@@ -441,7 +441,7 @@ SEO指 Search Engine Optimization，意指搜索引擎优化的意思，通过�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.1k
                 </div>
                 
 
@@ -476,19 +476,29 @@ SEO指 Search Engine Optimization，意指搜索引擎优化的意思，通过�
 <ul>
 <li>通常选择文件验证和CNAME验证，我选择的是文件验证，这里要把百度的验证文件放到你的域名的根目录下，具体的在这里指：<code>source</code>目录下，要注意如果是html文件要使用如下代码处理，防止后续部署时把html文件给处理了。</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">layout: false</span><br><span class="line">---</span><br><span class="line">FZKjy3o3f6 //你的验证文件的内容，显然百度分配给每个人都不一样</span><br></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html">layout: false
+---
+FZKjy3o3f6 //你的验证文件的内容，显然百度分配给每个人都不一样
+</code></pre>
 <h4 id="添加站点地图"><a href="#添加站点地图" class="headerlink" title="添加站点地图"></a>添加站点地图</h4><ol>
 <li>首先安装两个插件</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save     </span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">npm install hexo<span class="token operator">-</span>generator<span class="token operator">-</span>sitemap <span class="token operator">--</span>save     
+npm install hexo<span class="token operator">-</span>generator<span class="token operator">-</span>baidu<span class="token operator">-</span>sitemap <span class="token operator">--</span>save
+</code></pre>
 <ol start="2">
 <li>修改项目根目录下的<code>_config.yml</code> 的URL</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">url: http:<span class="comment">//wushao.xyz //你的个人站点的名字</span></span><br><span class="line">root: <span class="regexp">/</span></span><br><span class="line"><span class="regexp">permalink: :year/</span>:month/:day/:title/ <span class="comment">//这里将会在后续的URL持久化章中优化</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"># URL
+url<span class="token punctuation">:</span> http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>wushao<span class="token punctuation">.</span>xyz <span class="token comment" spellcheck="true">//你的个人站点的名字</span>
+root<span class="token punctuation">:</span> <span class="token operator">/</span>
+permalink<span class="token punctuation">:</span> <span class="token punctuation">:</span>year<span class="token operator">/</span><span class="token punctuation">:</span>month<span class="token operator">/</span><span class="token punctuation">:</span>day<span class="token operator">/</span><span class="token punctuation">:</span>title<span class="token operator">/</span> <span class="token comment" spellcheck="true">//这里将会在后续的URL持久化章中优化</span>
+</code></pre>
 <ol start="3">
 <li>进行如下代码的部署，在根目录下的<code>public</code>目录生成<code>sitemap.xml</code> 和 <code>baidusitemap.xml</code></li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d <span class="comment">//相当于hexo generate 然后 hexo deploy</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">hexo g <span class="token operator">-</span>d <span class="token comment" spellcheck="true">//相当于hexo generate 然后 hexo deploy</span>
+</code></pre>
 <ol start="4">
 <li>把上面生成的<code>sitemap.xml</code>提交给百度，按照第一章的做法把站点添加到百度后，按照下图的方式提交</li>
 </ol>
@@ -496,25 +506,94 @@ SEO指 Search Engine Optimization，意指搜索引擎优化的意思，通过�
 <p> 这里有两种方式提交，很明显选择自动提交——主动推送的方式，注意这里的<code>token</code>，很重要</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/21550135.jpg" alt="主动提交方式"></p>
 <p>使用如下代码完成主动推送</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//1.先安装插件</span></span><br><span class="line"><span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-baidu-url-submit</span> <span class="bullet">--save</span></span><br><span class="line"><span class="string">//2.在根目录下的_config.yml</span> <span class="string">添加baidu_url_submit属性</span></span><br><span class="line"><span class="attr">baidu_url_submit:</span></span><br><span class="line"><span class="attr">  count:</span> <span class="number">100</span> <span class="comment"># 提交最新的一个链接,最新的100个链接，想写几个写几个</span></span><br><span class="line"><span class="attr">  host:</span> <span class="string">wushao.xyz</span> <span class="comment"># 在百度站长平台中注册的域名</span></span><br><span class="line"><span class="attr">  token:</span>  <span class="comment"># 请注意这是您的秘钥，就是上图模糊处理的那个所以请不要把博客源代码发布在公众仓库里!</span></span><br><span class="line"><span class="attr">  path:</span> <span class="string">baidu_urls.txt</span> <span class="comment"># 文本文档的地址， 新链接会保存在public目录下</span></span><br><span class="line"><span class="string">//3.修改根目录下的_config.yml</span> <span class="string">的deploy属性,注意有两个deploy时的格式！！！</span></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">- type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span></span><br><span class="line"><span class="attr">        github:</span> <span class="string">你的github</span></span><br><span class="line"><span class="attr">        coding:</span> <span class="string">你的coding</span></span><br><span class="line"><span class="attr">- type:</span> <span class="string">baidu_url_submitter</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-yaml"><code class="language-yaml">//1.先安装插件
+npm install hexo<span class="token punctuation">-</span>baidu<span class="token punctuation">-</span>url<span class="token punctuation">-</span>submit <span class="token punctuation">-</span><span class="token punctuation">-</span>save
+//2.在根目录下的_config.yml 添加baidu_url_submit属性
+<span class="token key atrule">baidu_url_submit</span><span class="token punctuation">:</span>
+  <span class="token key atrule">count</span><span class="token punctuation">:</span> <span class="token number">100 </span><span class="token comment" spellcheck="true"># 提交最新的一个链接,最新的100个链接，想写几个写几个</span>
+  <span class="token key atrule">host</span><span class="token punctuation">:</span> wushao.xyz <span class="token comment" spellcheck="true"># 在百度站长平台中注册的域名</span>
+  <span class="token key atrule">token</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># 请注意这是您的秘钥，就是上图模糊处理的那个所以请不要把博客源代码发布在公众仓库里!</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> baidu_urls.txt <span class="token comment" spellcheck="true"># 文本文档的地址， 新链接会保存在public目录下</span>
+//3.修改根目录下的_config.yml 的deploy属性<span class="token punctuation">,</span>注意有两个deploy时的格式！！！
+<span class="token comment" spellcheck="true"># Deployment</span>
+<span class="token comment" spellcheck="true">## Docs: https://hexo.io/docs/deployment.html</span>
+<span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> git
+  <span class="token key atrule">repo</span><span class="token punctuation">:</span>
+        <span class="token key atrule">github</span><span class="token punctuation">:</span> 你的github
+        <span class="token key atrule">coding</span><span class="token punctuation">:</span> 你的coding
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> baidu_url_submitter
+
+</code></pre>
 <p>下面介绍几个优化爬取的方法</p>
 <hr>
 <h4 id="添加robots-txt"><a href="#添加robots-txt" class="headerlink" title="添加robots.txt"></a>添加<code>robots.txt</code></h4><p>这里是为了告诉搜索引擎哪些可以爬取哪些不可以爬取，在<code>source</code>目录下添加<code>robots.txt</code>，文本内容如下</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">User-agent:</span> <span class="string">*</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/archives/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/categories/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/tags/</span></span><br><span class="line"><span class="attr">Allow:</span> <span class="string">/posts/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/vendors/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/js/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/css/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/fonts/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/vendors/</span></span><br><span class="line"><span class="attr">Disallow:</span> <span class="string">/fancybox/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Sitemap:</span> <span class="attr">https://你的站点/sitemap.xml</span> <span class="string">//</span></span><br><span class="line"><span class="attr">Sitemap:</span> <span class="attr">https://你的站点/baidusitemap.xml</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">User-agent</span><span class="token punctuation">:</span> *
+<span class="token key atrule">Allow</span><span class="token punctuation">:</span> /
+<span class="token key atrule">Allow</span><span class="token punctuation">:</span> /archives/
+<span class="token key atrule">Allow</span><span class="token punctuation">:</span> /categories/
+<span class="token key atrule">Allow</span><span class="token punctuation">:</span> /tags/
+<span class="token key atrule">Allow</span><span class="token punctuation">:</span> /posts/
+
+<span class="token key atrule">Disallow</span><span class="token punctuation">:</span> /vendors/
+<span class="token key atrule">Disallow</span><span class="token punctuation">:</span> /js/
+<span class="token key atrule">Disallow</span><span class="token punctuation">:</span> /css/
+<span class="token key atrule">Disallow</span><span class="token punctuation">:</span> /fonts/
+<span class="token key atrule">Disallow</span><span class="token punctuation">:</span> /vendors/
+<span class="token key atrule">Disallow</span><span class="token punctuation">:</span> /fancybox/
+
+<span class="token key atrule">Sitemap</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//你的站点/sitemap.xml //
+<span class="token key atrule">Sitemap</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//你的站点/baidusitemap.xml
+</code></pre>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/8846523.jpg" alt="robots.txt内容"></p>
 <h4 id="Url持久化"><a href="#Url持久化" class="headerlink" title="Url持久化"></a><code>Url</code>持久化</h4><p>还记的<code>_config.yml</code>里面关于<code>url</code>的描述嘛。<code>permalink</code>属性中的<code>/</code>决定了你的<code>url</code>有几级，通常引擎只会爬取三层，而且对于汉字的处理不完美，可是你的文章名字难免会有汉字，所以这里要进行必要的转化。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># # URL</span></span><br><span class="line"><span class="comment"># ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="string">你的站点名字</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span> <span class="string">//优化处</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># # URL</span>
+<span class="token comment" spellcheck="true"># ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span>
+<span class="token key atrule">url</span><span class="token punctuation">:</span> 你的站点名字
+<span class="token key atrule">root</span><span class="token punctuation">:</span> /
+<span class="token key atrule">permalink</span><span class="token punctuation">:</span> <span class="token punctuation">:</span>year/<span class="token punctuation">:</span>month/<span class="token punctuation">:</span>day/<span class="token punctuation">:</span>title/ //优化处
+</code></pre>
 <ul>
 <li>借助<a href="https://github.com/rozbo/hexo-abbrlink" target="_blank" rel="noopener">hexo-abbrlink</a>插件，感谢大神的插件</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-abbrlink</span> <span class="bullet">--save</span></span><br><span class="line"><span class="string">//</span> <span class="string">Modify</span> <span class="string">permalink</span> <span class="string">in</span> <span class="string">config.yml</span> <span class="attr">file:</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink/</span></span><br><span class="line"><span class="comment"># abbrlink config</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line"><span class="attr">  alg:</span> <span class="string">crc32</span>  <span class="comment">#support crc16(default) and crc32</span></span><br><span class="line"><span class="attr">  rep:</span> <span class="string">hex</span>    <span class="comment">#support dec(default) and hex</span></span><br><span class="line"><span class="string">//部署完之后所有的url如下所示</span></span><br><span class="line"><span class="attr">http:</span><span class="string">//wushao.xyz/posts/6ed52419.html</span> <span class="string">//6ed52419这个就代表你原来的名字</span></span><br><span class="line"><span class="attr">http:</span><span class="string">//wushao.xyz/posts/7a43570f.html</span></span><br><span class="line"><span class="attr">http:</span><span class="string">//wushao.xyz/posts/7b3b172b.html</span></span><br><span class="line"><span class="attr">http:</span><span class="string">//wushao.xyz/posts/77ac3545.html</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-yaml"><code class="language-yaml">npm install hexo<span class="token punctuation">-</span>abbrlink <span class="token punctuation">-</span><span class="token punctuation">-</span>save
+// Modify permalink in config.yml file<span class="token punctuation">:</span>
+<span class="token key atrule">permalink</span><span class="token punctuation">:</span> posts/<span class="token punctuation">:</span>abbrlink/
+<span class="token comment" spellcheck="true"># abbrlink config</span>
+<span class="token key atrule">abbrlink</span><span class="token punctuation">:</span>
+  <span class="token key atrule">alg</span><span class="token punctuation">:</span> crc32  <span class="token comment" spellcheck="true">#support crc16(default) and crc32</span>
+  <span class="token key atrule">rep</span><span class="token punctuation">:</span> hex    <span class="token comment" spellcheck="true">#support dec(default) and hex</span>
+//部署完之后所有的url如下所示
+http<span class="token punctuation">:</span>//wushao.xyz/posts/6ed52419.html //6ed52419这个就代表你原来的名字
+http<span class="token punctuation">:</span>//wushao.xyz/posts/7a43570f.html
+http<span class="token punctuation">:</span>//wushao.xyz/posts/7b3b172b.html
+http<span class="token punctuation">:</span>//wushao.xyz/posts/77ac3545.html
+</code></pre>
 <ul>
 <li>此时你会发现你以前的的文章标题会有变化</li>
 </ul>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/83087096.jpg" alt=""></p>
 <h3 id="Google站长"><a href="#Google站长" class="headerlink" title="Google站长"></a><code>Google</code>站长</h3><p><code>Google</code>的方便多了，直接<a href="https://www.google.com/webmasters/#?modal_active=none" target="_blank" rel="noopener">google站长</a>，然后进<code>Search console</code>,添加属性就是添加个人站点的意思，后续步骤和上面一样，但是收录的速度快多了。</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/53903614.jpg" alt="Search console"></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -764,7 +843,12 @@ SEO指 Search Engine Optimization，意指搜索引擎优化的意思，通过�
 学习底层的虚拟DOM原理
 
 二话不说，直接上代码
-基本的代码如下：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474
+基本的代码如下：let nodeData = {
+  tag: 'div',
+  children: [{
+      tag: 'p',
+      children: [{
+     
                         
                     </div>
                     <div class="publish-info">
@@ -1023,7 +1107,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

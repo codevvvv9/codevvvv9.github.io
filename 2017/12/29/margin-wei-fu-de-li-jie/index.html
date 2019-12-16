@@ -447,7 +447,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    7 分
                 </div>
                 
 				
@@ -480,10 +480,27 @@
 <ul>
 <li>接下来，我们探讨一下，以margin为例，它的值是负数的时候意味着什么呢？这是一个很有趣的实验，对于像我一样的新人来说，负值这个概念还是挺奇怪的，我是理解了好一会才搞明白的。<h4 id="先上栗子"><a href="#先上栗子" class="headerlink" title="先上栗子"></a>先上<a href="http://js.jirengu.com/zakoxawasa/1/edit" target="_blank" rel="noopener">栗子</a></h4>以margin的margin-left为例来演示，看官们也可以管中窥豹。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML的核心代码--&gt;</span><br><span class="line">&lt;div class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;box1&quot;&gt;测试margin为负值的情况&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>demo很简单，就是一个大div包裹了一个小div。由简单入手，正是<code>删繁就简三秋树，领异标新二月花</code>。<br>下面是CSS的代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">html&#123;</span><br><span class="line">  border: 1px solid green;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">  outline: 1px solid orange;</span><br><span class="line">&#125;</span><br><span class="line">.container&#123;</span><br><span class="line">  border: 1px solid red;</span><br><span class="line">  margin-left:30px;</span><br><span class="line">&#125;</span><br><span class="line">.box1&#123;</span><br><span class="line">  margin: 10px;</span><br><span class="line">  outline: 1px solid blue;</span><br><span class="line">  margin-left: -30px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>之所以把<code>html</code>以及<code>body</code>样式也加上，是因为我发现，要想把这个负值的概念理解的很透彻，经过我的多次实践，一定要采取这种自底向上的，完全展现整个过程的变化，才能说真的理解了这个概念。<br>真正的原因如下</p>
+<pre><code>&lt;!-- HTML的核心代码--&gt;
+&lt;div class="container"&gt;
+    &lt;div class="box1"&gt;测试margin为负值的情况&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>demo很简单，就是一个大div包裹了一个小div。由简单入手，正是<code>删繁就简三秋树，领异标新二月花</code>。<br>下面是CSS的代码</p>
+<pre><code>html{
+  border: 1px solid green;
+}
+body{
+  outline: 1px solid orange;
+}
+.container{
+  border: 1px solid red;
+  margin-left:30px;
+}
+.box1{
+  margin: 10px;
+  outline: 1px solid blue;
+  margin-left: -30px;
+}
+</code></pre><p>之所以把<code>html</code>以及<code>body</code>样式也加上，是因为我发现，要想把这个负值的概念理解的很透彻，经过我的多次实践，一定要采取这种自底向上的，完全展现整个过程的变化，才能说真的理解了这个概念。<br>真正的原因如下</p>
 <ul>
 <li><code>html</code>的<code>border</code>让我们发现<code>body</code>的默认外边距是<code>8px</code></li>
 <li><code>body</code>的<code>outline</code>让我们直观的体会改变<code>box1</code>的<code>margin-left</code>的时候是如何变化的（我假设大家都知道改变左外边距会类名是<code>container</code>的<code>div</code>的<code>border</code>）</li>
@@ -523,7 +540,25 @@
 <h4 id="理解的对错"><a href="#理解的对错" class="headerlink" title="理解的对错"></a>理解的对错</h4><p><br>每个人的成长经历不同，大脑擅长处理的东西也不同，导致其看待与理解事物的方式也不同。因此，对于同一CSS表现的差异，每个人的理解都不同。<br><br>一旦有所差异，就有所谓的“对错”之争。估计不少人会拿《CSS权威指南》上的东西说事：你那种理解是错误的，CSS权威指南上说……或W3C官方文档解释说……<br><br><br>我大学电路老师最后一节课专门讲了她的科学观：何为科学？能够自圆其说，自成体系即是科学。中医算科学吗？算！因其有一套自己解释畅通的理论体系。<br>同样，对于CSS的理解，我个人一直认为什么对错的争执等都是没有意义的。如果你的解释可以自圆其说，自成体系，且应用无误，哪怕你的解释与什么规范啊权威啊八竿子都打不着，别人压根理解不了，你都是对的，OK的！<br><br>拘泥只会限制自身的创造力以及认知能力。火影的世界算是世界吗？是，自圆其说，自成体系！海贼王的世界算是世界吗？是自圆其说，自成体系。<br><br>因此，如果你是设计出身，或文学出身的。什么复杂逻辑，深奥解释理解不了，你大可摒弃之，用你自己的世界去解释其表现，你的感性思维以及艺术情怀只会让这个世界变得更精彩！那些自以为是，抱残守缺的杂碎们就不用鸟他们，让他们随着时间消逝去吧~~</p>
 </blockquote>
 <hr>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -1033,7 +1068,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

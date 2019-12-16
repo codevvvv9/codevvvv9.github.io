@@ -15,7 +15,8 @@
 go中声明变量的三种基本形式
 单变量的写法
 
-12345678//1、基本声明方式var i int // 声明一个变量i,数据类型为int，">
+//1、基本声明方式
+var i int // 声明一个变量i,数据类型为int，默认值会被赋值">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -449,7 +450,7 @@ go中声明变量的三种基本形式
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    540
+                    585
                 </div>
                 
 
@@ -482,16 +483,36 @@ go中声明变量的三种基本形式
 <h3 id="go中声明变量的三种基本形式"><a href="#go中声明变量的三种基本形式" class="headerlink" title="go中声明变量的三种基本形式"></a>go中声明变量的三种基本形式</h3><ul>
 <li>单变量的写法</li>
 </ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1、基本声明方式</span></span><br><span class="line"><span class="keyword">var</span> i <span class="keyword">int</span> <span class="comment">// 声明一个变量i,数据类型为int，默认值会被赋值为0</span></span><br><span class="line"><span class="comment">//2、声明与赋值写到一起，会通过类型推导</span></span><br><span class="line"><span class="keyword">var</span> i = <span class="number">10</span> <span class="comment">// i的数据类型会被动态判断出来是int</span></span><br><span class="line"><span class="comment">//3、go独特的写法, 省略var,采用冒号的写法</span></span><br><span class="line">i := <span class="number">10</span> </span><br><span class="line"><span class="comment">//这种写法等同于 var i int </span></span><br><span class="line"><span class="comment">//i=10</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">//1、基本声明方式</span>
+<span class="token keyword">var</span> i <span class="token builtin">int</span> <span class="token comment" spellcheck="true">// 声明一个变量i,数据类型为int，默认值会被赋值为0</span>
+<span class="token comment" spellcheck="true">//2、声明与赋值写到一起，会通过类型推导</span>
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">10</span> <span class="token comment" spellcheck="true">// i的数据类型会被动态判断出来是int</span>
+<span class="token comment" spellcheck="true">//3、go独特的写法, 省略var,采用冒号的写法</span>
+i <span class="token operator">:=</span> <span class="token number">10</span> 
+<span class="token comment" spellcheck="true">//这种写法等同于 var i int </span>
+<span class="token comment" spellcheck="true">//i=10</span>
+</code></pre>
 <ul>
 <li>多变量的写法</li>
 </ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1、三个相同数据类型的变量</span></span><br><span class="line"><span class="keyword">var</span> n1, n2, n3 <span class="keyword">int</span> </span><br><span class="line"><span class="comment">//2、多个不同数据类型的变量</span></span><br><span class="line"><span class="keyword">var</span> n1, n2, n3 = <span class="number">10</span>, <span class="string">"string"</span>, <span class="number">10.2</span> <span class="comment">//类型推导</span></span><br><span class="line"><span class="comment">//3、同样使用冒号写法</span></span><br><span class="line">n1, n2, n3 := <span class="string">"string"</span>, <span class="number">10</span>, <span class="number">9</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 1、三个相同数据类型的变量</span>
+<span class="token keyword">var</span> n1<span class="token punctuation">,</span> n2<span class="token punctuation">,</span> n3 <span class="token builtin">int</span> 
+<span class="token comment" spellcheck="true">//2、多个不同数据类型的变量</span>
+<span class="token keyword">var</span> n1<span class="token punctuation">,</span> n2<span class="token punctuation">,</span> n3 <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"string"</span><span class="token punctuation">,</span> <span class="token number">10.2</span> <span class="token comment" spellcheck="true">//类型推导</span>
+<span class="token comment" spellcheck="true">//3、同样使用冒号写法</span>
+n1<span class="token punctuation">,</span> n2<span class="token punctuation">,</span> n3 <span class="token operator">:=</span> <span class="token string">"string"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">9</span>
+</code></pre>
 <p><strong>注意：一旦省略了var，采用了类型推导，必须赋值，不能使用默认值了</strong></p>
 <ul>
 <li>全局变量 的写法</li>
 </ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在函数之外的变量被称为全局变量</span></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">  n1 = <span class="string">"string"</span></span><br><span class="line">  n2 = <span class="number">10</span></span><br><span class="line">  n3 = <span class="number">10.2</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 在函数之外的变量被称为全局变量</span>
+<span class="token keyword">var</span> <span class="token punctuation">(</span>
+  n1 <span class="token operator">=</span> <span class="token string">"string"</span>
+  n2 <span class="token operator">=</span> <span class="token number">10</span>
+  n3 <span class="token operator">=</span> <span class="token number">10.2</span>
+<span class="token punctuation">)</span>
+</code></pre>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>同大多数语言一样，分为基本数据类型和复杂数据类型(也叫派生数据类型)</p>
 <ul>
 <li>基本数据类型：<code>bool</code> <code>string</code> <code>int</code> <code>rune</code> <code>byte</code> <code>float32</code> <code>float64</code> <code>complex64</code> <code>complex128</code>。<code>byte</code>也可以认为是<code>uint8</code>,<code>rune</code>等同于<code>int32</code></li>
@@ -501,10 +522,28 @@ go中声明变量的三种基本形式
 <ol>
 <li><code>int</code>类型在不同位数电脑上范围不同，32位电脑是8字节，64位电脑是16字节。有符号。还有<code>int8 int16 int32 int64</code></li>
 <li><code>unit</code>无符号，还包括<code>uint8 uint16 uint32 uint64</code></li>
-<li>有时候判断某个变量到底是什么数据类型不能直接判断出，例如<code>var n = 10</code>，<code>n</code>到底是什么类型，看不出来，可以采取以下的办法：<code>fmt.Println(&quot;n is %T&quot;, n)</code>，就是打印一下<code>n</code>的type</li>
-<li>有时候需要判断一下某个变量占用的字节数，可以使用<code>fmt.Println(&quot;n is %d&quot;, unsafe.Sizeof(n))</code></li>
+<li>有时候判断某个变量到底是什么数据类型不能直接判断出，例如<code>var n = 10</code>，<code>n</code>到底是什么类型，看不出来，可以采取以下的办法：<code>fmt.Println("n is %T", n)</code>，就是打印一下<code>n</code>的type</li>
+<li>有时候需要判断一下某个变量占用的字节数，可以使用<code>fmt.Println("n is %d", unsafe.Sizeof(n))</code></li>
 </ol>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -761,7 +800,8 @@ go中声明变量的三种基本形式
 go中声明变量的三种基本形式
 单变量的写法
 
-12345678//1、基本声明方式var i int // 声明一个变量i,数据类型为int，
+//1、基本声明方式
+var i int // 声明一个变量i,数据类型为int，默认值会被赋值
                         
                     </div>
                     <div class="publish-info">
@@ -815,9 +855,12 @@ go中声明变量的三种基本形式
 
 从C语言中继承了很多理念，尤其是指针的运用
 
-123func testPtr(num *int) &#123;  *num = 20&#125;
+func testPtr(num *int) {
+  *num = 20
+}
 
-引入包的概念，用于组织程序结构
+
+引入包的概念，用于组织程序结构。单独的go文件必须
                         
                     </div>
                     <div class="publish-info">
@@ -1026,7 +1069,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

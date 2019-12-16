@@ -492,8 +492,12 @@
 <h4 id="2-几个大坑"><a href="#2-几个大坑" class="headerlink" title="2. 几个大坑"></a>2. 几个大坑</h4></li>
 <li>长字符串里面的大坑<br>长字符串可以用<code>+</code>连接符，优雅易懂。但是还可以这么写</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var longStr = &apos;agggggg\</span><br><span class="line">bgggggg\</span><br><span class="line">cgggggg\</span><br><span class="line">d&apos;</span><br><span class="line">//结果依然是aggggggbggggggcggggggd</span><br></pre></td></tr></table></figure>
-<p>上述代码不报错的前提是<code>\</code>后面不能有除了换行符以外的任何字符，即使一个空格就报错<br><img src="http://upload-images.jianshu.io/upload_images/5422064-b7a4686b8d1ce2dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="长字符串的坑.png"></p>
+<pre><code>var longStr = 'agggggg\
+bgggggg\
+cgggggg\
+d'
+//结果依然是aggggggbggggggcggggggd
+</code></pre><p>上述代码不报错的前提是<code>\</code>后面不能有除了换行符以外的任何字符，即使一个空格就报错<br><img src="http://upload-images.jianshu.io/upload_images/5422064-b7a4686b8d1ce2dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="长字符串的坑.png"></p>
 <ul>
 <li>字符串的length属性和字符集<ul>
 <li>字符串的length<strong><em>属性</em></strong>是不可更改的,你爱写啥写啥，length属性不变。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-1bc2ad05fbfc9599.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="length属性.png"></li>
@@ -514,19 +518,56 @@
 <blockquote>
 <p>由于JavaScript引擎（严格说是ES5规格）不能自动识别辅助平面（编号大于0xFFFF）的Unicode字符，导致所有字符串处理函数遇到这类字符，都会产生错误的结果（详见《标准库》一章的String对象章节）。如果要完成字符串相关操作，就必须判断字符是否落在0xD800到0xDFFF这个区间。<br>替换（String.prototype.replace）、截取子字符串（String.prototype.substring, String.prototype.slice）等其他字符串操作，都必须做类似的处理。</p>
 </blockquote>
-<p>代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function getSymbols(string) &#123;</span><br><span class="line">  var length = string.length;</span><br><span class="line">  var index = -1;</span><br><span class="line">  var output = [];</span><br><span class="line">  var character;</span><br><span class="line">  var charCode;</span><br><span class="line">  while (++index &lt; length) &#123;</span><br><span class="line">    character = string.charAt(index);</span><br><span class="line">    charCode = character.charCodeAt(0);</span><br><span class="line">    if (charCode &gt;= 0xD800 &amp;&amp; charCode &lt;= 0xDBFF) &#123;</span><br><span class="line">      output.push(character + string.charAt(++index));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      output.push(character);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return output;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var symbols = getSymbols(&apos;𝌆&apos;);</span><br><span class="line"></span><br><span class="line">symbols.forEach(function(symbol) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<ul>
+<p>代码如下</p>
+<pre><code>function getSymbols(string) {
+  var length = string.length;
+  var index = -1;
+  var output = [];
+  var character;
+  var charCode;
+  while (++index &lt; length) {
+    character = string.charAt(index);
+    charCode = character.charCodeAt(0);
+    if (charCode &gt;= 0xD800 &amp;&amp; charCode &lt;= 0xDBFF) {
+      output.push(character + string.charAt(++index));
+    } else {
+      output.push(character);
+    }
+  }
+  return output;
+}
+
+var symbols = getSymbols('𝌆');
+
+symbols.forEach(function(symbol) {
+  // ...
+});
+</code></pre><ul>
 <li>JavaScript原生提供两个Base64相关方法。<blockquote>
 <p><strong>Base64</strong>是一种基于64个可打印字符来表示<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6" title="二进制" target="_blank" rel="noopener">二进制数据</a>的表示方法。由于2的6次方等于64，所以每6个<a href="https://zh.wikipedia.org/wiki/%E4%BD%8D%E5%85%83" title="比特" target="_blank" rel="noopener">比特</a>为一个单元，对应某个可打印字符。三个<a href="https://zh.wikipedia.org/wiki/%E5%AD%97%E8%8A%82" target="_blank" rel="noopener">字节</a>有24个比特，对应于4个Base64单元，即3个字节可表示4个可打印字符。它可用来作为<a href="https://zh.wikipedia.org/wiki/%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6" title="电子邮件" target="_blank" rel="noopener">电子邮件</a>的传输编码。在Base64中的可打印字符包括字母A-Z、a-z、数字0-9，这样共有62个字符，此外两个可打印符号在不同的系统中而不同。</p>
 </blockquote>
 </li>
 </ul>
-<p>两个方法<br>btoa()：字符串或二进制值转为Base64编码<br>atob()：Base64编码转为原来的编码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var string = &apos;Hello World!&apos;;</span><br><span class="line">btoa(string) // &quot;SGVsbG8gV29ybGQh&quot;</span><br><span class="line">atob(&apos;SGVsbG8gV29ybGQh&apos;) // &quot;Hello World!&quot;</span><br></pre></td></tr></table></figure></p>
-<p>这两个方法不适合非ASCII码的字符，会报错。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btoa(&apos;你好&apos;)</span><br><span class="line">VM1195:1 Uncaught DOMException: Failed to execute &apos;btoa&apos; on &apos;Window&apos;: The string to be encoded contains characters outside of the Latin1 range.</span><br><span class="line">    at &lt;anonymous&gt;:1:1</span><br></pre></td></tr></table></figure>
-<p><strong><em>要将非ASCII码字符转为Base64编码，必须中间插入一个转码环节，再使用这两个方法</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function b64Encode(str) &#123;</span><br><span class="line">  return btoa(encodeURIComponent(str));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function b64Decode(str) &#123;</span><br><span class="line">  return decodeURIComponent(atob(str));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">b64Encode(&apos;你好&apos;) // &quot;JUU0JUJEJUEwJUU1JUE1JUJE&quot;</span><br><span class="line">b64Decode(&apos;JUU0JUJEJUEwJUU1JUE1JUJE&apos;) // &quot;你好&quot;</span><br></pre></td></tr></table></figure>
-<ul>
+<p>两个方法<br>btoa()：字符串或二进制值转为Base64编码<br>atob()：Base64编码转为原来的编码</p>
+<pre><code>var string = 'Hello World!';
+btoa(string) // "SGVsbG8gV29ybGQh"
+atob('SGVsbG8gV29ybGQh') // "Hello World!"
+</code></pre><p>这两个方法不适合非ASCII码的字符，会报错。</p>
+<pre><code>btoa('你好')
+VM1195:1 Uncaught DOMException: Failed to execute 'btoa' on 'Window': The string to be encoded contains characters outside of the Latin1 range.
+    at &lt;anonymous&gt;:1:1
+</code></pre><p><strong><em>要将非ASCII码字符转为Base64编码，必须中间插入一个转码环节，再使用这两个方法</em></strong></p>
+<pre><code>function b64Encode(str) {
+  return btoa(encodeURIComponent(str));
+}
+
+function b64Decode(str) {
+  return decodeURIComponent(atob(str));
+}
+
+b64Encode('你好') // "JUU0JUJEJUEwJUU1JUE1JUJE"
+b64Decode('JUU0JUJEJUEwJUU1JUE1JUJE') // "你好"
+</code></pre><ul>
 <li>undefined和null的区别？<br>这是一个历史遗留问题。<a href="https://twitter.com/BrendanEich/status/333008305461006336" target="_blank" rel="noopener">JS之父在Twitter上的话，需要FQ才能看</a><br>我们应该如何区分呢</li>
 </ul>
 <table>
@@ -549,25 +590,51 @@
 </table>
 <p>var obj = null,别人一眼就能看出你是想声明一个对象,不过此时不想赋值；var a = undefinded，别人一眼就能看出你是想声明一个非对象，此时不想赋值</p>
 <ul>
-<li>对象的key的问题<br>对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。<br>你用for…in的时候那个顺序的<strong><em>随机的</em></strong><br>大坑来啦……如下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">   &apos;name&apos;: &apos;wushao&apos;, </span><br><span class="line">   &apos;age&apos;: 8&#125;</span><br><span class="line">for (var key in obj)&#123;</span><br><span class="line">    console.log(obj.key)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>你是想打印出’wushao’和8来，结果屁都没有。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-836d5d72870a893d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="key的陷阱.png"></p>
-<ul>
+<li>对象的key的问题<br>对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。<br>你用for…in的时候那个顺序的<strong><em>随机的</em></strong><br>大坑来啦……如下代码<pre><code>var obj = {
+ 'name': 'wushao', 
+ 'age': 8}
+for (var key in obj){
+  console.log(obj.key)
+}
+</code></pre>你是想打印出’wushao’和8来，结果屁都没有。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-836d5d72870a893d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="key的陷阱.png"></li>
 <li>注意  [ ]运算符里面<strong><em>必须是字符串，而且是对象的键</em></strong>。这个例子中，key才是字符串，而且是obj的key;你obj.key相当于obj[‘key’]，obj没有这个叫key的键。<br>对象的基本结构式{key: value}<br>key必须是字符串，valu是那7种 的任意一个。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;</span><br><span class="line">  &apos; &apos;: &apos;frank&apos;</span><br><span class="line">  没问题</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>var obj = {
+  ' ': 'frank'
+  没问题
+}
+</code></pre><ul>
 <li>关于key加不加引号的问题。<br>你保证你的key符合标识符规范，可以不加，但是有个默认的引号在上面。如果不符合标识符规范的，必须加引号<br>同理，obj[ ]括号里面不符合标识符规范的，必须加引号。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var person = &#123;</span><br><span class="line">  &apos;09a&apos;: &apos;我不符合标识符规范,key必须加引号保护，否则就报错&apos;,</span><br><span class="line">  name: &apos;我符合标识符规范,引号加不加都可以，反正key一定是个字符串&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/5422064-1c1ba092b1a5689a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="key的写法.png"></p>
+<pre><code>var person = {
+  '09a': '我不符合标识符规范,key必须加引号保护，否则就报错',
+  name: '我符合标识符规范,引号加不加都可以，反正key一定是个字符串'
+}
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/5422064-1c1ba092b1a5689a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="key的写法.png"></p>
 <p>-还有啊，对象的每个key-value的结束，一定记得加逗号啊！！！！，能多写不能少写，最新的ES6可以都写逗号，不报错</p>
 <p>总之，记住一个公式</p>
 <blockquote>
 <p>obj.name 等同于 obj.[‘name’]</p>
 </blockquote>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -866,7 +933,7 @@ JS一定要抠细节，逻辑性。我们这次探讨 内存 的问题、一个I
                     <div class="summary block-with-text">
                         
                             引子今天在实习工作中看到了两个新属性，其实一直就在，但是一直眼瞎，没去MDN去搜搜，今天搜了一下。明白了这俩属性。在这个表单里面的两个以前没见的属性
-12345&lt;form name=&quot;upFileForm&quot; met
+&lt;form name="upFileForm" method="post" acti
                         
                     </div>
                     <div class="publish-info">
@@ -1075,7 +1142,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

@@ -9,9 +9,12 @@
 
 从C语言中继承了很多理念，尤其是指针的运用
 
-123func testPtr(num *int) &amp;#123;  *num = 20&amp;#125;
+func testPtr(num *int) {
+  *num = 20
+}
 
-引入包的概念，用于组织程序结构">
+
+引入包的概念，用于组织程序结构。单独的go文件必须">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -445,7 +448,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    963
+                    1k
                 </div>
                 
 
@@ -472,7 +475,10 @@
 <ol>
 <li>从C语言中继承了很多理念，尤其是指针的运用</li>
 </ol>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">testPtr</span><span class="params">(num *<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  *num = <span class="number">20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">testPtr</span><span class="token punctuation">(</span>num <span class="token operator">*</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">*</span>num <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <ol start="2">
 <li><p>引入包的概念，用于组织程序结构。单独的go文件必须存在于package中</p>
 </li>
@@ -487,8 +493,18 @@
 <li><p>函数支持多个返回值</p>
 </li>
 </ol>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getSumAndSub</span><span class="params">(num1 <span class="keyword">int</span>, num2 <span class="keyword">int</span>)</span> <span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  sum := num1 + num2</span><br><span class="line">  sub := num1 + num2</span><br><span class="line">  <span class="keyword">return</span> sum, sub</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="常见的go命令"><a href="#常见的go命令" class="headerlink" title="常见的go命令"></a>常见的go命令</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> run test.<span class="keyword">go</span> <span class="comment">// 执行go文件，相当于 先编译生成可执行文件后接着执行它</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">go</span> build test.<span class="keyword">go</span> <span class="comment">//编译生成可执行文件</span></span><br><span class="line"><span class="comment">//注意：windows平台生成exe,但是mac就是一个test,无后缀，使用方式./test即可</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">getSumAndSub</span><span class="token punctuation">(</span>num1 <span class="token builtin">int</span><span class="token punctuation">,</span> num2 <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  sum <span class="token operator">:=</span> num1 <span class="token operator">+</span> num2
+  sub <span class="token operator">:=</span> num1 <span class="token operator">+</span> num2
+  <span class="token keyword">return</span> sum<span class="token punctuation">,</span> sub
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="常见的go命令"><a href="#常见的go命令" class="headerlink" title="常见的go命令"></a>常见的go命令</h2><pre class=" language-go"><code class="language-go"><span class="token keyword">go</span> run test<span class="token punctuation">.</span><span class="token keyword">go</span> <span class="token comment" spellcheck="true">// 执行go文件，相当于 先编译生成可执行文件后接着执行它</span>
+
+<span class="token keyword">go</span> build test<span class="token punctuation">.</span><span class="token keyword">go</span> <span class="token comment" spellcheck="true">//编译生成可执行文件</span>
+<span class="token comment" spellcheck="true">//注意：windows平台生成exe,但是mac就是一个test,无后缀，使用方式./test即可</span>
+
+</code></pre>
 <p>两者的三个主要区别：</p>
 <ol>
 <li>go bulid编译后生成的可执行文件，可以直接拿到同平台下但是没有go开发环境的机器下运行。</li>
@@ -503,12 +519,23 @@
 <li>毫无疑问，第一步去官网下载 <code>GO</code>的安装包，Q内需要使用<a href="https://golang.google.cn/dl/" target="_blank" rel="noopener">镜像</a>.</li>
 <li>配置<code>path</code>，即GOROOT变量的位置，代表的是安装go的路径。</li>
 </ol>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在.bash_profile中配置</span></span><br><span class="line">export PATH=$PATH:/usr/local/<span class="keyword">go</span>/bin</span><br><span class="line"><span class="comment">//新版本的go只需要配置这一个就行，GOPATH会有默认值 </span></span><br><span class="line"><span class="comment">// go env可以查看所有的开发变量的配置</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 在.bash_profile中配置</span>
+export PATH<span class="token operator">=</span>$PATH<span class="token punctuation">:</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span><span class="token keyword">go</span><span class="token operator">/</span>bin
+<span class="token comment" spellcheck="true">//新版本的go只需要配置这一个就行，GOPATH会有默认值 </span>
+<span class="token comment" spellcheck="true">// go env可以查看所有的开发变量的配置</span>
+</code></pre>
 <ol start="3">
 <li>在<code>VSCode</code>中安装相关插件，创建.go文件后，会提示你安装<code>Go</code>基础插件，但是其他<code>go</code>依赖的官方包由于Q内网络环境需要单独下载，详见第四步。</li>
 <li>在<code>GOPATH</code>目录的src下（一般默认是/Users/yourMacName/go/src）</li>
 </ol>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd /Users/yourMacName/<span class="keyword">go</span>/src</span><br><span class="line">mkdir golang.org</span><br><span class="line">cd golang.org</span><br><span class="line">mkdir x</span><br><span class="line">cd x</span><br><span class="line">git clone https:<span class="comment">//github.com/golang/tools.git tools</span></span><br><span class="line">git clone https:<span class="comment">//github.com/golang/lint.git</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-go"><code class="language-go">cd <span class="token operator">/</span>Users<span class="token operator">/</span>yourMacName<span class="token operator">/</span><span class="token keyword">go</span><span class="token operator">/</span>src
+mkdir golang<span class="token punctuation">.</span>org
+cd golang<span class="token punctuation">.</span>org
+mkdir x
+cd x
+git clone https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>golang<span class="token operator">/</span>tools<span class="token punctuation">.</span>git tools
+git clone https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>golang<span class="token operator">/</span>lint<span class="token punctuation">.</span>git
+</code></pre>
 <p>然后通过在Vscode中<code>command+shift+p</code></p>
 <p><img src="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdpulf9tj312k0bmq4g.jpg" alt="输入go:install"></p>
 <p>接下来会提示有17个可以安装的依赖包(不同版本数量可能不一样，不一定你的也是17个)，全部勾选，点击<code>OK</code></p>
@@ -525,7 +552,25 @@
 <li>go的转义符(escape char)，<code>\r</code>回车的意思是，替换掉本行开头的字符，例如 小明出去吃饭了\r小刚，最终打印结果是： 小刚出去吃饭了</li>
 <li>如果一行字符实在太长了，可以使用<code>,</code>来进行换行，效果等同于<code>+</code></li>
 </ol>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -781,7 +826,8 @@
 go中声明变量的三种基本形式
 单变量的写法
 
-12345678//1、基本声明方式var i int // 声明一个变量i,数据类型为int，
+//1、基本声明方式
+var i int // 声明一个变量i,数据类型为int，默认值会被赋值
                         
                     </div>
                     <div class="publish-info">
@@ -836,7 +882,7 @@ go中声明变量的三种基本形式
 
 直接采用polyfill
 
-123在index.h
+在index.html
                         
                     </div>
                     <div class="publish-info">
@@ -1045,7 +1091,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

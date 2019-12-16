@@ -9,7 +9,9 @@
 原生DOM接口挺多的，需要花点时间研究下，不过先把基础整好，后面框架估计好学点。
 
 1. DOM是啥1.1 知识回顾先回顾一下HTML的基本结构
-1234567&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&#34;zh-">
+&amp;lt;!DOCTYPE html&gt;
+&amp;lt;html lang=&#34;zh-Hans&#34;&gt;
+&amp;l">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -470,7 +472,14 @@
 <p>原生DOM接口挺多的，需要花点时间研究下，不过先把基础整好，后面框架估计好学点。</p>
 </blockquote>
 <h3 id="1-DOM是啥"><a href="#1-DOM是啥" class="headerlink" title="1. DOM是啥"></a>1. DOM是啥</h3><h4 id="1-1-知识回顾"><a href="#1-1-知识回顾" class="headerlink" title="1.1 知识回顾"></a>1.1 知识回顾</h4><p>先回顾一下HTML的基本结构</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-Hans"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>zh-Hans<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
 <p>以上就是最简单的HTML 5的结构。一般我们会把它处理成一棵树，一棵节点树。<a id="more"></a></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5422064-c0dd70bf82a48666?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="树结构"></p>
 <p>以上就是一棵树，浏览器把html渲染成的树，也就是Document结构。每个框就是一个Element、标题等文本内容是Text。</p>
@@ -484,7 +493,11 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/5422064-e588d6142d6d2bff?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Js基本语法的对应"></p>
 <p>页面中的节点，根据Element、Text、Document、Comment这些构造函数，构造出对象来，内存就理解了。</p>
 <p>比如构造div</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">div </span><br><span class="line">&lt;div&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span> <span class="comment">//打印结果</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span>
+undefined
+div 
+<span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span> <span class="token comment" spellcheck="true">//打印结果</span>
+</code></pre>
 <p><code>createElement</code>就是构造函数。</p>
 <p>把DOM的对应和JS基本语法练习起来。</p>
 <h4 id="1-2-DOM的真面目"><a href="#1-2-DOM的真面目" class="headerlink" title="1.2 DOM的真面目"></a>1.2 DOM的真面目</h4><p>前面的基础分析完了，就可以知道什么是DOM了。</p>
@@ -569,18 +582,25 @@
 <ul>
 <li>document的childNodes只有两个</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.childNodes</span><br><span class="line">(<span class="number">2</span>) [<span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span>, html]</span></span><br><span class="line"><span class="xml">	0:<span class="meta">&lt;!DOCTYPE html&gt;</span></span></span><br><span class="line"><span class="xml">	1:html</span></span><br><span class="line"><span class="xml">	length:2</span></span><br><span class="line"><span class="xml">	__proto__: NodeList</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">document<span class="token punctuation">.</span>childNodes
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span><span class="token punctuation">,</span> html<span class="token punctuation">]</span>
+    <span class="token number">0</span><span class="token punctuation">:</span><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE html<span class="token operator">></span>
+    <span class="token number">1</span><span class="token punctuation">:</span>html
+    length<span class="token punctuation">:</span><span class="token number">2</span>
+    __proto__<span class="token punctuation">:</span> NodeList
+</code></pre>
 <ul>
-<li>所以我们不想打印出text节点，可以使用<code>children</code>属性啊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ParentNode.children //ParentNode要是一个HTMLCollection</span><br></pre></td></tr></table></figure>
-</li>
+<li>所以我们不想打印出text节点，可以使用<code>children</code>属性啊<pre><code>ParentNode.children //ParentNode要是一个HTMLCollection
+</code></pre>上述<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ParentNode/children" target="_blank" rel="noopener">children属性</a>会返回 一个Node的子elements 而没有text节点。</li>
 </ul>
-<p>上述<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ParentNode/children" target="_blank" rel="noopener">children属性</a>会返回 一个Node的子elements 而没有text节点。</p>
 <h6 id="Node-firstChild和Node-lastChild"><a href="#Node-firstChild和Node-lastChild" class="headerlink" title="Node.firstChild和Node.lastChild"></a>Node.firstChild和Node.lastChild</h6><p><code>firstChild</code>属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回<code>null</code>（注意，不是<code>undefined</code>）。</p>
 <p><code>Node.lastChild</code>属性返回当前节点的最后一个子节点，如果当前节点没有子节点，则返回null。</p>
 <h6 id="Node-nextSibling和Node-previousSibling"><a href="#Node-nextSibling和Node-previousSibling" class="headerlink" title="Node.nextSibling和Node.previousSibling"></a>Node.nextSibling和Node.previousSibling</h6><p><code>Node.nextSibling</code>属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回<code>null</code>。</p>
 <p><code>previousSibling</code>属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回<code>null</code>。</p>
 <p><strong>以上的三组属性使用时一定要注意结果会有text的影响。</strong></p>
-<h6 id="Node-parentNode"><a href="#Node-parentNode" class="headerlink" title="Node.parentNode"></a>Node.parentNode</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.parentNode</span><br><span class="line"><span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<h6 id="Node-parentNode"><a href="#Node-parentNode" class="headerlink" title="Node.parentNode"></a>Node.parentNode</h6><pre class=" language-javascript"><code class="language-javascript">document<span class="token punctuation">.</span>parentNode
+<span class="token keyword">null</span>
+</code></pre>
 <p><code>parentNode</code>属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：<code>element</code>节点、<code>document</code>节点和<code>documentfragment</code>节点。</p>
 <p><strong>而且document节点和documentfragment节点，它们的父节点都是null。另外，对于那些生成后还没插入DOM树的节点，父节点也是null。</strong></p>
 <h6 id="Node-parentElement"><a href="#Node-parentElement" class="headerlink" title="Node.parentElement"></a>Node.parentElement</h6><p>parentElement属性返回当前节点的父Element节点。如果当前节点没有父节点，或者父节点类型不是Element节点，则返回null。</p>
@@ -619,20 +639,36 @@
 </blockquote>
 <p>[图片上传失败…(image-f7614d-1515465954210)]<br>如果你想克隆同一个id的元素到不同的元素后面，会报错。</p>
 <h5 id="Node-contains"><a href="#Node-contains" class="headerlink" title="Node.contains()"></a>Node.contains()</h5><p>判断一个节点是不是另一个节点的子节点。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.contains(div1)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">div<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>div1<span class="token punctuation">)</span>
+</code></pre>
 <p>div1是div的子节点就返回true。</p>
-<h5 id="Node-hasChildNodes"><a href="#Node-hasChildNodes" class="headerlink" title="Node.hasChildNodes()"></a>Node.hasChildNodes()</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div.hasChildNodes()</span><br></pre></td></tr></table></figure>
+<h5 id="Node-hasChildNodes"><a href="#Node-hasChildNodes" class="headerlink" title="Node.hasChildNodes()"></a>Node.hasChildNodes()</h5><pre class=" language-javascript"><code class="language-javascript">div<span class="token punctuation">.</span><span class="token function">hasChildNodes</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <p>判断div节点是否还有子节点，有子节点就返回true。</p>
 <h5 id="Node-insertBefore"><a href="#Node-insertBefore" class="headerlink" title="Node.insertBefore()"></a>Node.insertBefore()</h5><p>在当前节点的某个子节点之前再插入一个子节点。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> insertedElement = parentElement.insertBefore(newElement, referenceElement);</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> insertedElement <span class="token operator">=</span> parentElement<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>newElement<span class="token punctuation">,</span> referenceElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <p>在parentElement节点的子节点referenceElement前面插入一个newElement节点。</p>
 <p>如果<code>referenceElement</code>为<code>null</code>则<code>newElement</code>将被插入到子节点的末尾<em>。</em>如果<code>newElement</code>已经在DOM树中，<code>newElement</code>首先会从DOM树中移除。</p>
 <p><strong>没有 <code>insertAfter</code> 方法。可以使用 <code>insertBefore</code> 方法和 <code>nextSibling</code> 来模拟它。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parentDiv.insertBefore(sp1, sp2.nextSibling);</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">parentDiv<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>sp1<span class="token punctuation">,</span> sp2<span class="token punctuation">.</span>nextSibling<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <p>只要sp2.nextSibling === null，那么就可以在parentDiv的末尾添加sp1元素。</p>
 <h5 id="Node-isEqualNode-和Node-isSameNode"><a href="#Node-isEqualNode-和Node-isSameNode" class="headerlink" title="Node.isEqualNode()和Node.isSameNode()"></a>Node.isEqualNode()和Node.isSameNode()</h5><p>两者都是比较两个node是否相等。不过isEqualNode()是两个node看起来相等就返回true，isSameNode()严格使用===判断，而且该方法已被废弃，如果要严格判断两个node是否指向同一个对象，直接用node1 === node2。</p>
 <h5 id="Node-normalize"><a href="#Node-normalize" class="headerlink" title="Node.normalize()"></a>Node.normalize()</h5><p>就是规范化的意思。什么是规范化，在一个”规范化”后的DOM树中，不存在一个空的文本节点，或者两个相邻的文本节点。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> wrapper = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line"></span><br><span class="line">wrapper.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Part 1 "</span>));</span><br><span class="line">wrapper.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Part 2 "</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这时(规范化之前),wrapper.childNodes.length === 2</span></span><br><span class="line"><span class="comment">// wrapper.childNodes[0].textContent === "Part 1 "</span></span><br><span class="line"><span class="comment">// wrapper.childNodes[1].textContent === "Part 2 "</span></span><br><span class="line"></span><br><span class="line">wrapper.normalize();</span><br><span class="line"><span class="comment">// 现在(规范化之后), wrapper.childNodes.length === 1</span></span><br><span class="line"><span class="comment">// wrapper.childNodes[0].textContent === "Part 1 Part 2"</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> wrapper <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+wrapper<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">"Part 1 "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+wrapper<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">"Part 2 "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 这时(规范化之前),wrapper.childNodes.length === 2</span>
+<span class="token comment" spellcheck="true">// wrapper.childNodes[0].textContent === "Part 1 "</span>
+<span class="token comment" spellcheck="true">// wrapper.childNodes[1].textContent === "Part 2 "</span>
+
+wrapper<span class="token punctuation">.</span><span class="token function">normalize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 现在(规范化之后), wrapper.childNodes.length === 1</span>
+<span class="token comment" spellcheck="true">// wrapper.childNodes[0].textContent === "Part 1 Part 2"</span>
+</code></pre>
 <p>以上是MDN的例子，很好懂。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5422064-1502e52a3dd0b09a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="未规范化的时候"></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/5422064-6fc3122b503a25d9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="规范化后"></p>
@@ -646,7 +682,25 @@
 <p><img src="http://upload-images.jianshu.io/upload_images/5422064-5b4db6c28cd16124?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="替换了"></p>
 <p>我做的实验<a href="http://js.jirengu.com/pebowoloto/1/edit?html,js,output" target="_blank" rel="noopener">demo</a></p>
 <h4 id="Document属性和方法"><a href="#Document属性和方法" class="headerlink" title="Document属性和方法"></a>Document属性和方法</h4><p>关于Document接口的属性和方法，且听下回分解~</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -950,7 +1004,8 @@
 函数内部可以传参，也可以被当做参数传递
 
 目前定义函数有五种方法
-具名函数来定义1234function f(x, y)&#123;
+具名函数来定义function f(x, y){
+  return
                         
                     </div>
                     <div class="publish-info">
@@ -1159,7 +1214,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

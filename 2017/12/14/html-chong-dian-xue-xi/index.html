@@ -440,14 +440,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    10 分
                 </div>
                 
 				
@@ -465,81 +465,125 @@
             <div id="articleContent">
                 <p><strong>通过重点标签的学习前进</strong></p>
 <h3 id="一、-iframe-的学习"><a href="#一、-iframe-的学习" class="headerlink" title="一、 iframe 的学习"></a>一、 <code>iframe</code> 的学习</h3><p>iframe通俗的的理解就是，可以在页面里面嵌套新的页面<br>它的使用会使页面变卡，一般会有一个固定的尺寸，默认的。他也属于可替换元素行列。我们可以通过CSS来改变尺寸<br><code>frameborder</code>消除边框<br><code>name</code>属性与a标签结合</p>
-<pre><code>&lt;!-- &lt;iframe name=iframe src=&quot;http://qq.com&quot; &gt;&lt;/iframe&gt; --&gt;
+<pre><code>&lt;!-- &lt;iframe name=iframe src="http://qq.com" &gt;&lt;/iframe&gt; --&gt;
 
-&lt;iframe name=&quot;000&quot; src=&quot;&quot; &gt;&lt;/iframe&gt;
-&lt;a target=&quot;000&quot; href=&quot;http://qq.com&quot;&gt;aaaa&lt;/a&gt;
+&lt;iframe name="000" src="" &gt;&lt;/iframe&gt;
+&lt;a target="000" href="http://qq.com"&gt;aaaa&lt;/a&gt;
 </code></pre><p><code>a</code>标签的链接会在iframe的内嵌窗口里面打开<br><a id="more"></a></p>
 <h3 id="二、a标签的学习"><a href="#二、a标签的学习" class="headerlink" title="二、a标签的学习"></a>二、<code>a</code>标签的学习</h3><p>a标签四种常见的target</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://qq.com&quot; target=&quot;_blank&quot;&gt;topQQ&lt;/a&gt; //在新的页面打开链接</span><br><span class="line"> &lt;a href=&quot;http://qq.com&quot; target=&quot;_self&quot;&gt;topQQ&lt;/a&gt; //在当前窗口打开链接</span><br><span class="line"> &lt;a href=&quot;http://qq.com&quot; target=&quot;_parent&quot;&gt;parentQQ&lt;/a&gt; //在父级</span><br><span class="line"> &lt;a href=&quot;http://qq.com&quot; target=&quot;_top&quot;&gt;topQQ&lt;/a&gt; // 在顶级</span><br></pre></td></tr></table></figure>
-<p><code>a</code>标签可以设置download属性，使其不打开链接。而是下载当前页面的HTML。</p>
+<pre><code>       &lt;a href="http://qq.com" target="_blank"&gt;topQQ&lt;/a&gt; //在新的页面打开链接
+        &lt;a href="http://qq.com" target="_self"&gt;topQQ&lt;/a&gt; //在当前窗口打开链接
+        &lt;a href="http://qq.com" target="_parent"&gt;parentQQ&lt;/a&gt; //在父级
+        &lt;a href="http://qq.com" target="_top"&gt;topQQ&lt;/a&gt; // 在顶级
+
+</code></pre><p><code>a</code>标签可以设置download属性，使其不打开链接。而是下载当前页面的HTML。</p>
 <p><strong><em>也可以把你当前目录下的文件下载</em></strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;http://qq.com&quot; download&gt;下载&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;222/分配的ip地址.xls&quot; download&gt;下载文件&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p><code>a</code>标签会自动添加当前页面的协议。例如以下例子，如果不写http协议，会根据当前页面的协议自动加上，如果当前页面是http协议（通过下面的http-server模拟），那么就打开<code>qq.com</code>，如果只是本地的HTML，那么协议时file协议，不会下载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;//qq.com&quot; download&gt;下载&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;//qq.com&quot; download&gt;下载&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p><code>a</code>标签会在地址栏后加上锚点，即#开始的那串字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;#kkkk&quot; download&gt;下载文件&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p><code>a</code>标签会在地址栏后加上?name=wushao</p>
-<h3 id="一定要记得a标签可以发起get请求"><a href="#一定要记得a标签可以发起get请求" class="headerlink" title="一定要记得a标签可以发起get请求"></a><strong><em>一定要记得a标签可以发起get请求</em></strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;?name=wushao&quot; download&gt;下载文件&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p><code>a</code>标签可以使用<strong><em>伪协议</em></strong>，这是历史遗留问题，以前的前端想在<code>a</code>标签里面直接打开js代码。现在常用于一些奇葩需求。<br>如果，你不想这个<code>a</code>标签，有任何动作，无法点击，就用伪协议。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;javaScript:;&quot; target=&quot;_top&quot;&gt;topQQ&lt;/a&gt; //无法操作了</span><br><span class="line">&lt;a href=&quot;javaScript:alert(1);&quot; target=&quot;_top&quot;&gt;topQQ&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>反之如果你只是加锚点，那么会定位到开始位置。<br>如果你<code>href=&quot; &quot;</code>，那么会刷新页面。<br>综上所述，如果你对<code>a</code>标签什么也不想做，就用伪协议</p>
+<pre><code> &lt;a href="http://qq.com" download&gt;下载&lt;/a&gt;
+ &lt;a href="222/分配的ip地址.xls" download&gt;下载文件&lt;/a&gt;
+</code></pre><p><code>a</code>标签会自动添加当前页面的协议。例如以下例子，如果不写http协议，会根据当前页面的协议自动加上，如果当前页面是http协议（通过下面的http-server模拟），那么就打开<code>qq.com</code>，如果只是本地的HTML，那么协议时file协议，不会下载</p>
+<pre><code>&lt;a href="//qq.com" download&gt;下载&lt;/a&gt;
+</code></pre><pre><code>&lt;a href="//qq.com" download&gt;下载&lt;/a&gt;
+</code></pre><p><code>a</code>标签会在地址栏后加上锚点，即#开始的那串字符串</p>
+<pre><code>&lt;a href="#kkkk" download&gt;下载文件&lt;/a&gt;
+</code></pre><p><code>a</code>标签会在地址栏后加上?name=wushao</p>
+<h3 id="一定要记得a标签可以发起get请求"><a href="#一定要记得a标签可以发起get请求" class="headerlink" title="一定要记得a标签可以发起get请求"></a><strong><em>一定要记得a标签可以发起get请求</em></strong></h3><pre><code>&lt;a href="?name=wushao" download&gt;下载文件&lt;/a&gt;
+</code></pre><p><code>a</code>标签可以使用<strong><em>伪协议</em></strong>，这是历史遗留问题，以前的前端想在<code>a</code>标签里面直接打开js代码。现在常用于一些奇葩需求。<br>如果，你不想这个<code>a</code>标签，有任何动作，无法点击，就用伪协议。</p>
+<pre><code>&lt;a href="javaScript:;" target="_top"&gt;topQQ&lt;/a&gt; //无法操作了
+&lt;a href="javaScript:alert(1);" target="_top"&gt;topQQ&lt;/a&gt;
+</code></pre><p>反之如果你只是加锚点，那么会定位到开始位置。<br>如果你<code>href=" "</code>，那么会刷新页面。<br>综上所述，如果你对<code>a</code>标签什么也不想做，就用伪协议</p>
 <hr>
 <p>小型服务器 <code>npm i -g http-server</code><br>它会安装在npm目录下，把bin目录添加到<code>~/.bashrc</code>脚本配置文件里面，在文件的最后一行加上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;http-server的绝对路径:$PATH&quot;</span><br></pre></td></tr></table></figure>
-<p>配置好path之后，就可以直接使用了。<br>在你想模拟http协议环境的时候，在那个目录下打开http-server就可以用了</p>
+<pre><code>export PATH="http-server的绝对路径:$PATH"
+</code></pre><p>配置好path之后，就可以直接使用了。<br>在你想模拟http协议环境的时候，在那个目录下打开http-server就可以用了</p>
 <hr>
 <h3 id="三、form标签的学习"><a href="#三、form标签的学习" class="headerlink" title="三、form标签的学习"></a>三、<code>form</code>标签的学习</h3><p><code>form</code> <code>a</code> 标签最大的区别就是<code>form</code>标签是post提交，虽然你可以修改成get,但是没有人蛋疼的这么做。</p>
 <ul>
-<li>默认的get方法演示<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;users&quot; &gt;</span><br><span class="line">        用户:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&lt;br&gt;</span><br><span class="line">        密码:&lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">        &lt;!-- &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt; --&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; name=&quot;button&quot; value=&quot;button&quot;&gt;</span><br><span class="line">        &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br><span class="line"> &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-</li>
+<li>默认的get方法演示<pre><code>&lt;form action="users" &gt;
+      用户:&lt;input type="text" name="name"&gt;&lt;br&gt;
+      密码:&lt;input type="text" name="password"&gt;&lt;br&gt;
+      &lt;!-- &lt;input type="submit" value="提交"&gt; --&gt;
+      &lt;input type="button" name="button" value="button"&gt;
+      &lt;button type="submit"&gt;提交&lt;/button&gt;
+&lt;/form&gt;
+</code></pre><img src="http://upload-images.jianshu.io/upload_images/5422064-9d8f209cb18382ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="form默认的get方法.png"></li>
 </ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/5422064-9d8f209cb18382ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="form默认的get方法.png"></p>
 <p><strong><em>以上是智障的写法，下面是优雅的写法</em></strong>。</p>
 <ul>
-<li>注意form必须要用一个type=submit的input不然无法提交数据！！！！<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;users&quot;  method=&quot;post&quot;&gt;</span><br><span class="line">        用户:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&lt;br&gt;</span><br><span class="line">        密码:&lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; name=&quot;button&quot; value=&quot;button&quot;&gt;</span><br><span class="line"> &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/5422064-a7445be12ba09f4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="type是submit和button.png"><br><img src="http://upload-images.jianshu.io/upload_images/5422064-51df818de4d761f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="form方法post的方法.png"></p>
-<ul>
+<li>注意form必须要用一个type=submit的input不然无法提交数据！！！！<pre><code>&lt;form action="users"  method="post"&gt;
+      用户:&lt;input type="text" name="name"&gt;&lt;br&gt;
+      密码:&lt;input type="text" name="password"&gt;&lt;br&gt;
+      &lt;input type="submit" value="提交"&gt;
+      &lt;input type="button" name="button" value="button"&gt;
+&lt;/form&gt;
+</code></pre><img src="http://upload-images.jianshu.io/upload_images/5422064-a7445be12ba09f4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="type是submit和button.png"><br><img src="http://upload-images.jianshu.io/upload_images/5422064-51df818de4d761f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="form方法post的方法.png"></li>
 <li>以前我们在请求里面只能看见前三个部分，有了form标签之后，终于能看到第四部分，form data啦<br><img src="http://upload-images.jianshu.io/upload_images/5422064-73056ef251926bcb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="post解析.png"></li>
 <li>如果你的form表单里面没有一个type=submit的input,可以使用type=submit的<code>button</code>的标签,也可以使用<button>提交</button></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;users&quot; &gt;</span><br><span class="line">      用户:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&lt;br&gt;</span><br><span class="line">      密码:&lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">      &lt;!-- &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt; --&gt;</span><br><span class="line">      &lt;input type=&quot;button&quot; name=&quot;button&quot; value=&quot;button&quot;&gt;</span><br><span class="line">      &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">      //等价于 &lt;button &gt;提交&lt;/button&gt;</span><br><span class="line">  &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<hr>
+<pre><code>  &lt;form action="users" &gt;
+        用户:&lt;input type="text" name="name"&gt;&lt;br&gt;
+        密码:&lt;input type="text" name="password"&gt;&lt;br&gt;
+        &lt;!-- &lt;input type="submit" value="提交"&gt; --&gt;
+        &lt;input type="button" name="button" value="button"&gt;
+        &lt;button type="submit"&gt;提交&lt;/button&gt;
+        //等价于 &lt;button &gt;提交&lt;/button&gt;
+    &lt;/form&gt;
+</code></pre><hr>
 <p>form表单<strong><em>有且只有</em></strong>两个方法，你不规定method那么就是get,你就是智障；所以你规定method=”post”，你不智障；如果你写了这两种之外的方法，那么还是按照get方法提交，你是智障中的战斗机。</p>
 <hr>
 <h3 id="四、input-button标签的学习"><a href="#四、input-button标签的学习" class="headerlink" title="四、input button标签的学习"></a>四、<code>input</code> <code>button</code>标签的学习</h3><ul>
 <li><code>input</code> <code>button</code> 标签的最大区别就是<code>input</code>标签是空标签。</li>
 <li><code>input</code> 标签的<code>type</code>有很多种<br>而且input<strong><em>必须有name属性</em></strong>，因为你提交的数据要用，组成name=value。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;POST-name&quot; type=&quot;text&quot; name=&quot;name&quot;&gt; //普通文本</span><br><span class="line">&lt;input id=&quot;POST-name&quot; type=&quot;password&quot; name=&quot;password&quot;&gt; //密码</span><br><span class="line">&lt;input id=&quot;POST-name&quot; type=&quot;submit&quot; value=&quot;提交&quot;&gt; //提交</span><br><span class="line">&lt;input id=&quot;POST-name&quot; type=&quot;checkbox&quot; name=&quot;name&quot;&gt; //复选框</span><br><span class="line">&lt;input id=&quot;POST-name&quot; type=&quot;radio&quot; name=&quot;name&quot;&gt; //单选框</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>&lt;input id="POST-name" type="text" name="name"&gt; //普通文本
+&lt;input id="POST-name" type="password" name="password"&gt; //密码
+&lt;input id="POST-name" type="submit" value="提交"&gt; //提交
+&lt;input id="POST-name" type="checkbox" name="name"&gt; //复选框
+&lt;input id="POST-name" type="radio" name="name"&gt; //单选框
+
+</code></pre><ul>
 <li>复选框和单选框的小练习</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;users&quot; method=&quot;post&quot;&gt;</span><br><span class="line">     用户:&lt;input type=&quot;text&quot; name=&quot;name&quot;&gt;&lt;br&gt;</span><br><span class="line">     密码:&lt;input type=&quot;text&quot; name=&quot;password&quot;&gt;&lt;br&gt;</span><br><span class="line">     &lt;!-- &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt; --&gt;</span><br><span class="line">     &lt;input type=&quot;button&quot; name=&quot;button&quot; value=&quot;button&quot;&gt;</span><br><span class="line">     &lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br><span class="line">     &lt;br&gt;</span><br><span class="line">     &lt;input id=&quot;love&quot; type=&quot;checkbox&quot; name=&quot;loveme&quot;&gt; &lt;label for=&quot;love&quot;&gt;爱我 &lt;/label&gt;</span><br><span class="line">     &lt;input id=&quot;eat&quot; type=&quot;checkbox&quot; name=&quot;loveme&quot;&gt; &lt;label for=&quot;eat&quot;&gt;馒头 &lt;/label&gt; </span><br><span class="line">     &lt;input id=&quot;play&quot; type=&quot;checkbox&quot; name=&quot;loveme&quot; checked&gt; &lt;label for=&quot;play&quot;&gt;篮球 &lt;/label&gt;</span><br><span class="line">     &lt;input id=&quot;apple&quot; type=&quot;radio&quot; name=&quot;name&quot; checked=&quot;checked&quot;&gt;&lt;label for=&quot;apple&quot;&gt;苹果 &lt;/label&gt; </span><br><span class="line">     &lt;input id=&quot;orange&quot; type=&quot;radio&quot; name=&quot;name&quot;&gt;&lt;label for=&quot;orange&quot;&gt;橘子 &lt;/label&gt;  </span><br><span class="line"> &lt;/form&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/5422064-64cee1f0e79b16ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="checkbox和radio.png"></p>
+<pre><code>   &lt;form action="users" method="post"&gt;
+        用户:&lt;input type="text" name="name"&gt;&lt;br&gt;
+        密码:&lt;input type="text" name="password"&gt;&lt;br&gt;
+        &lt;!-- &lt;input type="submit" value="提交"&gt; --&gt;
+        &lt;input type="button" name="button" value="button"&gt;
+        &lt;button type="submit"&gt;提交&lt;/button&gt;
+        &lt;br&gt;
+        &lt;input id="love" type="checkbox" name="loveme"&gt; &lt;label for="love"&gt;爱我 &lt;/label&gt;
+        &lt;input id="eat" type="checkbox" name="loveme"&gt; &lt;label for="eat"&gt;馒头 &lt;/label&gt; 
+        &lt;input id="play" type="checkbox" name="loveme" checked&gt; &lt;label for="play"&gt;篮球 &lt;/label&gt;
+        &lt;input id="apple" type="radio" name="name" checked="checked"&gt;&lt;label for="apple"&gt;苹果 &lt;/label&gt; 
+        &lt;input id="orange" type="radio" name="name"&gt;&lt;label for="orange"&gt;橘子 &lt;/label&gt;  
+    &lt;/form&gt;
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/5422064-64cee1f0e79b16ff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="checkbox和radio.png"></p>
 <p>checked=”checked” 与 直接书写 checked 一样的效果</p>
 <ul>
 <li>注意以上的代码中，包含的 <code>label</code>标签，有时候我们为了人性化的需求，只要鼠标点中文字的一部分就算选中了，所以用 label标签的for属性与input的id属性关联。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;play&quot; type=&quot;checkbox&quot; name=&quot;loveme&quot; checked&gt; &lt;label for=&quot;play&quot;&gt;篮球 &lt;/label&gt;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>&lt;input id="play" type="checkbox" name="loveme" checked&gt; &lt;label for="play"&gt;篮球 &lt;/label&gt;
+</code></pre><ul>
 <li>当然了，你身为一个老司机，应该这么写</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;label &gt;&lt;input type=&quot;checkbox&quot; name=&quot;loveme&quot; checked&gt; 篮球 &lt;/label&gt;</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>&lt;label &gt;&lt;input type="checkbox" name="loveme" checked&gt; 篮球 &lt;/label&gt;
+</code></pre><ul>
 <li>省了两个属性，简洁优雅。<br><code>button</code>标签也有很多<code>type</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;button name=&quot;button&quot; type=&quot;button&quot;&gt; Click me &lt;/button&gt; </span><br><span class="line">//仅表示按钮，没有任何作用.它可以有与元素事件相关的客户端脚本，当事件出现时可触发,与js结合使用</span><br><span class="line">&lt;button name=&quot;button&quot; type=&quot;submit&quot;&gt; Click me &lt;/button&gt;</span><br><span class="line">//此按钮提交表单数据给服务器</span><br></pre></td></tr></table></figure>
-<ul>
+<pre><code>&lt;button name="button" type="button"&gt; Click me &lt;/button&gt; 
+//仅表示按钮，没有任何作用.它可以有与元素事件相关的客户端脚本，当事件出现时可触发,与js结合使用
+&lt;button name="button" type="submit"&gt; Click me &lt;/button&gt;
+//此按钮提交表单数据给服务器
+</code></pre><ul>
 <li>input 也可以实现滑动的效果</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;range&quot; name=&quot;&quot; value=&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="http://upload-images.jianshu.io/upload_images/5422064-d525712e3354c57f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="range.png"></p>
-<h3 id="五、下拉框"><a href="#五、下拉框" class="headerlink" title="五、下拉框"></a>五、下拉框</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;select&gt;</span><br><span class="line">      &lt;option value=&quot;1&quot;&gt;湖人&lt;/option&gt;</span><br><span class="line">      &lt;option value=&quot;2&quot; selected&gt;凯尔特人人&lt;/option&gt;</span><br><span class="line">      &lt;option value=&quot;3&quot;&gt;马刺&lt;/option&gt;</span><br><span class="line"> &lt;/select&gt;</span><br></pre></td></tr></table></figure>
-<p>凯尔特人人是默认勾选的</p>
+<pre><code>&lt;input type="range" name="" value=""&gt;
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/5422064-d525712e3354c57f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="range.png"></p>
+<h3 id="五、下拉框"><a href="#五、下拉框" class="headerlink" title="五、下拉框"></a>五、下拉框</h3><pre><code>&lt;select&gt;
+      &lt;option value="1"&gt;湖人&lt;/option&gt;
+      &lt;option value="2" selected&gt;凯尔特人人&lt;/option&gt;
+      &lt;option value="3"&gt;马刺&lt;/option&gt;
+ &lt;/select&gt;
+</code></pre><p>凯尔特人人是默认勾选的</p>
 <h3 id="六、table标签的学习"><a href="#六、table标签的学习" class="headerlink" title="六、table标签的学习"></a>六、<code>table</code>标签的学习</h3><p><code>table</code>在古代用来做布局，现在基本不用了。<br>只有四个元素，thead、tbody、tfoot、colgroup。即使你不写tbody你也有这个标签，而且可以不止一个。thead里面有tr、th，tbody里面有tr、td，tfoot里面有tr、td，colgroup里面有col,用来控制列的宽度，基本不使用了。我现在维护的网页，用的<code>table</code> 布局，修改很麻烦</p>
 <table>
 <thead>
@@ -559,14 +603,52 @@
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">  &lt;thead&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;th&gt;Header content 1&lt;/th&gt;</span><br><span class="line">      &lt;th&gt;Header content 2&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/thead&gt;</span><br><span class="line">  &lt;tfoot&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;td&gt;Footer content 1&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;Footer content 2&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/tfoot&gt;</span><br><span class="line">  //即使写在这里。浏览器也会把他放到底部去</span><br><span class="line">  &lt;tbody&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">      &lt;td&gt;Body content 1&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;Body content 2&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">  &lt;/tbody&gt;</span><br><span class="line">  //可以包含多个tbody</span><br></pre></td></tr></table></figure>
-<hr>
+<pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Header content 1&lt;/th&gt;
+      &lt;th&gt;Header content 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Footer content 1&lt;/td&gt;
+      &lt;td&gt;Footer content 2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+  //即使写在这里。浏览器也会把他放到底部去
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Body content 1&lt;/td&gt;
+      &lt;td&gt;Body content 2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  //可以包含多个tbody
+</code></pre><hr>
 <p><code>noscript</code>标签表示如果用户禁用了js,就显示该标签里面的内容</p>
 <hr>
 <h3 id="七、空元素"><a href="#七、空元素" class="headerlink" title="七、空元素"></a>七、<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">空元素</a></h3><p>就是里面不能有内容的标签 </p>
-<h3 id="八、可替换标签"><a href="#八、可替换标签" class="headerlink" title="八、可替换标签 "></a>八、<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换标签 </a></h3><p>CSS 里，<strong>可替换元素（replaced element）</strong>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有<br> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" title="HTML Image 元素（ &lt;img&gt; ）代表文档中的一个图像。" target="_blank" rel="noopener"><code>&lt;img&gt;</code></a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" title="HTML &lt;object&gt; 元素（或者称作 HTML 嵌入对象元素）表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源。" target="_blank" rel="noopener"><code>&lt;object&gt;</code></a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" title="HTML &lt;video&gt; 元素 用于在HTML或者XHTML文档中嵌入视频内容。" target="_blank" rel="noopener"><code>&lt;video&gt;</code></a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" title="HTML &lt;textarea&gt; 元素表示一个多行纯文本编辑控件。" target="_blank" rel="noopener"><code>&lt;textarea&gt;</code></a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" title="HTML &lt;input&gt; 元素用于为基于Web的表单创建交互式控件，以便接受来自用户的数据。" target="_blank" rel="noopener"><code>&lt;input&gt;</code></a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" title="HTML &lt;audio&gt; 元素用于在文档中表示音频内容。 &lt;audio&gt; 元素可以包含多个音频资源， 这些音频资源可以使用 src 属性或者&lt;source&gt; 元素来进行描述； 浏览器将会选择最合适的一个来使用。对于不支持&lt;audio&gt;元素的浏览器，&lt;audio&gt;元素也可以作为浏览器不识别的内容加入到文档中。" target="_blank" rel="noopener"><code>&lt;audio&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" title="&lt;canvas&gt;元素可被用来通过脚本（通常是JavaScript）绘制图形。比如,它可以被用来绘制图形,制作图片集合,甚至用来实现动画效果。你可以(也应该)在元素标签内写入可提供替代的的代码内容，这些内容将会在在旧的、不支持&lt;canvas&gt;元素的浏览器或是禁用了JavaScript的浏览器内渲染并展现。" target="_blank" rel="noopener"><code>&lt;canvas&gt;</code></a><br>上面是MDN的原话，反正我看的云里雾里。用图片解释一下吧。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-3a2c1ea1d92f394f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="可替换元素.png"><br>img标签的尺寸其实是由src决定的，但只是第三级的重要性，你可以用width修改，你也可以用CSS来修改。</p>
+<h3 id="八、可替换标签"><a href="#八、可替换标签" class="headerlink" title="八、可替换标签 "></a>八、<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换标签 </a></h3><p>CSS 里，<strong>可替换元素（replaced element）</strong>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有<br> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" title="HTML Image 元素（ <img> ）代表文档中的一个图像。" target="_blank" rel="noopener"><code>&lt;img&gt;</code></a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" title="HTML <object> 元素（或者称作 HTML 嵌入对象元素）表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源。" target="_blank" rel="noopener"><code>&lt;object&gt;</code></a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" title="HTML <video> 元素 用于在HTML或者XHTML文档中嵌入视频内容。" target="_blank" rel="noopener"><code>&lt;video&gt;</code></a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" title="HTML <textarea> 元素表示一个多行纯文本编辑控件。" target="_blank" rel="noopener"><code>&lt;textarea&gt;</code></a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" title="HTML <input> 元素用于为基于Web的表单创建交互式控件，以便接受来自用户的数据。" target="_blank" rel="noopener"><code>&lt;input&gt;</code></a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" title="HTML <audio> 元素用于在文档中表示音频内容。 <audio> 元素可以包含多个音频资源， 这些音频资源可以使用 src 属性或者<source> 元素来进行描述； 浏览器将会选择最合适的一个来使用。对于不支持<audio>元素的浏览器，<audio>元素也可以作为浏览器不识别的内容加入到文档中。" target="_blank" rel="noopener"><code>&lt;audio&gt;</code></a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" title="<canvas>元素可被用来通过脚本（通常是JavaScript）绘制图形。比如,它可以被用来绘制图形,制作图片集合,甚至用来实现动画效果。你可以(也应该)在元素标签内写入可提供替代的的代码内容，这些内容将会在在旧的、不支持<canvas>元素的浏览器或是禁用了JavaScript的浏览器内渲染并展现。" target="_blank" rel="noopener"><code>&lt;canvas&gt;</code></a><br>上面是MDN的原话，反正我看的云里雾里。用图片解释一下吧。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-3a2c1ea1d92f394f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="可替换元素.png"><br>img标签的尺寸其实是由src决定的，但只是第三级的重要性，你可以用width修改，你也可以用CSS来修改。</p>
 <h3 id="九、全局属性"><a href="#九、全局属性" class="headerlink" title="九、全局属性"></a>九、<a href="https://www.w3.org/TR/html5/dom.html#global-attributes" target="_blank" rel="noopener">全局属性</a></h3><h3 id="十、display不止三种"><a href="#十、display不止三种" class="headerlink" title="十、display不止三种"></a>十、display不止三种</h3><p>不仅仅有 <code>none</code>    <code>inline</code>    <code>block</code> <code>inline-block</code> 还有很多<br>常见的display默认的是block的有divp 、form 和HTML5中的新元素： header 、 footer 、 section。我们不需要特别关心display的，因为这个主要由CSS修改</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -1078,7 +1160,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

@@ -10,7 +10,8 @@ StackOverflow上07年的这个问题就很火 Form表单不可以嵌套
 sf 上都给出了w3c的form标准
 国内的CSDN也给出了可行的解决方案1 解决方案2
 
-">
+
+        documen">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -444,7 +445,7 @@ sf 上都给出了w3c的form标准
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    66
+                    118
                 </div>
                 
 
@@ -472,7 +473,25 @@ sf 上都给出了w3c的form标准
 <li><a href="https://segmentfault.com/q/1010000000518304" target="_blank" rel="noopener">sf</a> 上都给出了<a href="https://www.w3.org/TR/2011/WD-html5-20110525/forms.html#the-form-element" target="_blank" rel="noopener">w3c的form标准</a></li>
 <li>国内的CSDN也给出了可行的<a href="http://blog.csdn.net/u012866869/article/details/39834359" target="_blank" rel="noopener">解决方案1 </a><a href="http://bbs.csdn.net/topics/110024205" target="_blank" rel="noopener">解决方案2</a><br><img src="http://upload-images.jianshu.io/upload_images/5422064-ab265c34b9d91986.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="好玩的评论.png"></li>
 </ul>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -719,7 +738,7 @@ sf 上都给出了w3c的form标准
                     <div class="summary block-with-text">
                         
                             引子今天在实习工作中看到了两个新属性，其实一直就在，但是一直眼瞎，没去MDN去搜搜，今天搜了一下。明白了这俩属性。在这个表单里面的两个以前没见的属性
-12345&lt;form name=&quot;upFileForm&quot; met
+&lt;form name="upFileForm" method="post" acti
                         
                     </div>
                     <div class="publish-info">
@@ -981,7 +1000,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

@@ -443,7 +443,7 @@ cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    3k
                 </div>
                 
 
@@ -472,15 +472,30 @@ cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由
 </blockquote>
 <h2 id="实现基本的注册功能"><a href="#实现基本的注册功能" class="headerlink" title="实现基本的注册功能"></a>实现基本的注册功能</h2><p>我们打开网站，浏览网站，最常见的两个操作就是注册以及登录，所以有必要探索一下这两个功能如何实现的。</p>
 <p>本地模拟，当输入<code>localhost:8080/sign_up</code>的时候，浏览器发起<code>get</code>请求，服务器给你响应<code>sign_up.html</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//服务器端代码</span></span><br><span class="line"><span class="keyword">if</span> (path === <span class="string">'/sign_up'</span> &amp;&amp; method === <span class="string">'GET'</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> string = fs.readFileSync(<span class="string">'./sign_up.html'</span>, <span class="string">'utf8'</span>)</span><br><span class="line">    response.statusCode = <span class="number">200</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'text/html;charset=utf-8'</span>)</span><br><span class="line">    response.write(string)</span><br><span class="line">    response.end()</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//服务器端代码</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>path <span class="token operator">===</span> <span class="token string">'/sign_up'</span> <span class="token operator">&amp;&amp;</span> method <span class="token operator">===</span> <span class="token string">'GET'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> string <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'./sign_up.html'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span>
+    response<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span>
+    response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html;charset=utf-8'</span><span class="token punctuation">)</span>
+    response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+    response<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+</code></pre>
 <a id="more"></a>
 <h3 id="CSS布局的几个小坑"><a href="#CSS布局的几个小坑" class="headerlink" title="CSS布局的几个小坑"></a>CSS布局的几个小坑</h3><p>在写<code>sign_up.html</code>的时候，注意几点css知识：</p>
 <ol>
 <li>如果想让你的登录页面的body占满整个屏幕，随着窗口的大小变化而变化的话，可以写</li>
 </ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>, <span class="selector-tag">html</span>&#123;<span class="attribute">height</span>: <span class="number">100%</span>&#125;</span><br><span class="line">//或者</span><br><span class="line"><span class="selector-tag">body</span>&#123;<span class="attribute">min-height</span>: <span class="number">100%</span>&#125;</span><br><span class="line"><span class="selector-tag">html</span>&#123;<span class="attribute">height</span>: <span class="number">100%</span>&#125;</span><br><span class="line">//不能这么写</span><br><span class="line"><span class="selector-tag">body</span>, <span class="selector-tag">html</span>&#123;<span class="attribute">min-height</span>: <span class="number">100%</span>&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-css"><code class="language-css"><span class="token selector">body, html</span><span class="token punctuation">{</span><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">}</span>
+<span class="token selector">//或者
+body</span><span class="token punctuation">{</span><span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">}</span>
+<span class="token selector">html</span><span class="token punctuation">{</span><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">}</span>
+<span class="token selector">//不能这么写
+body, html</span><span class="token punctuation">{</span><span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token number">100%</span><span class="token punctuation">}</span>
+</code></pre>
 <p>当然了，实际上这么写就可以了</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;<span class="attribute">min-height</span>: <span class="number">100vh</span>&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-css"><code class="language-css"><span class="token selector">body</span><span class="token punctuation">{</span><span class="token property">min-height</span><span class="token punctuation">:</span> <span class="token number">100</span>vh<span class="token punctuation">}</span>
+</code></pre>
 <ol start="2">
 <li><code>label</code>标签是<code>display: inline</code>，不能设置宽度，<strong>行内元素则会根据行内内容自适应宽度</strong>，所以行内元素设置width是没有效果的。改成<code>inline-block就可以了</code></li>
 </ol>
@@ -492,43 +507,122 @@ cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由
 <li><code>input</code>的<code>value</code>应该使用<code>hash</code>,也就是对象来存储。</li>
 <li>上述的套路会一直用下去，<strong><code>hash+[]</code></strong>的组合。</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用jq来写</span></span><br><span class="line"><span class="keyword">let</span> hash = &#123;&#125;</span><br><span class="line"><span class="keyword">let</span> $form = $(<span class="string">'#signUpForm'</span>)</span><br><span class="line">$form.on(<span class="string">'submit'</span>, (e) =&gt; &#123;</span><br><span class="line">  e.preventDefault() <span class="comment">//不用form表单的默认提交，而是使用我们的的ajax提交</span></span><br><span class="line">  <span class="keyword">let</span> need = [<span class="string">'email'</span>, <span class="string">'password'</span>, <span class="string">'password_confirmation'</span>]</span><br><span class="line">  need.forEach(<span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> value = $form.find(<span class="string">`[name=<span class="subst">$&#123;name&#125;</span>]`</span>).val()</span><br><span class="line">  hash[name] = value</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//使用jq来写</span>
+<span class="token keyword">let</span> hash <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">let</span> $form <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#signUpForm'</span><span class="token punctuation">)</span>
+$form<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'submit'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  e<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//不用form表单的默认提交，而是使用我们的的ajax提交</span>
+  <span class="token keyword">let</span> need <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'email'</span><span class="token punctuation">,</span> <span class="token string">'password'</span><span class="token punctuation">,</span> <span class="token string">'password_confirmation'</span><span class="token punctuation">]</span>
+  need<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> value <span class="token operator">=</span> $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`[name=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">]`</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  hash<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> value
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>最终<code>hash</code>里面存储的就是</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">'email'</span>: <span class="string">'...'</span>,</span><br><span class="line">  <span class="string">'password'</span>: <span class="string">'...'</span>,</span><br><span class="line">  <span class="string">'password_confirmation'</span>: <span class="string">'...'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">'email'</span><span class="token punctuation">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span>
+  <span class="token string">'password'</span><span class="token punctuation">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span>
+  <span class="token string">'password_confirmation'</span><span class="token punctuation">:</span> <span class="token string">'...'</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>到目前为止我们把用户的数据封装到了一个对象里面了。</p>
 <p>不过在把hash用ajax发出去之前要先进行一些必要的非空验证</p>
 <h3 id="非空验证"><a href="#非空验证" class="headerlink" title="非空验证"></a>非空验证</h3><p>主要是检测邮箱是否为空、密码是否为空、两次输入的密码是否一致。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//发起请求之前验证是否为空</span></span><br><span class="line"><span class="keyword">if</span> (hash[<span class="string">'email'</span>] === <span class="string">''</span>) &#123;</span><br><span class="line">  $form.find(<span class="string">'[name="email"]'</span>).siblings(<span class="string">'.errors'</span>).text(<span class="string">'请您输入邮箱'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">//精髓啊，不然没用了</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (hash[<span class="string">'password'</span>] === <span class="string">''</span>) &#123;</span><br><span class="line">  $form.find(<span class="string">'[name="password"]'</span>).siblings(<span class="string">'.errors'</span>).text(<span class="string">'请您输入密码'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">//精髓啊，不然没用了</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (hash[<span class="string">'password_confirmation'</span>] === <span class="string">''</span>) &#123;</span><br><span class="line">    $form.find(<span class="string">'[name="password_confirmation"]'</span>).siblings(<span class="string">'.errors'</span>).text(<span class="string">'请您再次输入确认密码'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">//精髓啊，不然没用了</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (hash[<span class="string">'password'</span>] !== hash[<span class="string">'password_confirmation'</span>]) &#123;</span><br><span class="line">  $form.find(<span class="string">'[name="password_confirmation"]'</span>).siblings(<span class="string">'.errors'</span>).text(<span class="string">'两次输入密码不匹配'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span> <span class="comment">//精髓啊，不然没用了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//发起请求之前验证是否为空</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">[</span><span class="token string">'email'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'[name="email"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">siblings</span><span class="token punctuation">(</span><span class="token string">'.errors'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'请您输入邮箱'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">//精髓啊，不然没用了</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'[name="password"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">siblings</span><span class="token punctuation">(</span><span class="token string">'.errors'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'请您输入密码'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">//精髓啊，不然没用了</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">[</span><span class="token string">'password_confirmation'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'[name="password_confirmation"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">siblings</span><span class="token punctuation">(</span><span class="token string">'.errors'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'请您再次输入确认密码'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">//精髓啊，不然没用了</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span> <span class="token operator">!==</span> hash<span class="token punctuation">[</span><span class="token string">'password_confirmation'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'[name="password_confirmation"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">siblings</span><span class="token punctuation">(</span><span class="token string">'.errors'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'两次输入密码不匹配'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token boolean">false</span> <span class="token comment" spellcheck="true">//精髓啊，不然没用了</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <ul>
 <li>如果忘记写return的话，即使你为空了还是会直接越过这一步检测，去发起ajax请求的，所以一定不要忘了写上return false.</li>
 <li>如果仅仅这么写的话会有一个bug。当出现错误提示后，你把信息填对了，错误信息依然显示，这显然是不合理的。应该填入信息后，错误信息就消失的。</li>
 </ul>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/78635036.jpg" alt="bug"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$form.find(<span class="string">'.errors'</span>).each(<span class="function">(<span class="params">index, span</span>) =&gt;</span> &#123;</span><br><span class="line">	$(span).text(<span class="string">''</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"> $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'.errors'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> span<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+     <span class="token function">$</span><span class="token punctuation">(</span>span<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span> 
+</code></pre>
 <p>使用上述的jq代码来解决这个bug即可。</p>
 <p>非空验证完了之后，意味着浏览器收集用户数据的工作完成了，可以把hash发到服务器端了，接下来就是ajax请求了。</p>
-<h3 id="使用ajax提交数据"><a href="#使用ajax提交数据" class="headerlink" title="使用ajax提交数据"></a>使用ajax提交数据</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.post(<span class="string">'/sign_up'</span>, hash)</span><br><span class="line">.then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//成功了就打印这个  </span></span><br><span class="line">  <span class="built_in">console</span>.log(response)</span><br><span class="line">&#125;,</span><br><span class="line">() =&gt; &#123;</span><br><span class="line">  <span class="comment">//错误了打印这个</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="使用ajax提交数据"><a href="#使用ajax提交数据" class="headerlink" title="使用ajax提交数据"></a>使用ajax提交数据</h3><pre class=" language-javascript"><code class="language-javascript">$<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/sign_up'</span><span class="token punctuation">,</span> hash<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//成功了就打印这个  </span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//错误了打印这个</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <h3 id="服务器端解析formData"><a href="#服务器端解析formData" class="headerlink" title="服务器端解析formData"></a>服务器端解析formData</h3><p>因为formData是一段一段上传的(具体原因略复杂，可以取极限法，如果formdata很多，不可能一下子上传过来)，自己不会写，就去搜索代码片段解析formdata</p>
 <p><code>google: node get post data</code></p>
 <p>把获得的代码封装成了一个函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">readBody</span>(<span class="params">request</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> body = []</span><br><span class="line">      request.on(<span class="string">'data'</span>, (chunk) =&gt; &#123;</span><br><span class="line">        body.push(chunk)</span><br><span class="line">      &#125;).on(<span class="string">'end'</span>, () =&gt; &#123;</span><br><span class="line">        body = Buffer.concat(body).toString();</span><br><span class="line">          resolve(body)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">readBody</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> body <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      request<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'data'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>chunk<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        body<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>chunk<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'end'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        body <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">resolve</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
 <p>如何使用上述代码片段呢</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="keyword">if</span> (path === <span class="string">'/sign_up'</span> &amp;&amp; method === <span class="string">'POST'</span>) &#123;</span><br><span class="line">    readBody(request).then(<span class="function">(<span class="params">body</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> strings = body.split(<span class="string">'&amp;'</span>) <span class="comment">//['email=1', 'password=2', 'password_confirmmation=3']</span></span><br><span class="line">      <span class="keyword">let</span> hash = &#123;&#125;</span><br><span class="line">      strings.forEach(<span class="function"><span class="params">string</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">//想得到类似这种的 string == 'email=1'</span></span><br><span class="line">        <span class="keyword">let</span> parts = string.split(<span class="string">'='</span>) <span class="comment">//再用=分割,得到['email', '1']</span></span><br><span class="line">        <span class="keyword">let</span> key = parts[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">let</span> value = parts[<span class="number">1</span>]</span><br><span class="line">        hash[key] = <span class="built_in">decodeURIComponent</span>(value)<span class="comment">//hash['email'] = '1'</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">let</span> &#123;email, password, password_confirmation&#125; = hash <span class="comment">//ES6的解构赋值</span></span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">...</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>path <span class="token operator">===</span> <span class="token string">'/sign_up'</span> <span class="token operator">&amp;&amp;</span> method <span class="token operator">===</span> <span class="token string">'POST'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">readBody</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> strings <span class="token operator">=</span> body<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'&amp;'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//['email=1', 'password=2', 'password_confirmmation=3']</span>
+      <span class="token keyword">let</span> hash <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+      strings<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>string <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//想得到类似这种的 string == 'email=1'</span>
+        <span class="token keyword">let</span> parts <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'='</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//再用=分割,得到['email', '1']</span>
+        <span class="token keyword">let</span> key <span class="token operator">=</span> parts<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+        <span class="token keyword">let</span> value <span class="token operator">=</span> parts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+        hash<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">decodeURIComponent</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//hash['email'] = '1'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">let</span> <span class="token punctuation">{</span>email<span class="token punctuation">,</span> password<span class="token punctuation">,</span> password_confirmation<span class="token punctuation">}</span> <span class="token operator">=</span> hash <span class="token comment" spellcheck="true">//ES6的解构赋值</span>
+  <span class="token punctuation">}</span>
+  <span class="token operator">...</span>
+</code></pre>
 <p>当服务器端接收到了所有的formdata数据后，其实是一串形如<code>email=1&amp;password=2&amp;password_confirmation=3</code></p>
 <p>的字符串，所以我们考虑使用<code>&amp;</code>字符分割成数组。</p>
 <ul>
-<li>得到一个形如<code>[&#39;email=1&#39;, &#39;password=2&#39;, &#39;confirmation=3&#39;]</code>的数组之后，我们为了得到<code>string = &#39;email=1&#39;</code>这种形式的，开始遍历数组，把数组的每个元素按照<code>=</code>分割，得到 <code>[email, 1]</code></li>
+<li>得到一个形如<code>['email=1', 'password=2', 'confirmation=3']</code>的数组之后，我们为了得到<code>string = 'email=1'</code>这种形式的，开始遍历数组，把数组的每个元素按照<code>=</code>分割，得到 <code>[email, 1]</code></li>
 <li>用第二小节提供的<code>hash+[]</code>方法，处理成hash</li>
 </ul>
 <h2 id="服务器端简单的校验"><a href="#服务器端简单的校验" class="headerlink" title="服务器端简单的校验"></a>服务器端简单的校验</h2><p>既然服务器端已经获得了<code>formdata</code>了，那么应该进行一下简单的校验，比如邮箱的格式，没有问题了就把数据存到数据库里面。(目前校验水平很入门，没有涉及到完备的注册校验功能)</p>
 <h3 id="校验前的准备工作"><a href="#校验前的准备工作" class="headerlink" title="校验前的准备工作"></a>校验前的准备工作</h3><p>上一节我们把formdata完美的封装到了hash里面，为了校验我们要把hash再拆开一个一个的看</p>
 <p>或许这么做是最直接的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> email = hash[<span class="string">'emai'</span>]</span><br><span class="line"><span class="keyword">let</span> password = hash[<span class="string">'password'</span>]</span><br><span class="line"><span class="keyword">let</span> password_confirmation = hash[<span class="string">'password_confirmation'</span>]</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> email <span class="token operator">=</span> hash<span class="token punctuation">[</span><span class="token string">'emai'</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> password <span class="token operator">=</span> hash<span class="token punctuation">[</span><span class="token string">'password'</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> password_confirmation <span class="token operator">=</span> hash<span class="token punctuation">[</span><span class="token string">'password_confirmation'</span><span class="token punctuation">]</span>
+</code></pre>
 <p>不过ES6提供了一种解构赋值的语法糖，很甜很贴心……</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;email, password, password_confirmation&#125; = hash</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token punctuation">{</span>email<span class="token punctuation">,</span> password<span class="token punctuation">,</span> password_confirmation<span class="token punctuation">}</span> <span class="token operator">=</span> hash
+</code></pre>
 <h3 id="由-编码引发的bug"><a href="#由-编码引发的bug" class="headerlink" title="由@编码引发的bug"></a>由@编码引发的bug</h3><p>好了，我们这一步就先看看邮箱格式是否正确。</p>
 <p>我是菜鸟级校验邮箱，看到了邮箱的独特标志---<code>@</code>，最起码有这个标志才叫邮箱吧，也就是说没有这个标志，我就可以认为邮箱格式不对啊，翻译成代码就是</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (email.indexOf(<span class="string">'@'</span>) === <span class="number">-1</span>) &#123;</span><br><span class="line">  response.statusCode = <span class="number">400</span></span><br><span class="line">  response.write(<span class="string">'email is bad'</span>) <span class="comment">//单引号只是为了标记这是一个字符串</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>email<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'@'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  response<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">400</span>
+  response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'email is bad'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//单引号只是为了标记这是一个字符串</span>
+<span class="token punctuation">}</span> 
+</code></pre>
 <p>很好，目前来说，事情的发展都很正常，直到一个bug的到来。</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/63886564.jpg" alt="正常的也报错了"></p>
 <p>一个合法的邮箱，却进入了非法邮箱处理的代码片段里面……</p>
@@ -537,7 +631,9 @@ cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由
 <ul>
 <li>找bug,把可能出错的代码片段分成几个区间，打log.</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(email.indexOf(<span class="string">'@'</span>))</span><br><span class="line"><span class="built_in">console</span>.log(email)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>email<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'@'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span>
+</code></pre>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/74625962.jpg" alt="真的是-1"></p>
 <p>没错，<code>email</code>这个字符串的<code>@</code>索引真的是-1，可是我的邮箱写的明明有<code>@</code>啊。</p>
 <p>为啥呢，接着又打印出了<code>email</code>的内容，终于真相大白了，<code>email</code>字符串里面真的没有<code>@</code>，</p>
@@ -614,39 +710,117 @@ cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由
 <p>继续往下翻，找到了<code>%40</code>。</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/97404637.jpg" alt="@符号的解释"></p>
 <p>所以要把<code>value</code>的值解码回去</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash[key] = <span class="built_in">decodeURIComponent</span>(value)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">hash<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">decodeURIComponent</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+</code></pre>
 <p><code>decodeURIComponent()</code> 方法用于解码由 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener"><code>encodeURIComponent</code></a> 方法或者其它类似方法编码的部分统一资源标识符（URI）。毕竟<code>URL</code>属于<code>URI</code>。</p>
 <h3 id="错误信息的提示方法"><a href="#错误信息的提示方法" class="headerlink" title="错误信息的提示方法"></a>错误信息的提示方法</h3><p>如果有了错，需要提示用户错了，后端写的代码，用户不一定看的懂，需要前端润色一下使用户看懂，或者前端和后端沟通一下，maybe后端脾气不好，前端也是暴脾气，所以应该选择一个前后端都要用的东西做桥梁，很明显<code>JSON</code>是完美的候选人。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (email.indexOf(<span class="string">'@'</span>) === <span class="number">-1</span>) &#123;</span><br><span class="line">  response.statusCode = <span class="number">400</span></span><br><span class="line">  response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json;charset=utf-8'</span>) <span class="comment">//直接告诉浏览器我是json</span></span><br><span class="line">  response.write(<span class="string">`</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">      "errors": &#123;</span></span><br><span class="line"><span class="string">      "email": "invalid"</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  `</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>email<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'@'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  response<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">400</span>
+  response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'application/json;charset=utf-8'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//直接告诉浏览器我是json</span>
+  response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`
+    {
+      "errors": {
+      "email": "invalid"
+      }
+    }
+  `</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>这就合理多了，后台只管写个json给前台看，其他不管了，前台翻译一下给用户看喽～</p>
 <p>那么前台如何获得这个<code>json</code>呢</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.post(<span class="string">'/sign_up'</span>, hash)</span><br><span class="line">.then(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//成功了就打印这个  </span></span><br><span class="line">  <span class="built_in">console</span>.log(response)</span><br><span class="line">&#125;,</span><br><span class="line">(request, b, c) =&gt; &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(request)</span><br><span class="line">   <span class="built_in">console</span>.log(b)</span><br><span class="line">   <span class="built_in">console</span>.log(c)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">$<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/sign_up'</span><span class="token punctuation">,</span> hash<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//成功了就打印这个  </span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">(</span>request<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <p>忘记了错误函数里面的参数是啥了，那就都打印出来看看。</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/48577590.jpg" alt="如果没用JSON的话"></p>
 <p>可以看到，如果没用JSON的话，request对象里面有一个后端写的responseText属性可以利用。</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/53044190.jpg" alt=""></p>
 <p>设置了<code>Content-Type:application/json;charset=utf-8</code>之后，可以利用多出来的<code>responseJSON</code>属性，获得json的内容啊。</p>
 <p>最终失败函数里面写</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(request) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> &#123;errors&#125; = request.responseJSON	</span><br><span class="line">  <span class="keyword">if</span> (errors.email &amp;&amp; errors.email === <span class="string">'invalid'</span>) &#123;</span><br><span class="line">    $form.find(<span class="string">'[name="email"]'</span>).siblings(<span class="string">'.errors'</span>).text(<span class="string">'您输入的邮箱错啦'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="校验邮箱是否已经存在了"><a href="#校验邮箱是否已经存在了" class="headerlink" title="校验邮箱是否已经存在了"></a>校验邮箱是否已经存在了</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> users = fs.readFileSync(<span class="string">'./db/users'</span>, <span class="string">'utf8'</span>)</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  users = <span class="built_in">JSON</span>.parse(users) <span class="comment">//[] JSON也支持数组</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  users = []</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> inUse = <span class="literal">false</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; users.length; i++) &#123;</span><br><span class="line">  <span class="keyword">let</span> user = users[i]</span><br><span class="line">  <span class="keyword">if</span> (user.email === email) &#123;</span><br><span class="line">    inUse = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (inUse) &#123;</span><br><span class="line">  response.statusCode = <span class="number">400</span></span><br><span class="line">  response.setHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json;charset=utf-8'</span>)</span><br><span class="line">  response.write(<span class="string">`</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">      "errors": &#123;</span></span><br><span class="line"><span class="string">      "email": "inUse"</span></span><br><span class="line"><span class="string">      &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  `</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">(</span>request<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> <span class="token punctuation">{</span>errors<span class="token punctuation">}</span> <span class="token operator">=</span> request<span class="token punctuation">.</span>responseJSON    
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span>email <span class="token operator">&amp;&amp;</span> errors<span class="token punctuation">.</span>email <span class="token operator">===</span> <span class="token string">'invalid'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'[name="email"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">siblings</span><span class="token punctuation">(</span><span class="token string">'.errors'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'您输入的邮箱错啦'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="校验邮箱是否已经存在了"><a href="#校验邮箱是否已经存在了" class="headerlink" title="校验邮箱是否已经存在了"></a>校验邮箱是否已经存在了</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> users <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'./db/users'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span>
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+  users <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>users<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//[] JSON也支持数组</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">exception</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  users <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">let</span> inUse <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> users<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> user <span class="token operator">=</span> users<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">.</span>email <span class="token operator">===</span> email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    inUse <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token keyword">break</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>inUse<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  response<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">400</span>
+  response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'application/json;charset=utf-8'</span><span class="token punctuation">)</span>
+  response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`
+    {
+      "errors": {
+      "email": "inUse"
+      }
+    }
+  `</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span> 
+</code></pre>
 <p>本文并没有使用真正意义上的数据库，只是使用了简单的db文件做数据库，其实就是存的数组，也就是users其实就是数组<code>[]</code>。</p>
 <ul>
 <li>之所以使用了<code>try{}catch(){}</code>，是因为一旦除了错，可以将其初始化为空数组，后续代码可以继续执行，可能并不严谨，不过本文是侧重了解注册的思路的。</li>
 </ul>
 <p>同样的，如果邮箱已经存在了，就提示用户</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (errors.email &amp;&amp; errors.email === <span class="string">'inUse'</span>) &#123;</span><br><span class="line">	$form.find(<span class="string">'[name="email"]'</span>).siblings(<span class="string">'.errors'</span>).text(<span class="string">'这个邮箱已被注册啦'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>errors<span class="token punctuation">.</span>email <span class="token operator">&amp;&amp;</span> errors<span class="token punctuation">.</span>email <span class="token operator">===</span> <span class="token string">'inUse'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'[name="email"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">siblings</span><span class="token punctuation">(</span><span class="token string">'.errors'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'这个邮箱已被注册啦'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <hr>
 <p>后端校验必须很严格，因为可以通过<code>curl</code>越过前端的校验。</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/55736025.jpg" alt="curl"></p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/7637310.jpg" alt="使用curl发起请求"></p>
 <hr>
 <h3 id="把信息写入数据库"><a href="#把信息写入数据库" class="headerlink" title="把信息写入数据库"></a>把信息写入数据库</h3><p>没有错误之后，就可以把信息写到数据库里面啦</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">users.push(&#123;<span class="attr">email</span>: email, <span class="attr">password</span>: password&#125;)<span class="comment">//是个对象啊</span></span><br><span class="line"><span class="keyword">var</span> usersString = <span class="built_in">JSON</span>.stringify(users)</span><br><span class="line">fs.writeFileSync(<span class="string">'./db/users'</span>, usersString)</span><br><span class="line">response.statusCode = <span class="number">200</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"> users<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>email<span class="token punctuation">:</span> email<span class="token punctuation">,</span> password<span class="token punctuation">:</span> password<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//是个对象啊</span>
+ <span class="token keyword">var</span> usersString <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>users<span class="token punctuation">)</span>
+ fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'./db/users'</span><span class="token punctuation">,</span> usersString<span class="token punctuation">)</span>
+ response<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span>
+</code></pre>
 <p>users实现是个对象，而对象是内存里面的东西，数据库里面应该存储的是字符串，所以用了<code>JSON.stringify(users)</code></p>
 <p>好啦，上篇注册篇结束啦，下篇讲一讲如何登录以及<code>Cookie</code>登场</p>
 <p>相关代码见<a href="https://github.com/codevvvv9/AJAXDemo_nodeJsServer/blob/master/sign_up.html" target="_blank" rel="noopener">sign_up.html</a></p>
 <p><a href="https://github.com/codevvvv9/AJAXDemo_nodeJsServer/blob/master/server.js" target="_blank" rel="noopener">server.js</a></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -896,7 +1070,7 @@ cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由
 上篇介绍了注册的基本流程，下篇简单的讲讲登录的流程以及Cookie的出现
 
 实现登录的小功能当你在浏览器的输入框里输入localhost:8080/sign_in的时候，会发起GET请求，去访问sign_in.html
-1234567if
+if (path 
                         
                     </div>
                     <div class="publish-info">
@@ -946,7 +1120,9 @@ cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由
                     <div class="summary block-with-text">
                         
                             科学上网如何科学上网是个很严肃的问题(⊙o⊙)哦
-以Linux为例12sudo apt-get install python-pip; sudo pip install shadowsocks;
+以Linux为例sudo apt-get install python-pip; 
+sudo pip install shadowsocks;
+
 
 如果你遇到 _cleanup 不存在的提示
                         
@@ -1157,7 +1333,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

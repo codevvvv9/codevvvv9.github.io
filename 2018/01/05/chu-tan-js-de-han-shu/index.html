@@ -9,7 +9,8 @@
 函数内部可以传参，也可以被当做参数传递
 
 目前定义函数有五种方法
-具名函数来定义1234function f(x, y)&amp;#123;">
+具名函数来定义function f(x, y){
+  return">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -470,33 +471,96 @@
 <p><strong>函数内部可以传参，也可以被当做参数传递</strong></p>
 <a id="more"></a>
 <p>目前定义函数有五种方法</p>
-<h4 id="具名函数来定义"><a href="#具名函数来定义" class="headerlink" title="具名函数来定义"></a>具名函数来定义</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line">f.name <span class="comment">//'f'</span></span><br></pre></td></tr></table></figure>
-<h4 id="匿名函数来定义"><a href="#匿名函数来定义" class="headerlink" title="匿名函数来定义"></a>匿名函数来定义</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f</span><br><span class="line">f = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line">f.name <span class="comment">//'f'</span></span><br></pre></td></tr></table></figure>
-<h4 id="具名函数定义了又赋值给了变量"><a href="#具名函数定义了又赋值给了变量" class="headerlink" title="具名函数定义了又赋值给了变量"></a>具名函数定义了又赋值给了变量</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f1</span><br><span class="line">f1 = <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line">f1.name <span class="comment">//'f'</span></span><br></pre></td></tr></table></figure>
-<p>要注意：虽然<code>f1.name=&#39;f&#39;</code>，但是f只在函数内部可用，实际上函数的名字还是f1</p>
-<h4 id="window-Function来构造"><a href="#window-Function来构造" class="headerlink" title="window.Function来构造"></a>window.Function来构造</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f2 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'return x + y'</span>)</span><br><span class="line">f2.name <span class="comment">//'anonymous'</span></span><br></pre></td></tr></table></figure>
-<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> f3 = <span class="function">(<span class="params">x, y</span>) =&gt;</span> &#123;<span class="keyword">return</span> x - y&#125;</span><br><span class="line"><span class="keyword">var</span> sum = <span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y <span class="comment">//函数体内只有一行代码，可以省略大括号和return</span></span><br><span class="line"><span class="keyword">var</span> n2 = <span class="function"><span class="params">n</span> =&gt;</span> n*n <span class="comment">//只有一个参数，可以省略小括号</span></span><br></pre></td></tr></table></figure>
+<h4 id="具名函数来定义"><a href="#具名函数来定义" class="headerlink" title="具名函数来定义"></a>具名函数来定义</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+f<span class="token punctuation">.</span>name <span class="token comment" spellcheck="true">//'f'</span>
+</code></pre>
+<h4 id="匿名函数来定义"><a href="#匿名函数来定义" class="headerlink" title="匿名函数来定义"></a>匿名函数来定义</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> f
+f <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> x <span class="token operator">+</span> y
+<span class="token punctuation">}</span>
+f<span class="token punctuation">.</span>name <span class="token comment" spellcheck="true">//'f'</span>
+</code></pre>
+<h4 id="具名函数定义了又赋值给了变量"><a href="#具名函数定义了又赋值给了变量" class="headerlink" title="具名函数定义了又赋值给了变量"></a>具名函数定义了又赋值给了变量</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> f1
+f1 <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">}</span>
+f1<span class="token punctuation">.</span>name <span class="token comment" spellcheck="true">//'f'</span>
+</code></pre>
+<p>要注意：虽然<code>f1.name='f'</code>，但是f只在函数内部可用，实际上函数的名字还是f1</p>
+<h4 id="window-Function来构造"><a href="#window-Function来构造" class="headerlink" title="window.Function来构造"></a>window.Function来构造</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> f2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Function</span><span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">,</span> <span class="token string">'return x + y'</span><span class="token punctuation">)</span>
+f2<span class="token punctuation">.</span>name <span class="token comment" spellcheck="true">//'anonymous'</span>
+</code></pre>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> f3 <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token keyword">return</span> x <span class="token operator">-</span> y<span class="token punctuation">}</span>
+<span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> x <span class="token operator">+</span> y <span class="token comment" spellcheck="true">//函数体内只有一行代码，可以省略大括号和return</span>
+<span class="token keyword">var</span> n2 <span class="token operator">=</span> n <span class="token operator">=</span><span class="token operator">></span> n<span class="token operator">*</span>n <span class="token comment" spellcheck="true">//只有一个参数，可以省略小括号</span>
+</code></pre>
 <p>常用的定义方法是1、2、5这三种方法。</p>
 <h3 id="函数的一些必备知识"><a href="#函数的一些必备知识" class="headerlink" title="函数的一些必备知识"></a>函数的一些必备知识</h3><h4 id="函数的name属性"><a href="#函数的name属性" class="headerlink" title="函数的name属性"></a>函数的name属性</h4><p>由上面的五种定义方法，我们可以知道函数具有<code>name</code>属性，而且不同的定义方法，name属性也很奇葩。</p>
 <h4 id="函数如何调用"><a href="#函数如何调用" class="headerlink" title="函数如何调用"></a>函数如何调用</h4><p>为了理解后面的this，推荐使用<code>call()</code>方法，而不是使用常见的<code>f()</code></p>
 <p>以第一种定义方法为例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">f<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>undefined<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token number">4</span>
+</code></pre>
 <p>call()方法的第一个参数就是this,后面的参数才是函数的执行参数。</p>
 <p>下面用代码检验一下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">f1.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line">Window &#123;<span class="attr">postMessage</span>: ƒ, <span class="attr">blur</span>: ƒ, <span class="attr">focus</span>: ƒ, <span class="attr">close</span>: ƒ, <span class="attr">frames</span>: Window, …&#125; <span class="comment">//不是应该打印undefined，为啥是window呢？</span></span><br><span class="line"><span class="number">4</span> <span class="comment">//这才是函数的执行内容</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m <span class="token operator">+</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+undefined
+f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>undefined<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+Window <span class="token punctuation">{</span>postMessage<span class="token punctuation">:</span> ƒ<span class="token punctuation">,</span> blur<span class="token punctuation">:</span> ƒ<span class="token punctuation">,</span> focus<span class="token punctuation">:</span> ƒ<span class="token punctuation">,</span> close<span class="token punctuation">:</span> ƒ<span class="token punctuation">,</span> frames<span class="token punctuation">:</span> Window<span class="token punctuation">,</span> …<span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//不是应该打印undefined，为啥是window呢？</span>
+<span class="token number">4</span> <span class="token comment" spellcheck="true">//这才是函数的执行内容</span>
+</code></pre>
 <p>执行f1.call(undefined, 1, 3)后，this不是应该打印出undefined吗，为啥打印了Window呢（注意实际上是个小写的window,不是浏览器打印的大写的Window）,可以用代码验证打印的就是小写的window</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span> === <span class="built_in">window</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">f1.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="literal">true</span> <span class="comment">//说明是小写的window</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span> === Window)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">f1.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="literal">false</span> <span class="comment">//并不是大写的Window</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">===</span> window<span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m <span class="token operator">+</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+undefined
+f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>undefined<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token boolean">true</span> <span class="token comment" spellcheck="true">//说明是小写的window</span>
+<span class="token number">4</span>
+<span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">===</span> Window<span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m <span class="token operator">+</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+undefined
+f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>undefined<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token boolean">false</span> <span class="token comment" spellcheck="true">//并不是大写的Window</span>
+<span class="token number">4</span>
+</code></pre>
 <p>我真是服啦，那window和Window有啥区别呢。真是蛋疼啊，竟然考虑这个问题……</p>
 <p>答案就是 var object = new Object，那var window = new Window。而且Window毫无探讨的意义，倒是这个window是个全局属性，多少有点用。</p>
 <hr>
 <p>有时候自己真是有点钻牛角尖，钻进去后，还不会举一反三。如果立刻想到obj的例子就不用浪费时间了。</p>
 <hr>
 <h4 id="这就是藏着的this"><a href="#这就是藏着的this" class="headerlink" title="这就是藏着的this"></a>这就是藏着的this</h4><p>这是因为浏览器捣的鬼，他把undefined变成了window。接下来使用严格模式，让undefined现身</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line"><span class="meta">	'use strict'</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line"><span class="literal">undefined</span></span><br><span class="line">f1.call(<span class="literal">undefined</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"><span class="literal">undefined</span> <span class="comment">//这个undefined就是call()方法的第一个参数undefined</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token string">'use strict'</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m <span class="token operator">+</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+undefined
+f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>undefined<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+undefined <span class="token comment" spellcheck="true">//这个undefined就是call()方法的第一个参数undefined</span>
+<span class="token number">4</span>
+</code></pre>
 <ul>
 <li>而且call()的第一个参数是啥，this就是啥</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">m, n</span>)</span>&#123;</span><br><span class="line"><span class="meta">	'use strict'</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">	<span class="built_in">console</span>.log(m + n)</span><br><span class="line">&#125;</span><br><span class="line">undefine</span><br><span class="line">f1.call(<span class="string">'我是啥this就是啥'</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line">我是啥<span class="keyword">this</span>就是啥 <span class="comment">//打印的依然是call()的第一个参数</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token string">'use strict'</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>m <span class="token operator">+</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+undefine
+f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token string">'我是啥this就是啥'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+我是啥<span class="token keyword">this</span>就是啥 <span class="token comment" spellcheck="true">//打印的依然是call()的第一个参数</span>
+<span class="token number">4</span>
+</code></pre>
 <h4 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h4><p>前面分析了call()的第一个参数，那后俩参数是啥呢。</p>
 <p>对，你没猜错，那就是arguments。</p>
 <p>当你写<code>call(undefined, 1, 3)</code>的时候。<code>undefined</code>可以被认为是<code>this</code>，<code>[1, 3]</code>就是<code>arguments</code></p>
@@ -513,7 +577,25 @@
 </blockquote>
 <p>以下是通过三个方面去理解call stack这个概念的。</p>
 <h4 id="普通调用"><a href="#普通调用" class="headerlink" title="普通调用"></a><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2EnKQogIHJldHVybiAnYScgIAp9CgpmdW5jdGlvbiBiKCl7CiAgICBjb25zb2xlLmxvZygnYicpCiAgICByZXR1cm4gJ2InCn0KCmZ1bmN0aW9uIGMoKXsKICAgIGNvbnNvbGUubG9nKCdjJykKICAgIHJldHVybiAnYycKfQoKYS5jYWxsKCkKYi5jYWxsKCkKYy5jYWxsKCk%3D!!!" target="_blank" rel="noopener">普通调用</a></h4><p>代码如下，直观的动图可以看上述的链接</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'a'</span>  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'b'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'c'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'c'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">a.call()</span><br><span class="line">b.call()</span><br><span class="line">c.call()</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token string">'a'</span>  
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">'b'</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">'c'</span>
+<span class="token punctuation">}</span>
+
+a<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+b<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+c<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <p>如上的代码，先有三个函数声明，然后是三个调用。浏览器先执行a.call()，然后执行b.call()，c.call()，下面结合图具体详细分析。</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c5838728cf39e?w=1006&amp;h=621&amp;f=png&amp;s=37670" alt="普通调用"></p>
 <ul>
@@ -525,7 +607,25 @@
 <li>第六步：console.log(‘c’)执行完毕就出栈，接着c函数结束，出栈死亡。</li>
 <li>整个代码结束，浏览器恢复平静。</li>
 </ul>
-<h4 id="嵌套调用"><a href="#嵌套调用" class="headerlink" title="嵌套调用"></a><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2ExJykKICAgIGIuY2FsbCgpCiAgICBjb25zb2xlLmxvZygnYTInKQogIHJldHVybiAnYScgIAp9CmZ1bmN0aW9uIGIoKXsKICAgIGNvbnNvbGUubG9nKCdiMScpCiAgICBjLmNhbGwoKQogICAgY29uc29sZS5sb2coJ2IyJykKICAgIHJldHVybiAnYicKfQpmdW5jdGlvbiBjKCl7CiAgICBjb25zb2xlLmxvZygnYycpCiAgICByZXR1cm4gJ2MnCn0KYS5jYWxsKCkKY29uc29sZS5sb2coJ2VuZCcp!!!" target="_blank" rel="noopener">嵌套调用</a></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a1'</span>)</span><br><span class="line">    b.call()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'a2'</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">'a'</span>  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b1'</span>)</span><br><span class="line">    c.call()</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'b2'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'b'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'c'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'c'</span></span><br><span class="line">&#125;</span><br><span class="line">a.call()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'end'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="嵌套调用"><a href="#嵌套调用" class="headerlink" title="嵌套调用"></a><a href="http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2ExJykKICAgIGIuY2FsbCgpCiAgICBjb25zb2xlLmxvZygnYTInKQogIHJldHVybiAnYScgIAp9CmZ1bmN0aW9uIGIoKXsKICAgIGNvbnNvbGUubG9nKCdiMScpCiAgICBjLmNhbGwoKQogICAgY29uc29sZS5sb2coJ2IyJykKICAgIHJldHVybiAnYicKfQpmdW5jdGlvbiBjKCl7CiAgICBjb25zb2xlLmxvZygnYycpCiAgICByZXR1cm4gJ2MnCn0KYS5jYWxsKCkKY29uc29sZS5sb2coJ2VuZCcp!!!" target="_blank" rel="noopener">嵌套调用</a></h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'a1'</span><span class="token punctuation">)</span>
+    b<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'a2'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token string">'a'</span>  
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'b1'</span><span class="token punctuation">)</span>
+    c<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'b2'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">'b'</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">c</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">'c'</span>
+<span class="token punctuation">}</span>
+a<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'end'</span><span class="token punctuation">)</span>
+</code></pre>
 <p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c583872bdbfb8?w=1170&amp;h=754&amp;f=png&amp;s=53669" alt="嵌套调用"></p>
 <ul>
 <li>第一步：浏览器的入口还是a.call()，a.call()入栈，执行a函数内部的代码</li>
@@ -551,15 +651,37 @@
 <ul>
 <li>第一道面试题</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(a) <span class="comment">// 是多少</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">f1.call()</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 是多少</span>
+    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span>
+<span class="token punctuation">}</span>
+f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <p>问：alert出什么东西？</p>
 <p>这种题切忌上去就做，容易打错成了 <strong>a是2</strong> 一定要先把变量提升。变成如下这样的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> 	<span class="keyword">var</span> a </span><br><span class="line">    alert(a) </span><br><span class="line">    a = <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line">f1.call()</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token keyword">var</span> a 
+    <span class="token function">alert</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> 
+    a <span class="token operator">=</span> <span class="token number">2</span>
+<span class="token punctuation">}</span>
+f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <p>这样一提升就知道啦，<strong>答案：a是undefined</strong>。</p>
 <ul>
 <li>第二道面试题</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    f2.call()</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a) <span class="comment">// 是多少</span></span><br><span class="line">&#125;</span><br><span class="line">f1.call()</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">function</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span>
+    f2<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 是多少</span>
+<span class="token punctuation">}</span>
+f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <p>问：a是多少</p>
 <p>这个题用就近原则好做。</p>
 <p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c583872944cc1?w=821&amp;h=459&amp;f=png&amp;s=24060" alt="树形结构"></p>
@@ -570,7 +692,25 @@
 <li>f2函数作用域里面是console.log(a)</li>
 </ul>
 <p>所以打印的那个a就是全局的a，答案是<strong>a=1</strong></p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -820,7 +960,9 @@
 原生DOM接口挺多的，需要花点时间研究下，不过先把基础整好，后面框架估计好学点。
 
 1. DOM是啥1.1 知识回顾先回顾一下HTML的基本结构
-1234567&lt;!DOCTYPE html&gt;&lt;html lang="zh-
+&lt;!DOCTYPE html>
+&lt;html lang="zh-Hans">
+&l
                         
                     </div>
                     <div class="publish-info">
@@ -1081,7 +1223,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

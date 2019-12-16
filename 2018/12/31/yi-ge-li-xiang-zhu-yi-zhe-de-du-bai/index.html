@@ -450,7 +450,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    10 分
                 </div>
                 
 				
@@ -560,7 +560,25 @@
 </ul>
 <p><em>至于什么是理想主义者，在这个安静或不安静的夜晚，打开笔记本，于是一切都有了答案</em>。</p>
 <p>生命不息，奋斗不止，2018，再见～</p>
-
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -821,6 +839,7 @@ IOC
 工程模式
 
 
+        do
                         
                     </div>
                     <div class="publish-info">
@@ -876,7 +895,8 @@ Oracle官网下载，地址
 配置环境变量
 下载完之后，解压，记住目录
 
-12345678//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码export JAVA_HOME=/
+//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码
+export JAVA_HOME=/home/ws
                         
                     </div>
                     <div class="publish-info">
@@ -1085,7 +1105,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             

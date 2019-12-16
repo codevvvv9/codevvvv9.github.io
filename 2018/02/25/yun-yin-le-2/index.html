@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="云音乐-2, WuShaoLin&#39;s Blog">
     <meta name="description" content="获取歌曲的外链通过七牛的文档说明，先去js官方文档，然后通过里面的js源码地址，选择1.0的版本，进入之后，选择示例网站，在获得代码里面，可以发现下面代码
-12345678910111213 &#39;FileUploaded&#39;: function">
+  &#39;FileUploaded&#39;: function(up, file, info)">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -440,7 +440,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.4k
                 </div>
                 
 
@@ -464,10 +464,26 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="获取歌曲的外链"><a href="#获取歌曲的外链" class="headerlink" title="获取歌曲的外链"></a>获取歌曲的外链</h2><p>通过七牛的文档说明，先去<a href="https://developer.qiniu.com/kodo/sdk/1283/javascript#1" target="_blank" rel="noopener">js官方文档</a>，然后通过里面的<a href="https://github.com/qiniu/js-sdk" target="_blank" rel="noopener">js源码地址</a>，选择1.0的版本，进入之后，选择<a href="http://jssdk.demo.qiniu.io/" target="_blank" rel="noopener">示例网站</a>，在获得代码里面，可以发现下面代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="string">'FileUploaded'</span>: <span class="function"><span class="keyword">function</span>(<span class="params">up, file, info</span>) </span>&#123;</span><br><span class="line">   <span class="comment">// 每个文件上传成功后,处理相关的事情</span></span><br><span class="line">   <span class="comment">// 其中 info.response 是文件上传成功后，服务端返回的json，形式如</span></span><br><span class="line">   <span class="comment">// &#123;</span></span><br><span class="line">   <span class="comment">//    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",</span></span><br><span class="line">   <span class="comment">//    "key": "gogopher.jpg"</span></span><br><span class="line">   <span class="comment">//  &#125;</span></span><br><span class="line">   <span class="comment">// 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">// var domain = up.getOption('domain');</span></span><br><span class="line"> <span class="comment">// var res = parseJSON(info.response);</span></span><br><span class="line"> <span class="comment">// var sourceLink = domain + res.key; 获取上传成功后的文件的Url</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token string">'FileUploaded'</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>up<span class="token punctuation">,</span> file<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 每个文件上传成功后,处理相关的事情</span>
+    <span class="token comment" spellcheck="true">// 其中 info.response 是文件上传成功后，服务端返回的json，形式如</span>
+    <span class="token comment" spellcheck="true">// {</span>
+    <span class="token comment" spellcheck="true">//    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",</span>
+    <span class="token comment" spellcheck="true">//    "key": "gogopher.jpg"</span>
+    <span class="token comment" spellcheck="true">//  }</span>
+    <span class="token comment" spellcheck="true">// 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html</span>
+
+  <span class="token comment" spellcheck="true">// var domain = up.getOption('domain');</span>
+  <span class="token comment" spellcheck="true">// var res = parseJSON(info.response);</span>
+  <span class="token comment" spellcheck="true">// var sourceLink = domain + res.key; 获取上传成功后的文件的Url</span>
+ <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
 <a id="more"></a>
 <p>很明显最后三行与我的目的有关，打开注释，改造成我所需要的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> domain = up.getOption(<span class="string">'domain'</span>);</span><br><span class="line"><span class="keyword">var</span> response = <span class="built_in">JSON</span>.parse(info.response);</span><br><span class="line"><span class="keyword">var</span> sourceLink = <span class="string">'http://'</span> + domain + <span class="string">'/'</span> + <span class="built_in">encodeURIComponent</span>(response.key);</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">var</span> domain <span class="token operator">=</span> up<span class="token punctuation">.</span><span class="token function">getOption</span><span class="token punctuation">(</span><span class="token string">'domain'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">var</span> response <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>info<span class="token punctuation">.</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">var</span> sourceLink <span class="token operator">=</span> <span class="token string">'http://'</span> <span class="token operator">+</span> domain <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> <span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+</code></pre>
 <h3 id="几点要注意的"><a href="#几点要注意的" class="headerlink" title="几点要注意的"></a>几点要注意的</h3><ol>
 <li>response的key就是我拖曳或者上传的歌曲</li>
 </ol>
@@ -479,7 +495,27 @@
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-25/18569683.jpg" alt="使用了encodeURIComponent"></p>
 <p>如果我想把带有&amp;的一串东西放到查询参数里面，需要使用encodeURIComponent。</p>
 <h2 id="CSS布局以及HTML结构划分"><a href="#CSS布局以及HTML结构划分" class="headerlink" title="CSS布局以及HTML结构划分"></a>CSS布局以及HTML结构划分</h2><p>初步规划是左边第一栏是new-song，中间是song-list,底部是upload-song，右面是song-form部分</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;page&gt;</span><br><span class="line">  &lt;aside <span class="class"><span class="keyword">class</span></span>=<span class="string">"sidebar"</span>&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"newSong"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div id="songList-container"&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"uploadArea"</span>&gt;</span><br><span class="line">      &lt;div id=<span class="string">"uploadContainer"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"draggable"</span>&gt;</span><br><span class="line">        &lt;div id=<span class="string">"uploadButton"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"clickable"</span>&gt;</span><br><span class="line">          &lt;p&gt;点击或者拖曳文件&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">          &lt;p&gt;文件大小不能超过 40MB&lt;/</span>p&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>aside&gt;</span><br><span class="line">  &lt;main&gt;</span><br><span class="line"></span><br><span class="line">  &lt;<span class="regexp">/main&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>page&gt;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>page<span class="token operator">></span>
+  <span class="token operator">&lt;</span>aside <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sidebar"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"newSong"</span><span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"songList-container"</span><span class="token operator">></span>
+
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"uploadArea"</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"uploadContainer"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"draggable"</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"uploadButton"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"clickable"</span><span class="token operator">></span>
+          <span class="token operator">&lt;</span>p<span class="token operator">></span>点击或者拖曳文件<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+          <span class="token operator">&lt;</span>p<span class="token operator">></span>文件大小不能超过 40MB<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>aside<span class="token operator">></span>
+  <span class="token operator">&lt;</span>main<span class="token operator">></span>
+
+  <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>page<span class="token operator">></span>
+</code></pre>
 <p>page区域使用flex布局，是的aside和main区域左右分布，然后aside在使用flex布局并使用flex-direction=column。使之上下排列。</p>
 <h3 id="CSS的一些小技巧"><a href="#CSS的一些小技巧" class="headerlink" title="CSS的一些小技巧"></a>CSS的一些小技巧</h3><ol>
 <li>border: dashed是把阴影虚线化。</li>
@@ -490,7 +526,17 @@
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-25/55783109.jpg" alt="对不齐了"></p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-25/40562762.jpg" alt=""></p>
 <p>优化的代码如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.form &gt; .row &gt; label&#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: flex-end;</span><br><span class="line">  align-items: center;</span><br><span class="line">  width: <span class="number">4</span>em;</span><br><span class="line">  margin-right: <span class="number">5</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.form &gt; .row.actions&#123;</span><br><span class="line">  margin-left: calc(<span class="number">4</span>em + <span class="number">5</span>px);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">.</span>form <span class="token operator">></span> <span class="token punctuation">.</span>row <span class="token operator">></span> label<span class="token punctuation">{</span>
+  display<span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  justify<span class="token operator">-</span>content<span class="token punctuation">:</span> flex<span class="token operator">-</span>end<span class="token punctuation">;</span>
+  align<span class="token operator">-</span>items<span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  width<span class="token punctuation">:</span> 4em<span class="token punctuation">;</span>
+  margin<span class="token operator">-</span>right<span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">.</span>form <span class="token operator">></span> <span class="token punctuation">.</span>row<span class="token punctuation">.</span>actions<span class="token punctuation">{</span>
+  margin<span class="token operator">-</span>left<span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>4em <span class="token operator">+</span> 5px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <ol start="5">
 <li>input的字体应该继承才行，不然字体大小不对。<code>input{font: inherit;}</code></li>
 </ol>
@@ -500,38 +546,138 @@
 </ol>
 <h2 id="模块化和MVC的设计"><a href="#模块化和MVC的设计" class="headerlink" title="模块化和MVC的设计"></a>模块化和MVC的设计</h2><p>如果一个模块变化了，如何通知另外的模块我变了呢，最简单的是使用一个全局的js，告诉其他的js，我变了。</p>
 <p>先写一个全局的app.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="built_in">window</span>.app = &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
+  window<span class="token punctuation">.</span>app <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>在要发起通信的js文件上写上下面的代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.app.newSong.active()</span><br><span class="line"><span class="built_in">window</span>.app.songForm.reset()</span><br><span class="line">...</span><br><span class="line"><span class="built_in">window</span>.app.uploadSong = controller</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>app<span class="token punctuation">.</span>newSong<span class="token punctuation">.</span><span class="token function">active</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+window<span class="token punctuation">.</span>app<span class="token punctuation">.</span>songForm<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">...</span>
+window<span class="token punctuation">.</span>app<span class="token punctuation">.</span>uploadSong <span class="token operator">=</span> controller
+</code></pre>
 <p>也就是说其他的js模块只是往外暴露他们对应的js就可以了。但是这种方式的通信耦合度有点高，不利于后期更改。</p>
 <p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-25/98205421.jpg" alt="模块间通信"></p>
 <p>因为假如3变了要去通知1和4的话，1和4还是知道3的存在，所以不应该让1和4知道3的存在。采取中间环节来转换，那就是发布订阅模式。</p>
 <h3 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h3><p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-25/88110527.jpg" alt="发布订阅模式"></p>
 <p>使用全局的eventHub模块</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.eventHub = &#123;</span><br><span class="line">  events: &#123;</span><br><span class="line">    <span class="comment">// '遗憾': [fn],</span></span><br><span class="line">    <span class="comment">// '追光者': [],</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 发布</span></span><br><span class="line"><span class="comment">   * @param &#123;*事件名字&#125; eventName </span></span><br><span class="line"><span class="comment">   * @param &#123;*数据&#125; data </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  emit(eventName, data) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> <span class="keyword">this</span>.events) &#123;</span><br><span class="line">      <span class="keyword">if</span>(key === eventName) &#123;</span><br><span class="line">        <span class="keyword">let</span> fnList = <span class="keyword">this</span>.events[key]</span><br><span class="line">        fnList.map(<span class="function">(<span class="params">fn</span>) =&gt;</span> &#123;</span><br><span class="line">          fn.call(<span class="literal">undefined</span>, data)</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * </span></span><br><span class="line"><span class="comment">   * @param &#123;*订阅的事件名字&#125; eventName </span></span><br><span class="line"><span class="comment">   * @param &#123;*订阅事件之后执行的函数&#125; fn </span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  on(eventName, fn) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.events[eventName] === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="keyword">this</span>.events[eventName] = []</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.events[eventName].push(fn)    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>eventHub <span class="token operator">=</span> <span class="token punctuation">{</span>
+  events<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// '遗憾': [fn],</span>
+    <span class="token comment" spellcheck="true">// '追光者': [],</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">/**
+   * 发布
+   * @param {*事件名字} eventName 
+   * @param {*数据} data 
+   */</span>
+  <span class="token function">emit</span><span class="token punctuation">(</span>eventName<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>key <span class="token operator">===</span> eventName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> fnList <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+        fnList<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          fn<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>undefined<span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">/**
+   * 
+   * @param {*订阅的事件名字} eventName 
+   * @param {*订阅事件之后执行的函数} fn 
+   */</span>
+  <span class="token function">on</span><span class="token punctuation">(</span>eventName<span class="token punctuation">,</span> fn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span> <span class="token operator">===</span> undefined<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>events<span class="token punctuation">[</span>eventName<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span>    
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
 <p>其他模块的js使用的时候就可以使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.eventHub.emit(<span class="string">'upload'</span>, &#123;</span><br><span class="line">  <span class="string">'url'</span>: sourceLink,</span><br><span class="line">  <span class="string">'name'</span>: response.key</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>eventHub<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'upload'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token string">'url'</span><span class="token punctuation">:</span> sourceLink<span class="token punctuation">,</span>
+  <span class="token string">'name'</span><span class="token punctuation">:</span> response<span class="token punctuation">.</span>key
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
 <h3 id="几个注意要点"><a href="#几个注意要点" class="headerlink" title="几个注意要点"></a>几个注意要点</h3><ol>
 <li>ES6的一个特性</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render(data = &#123;&#125;) &#123;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">render</span><span class="token punctuation">(</span>data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
 <p>如果你传值的时候，没有传值或者传的值是undefined就给你一个空对象。</p>
 <ol start="2">
 <li>省略一点代码</li>
 </ol>
 <p>在view里面写上</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">init()&#123;</span><br><span class="line">	<span class="keyword">this</span>.$el = $(<span class="keyword">this</span>.el)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>$el <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <ol start="3">
 <li>Vue框架里面V-for出现的必要性</li>
 </ol>
 <p>如果直接用template的话</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"songList"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span>歌曲233333<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲52222222<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲6<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲7<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲8<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲9<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>歌曲1033<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>songList<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>active<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>歌曲233333<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲52222222<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲9<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>歌曲1033<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+</code></pre>
 <p>很显然这种template很难看，所以使用如下的代码改造。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> view = &#123;</span><br><span class="line">   el: <span class="string">'#songList-container'</span>,</span><br><span class="line">   template: <span class="string">`</span></span><br><span class="line"><span class="string">   &lt;ul class="songList"&gt;</span></span><br><span class="line"><span class="string">   &lt;/ul&gt;</span></span><br><span class="line"><span class="string">   `</span>,</span><br><span class="line">   render(data) &#123;</span><br><span class="line">     <span class="keyword">let</span> $el = $(<span class="keyword">this</span>.el)</span><br><span class="line">     $el.html(<span class="keyword">this</span>.template)</span><br><span class="line">     <span class="keyword">let</span> &#123;songs&#125; = data</span><br><span class="line">     <span class="keyword">let</span> liList = songs.map(<span class="function">(<span class="params">song</span>) =&gt;</span> $(<span class="string">'&lt;li&gt;&lt;/li&gt;'</span>).text(song.name))</span><br><span class="line">     $el.find(<span class="string">'ul'</span>).empty()</span><br><span class="line">     liList.map(<span class="function">(<span class="params">domLi</span>) =&gt;</span> &#123;</span><br><span class="line">       $el.find(<span class="string">'ul'</span>).append(domLi)</span><br><span class="line">     &#125;)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">let</span> view <span class="token operator">=</span> <span class="token punctuation">{</span>
+    el<span class="token punctuation">:</span> <span class="token string">'#songList-container'</span><span class="token punctuation">,</span>
+    template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    &lt;ul class="songList">
+    &lt;/ul>
+    `</span></span><span class="token punctuation">,</span>
+    <span class="token function">render</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> $el <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>el<span class="token punctuation">)</span>
+      $el<span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>template<span class="token punctuation">)</span>
+      <span class="token keyword">let</span> <span class="token punctuation">{</span>songs<span class="token punctuation">}</span> <span class="token operator">=</span> data
+      <span class="token keyword">let</span> liList <span class="token operator">=</span> songs<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>song<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'&lt;li>&lt;/li>'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span>song<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      $el<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'ul'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      liList<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>domLi<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        $el<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'ul'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>domLi<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre>
 <p>而以上的仍然麻烦，所以Vue发明了V-for的语法，不过人家是使用了正则表达式去实现的。</p>
 <p>4.深拷贝与浅拷贝的阴影</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.model.data)</span><br><span class="line"><span class="keyword">let</span> object = <span class="built_in">JSON</span>.parse(string)</span><br><span class="line"><span class="comment">// window.eventHub.emit('create', this.model.data) //一开始用的是这句代码，明显this.model.data会被多次篡改</span></span><br><span class="line"><span class="built_in">window</span>.eventHub.emit(<span class="string">'create'</span>, object)</span><br></pre></td></tr></table></figure>
-
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> string <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>model<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+<span class="token keyword">let</span> object <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// window.eventHub.emit('create', this.model.data) //一开始用的是这句代码，明显this.model.data会被多次篡改</span>
+window<span class="token punctuation">.</span>eventHub<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'create'</span><span class="token punctuation">,</span> object<span class="token punctuation">)</span>
+</code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
             </div>
             <hr>
 
@@ -1044,7 +1190,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
             <br>
             
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.1k</span>&nbsp;字
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span class="white-color">74.6k</span>&nbsp;字
             
             
             
