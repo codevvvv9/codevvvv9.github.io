@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>WuShaoLin&#39;s Blog</title>
+  <title>风之子</title>
   
   <subtitle>我来，我见，我征服！</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://codevvvv9.github.io/</id>
   
   <author>
-    <name>shaolin-wu</name>
+    <name>吴少林</name>
     
   </author>
   
