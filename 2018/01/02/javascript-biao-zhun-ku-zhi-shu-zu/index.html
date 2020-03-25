@@ -1,476 +1,230 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="JavaScript标准库之数组, 风之子">
-    <meta name="description" content="
-学习任何编程语言，数组都是绕不过去的坎，每个编程语言都在其标准库里面内置了功能强大的Array对象。通过参考阮一峰教程和MDN,我把数组常见的方法以及一些误区总结如下，内容较多，而且会继续补充，希望这一篇文章可以把数组的知识一网打尽。
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>JavaScript标准库之数组 | 风之子</title>
-    <link rel="icon" type="image/png" href="/1.png">
+<link rel="stylesheet" href="/css/main.css">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
-    <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="风之子" type="application/atom+xml">
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"codevvvv9.github.io","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="学习任何编程语言，数组都是绕不过去的坎，每个编程语言都在其标准库里面内置了功能强大的Array对象。通过参考阮一峰教程和MDN,我把数组常见的方法以及一些误区总结如下，内容较多，而且会继续补充，希望这一篇文章可以把数组的知识一网打尽。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript标准库之数组">
+<meta property="og:url" content="https://codevvvv9.github.io/2018/01/02/javascript-biao-zhun-ku-zhi-shu-zu/index.html">
+<meta property="og:site_name" content="winder">
+<meta property="og:description" content="学习任何编程语言，数组都是绕不过去的坎，每个编程语言都在其标准库里面内置了功能强大的Array对象。通过参考阮一峰教程和MDN,我把数组常见的方法以及一些误区总结如下，内容较多，而且会继续补充，希望这一篇文章可以把数组的知识一网打尽。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-02T14:42:38.000Z">
+<meta property="article:modified_time" content="2018-11-18T09:46:05.000Z">
+<meta property="article:author" content="吴少林">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://codevvvv9.github.io/2018/01/02/javascript-biao-zhun-ku-zhi-shu-zu/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaScript标准库之数组 | winder</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="winder" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper head-container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/1.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">风之子</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/1.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">风之子</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
+  </div>
 
-    
+  <div class="site-meta">
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			Contact
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/codevvvv9/" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
-</div>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winder</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追！</p>
+  </div>
 
-        </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/codevvvv9/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
-
-    
-
-
-
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
-    <div class="container" style="right: 0px;left: 0px;">
-        <div class="row">
-            <div class="col s12 m12 l12">
-                <div class="brand">
-                    <h1 class="description center-align post-title">JavaScript标准库之数组</h1>
-                </div>
-            </div>
-        </div>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
+  </div>
 </div>
 
 
 
 
-<main class="post-container content">
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
 
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-    #articleContent :focus {
-        outline: none;
-    }
 
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-    .toc-widget {
-        width: 345px;
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content {
-        height: calc(100vh - 250px);
-        overflow: auto;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 15px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
-<div id="artDetail">
-    <div class="card">
-        <div class="card-content article-info">
-            <div class="row tag-cate">
-                <div class="col s7">
-                    
-                    <div class="article-tag">
-                        
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/JS%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/" class="post-category">
-                                JS语法详解
-                            </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="post-info">
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-01-02
-                </div>
-                
-
-                
-                <div class="post-date info-break-policy">
-                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2018-11-18
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.2k
-                </div>
-                
-
-                
-                <div class="info-break-policy">
-                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    34 分
-                </div>
-                
-				
-                
-                    <div id="busuanzi_container_page_pv" class="info-break-policy">
-                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                        <span id="busuanzi_value_page_pv"></span>
-                    </div>
-				
-            </div>
+          <div class="content post">
             
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/01/02/javascript-biao-zhun-ku-zhi-shu-zu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaScript标准库之数组
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-02 22:42:38" itemprop="dateCreated datePublished" datetime="2018-01-02T22:42:38+08:00">2018-01-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a>
+                </span>
+            </span>
+
+          
+
         </div>
-        <hr class="clearfix">
-        <div class="card-content article-card-content">
-            <div id="articleContent">
-                <blockquote>
-<p>学习任何编程语言，数组都是绕不过去的坎，每个编程语言都在其标准库里面内置了功能强大的Array对象。通过参考阮一峰教程和MDN,我把数组常见的方法以及一些误区总结如下，内容较多，而且会继续补充，希望这一篇文章可以把数组的知识一网打尽。<br><a id="more"></a></p>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>学习任何编程语言，数组都是绕不过去的坎，每个编程语言都在其标准库里面内置了功能强大的Array对象。通过参考阮一峰教程和MDN,我把数组常见的方法以及一些误区总结如下，内容较多，而且会继续补充，希望这一篇文章可以把数组的知识一网打尽。</p>
+<a id="more"></a>
 </blockquote>
 <h3 id="1-数组的简单概念"><a href="#1-数组的简单概念" class="headerlink" title="1. 数组的简单概念"></a>1. 数组的简单概念</h3><h4 id="1-1-数组是什么呢？"><a href="#1-1-数组是什么呢？" class="headerlink" title="1.1 数组是什么呢？"></a>1.1 数组是什么呢？</h4><p>编程总要和数据打交道，常见的普通的数据由基本数据类型可以定义，一些具有多重属性、内容的数据就需要复杂的数据类型去定义，也就是对象来定义，数组也是对象的一种。</p>
 <ul>
@@ -482,8 +236,7 @@ undefined
 arr1
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>empty × <span class="token number">3</span><span class="token punctuation">]</span>
     length<span class="token punctuation">:</span> <span class="token number">3</span>
-    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>以上是控制台打印结果，构造了一个长度为3的、每个元素为空的数组。</p>
 <hr>
 <p>以上的写法有个小bug<br>虽然元素为空，但是正常来说，索引应该存在的，但是事实是 索引竟然不存在</p>
@@ -497,8 +250,7 @@ undefined
 <span class="token boolean">false</span>
 <span class="token number">1</span> <span class="token keyword">in</span> arr1
 <span class="token boolean">false</span>
-<span class="token number">2</span> <span class="token keyword">in</span> arr1
-</code></pre>
+<span class="token number">2</span> <span class="token keyword">in</span> arr1</code></pre>
 <p>索引0、1、2处是undefined，完全合理，但是索引不存在，很奇怪</p>
 <hr>
 <p>而且new不写也是一样的结果。</p>
@@ -507,8 +259,7 @@ undefined
 arr2
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>empty × <span class="token number">3</span><span class="token punctuation">]</span>
     length<span class="token punctuation">:</span> <span class="token number">3</span>
-    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <ul>
 <li>但是采用构造函数的这种方法容易产生一些歧义，不同的参数个数，会产生不同的结果。<h5 id="1-2-1-构造函数不写参数"><a href="#1-2-1-构造函数不写参数" class="headerlink" title="1.2.1 构造函数不写参数"></a>1.2.1 构造函数不写参数</h5></li>
 </ul>
@@ -517,8 +268,7 @@ undefined
 arr3
 <span class="token punctuation">[</span><span class="token punctuation">]</span>
     length<span class="token punctuation">:</span><span class="token number">0</span>
-    __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span></code></pre>
 <p>此时构造出空的数组，而且发现构造函数的()写不写都可以</p>
 <h5 id="1-2-2-构造函数写1个正整数参数"><a href="#1-2-2-构造函数写1个正整数参数" class="headerlink" title="1.2.2 构造函数写1个正整数参数"></a>1.2.2 构造函数写1个正整数参数</h5><p>那这个正整数参数就是构造出来的数组的长度。</p>
 <h5 id="1-2-3-构造函数参数是一个非正整数-字符串、boolean、对象等其他值"><a href="#1-2-3-构造函数参数是一个非正整数-字符串、boolean、对象等其他值" class="headerlink" title="1.2.3 构造函数参数是一个非正整数(字符串、boolean、对象等其他值)"></a>1.2.3 构造函数参数是一个非正整数(字符串、boolean、对象等其他值)</h5><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token string">'jjj'</span><span class="token punctuation">)</span>
@@ -527,24 +277,21 @@ arr
 <span class="token punctuation">[</span><span class="token string">"jjj"</span><span class="token punctuation">]</span>
     <span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">"jjj"</span>
     length<span class="token punctuation">:</span> <span class="token number">1</span>
-    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
 undefined
 arr
 <span class="token punctuation">[</span><span class="token boolean">false</span><span class="token punctuation">]</span>
     <span class="token number">0</span><span class="token punctuation">:</span> <span class="token boolean">false</span>
     length<span class="token punctuation">:</span> <span class="token number">1</span>
-    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">'我是一个对象'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 undefined
 arr
 <span class="token punctuation">[</span><span class="token punctuation">{</span>…<span class="token punctuation">}</span><span class="token punctuation">]</span>
     <span class="token number">0</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">"我是一个对象"</span><span class="token punctuation">}</span>
     length<span class="token punctuation">:</span> <span class="token number">1</span>
-    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>这个非正整数就是数组的内容</p>
 <h5 id="1-2-4-构造函数写多个参数"><a href="#1-2-4-构造函数写多个参数" class="headerlink" title="1.2.4 构造函数写多个参数"></a>1.2.4 构造函数写多个参数</h5><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
 undefined
@@ -553,8 +300,7 @@ arr4
     <span class="token number">0</span><span class="token punctuation">:</span> <span class="token number">1</span>
     <span class="token number">1</span><span class="token punctuation">:</span> <span class="token number">2</span>
     length<span class="token punctuation">:</span> <span class="token number">2</span>
-    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>此时直接构造出0索引是元素1、1索引是元素2的数组对象。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token string">'aa'</span><span class="token punctuation">,</span> <span class="token string">'ff'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 undefined
@@ -565,8 +311,7 @@ arr4
     <span class="token number">2</span><span class="token punctuation">:</span> <span class="token number">10</span>
     <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">0</span>
     length<span class="token punctuation">:</span> <span class="token number">4</span>
-    __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>即多参数时，所有参数都是返回的新数组的成员</p>
 <h5 id="1-2-5-构造函数参数是非正整数，报错"><a href="#1-2-5-构造函数参数是非正整数，报错" class="headerlink" title="1.2.5 构造函数参数是非正整数，报错"></a>1.2.5 构造函数参数是非正整数，报错</h5><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
 VM376<span class="token punctuation">:</span><span class="token number">1</span> Uncaught RangeError<span class="token punctuation">:</span> Invalid array length
@@ -575,8 +320,7 @@ VM376<span class="token punctuation">:</span><span class="token number">1</span>
 <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">3.2</span><span class="token punctuation">)</span>
 VM377<span class="token punctuation">:</span><span class="token number">1</span> Uncaught RangeError<span class="token punctuation">:</span> Invalid array length
     at <span class="token operator">&lt;</span>anonymous<span class="token operator">></span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">1</span>
-<span class="token punctuation">(</span>anonymous<span class="token punctuation">)</span> @ VM377<span class="token punctuation">:</span><span class="token number">1</span>
-</code></pre>
+<span class="token punctuation">(</span>anonymous<span class="token punctuation">)</span> @ VM377<span class="token punctuation">:</span><span class="token number">1</span></code></pre>
 <h5 id="1-2-6-数组定义的正确方法"><a href="#1-2-6-数组定义的正确方法" class="headerlink" title="1.2.6 数组定义的正确方法"></a>1.2.6 数组定义的正确方法</h5><p>综上所述，其实实际中直接用字面量定义数组</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'这样子'</span><span class="token punctuation">,</span> <span class="token string">'定义'</span><span class="token punctuation">,</span> <span class="token string">'is'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'good'</span><span class="token punctuation">:</span> <span class="token string">'我是数组索引为5的元素的值'</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
 undefined
@@ -590,7 +334,6 @@ arr
     <span class="token number">5</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>good<span class="token punctuation">:</span> <span class="token string">"我是数组索引为5的元素的值"</span><span class="token punctuation">}</span>
     length<span class="token punctuation">:</span> <span class="token number">6</span>
     __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h3 id="2-数组的length属性解疑"><a href="#2-数组的length属性解疑" class="headerlink" title="2. 数组的length属性解疑"></a>2. 数组的length属性解疑</h3><p>如果你是初学者，一定要记住数组的length属性和里面的元素个数无关，爱几个元素几个元素，length并不是计数的作用。这是我自学是对数组长度最大的误解。<br>正确的理解是：<strong><code>数组的length属性等于最大正整数索引 + 1</code></strong><br>而数组的索引可以随便改变，那么length属性也是一个动态的值，可以变化。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -605,14 +348,12 @@ arr
 <span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>empty × <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"我是第10个元素，我前面没有元素，但是数组的长度绝对是11，你信不信"</span><span class="token punctuation">]</span>
     <span class="token number">10</span><span class="token punctuation">:</span><span class="token string">"我是第10个元素，我前面没有元素，但是数组的长度绝对是11，你信不信"</span>
     length<span class="token punctuation">:</span><span class="token number">11</span>
-    __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>这个例子一开始是个空数组，长度是0，直接给他一个索引10，可以发现长度立马变为11。</p>
 <pre class=" language-javascript"><code class="language-javascript">arr<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'这次数组长度绝对是101'</span>
 <span class="token string">"这次数组长度绝对是101"</span>
 arr<span class="token punctuation">.</span>length
-<span class="token number">101</span>
-</code></pre>
+<span class="token number">101</span></code></pre>
 <p>通过以上的例子，我们反向推理，把可以明白数组长度根本不连续，是动态变化的，即数组长度是可写的。唯一的不变真理是，它的长度永远等于最大索引+1。</p>
 <h4 id="2-1-把数组清空的方法"><a href="#2-1-把数组清空的方法" class="headerlink" title="2.1 把数组清空的方法"></a>2.1 把数组清空的方法</h4><p>由以上知识可以知道数组长度可以人为改变，进而大胆的猜想，改变长度会不会把数组清空呢？</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arrDemo <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'this'</span><span class="token punctuation">,</span> <span class="token string">'is'</span><span class="token punctuation">,</span> <span class="token string">'test'</span><span class="token punctuation">]</span>
@@ -644,8 +385,7 @@ arrDemo<span class="token punctuation">[</span><span class="token string">'lengt
 arrDemo
 <span class="token punctuation">[</span><span class="token punctuation">]</span>
     length<span class="token punctuation">:</span> <span class="token number">0</span>
-    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>把数组length设为0，证明可以清空数组。</p>
 <h4 id="2-2-有趣的一点"><a href="#2-2-有趣的一点" class="headerlink" title="2.2 有趣的一点"></a>2.2 有趣的一点</h4><p>由于数组本质上是对象的一种，所以我们可以为数组添加属性，但是这不影响length属性的值。<br><strong>一定不要有思维定式，以为添加几个新元素，长度就会加几个。</strong></p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -668,11 +408,25 @@ arr
     add<span class="token punctuation">:</span> <span class="token string">"我加一个新元素，长度绝对还是0"</span>
     add1<span class="token punctuation">:</span> <span class="token string">"我又加一个新元素，长度绝对还是0"</span>
     length<span class="token punctuation">:</span> <span class="token number">0</span>
-    __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>通过这个例子，一开始元素长度为0，只要你没添加一个正整数的索引，无论你添加多少其他元素，长度永远不会变化。</p>
 <ul>
-<li>注意：<strong>方括号运算符里面一定要用引号，我总是手抖忘了加。</strong><h3 id="3-伪数组-array-like-object"><a href="#3-伪数组-array-like-object" class="headerlink" title="3. 伪数组(array-like object)"></a>3. 伪数组(array-like object)</h3>如果一个对象的所有键名都是正整数或零，并且有length属性，那么这个对象就很像数组，语法上称为“类似数组的对象”<br><code>`</code>javascript<br>var obj = {<br>  0: ‘a’,<br>  1: ‘b’,<br>  2: ‘c’,<br>  length: 3,<br>}<br>undefined<br>obj<br>{0: “a”, 1: “b”, 2: “c”, length: 3}<br>  0: “a”<br>  1: “b”<br>  2: “c”<br>  length: 3<br>  <strong>proto</strong>: Object</li>
+<li>注意：<strong>方括号运算符里面一定要用引号，我总是手抖忘了加。</strong><h3 id="3-伪数组-array-like-object"><a href="#3-伪数组-array-like-object" class="headerlink" title="3. 伪数组(array-like object)"></a>3. 伪数组(array-like object)</h3>如果一个对象的所有键名都是正整数或零，并且有length属性，那么这个对象就很像数组，语法上称为“类似数组的对象”<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">'a'</span><span class="token punctuation">,</span>
+  <span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">'b'</span><span class="token punctuation">,</span>
+  <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">'c'</span><span class="token punctuation">,</span>
+  length<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+undefined
+obj
+<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">"c"</span><span class="token punctuation">,</span> length<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
+  <span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">"a"</span>
+  <span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">"b"</span>
+  <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">"c"</span>
+  length<span class="token punctuation">:</span> <span class="token number">3</span>
+  __proto__<span class="token punctuation">:</span> Object
+</code></pre>
+</li>
 </ul>
 <p>obj[0]<br>“a”<br>obj[2]<br>“c”</p>
 <pre><code>上面的对象，看着结构特别像但是绝对不是数组。
@@ -696,13 +450,11 @@ var obj = {
 }
 undefined
 Array.isArray(obj)
-false
-</code></pre><p>Array.isArray()方法可以判断是不是数组对象，以前学过的instanceOf也可以判断。</p>
+false</code></pre><p>Array.isArray()方法可以判断是不是数组对象，以前学过的instanceOf也可以判断。</p>
 <pre class=" language-javascript"><code class="language-javascript">arr <span class="token keyword">instanceof</span> <span class="token class-name">Array</span>
 <span class="token boolean">true</span>
 obj <span class="token keyword">instanceof</span> <span class="token class-name">Array</span>
-<span class="token boolean">false</span>
-</code></pre>
+<span class="token boolean">false</span></code></pre>
 <p>所以现在有两个方法可以区分是数组还是对象了。</p>
 <h4 id="4-2-valueOf-，toString"><a href="#4-2-valueOf-，toString" class="headerlink" title="4.2 valueOf()，toString()"></a>4.2 valueOf()，toString()</h4><ul>
 <li>valueOf()返回数组本身<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">]</span>
@@ -710,22 +462,25 @@ undefined
 arr<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span>
 arr<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">"a,b"</span>
-</code></pre>
+<span class="token string">"a,b"</span></code></pre>
 </li>
 <li>toString()返回数组的字符串形式<h4 id="4-3-push"><a href="#4-3-push" class="headerlink" title="4.3 push()"></a>4.3 push()</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">]</span>
 undefined
 arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">)</span>
 <span class="token number">3</span>
 arr
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"f"</span><span class="token punctuation">]</span>
-</code></pre>
-向数组的末尾添加元素，返回添加成功后的数组的长度<br><strong>会改变原数组</strong><h4 id="4-4-pop"><a href="#4-4-pop" class="headerlink" title="4.4 pop()"></a>4.4 pop()</h4><code>`</code>javascript<br>arr.pop()<br>“f”<br>arr<br>(2) [“a”, “b”]</li>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"f"</span><span class="token punctuation">]</span></code></pre>
+向数组的末尾添加元素，返回添加成功后的数组的长度</li>
 </ul>
-<pre><code>删除数组的最后一个元素，并返回删除的这个元素。
-```javascript
-[].pop() // undefined
-</code></pre><ul>
+<p><strong>会改变原数组</strong></p>
+<h4 id="4-4-pop"><a href="#4-4-pop" class="headerlink" title="4.4 pop()"></a>4.4 pop()</h4><pre class=" language-javascript"><code class="language-javascript">arr<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">"f"</span>
+arr
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span>
+</code></pre>
+<p>删除数组的最后一个元素，并返回删除的这个元素。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// undefined</span></code></pre>
+<ul>
 <li>注意：对空数组使用pop方法，不会报错，而是返回undefined。<br>这个方法<strong>会改变原数组</strong></li>
 </ul>
 <hr>
@@ -735,37 +490,35 @@ arr
 <pre class=" language-javascript"><code class="language-javascript">arr
 <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span>
 arr<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'-'</span><span class="token punctuation">)</span>
-<span class="token string">"a-b"</span>
-</code></pre>
+<span class="token string">"a-b"</span></code></pre>
 <p>以上是以中划线的形式连接起来</p>
 <pre class=" language-javascript"><code class="language-javascript">arr<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">"a,b"</span>
-</code></pre>
+<span class="token string">"a,b"</span></code></pre>
 <p>如果没有规定格式，则以逗号分隔</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'rr'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span>
 undefined
 arr
 <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span>
 arr<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">"a,rr,,"</span>
-</code></pre>
+<span class="token string">"a,rr,,"</span></code></pre>
 <ul>
 <li>注意：如果字符串中有null和undefined的，会被转成空字符串。<br><strong>该方法不会改变原数组</strong><h4 id="4-6-concat"><a href="#4-6-concat" class="headerlink" title="4.6 concat()"></a>4.6 concat()</h4>是一个专业合并数组的方法。<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'rr'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span>
 undefined
 arr<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'rrr'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">,</span> <span class="token string">"rrr"</span><span class="token punctuation">]</span>
 arr
-<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span>
-</code></pre>
-把一个新数组添加到旧数组的后面，返回生成的新数组。<br><strong>不会改变原数组</strong><h4 id="4-7-shift"><a href="#4-7-shift" class="headerlink" title="4.7 shift()"></a>4.7 shift()</h4>删除数组的第一个元素,并返回删除的那个元素<pre class=" language-javascript"><code class="language-javascript">arr
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span></code></pre>
+把一个新数组添加到旧数组的后面，返回生成的新数组。</li>
+</ul>
+<p><strong>不会改变原数组</strong></p>
+<h4 id="4-7-shift"><a href="#4-7-shift" class="headerlink" title="4.7 shift()"></a>4.7 shift()</h4><p>删除数组的第一个元素,并返回删除的那个元素</p>
+<pre class=" language-javascript"><code class="language-javascript">arr
 <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span>
 arr<span class="token punctuation">.</span><span class="token function">shift</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token string">"a"</span>
 arr
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span>
-</code></pre>
-<strong>会改变原数组</strong></li>
-</ul>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span></code></pre>
+<p><strong>会改变原数组</strong></p>
 <hr>
 <p>push()与shift()方法结合，可以模拟队列这个数据结构</p>
 <hr>
@@ -775,8 +528,7 @@ arr
 arr<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">(</span><span class="token string">'ffff'</span><span class="token punctuation">)</span>
 <span class="token number">4</span>
 arr
-<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"ffff"</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"ffff"</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> undefined<span class="token punctuation">]</span></code></pre>
 <p>和shift()方法的作用正好相反。<br><strong>一定会改变原数组</strong></p>
 <h4 id="4-9-reverse"><a href="#4-9-reverse" class="headerlink" title="4.9 reverse()"></a>4.9 reverse()</h4><p>反转数组，返回反转后的数组</p>
 <pre class=" language-javascript"><code class="language-javascript">arr
@@ -784,8 +536,7 @@ arr
 arr<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>undefined<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token string">"ffff"</span><span class="token punctuation">]</span>
 arr
-<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>undefined<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token string">"ffff"</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>undefined<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token string">"ffff"</span><span class="token punctuation">]</span></code></pre>
 <p><strong>会改变原数组</strong></p>
 <h4 id="4-10-slice"><a href="#4-10-slice" class="headerlink" title="4.10 slice()"></a>4.10 slice()</h4><p>提取原数组的一部分，返回一个新的数组</p>
 <pre class=" language-javascript"><code class="language-javascript">arr
@@ -797,13 +548,11 @@ arr<span class="token punctuation">.</span><span class="token function">slice</s
 arr<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token string">"ffff"</span><span class="token punctuation">]</span>
 arr
-<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>undefined<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token string">"ffff"</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>undefined<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token string">"ffff"</span><span class="token punctuation">]</span></code></pre>
 <p>arr.slice(1,3)从索引为1的位置开始截取，到索引3停止，但是不包括索引3。<br>arr.slice()无参是原数组的拷贝<br>arr.slice(1)从索引为1的位置开始截取，到末尾。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 a<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["b", "c"]</span>
-a<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["b"]</span>
-</code></pre>
+a<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// ["b"]</span></code></pre>
 <p>如果slice方法的参数是负数，则表示倒数计算的位置。<br>上面代码中，-2表示倒数计算的第二个位置，-1表示倒数计算的第一个位置。</p>
 <hr>
 <p>slice()方法可以把伪数组变成真的数组</p>
@@ -815,48 +564,28 @@ a<span class="token punctuation">.</span><span class="token function">slice</spa
 arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"rr"</span><span class="token punctuation">,</span> <span class="token string">"ffff"</span><span class="token punctuation">]</span>
 arr
-<span class="token punctuation">[</span>undefined<span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">[</span>undefined<span class="token punctuation">]</span></code></pre>
 <p>arr.splice(1,3)，从索引1开始删除，删3个元素！！！<br>一定要注意和slice区分：splice的第一个参数是删除的起始位置，第二个参数是被删除的元素个数。如果后面还有更多的参数，则表示这些就是要被插入数组的新元素。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'aaa'</span><span class="token punctuation">,</span> <span class="token string">'ff'</span><span class="token punctuation">,</span> <span class="token string">'aff'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
 undefined
 arr<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'wu'</span><span class="token punctuation">,</span> <span class="token number">999</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"aaa"</span><span class="token punctuation">,</span> <span class="token string">"ff"</span><span class="token punctuation">,</span> <span class="token string">"aff"</span><span class="token punctuation">]</span>
 arr
-<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"wu"</span><span class="token punctuation">,</span> <span class="token number">999</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"wu"</span><span class="token punctuation">,</span> <span class="token number">999</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span></code></pre>
 <p>arr.splice(1, 3, ‘wu’, 999)，从索引1开始删了3个元素，有加上两个元素，’wu’和999<br>同样的负数表示倒数第几个位置<br><strong>会改变原数组</strong><br>splice()有两个变式</p>
 <ul>
 <li>变式1:我只是想单纯的插入一个元素<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 a<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// []</span>
-a <span class="token comment" spellcheck="true">// [1, 2, 1, 1]</span>
-</code></pre>
+a <span class="token comment" spellcheck="true">// [1, 2, 1, 1]</span></code></pre>
 把第二个参数设为0,就可以在第2个位置插入一个元素了</li>
 <li>变式2:我只给一个参数，就是拆分数组，为两个新数组<pre class=" language-javascript"><code class="language-javascript">a
 <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1111</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span>
 a<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1111</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span>
 a
-<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
-</code></pre>
-a.splice(2)从第三个索引处拆分这个数组。<h4 id="4-12-indexOf-，lastIndexOf"><a href="#4-12-indexOf-，lastIndexOf" class="headerlink" title="4.12 indexOf()，lastIndexOf()"></a>4.12 indexOf()，lastIndexOf()</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
-undefined
-arr
-<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"f"</span><span class="token punctuation">,</span> <span class="token string">"f"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
-  <span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">"a"</span>
-  <span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">"f"</span>
-  <span class="token number">2</span><span class="token punctuation">:</span> <span class="token string">"f"</span>
-  <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">1</span>
-  length<span class="token punctuation">:</span> <span class="token number">4</span>
-  __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-arr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token number">3</span>
-arr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
-<span class="token operator">-</span><span class="token number">1</span>
-arr<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'f'</span><span class="token punctuation">)</span>
-<span class="token number">2</span>
-</code></pre>
-indexOf()，返回括号里面 的元素第一次出现的位置。<br>如果有两个参数则是表示搜索的位置从第二个参数开始。<br>如果找不到该元素，则返回-1。<br>lastIndexOf()返回括号里面的元素最后一次出现的位置。</li>
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+a.splice(2)从第三个索引处拆分这个数组。<h4 id="4-12-indexOf-，lastIndexOf"><a href="#4-12-indexOf-，lastIndexOf" class="headerlink" title="4.12 indexOf()，lastIndexOf()"></a>4.12 indexOf()，lastIndexOf()</h4>```javascript<br>var arr = [‘a’, ‘f’, ‘f’, 1]<br>undefined<br>arr<br>(4) [“a”, “f”, “f”, 1]<br>  0: “a”<br>  1: “f”<br>  2: “f”<br>  3: 1<br>  length: 4<br>  <strong>proto</strong>: Array(0)<br>arr.indexOf(1)<br>3<br>arr.indexOf(‘f’, 3)</li>
+<li>1<br>arr.lastIndexOf(‘f’)<br>2<br>```<br>indexOf()，返回括号里面 的元素第一次出现的位置。<br>如果有两个参数则是表示搜索的位置从第二个参数开始。<br>如果找不到该元素，则返回-1。<br>lastIndexOf()返回括号里面的元素最后一次出现的位置。</li>
 <li>一个MDN的实战例子：获得数组里面某个元素出现的所有位置(利用循环和返回值-1的特点)<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> arrTemp <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//空数组用来存储目标元素出现的所有索引</span>
 <span class="token keyword">var</span> element <span class="token operator">=</span> <span class="token string">'a'</span><span class="token punctuation">;</span>
@@ -866,8 +595,7 @@ indexOf()，返回括号里面 的元素第一次出现的位置。<br>如果有
   index <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arrTemp<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//'a'出现在0、2、4索引位置处</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true">//'a'出现在0、2、4索引位置处</span></code></pre>
 </li>
 </ul>
 <hr>
@@ -885,16 +613,14 @@ arr
 arr<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">NaN</span><span class="token punctuation">)</span>
 <span class="token operator">-</span><span class="token number">1</span>
 arr<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token string">'NaN'</span><span class="token punctuation">)</span>
-<span class="token operator">-</span><span class="token number">1</span>
-</code></pre>
+<span class="token operator">-</span><span class="token number">1</span></code></pre>
 <p>arr数组的第四个位置是NaN,但是无法获得索引。<br><strong>因为indexOf()，lastIndexOf()是严格按照<code>===</code>操作符来检测的，而NaN是唯一的不与自身相等的值。</strong></p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token number">NaN</span> <span class="token operator">===</span> <span class="token number">NaN</span>
 <span class="token boolean">false</span>
 <span class="token number">1</span> <span class="token operator">===</span> <span class="token number">1</span>
 <span class="token boolean">true</span>
 <span class="token string">'a'</span> <span class="token operator">===</span> <span class="token string">'a'</span>
-<span class="token boolean">true</span>
-</code></pre>
+<span class="token boolean">true</span></code></pre>
 <p>奇葩啊，NaN与自己都不相等</p>
 <hr>
 <h3 id="5-数组实例的常见复杂的方法-参数是另一个函数"><a href="#5-数组实例的常见复杂的方法-参数是另一个函数" class="headerlink" title="5. 数组实例的常见复杂的方法(参数是另一个函数)"></a>5. 数组实例的常见复杂的方法(参数是另一个函数)</h3><h4 id="5-1-sort"><a href="#5-1-sort" class="headerlink" title="5.1 sort()"></a>5.1 sort()</h4><p>下面MDN的解释非常棒</p>
@@ -915,27 +641,38 @@ scores<span class="token punctuation">.</span><span class="token function">sort<
 things<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token comment" spellcheck="true">// ['1 Word', '2 Words', 'Word', 'word']</span>
 <span class="token comment" spellcheck="true">// 在Unicode中, 数字在大写字母之前,</span>
-<span class="token comment" spellcheck="true">// 大写字母在小写字母之前.</span>
-</code></pre>
+<span class="token comment" spellcheck="true">// 大写字母在小写字母之前.</span></code></pre>
 <p>上述代码两点注意</p>
 <ul>
 <li><p>第一点是<br>上述代码中的第二部分的<code>[1, 10, 2, 21]</code>是因为<br><code>10</code>的Unicode编码是\u0031\u0030，<code>2</code>的Unicode编码是\u0032，所以<code>10</code>排在<code>2</code>的前面</p>
 </li>
 <li><p>第二点是上述代码中的第三部分的<code>['1 Word', '2 Words', 'Word', 'word']</code>是因为<br><code>'Word'</code>的Unicode编码是</p>
 </li>
-<li><pre><code>\u0026\u0023\u0033\u0039\u003b\u0057\u006f\u0072\u0064\u0026\u0023\u0033\u0039\u003b
-</code></pre><p><code>'word'</code>的Unicode编码是</p>
+<li><pre><code>\u0026\u0023\u0033\u0039\u003b\u0057\u006f\u0072\u0064\u0026\u0023\u0033\u0039\u003b</code></pre><p><code>'word'</code>的Unicode编码是</p>
 </li>
-<li><pre><code>\u0026\u0023\u0033\u0039\u003b\u0077\u006f\u0072\u0064\u0026\u0023\u0033\u0039\u003b
-</code></pre><p>所以   ‘Word’排在’word’前面。</p>
+<li><pre><code>\u0026\u0023\u0033\u0039\u003b\u0077\u006f\u0072\u0064\u0026\u0023\u0033\u0039\u003b</code></pre><p>所以   ‘Word’排在’word’前面。</p>
 <p>各种编码查询<a href="http://tool.chinaz.com/tools/unicode.aspx" target="_blank" rel="noopener">站长工具</a><br><strong>sort方法明显的会改变原数组啊</strong></p>
 </li>
 <li><p>我们通常不想使用默认的升序排列，sort方法可以传入函数来改变顺序。<br>MDN的语法是arr.sort(compareFunction)<br><code>compareFunction</code>这个函数用来指定按某种顺序进行排列的函数。如果省略，元素按照转换为的字符串的诸个字符的Unicode位点进行排序。<br><code>compareFunction</code>这个函数基本的规则是传入两个参数</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">compareNumbers</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 <span class="token keyword">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>| a,b参数比较                   | 代表的意思 |<br>| ————————- | —– |<br>| compareFunction(a, b) &lt; 0 | a在b之前 |<br>| compareFunction(a, b) &gt; 0 | b在a之前 |</p>
+<span class="token punctuation">}</span></code></pre>
+<table>
+<thead>
+<tr>
+<th>a,b参数比较</th>
+<th>代表的意思</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>compareFunction(a, b) &lt; 0</td>
+<td>a在b之前</td>
+</tr>
+<tr>
+<td>compareFunction(a, b) &gt; 0</td>
+<td>b在a之前</td>
+</tr>
+</tbody></table>
 </li>
 </ul>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">]</span>
@@ -943,8 +680,7 @@ undefined
 a
 <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">]</span>
 a<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> b<span class="token operator">-</span>a<span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">7</span><span class="token punctuation">]</span></code></pre>
 <p>降序排列。</p>
 <ul>
 <li>也可以根据具体需求来根据属性来排列<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> students <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'小明'</span><span class="token punctuation">,</span><span class="token string">'小红'</span><span class="token punctuation">,</span><span class="token string">'小花'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -952,46 +688,43 @@ a<span class="token punctuation">.</span><span class="token function">sort</span
 students<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">return</span> scores<span class="token punctuation">[</span>b<span class="token punctuation">]</span> <span class="token operator">-</span> scores<span class="token punctuation">[</span>a<span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"小红"</span><span class="token punctuation">,</span> <span class="token string">"小花"</span><span class="token punctuation">,</span> <span class="token string">"小明"</span><span class="token punctuation">]</span>
-</code></pre>
-以上是把三个学生根据成绩从大到小排列的<h4 id="5-2-map"><a href="#5-2-map" class="headerlink" title="5.2 map()"></a>5.2 map()</h4>map() 方法创建一个新数组，其结果是该数组中的<strong>每个元素</strong>都调用一个提供的函数后返回的结果。<br><strong>不影响原数组。</strong><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'aa'</span><span class="token punctuation">,</span> <span class="token string">'bb'</span><span class="token punctuation">,</span> <span class="token string">'cc'</span><span class="token punctuation">]</span>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"小红"</span><span class="token punctuation">,</span> <span class="token string">"小花"</span><span class="token punctuation">,</span> <span class="token string">"小明"</span><span class="token punctuation">]</span></code></pre>
+以上是把三个学生根据成绩从大到小排列的<h4 id="5-2-map"><a href="#5-2-map" class="headerlink" title="5.2 map()"></a>5.2 map()</h4>map() 方法创建一个新数组，其结果是该数组中的<strong>每个元素</strong>都调用一个提供的函数后返回的结果。</li>
+</ul>
+<p><strong>不影响原数组。</strong></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'aa'</span><span class="token punctuation">,</span> <span class="token string">'bb'</span><span class="token punctuation">,</span> <span class="token string">'cc'</span><span class="token punctuation">]</span>
 arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">return</span> value <span class="token operator">=</span> value <span class="token operator">+</span> <span class="token string">"f"</span>
+    <span class="token keyword">return</span> value <span class="token operator">=</span> value <span class="token operator">+</span> <span class="token string">"f"</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"aaf"</span><span class="token punctuation">,</span> <span class="token string">"bbf"</span><span class="token punctuation">,</span> <span class="token string">"ccf"</span><span class="token punctuation">]</span>
 arr
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"aa"</span><span class="token punctuation">,</span> <span class="token string">"bb"</span><span class="token punctuation">,</span> <span class="token string">"cc"</span><span class="token punctuation">]</span>
-</code></pre>
-以上代码中map()方法里面传入的函数是一个把数组每个值都加上一个’f’。<br>每个元素末尾都加上一个’f’，然后返回这个新的数组，原数组没有任何变化的。<br>我初学的时候，看到上述代码反正很懵逼，这玩意咋出来的这个结果呢。琢磨了很久，还是觉得MDN的解释明白，只不过需要看个3、4遍就能明白了。<br>语法规范是:<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> new_array <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">callback</span><span class="token punctuation">(</span>currentValue<span class="token punctuation">,</span> index<span class="token punctuation">,</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-  <span class="token comment" spellcheck="true">// Return element for new_array </span>
-<span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token punctuation">,</span> thisArg<span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"aa"</span><span class="token punctuation">,</span> <span class="token string">"bb"</span><span class="token punctuation">,</span> <span class="token string">"cc"</span><span class="token punctuation">]</span></code></pre>
+<p>以上代码中map()方法里面传入的函数是一个把数组每个值都加上一个’f’。<br>每个元素末尾都加上一个’f’，然后返回这个新的数组，原数组没有任何变化的。<br>我初学的时候，看到上述代码反正很懵逼，这玩意咋出来的这个结果呢。琢磨了很久，还是觉得MDN的解释明白，只不过需要看个3、4遍就能明白了。<br>语法规范是:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> new_array <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">callback</span><span class="token punctuation">(</span>currentValue<span class="token punctuation">,</span> index<span class="token punctuation">,</span> array<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+    <span class="token comment" spellcheck="true">// Return element for new_array </span>
+<span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token punctuation">,</span> thisArg<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <blockquote>
 <p>callback<br>生成新数组元素的函数，使用三个参数：<br>currentValue<br>callback 的第一个参数，数组中正在处理的当前元素。<br>index<br>callback 的第二个参数，数组中正在处理的当前元素的索引。<br>array<br>callback 的第三个参数，map 方法被调用的数组。<br>thisArg<br>可选的。执行 callback 函数时 使用的this 值。<br>返回值<br>一个新数组，每个元素都是回调函数的结果。</p>
+</blockquote>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>currentValue<span class="token punctuation">,</span> index<span class="token punctuation">,</span> arr<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">return</span> currentValue<span class="token operator">*</span>index
+    <span class="token keyword">return</span> currentValue<span class="token operator">*</span>index
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span></code></pre>
 <p>其实callback 的第三个参数可以不写，也知道调用的到底是哪个Array。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>currentValue<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">return</span> currentValue<span class="token operator">*</span>index
+    <span class="token keyword">return</span> currentValue<span class="token operator">*</span>index
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span></code></pre>
 <p>当你用map()方法的时候，callback 函数会被自动传入三个参数：数组的每一个元素，元素索引，原数组本身。既然原数组本身可以省略，那么由剩下的两个特点我们发散一下，会想到前面我们讲过，伪数组(比如字符串)也具备这两个特点会不会也能用map()方法呢，接下来做个实验。<br>哈哈哈哈，愚蠢的人类，你想的美，怎么可能直接使用呢，必须把伪数组转换一下的。</p>
-</blockquote>
-</li>
+<ul>
 <li>第一种转换方法<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> upper <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">return</span> str<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span>map<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">,</span> upper<span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"B"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"B"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">]</span></code></pre>
 以上是通过map函数的call方法间接使用</li>
 <li>第二种转换方法<pre class=" language-javascript"><code class="language-javascript"><span class="token string">'abc'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>upper<span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"B"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"B"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">]</span></code></pre>
 <code>'abc'.split('')</code>把字符串转成数组<code>["a", "b", "c"]</code></li>
 </ul>
 <hr>
@@ -1002,12 +735,10 @@ arr
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">''</span>
 <span class="token string">"1,3,4"</span>
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">"1,3,4"</span>
-</code></pre>
+<span class="token string">"1,3,4"</span></code></pre>
 </li>
 <li>字符串转数组 一种方法<pre class=" language-javascript"><code class="language-javascript"><span class="token string">'abxc'</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"x"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"x"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">]</span></code></pre>
 </li>
 </ul>
 <hr>
@@ -1019,14 +750,12 @@ undefined
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> undefined<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">NaN</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
 <p>可以发现<code>[1, , 2].map(f)</code>空位未执行map()。map方法不会跳过undefined和null，但是会跳过空位。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">null</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">=</span> <span class="token number">1</span>
 <span class="token boolean">true</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">=</span> <span class="token number">2</span>
 <span class="token boolean">false</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">=</span> <span class="token number">1</span>
-<span class="token comment" spellcheck="true">//好奇怪</span>
-</code></pre>
+<span class="token comment" spellcheck="true">//好奇怪</span></code></pre>
 <ul>
 <li>用一个更直观的例子来证明map方法会跳过空位<pre class=" language-javascript"><code class="language-javascript"><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'enter...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1034,8 +763,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>empty × <span class="token number">2</span><span class="token punctuation">]</span>
   length<span class="token punctuation">:</span> <span class="token number">2</span>
-  __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+  __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 本文一开始就讲了Array[2]始构造了长度为2的空数组，没有打印出enter，说明未执行map()方法。<blockquote>
 <p>使用 map 方法处理数组时，数组元素的范围是在 callback 方法第一次调用之前就已经确定了。在 map 方法执行的过程中：原数组中新增加的元素将不会被 callback 访问到；若已经存在的元素被改变或删除了，则它们的传递到 callback 的值是 map 方法遍历到它们的那一时刻的值；而被删除的元素将不会被访问到。</p>
 </blockquote>
@@ -1052,8 +780,7 @@ a
     length<span class="token punctuation">:</span> <span class="token number">3</span>
     __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-undefined
-</code></pre>
+undefined</code></pre>
 <p>可以看到，空位计入数组长度,空位可读取，但是是undefined。<br>delete命令可以删除数组内的一个元素</p>
 <pre class=" language-javascript"><code class="language-javascript">a
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> empty<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
@@ -1063,8 +790,7 @@ a
 <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>empty × <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span>
     <span class="token number">2</span><span class="token punctuation">:</span> <span class="token number">2</span>
     length<span class="token punctuation">:</span> <span class="token number">3</span>
-    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+    __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>delete命令删除成功，返回true,但是length不变，说明空位可以被读取到，所以用delete命令无法清空数组。目前把数组清空的唯一方法就是把length属性改为0。<br>换句话说<strong>length属性不能过滤空位</strong>。<br>当使用length属性进行数组遍历时，一定要非常小心。</p>
 <p>数组的某个位置是空位，与某个位置是undefined，是不一样的。<br>为什么不一样呢。</p>
 <ul>
@@ -1094,10 +820,11 @@ Object<span class="token punctuation">.</span><span class="token function">keys<
   <span class="token number">0</span><span class="token punctuation">:</span> <span class="token string">"0"</span>
   <span class="token number">1</span><span class="token punctuation">:</span> <span class="token string">"3"</span>
   length<span class="token punctuation">:</span> <span class="token number">2</span>
-  __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+  __proto__<span class="token punctuation">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
+</li>
+<li>如果是undefined，使用数组的forEach方法(接下来重点研究)、for…in结构、以及Object.keys方法进行遍历，不会被跳过。<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span>undefined<span class="token punctuation">,</span> undefined<span class="token punctuation">,</span> undefined<span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
 </li>
-<li>如果是undefined，使用数组的forEach方法(接下来重点研究)、for…in结构、以及Object.keys方法进行遍历，不会被跳过。<br><code>`</code>javascript<br>var a = [undefined, undefined, undefined];</li>
 </ul>
 <p>a.forEach(function (x, i) {<br>  console.log(i + ‘. ‘ + x);<br>});<br>// 0. undefined<br>// 1. undefined<br>// 2. undefined</p>
 <p>for (var i in a) {<br>  console.log(i);<br>}<br>// 0<br>// 1<br>// 2</p>
@@ -1112,16 +839,14 @@ array.forEach(callback(currentValue, index, array){
     //do something
 }, this)
 
-array.forEach(callback[, thisArg])
-</code></pre><p>参数列表的含义与map()方法的每个参数含义相同。<br>callback()函数的array参数，通常省略，自己要脑补上。</p>
+array.forEach(callback[, thisArg])</code></pre><p>参数列表的含义与map()方法的每个参数含义相同。<br>callback()函数的array参数，通常省略，自己要脑补上。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//x就是数组的每一个元素，i是每一个元素的索引</span>
 arr<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token string">': '</span> <span class="token operator">+</span> x<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token number">0</span><span class="token punctuation">:</span> <span class="token number">1</span>
 <span class="token number">1</span><span class="token punctuation">:</span> <span class="token number">2</span>
-<span class="token number">2</span><span class="token punctuation">:</span> <span class="token number">3</span>
-</code></pre>
+<span class="token number">2</span><span class="token punctuation">:</span> <span class="token number">3</span></code></pre>
 <p>谁去调用的forEach()方法，那么callback()里面的array就会自动传入那个数组，但是是隐藏的。和我一样的初学者，都曾怀疑过，哪里传进来的数组呢，最好的答案都在MDN的callback()函数的语法规则里面，具体的细节分析和map()的分析一样。</p>
 <ul>
 <li>注意: 用forEach()方法遍历数组，无法再某个条件时停止遍历，此时应该用普通的for循环<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
@@ -1130,10 +855,13 @@ undefined
   <span class="token keyword">if</span><span class="token punctuation">(</span>arr1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">break</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span class="token number">0</span>
-</code></pre>
+<span class="token number">0</span></code></pre>
 上面代码中，执行到数组的第二个成员时，就会中断执行。forEach方法做不到这一点。</li>
-<li>与map()方法一样，forEach方法会跳过数组的空位。而不会跳过undefined和null。<br><code>`</code>javascript<br>var log = function (n) {<br>console.log(n + 1);<br>};</li>
+<li>与map()方法一样，forEach方法会跳过数组的空位。而不会跳过undefined和null。<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> log <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
 </ul>
 <p>[1, undefined, 2].forEach(log)<br>// 2<br>// NaN<br>// 3</p>
 <p>[1, null, 2].forEach(log)<br>// 2<br>// 1<br>// 3</p>
@@ -1159,10 +887,9 @@ Array.prototype.forEach.call(str, function (value, i) {
 // 1:e
 // 2:l
 // 3:l
-// 4:o
-</code></pre><p>对象和字符串使用foreach一定要用Array.prototype.forEach.call()的。</p>
+// 4:o</code></pre><p>对象和字符串使用foreach一定要用Array.prototype.forEach.call()的。</p>
 <blockquote>
-<p><code>forEach</code> 遍历的范围在第一次调用 <code>callback</code> 前就会确定。调用<code>forEach</code> 后添加到数组中的项不会被 <code>callback</code> 访问到。如果已经存在的值被改变，则传递给 <code>callback</code> 的值是 <code>forEach</code> 遍历到他们那一刻的值。已删除的项不会被遍历到。如果已访问的元素在迭代时被删除了(例如使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/shift" title="shift() 方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。" target="_blank" rel="noopener"><code>shift()</code></a>) ，之后的元素将被跳过</p>
+<p><code>forEach</code> 遍历的范围在第一次调用 <code>callback</code> 前就会确定。调用<code>forEach</code> 后添加到数组中的项不会被 <code>callback</code> 访问到。如果已经存在的值被改变，则传递给 <code>callback</code> 的值是 <code>forEach</code> 遍历到他们那一刻的值。已删除的项不会被遍历到。如果已访问的元素在迭代时被删除了(例如使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/shift" target="_blank" rel="noopener" title="shift() 方法从数组中删除第一个元素，并返回该元素的值。此方法更改数组的长度。"><code>shift()</code></a>) ，之后的元素将被跳过</p>
 </blockquote>
 <p>ε=(´ο｀*)))唉，上面这段话啊，可以看出forEach()和map()函数如此的相似啊。</p>
 <ul>
@@ -1176,8 +903,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 one
 two
 three
-four
-</code></pre>
+four</code></pre>
 我们发现遍历出了原来的所有元素，在forEach()开始之后的添加的<code>'aaa'</code>并不会遍历到。<br>不过MDN的例子比我的难度大多了啊。<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> words <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token string">"two"</span><span class="token punctuation">,</span> <span class="token string">"three"</span><span class="token punctuation">,</span> <span class="token string">"four"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 words<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1187,15 +913,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// one</span>
 <span class="token comment" spellcheck="true">// two</span>
-<span class="token comment" spellcheck="true">// four</span>
-</code></pre>
+<span class="token comment" spellcheck="true">// four</span></code></pre>
 当到达包含值”two”的项时，整个数组的第一个项被移除了，这导致所有剩下的项上移一个位置。因为元素 “four”现在在原数组的第三个位置，three跑到了第二个位置，而此时要去遍历第三个位置，所以不会打印three。<h4 id="5-4-filter"><a href="#5-4-filter" class="headerlink" title="5.4 filter()"></a>5.4 filter()</h4>filter方法的参数是一个函数，所有数组成员依次执行该函数，返回结果为true的成员组成一个新数组返回。该方法不会改变原数组。<br>通俗的理解就是过滤器。callback()函数与以上两个一样，也是传入三个参数。<br>第一个参数是当前数组成员的值，这个是必须的。<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span>
 undefined
 arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> value<span class="token operator">></span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span>
 arr<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> value<span class="token operator">></span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span></code></pre>
 可以理解为给filter()传入的函数一个规则，满足规则的才能返回。<h4 id="5-5-reduce"><a href="#5-5-reduce" class="headerlink" title="5.5 reduce()"></a>5.5 reduce()</h4><blockquote>
 <p>reduce() 方法对累加器和数组中的每个元素（从左到右）应用一个函数，将其减少为单个值。<br>以上是MDN的解释，挺难理解字面意思的。直接用实例来理解吧。</p>
 </blockquote>
@@ -1205,13 +929,11 @@ undefined
 arr<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>preSum<span class="token punctuation">,</span> ele<span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">return</span> preSum <span class="token operator">+</span> ele<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token number">20</span>
-</code></pre>
+<span class="token number">20</span></code></pre>
 reduce()函数传入一个函数作为参数，函数里面传入两个参数，preSum默认是数组的第一个元素，每次都把数组的两个元素相加并返回，ele就是每个数组元素。<br>你也快成规定起始的累加值<pre class=" language-javascript"><code class="language-javascript">arr<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>preSum<span class="token punctuation">,</span> ele<span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">return</span> preSum <span class="token operator">+</span> ele<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
-<span class="token number">30</span>
-</code></pre>
+<span class="token number">30</span></code></pre>
 起始的累加值是10，那么加上数组的20就是30。</li>
 <li>用reduce表示map()<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span>
 undefined
@@ -1219,8 +941,7 @@ arr<span class="token punctuation">.</span><span class="token function">reduce</
   arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>n<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span>
   <span class="token keyword">return</span> arr
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//[]空数组作为一个初始值</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span></code></pre>
 利用reduce()完成了map()一样的功能</li>
 <li>用reduce表示filter()<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span>
 undefined
@@ -1230,8 +951,7 @@ arr<span class="token punctuation">.</span><span class="token function">reduce</
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> arr
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span></code></pre>
 如果原数组里面的值大于3,就放到新的数组里面。和filter()道理一样。</li>
 <li>计算数组里面技术的和<br>var a = [1,2,3,4,5,6,7,8,9]<br>计算所有奇数的和<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span>
 a<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>sum<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -1241,8 +961,7 @@ a<span class="token punctuation">.</span><span class="token function">reduce</sp
       <span class="token keyword">return</span> sum <span class="token operator">+</span> n
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token number">25</span>
-</code></pre>
+<span class="token number">25</span></code></pre>
 先判断一下，再把奇数相加<h4 id="5-6-几个方法组合使用"><a href="#5-6-几个方法组合使用" class="headerlink" title="5.6 几个方法组合使用"></a>5.6 几个方法组合使用</h4></li>
 <li>计算数组的偶数和<br>给定一个 数组 var a = [1,2,3,4,5,6,7,8,9]</li>
 </ul>
@@ -1254,10 +973,10 @@ a<span class="token punctuation">.</span><span class="token function">reduce</sp
 <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">{</span>
 <span class="token keyword">return</span> n<span class="token operator">*</span>n
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//[4,16,36,64]</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//[4,16,36,64]</span></code></pre>
 先调用filter()获得所有偶数，再调用map()获得所有偶数平方和<h4 id="5-7-some-，every"><a href="#5-7-some-，every" class="headerlink" title="5.7 some()，every()"></a>5.7 some()，every()</h4><blockquote>
 <p>some() 方法测试数组中的某些元素是否通过由提供的函数实现的测试。<br>传入的参数也是一个callback()函数，callback 被调用时传入三个参数：元素的值，元素的索引，被遍历的数组。其实一般只要发现时传入callback()函数，基本都是这些参数。</p>
+</blockquote>
 <pre class=" language-javascript"><code class="language-javascript">arr
 <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> notNumber<span class="token punctuation">:</span> <span class="token string">"not a number"</span><span class="token punctuation">]</span>
  <span class="token number">0</span><span class="token punctuation">:</span> <span class="token number">1</span>
@@ -1275,21 +994,22 @@ arr<span class="token punctuation">.</span><span class="token function">some</sp
 arr<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">{</span>
  <span class="token keyword">return</span> index <span class="token operator">></span> <span class="token number">3</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token boolean">true</span>
-</code></pre>
-<p>some()方法的作用是只要数组中的<strong>某个元素满足传入的函数的要求就返回true</strong>。<br>every() 方法测试数组的所有元素是否都通过了指定函数的测试。</p>
+<span class="token boolean">true</span></code></pre>
+some()方法的作用是只要数组中的<strong>某个元素满足传入的函数的要求就返回true</strong>。<blockquote>
+<p>every() 方法测试数组的所有元素是否都通过了指定函数的测试。</p>
+</blockquote>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr<span class="token punctuation">.</span><span class="token function">every</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>elem<span class="token punctuation">,</span> index<span class="token punctuation">,</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 <span class="token keyword">return</span> elem <span class="token operator">>=</span> <span class="token number">3</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// false</span>
-</code></pre>
-<p>every()是要求数组的<strong>所有元素都满足传入的函数的要求才返回true</strong>。</p>
-</blockquote>
-</li>
+<span class="token comment" spellcheck="true">// false</span></code></pre>
+every()是要求数组的<strong>所有元素都满足传入的函数的要求才返回true</strong>。</li>
 </ol>
 <ul>
-<li><strong>注意</strong>：对于空数组，some方法返回false，every方法返回true，回调函数都不会执行。<br><code>`</code>javascript<br>function isEven(x) { return x % 2 === 0 }<br>undefined</li>
+<li><strong>注意</strong>：对于空数组，some方法返回false，every方法返回true，回调函数都不会执行。<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">isEven</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">0</span> <span class="token punctuation">}</span>
+undefined
+</code></pre>
+</li>
 </ul>
 <p>[].every(isEven)<br>true</p>
 <p>[].some(isEven)<br>false</p>
@@ -1337,9 +1057,15 @@ for (var key in arr){
 3
 4
 10
-30
-</code></pre><ul>
-<li>切忌把arr[key]手抖写成了arr.key。因为arr.key等同于arr[‘key’]，很明显数组没有这个名字叫key的键。<br>for…in循环有个弊端就是它会把非数字的索引也打印出来<br><code>`</code>javascript<br>arr<br>(5) [1, 3, 4, 10, 30]<br>arr.notNumber = ‘not a number’<br>“not a number”<br>arr<br>(5) [1, 3, 4, 10, 30, notNumber: “not a number”]</li>
+30</code></pre><ul>
+<li>切忌把arr[key]手抖写成了arr.key。因为arr.key等同于arr[‘key’]，很明显数组没有这个名字叫key的键。<br>for…in循环有个弊端就是它会把非数字的索引也打印出来<pre class=" language-javascript"><code class="language-javascript">arr
+<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span>
+arr<span class="token punctuation">.</span>notNumber <span class="token operator">=</span> <span class="token string">'not a number'</span>
+<span class="token string">"not a number"</span>
+arr
+<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> notNumber<span class="token punctuation">:</span> <span class="token string">"not a number"</span><span class="token punctuation">]</span>
+</code></pre>
+</li>
 </ul>
 <p>for (var key in arr){<br>    console.log(key + ‘:’ + arr[key])<br>}<br>0: 1<br>1: 3<br>2: 4<br>3: 10<br>4: 30<br>notNumber: not a number</p>
 <pre><code>如果我们只关心数组的数字索引，用传统的下面的传统for循环
@@ -1354,8 +1080,7 @@ for (let i = 0; i &lt; arr.length; i++){
 1:3
 2:4
 3:10
-4:30
-</code></pre><p>这种方法其实是我们人为规定了只遍历数字索引，O(∩_∩)O哈哈~</p>
+4:30</code></pre><p>这种方法其实是我们人为规定了只遍历数字索引，O(∩_∩)O哈哈~</p>
 <ul>
 <li>forEach(）循环<pre class=" language-javascript"><code class="language-javascript">arr
 <span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> notNumber<span class="token punctuation">:</span> <span class="token string">"not a number"</span><span class="token punctuation">]</span>
@@ -1366,8 +1091,7 @@ arr<span class="token punctuation">.</span><span class="token function">forEach<
 <span class="token number">1</span><span class="token punctuation">:</span><span class="token number">3</span>
 <span class="token number">2</span><span class="token punctuation">:</span><span class="token number">4</span>
 <span class="token number">3</span><span class="token punctuation">:</span><span class="token number">10</span>
-<span class="token number">4</span><span class="token punctuation">:</span><span class="token number">30</span>
-</code></pre>
+<span class="token number">4</span><span class="token punctuation">:</span><span class="token number">30</span></code></pre>
 这种方法也不会遍历非数字的索引。</li>
 </ul>
 <script>
@@ -1389,549 +1113,153 @@ arr<span class="token punctuation">.</span><span class="token function">forEach<
             document.body.appendChild(img);
           });
       </script>
-            </div>
-            <hr/>
-
-            
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://codevvvv9.github.io" rel="external nofollow noreferrer">吴少林</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://codevvvv9.github.io/2018/01/02/javascript-biao-zhun-ku-zhi-shu-zu/">https://codevvvv9.github.io/2018/01/02/javascript-biao-zhun-ku-zhi-shu-zu/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="https://codevvvv9.github.io" target="_blank">吴少林</a>
-                    !
-                </span>
-            </div>
-        
     </div>
 
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
+    
+    
+    
 
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/12/29/margin-wei-fu-de-li-jie/" rel="prev" title="margin为负的理解">
+      <i class="fa fa-chevron-left"></i> margin为负的理解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/01/05/chu-tan-js-de-han-shu/" rel="next" title="初探JS的函数">
+      初探JS的函数 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
       }
-    </script>
-
-
-
-            <div class="tag_share" style="display: block;">
-                <div class="post-meta__tag-list" style="display: inline-block;">
-                    
-                        <div class="article-tag">
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
-                                </a>
-                            
-                        </div>
-                    
-                </div>
-                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
-                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
-
-<div id="article-share">
-    
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
-    
-
-    
-
-</div>
-
-                </div>
-            </div>
-            
-                <style>
-    #reward {
-        margin: 40px 0;
-        text-align: center;
     }
-
-    #reward .reward-link {
-        font-size: 1.4rem;
-        line-height: 38px;
-    }
-
-    #reward .btn-floating:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    #rewardModal {
-        width: 320px;
-        height: 350px;
-    }
-
-    #rewardModal .reward-title {
-        margin: 15px auto;
-        padding-bottom: 5px;
-    }
-
-    #rewardModal .modal-content {
-        padding: 10px;
-    }
-
-    #rewardModal .close {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 1.3rem;
-        line-height: 20px;
-        cursor: pointer;
-    }
-
-    #rewardModal .close:hover {
-        color: #ef5350;
-        transform: scale(1.3);
-        -moz-transform:scale(1.3);
-        -webkit-transform:scale(1.3);
-        -o-transform:scale(1.3);
-    }
-
-    #rewardModal .reward-tabs {
-        margin: 0 auto;
-        width: 210px;
-    }
-
-    .reward-tabs .tabs {
-        height: 38px;
-        margin: 10px auto;
-        padding-left: 0;
-    }
-
-    .reward-content ul {
-        padding-left: 0 !important;
-    }
-
-    .reward-tabs .tabs .tab {
-        height: 38px;
-        line-height: 38px;
-    }
-
-    .reward-tabs .tab a {
-        color: #fff;
-        background-color: #ccc;
-    }
-
-    .reward-tabs .tab a:hover {
-        background-color: #ccc;
-        color: #fff;
-    }
-
-    .reward-tabs .wechat-tab .active {
-        color: #fff !important;
-        background-color: #22AB38 !important;
-    }
-
-    .reward-tabs .alipay-tab .active {
-        color: #fff !important;
-        background-color: #019FE8 !important;
-    }
-
-    .reward-tabs .reward-img {
-        width: 210px;
-        height: 210px;
-    }
-</style>
-
-<div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">你的赏识是我前进的动力</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
-</script>
-            
-        </div>
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-<article id="prenext-posts" class="prev-next articles">
-    <div class="row article-row">
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/2018/01/05/chu-tan-js-de-han-shu/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="初探JS的函数">
-                        
-                        <span class="card-title">初探JS的函数</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            什么是函数函数是对象的一种，也是一段可以重复使用的代码块，开发人员为了完成某项功能，把相关代码块放到一起。
-函数内部可以传参，也可以被当做参数传递
-
-目前定义函数有五种方法
-具名函数来定义function f(x, y){
-  return
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2018-01-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/JS%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/" class="post-category">
-                                    JS语法详解
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2017/12/29/margin-wei-fu-de-li-jie/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="margin为负的理解">
-                        
-                        <span class="card-title">margin为负的理解</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            引子
-解决一个问题的关键在于马上着手去解决这个问题。我们都觉得CSS难学，那么就抓紧时间去学，去学，去学margin的概念margin是盒模型中一个很重要的概念，是border之外的区域，我们通常称作外边距，有margin-top,marg
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2017-12-29
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/CSS%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    CSS学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-    </div>
-</article>
-
-</div>
-
-
-<script>
-    $('#articleContent').on('copy', function (e) {
-        // IE8 or earlier browser is 'undefined'
-        if (typeof window.getSelection === 'undefined') return;
-
-        var selection = window.getSelection();
-        // if the selection is short let's not annoy our users.
-        if (('' + selection).length < Number.parseInt('120')) {
-            return;
-        }
-
-        // create a div outside of the visible area and fill it with the selected text.
-        var bodyElement = document.getElementsByTagName('body')[0];
-        var newdiv = document.createElement('div');
-        newdiv.style.position = 'absolute';
-        newdiv.style.left = '-99999px';
-        bodyElement.appendChild(newdiv);
-        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
-
-        // we need a <pre> tag workaround.
-        // otherwise the text inside "pre" loses all the line breaks!
-        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
-            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
-        }
-
-        var url = document.location.href;
-        newdiv.innerHTML += '<br />'
-            + '来源: 风之子<br />'
-            + '文章作者: 吴少林<br />'
-            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
-            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
-
-        selection.selectAllChildren(newdiv);
-        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
-    });
+  }
 </script>
 
-
-<!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
-
-<!-- 代码语言 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
-
-    
-<!-- 代码块复制 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
-
-
-<!-- 代码块收缩 -->
-
-<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
-
-
-<!-- 代码块折行 -->
-
-<style type="text/css">
-code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
-</style>
-
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
         </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-数组的简单概念"><span class="nav-number">1.</span> <span class="nav-text">1. 数组的简单概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-数组是什么呢？"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 数组是什么呢？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-数组如何定义"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 数组如何定义</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1-构造函数不写参数"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1 构造函数不写参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2-构造函数写1个正整数参数"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2 构造函数写1个正整数参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-3-构造函数参数是一个非正整数-字符串、boolean、对象等其他值"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3 构造函数参数是一个非正整数(字符串、boolean、对象等其他值)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-4-构造函数写多个参数"><span class="nav-number">1.2.4.</span> <span class="nav-text">1.2.4 构造函数写多个参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-5-构造函数参数是非正整数，报错"><span class="nav-number">1.2.5.</span> <span class="nav-text">1.2.5 构造函数参数是非正整数，报错</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-6-数组定义的正确方法"><span class="nav-number">1.2.6.</span> <span class="nav-text">1.2.6 数组定义的正确方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数组的length属性解疑"><span class="nav-number">2.</span> <span class="nav-text">2. 数组的length属性解疑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-把数组清空的方法"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 把数组清空的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-有趣的一点"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 有趣的一点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-伪数组-array-like-object"><span class="nav-number">3.</span> <span class="nav-text">3. 伪数组(array-like object)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-valueOf-，toString"><span class="nav-number">3.1.</span> <span class="nav-text">4.2 valueOf()，toString()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-push"><span class="nav-number">3.2.</span> <span class="nav-text">4.3 push()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-pop"><span class="nav-number">3.3.</span> <span class="nav-text">4.4 pop()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-join"><span class="nav-number">3.4.</span> <span class="nav-text">4.5 join()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-concat"><span class="nav-number">3.5.</span> <span class="nav-text">4.6 concat()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7-shift"><span class="nav-number">3.6.</span> <span class="nav-text">4.7 shift()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-8-unshift"><span class="nav-number">3.7.</span> <span class="nav-text">4.8 unshift()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-9-reverse"><span class="nav-number">3.8.</span> <span class="nav-text">4.9 reverse()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-10-slice"><span class="nav-number">3.9.</span> <span class="nav-text">4.10 slice()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-11-splice"><span class="nav-number">3.10.</span> <span class="nav-text">4.11 splice()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-12-indexOf-，lastIndexOf"><span class="nav-number">3.11.</span> <span class="nav-text">4.12 indexOf()，lastIndexOf()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-数组实例的常见复杂的方法-参数是另一个函数"><span class="nav-number">4.</span> <span class="nav-text">5. 数组实例的常见复杂的方法(参数是另一个函数)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-sort"><span class="nav-number">4.1.</span> <span class="nav-text">5.1 sort()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-map"><span class="nav-number">4.2.</span> <span class="nav-text">5.2 map()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-4-filter"><span class="nav-number">4.3.</span> <span class="nav-text">5.4 filter()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-5-reduce"><span class="nav-number">4.4.</span> <span class="nav-text">5.5 reduce()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-几个方法组合使用"><span class="nav-number">4.5.</span> <span class="nav-text">5.6 几个方法组合使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-some-，every"><span class="nav-number">4.6.</span> <span class="nav-text">5.7 some()，every()</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">吴少林</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
     </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
-        });
+      </div>
+    </main>
 
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
+    <footer class="footer">
+      <div class="footer-inner">
+        
 
         
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
 
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴少林</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
 
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
         
-    });
-</script>
-
-    
-
-</main>
-
-
-
-    <footer class="page-footer bg-color">
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            <span id="year">2018</span>
-            <!-- <a href="https://codevvvv9.github.io" target="_blank">吴少林</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
-            <br>
-            
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">76.8k</span>&nbsp;字
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/codevvvv9" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:wslsdust@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
 
 
 
@@ -1939,114 +1267,48 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=992593578" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 992593578" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
 
 
 
 
 
-    <a href="https://www.zhihu.com/people/wu-lin-25-41/activities" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/wu-lin-25-41/activities" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">知</i>
-    </a>
 
 
 
-    <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" class="tooltipped" target="_blank" data-tooltip="关注我的掘金: https://juejin.im/user/5821e3d8bf22ec0068e631e2" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">掘</i>
-    </a>
 
 
 
-    <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" class="tooltipped" target="_blank" data-tooltip="关注我的简书: https://www.jianshu.com/u/15af43443bdb" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">简</i>
-    </a>
 
 
 
-</div>
-    </div>
-</footer>
 
-<div class="progress-bar"></div>
+  
 
-
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
-</div>
-
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-});
-</script>
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-
-
-    <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+  
 
 </body>
-
 </html>

@@ -1,1349 +1,1666 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="zh-CN">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="风之子">
-    <meta name="description" content="风之子">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>风之子</title>
-    <link rel="icon" type="image/png" href="/1.png">
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="/css/my.css">
-    
-    <script src="/libs/jquery/jquery.min.js"></script>
-    
-<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="风之子" type="application/atom+xml">
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"codevvvv9.github.io","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="winder">
+<meta property="og:url" content="https://codevvvv9.github.io/index.html">
+<meta property="og:site_name" content="winder">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="吴少林">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://codevvvv9.github.io/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>winder</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="winder" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
 
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper head-container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/1.png" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">风之子</span>
-                </a>
-            </div>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">winder</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index">
             
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
+  <div class="posts-expand">
+        
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>首页</span>
-    </a>
-    
-  </li>
   
-  <li class="hide-on-med-and-down nav-item">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2020/03/24/zhi-you-rou-gua-duan-de-zi-ji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/24/zhi-you-rou-gua-duan-de-zi-ji/" class="post-title-link" itemprop="url">致优柔寡断的自己</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-24 20:41:10 / 修改时间：22:40:30" itemprop="dateCreated datePublished" datetime="2020-03-24T20:41:10+08:00">2020-03-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" itemprop="url" rel="index"><span itemprop="name">三省吾身</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
     
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>标签</span>
-    </a>
     
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
     
-    <a href="/categories" class="waves-effect waves-light">
+    <div class="post-body" itemprop="articleBody">
+
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>分类</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>归档</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>关于</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
-    </a>
-  </li>
+          <p>受疫情的影响，从2月9号回京以来，一直在家里进行远程办公，虽然也享受到了国外流行的远程办公的福利，但是时间久了却有渐渐发现一些问题，其中主要就是时间太充足了，利用率上明显不高。</p>
+<p>在接近两个月的远程里，沟通成本极其的大，从19年12月接手500以来的细微的小情绪慢慢的爆发开来，3月初更是一度让我萌生了一些不好的想法。</p>
+<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>终于，今天我大学最铁的哥们老丨，要结婚了，我万万没想到他会是宿舍第二个结婚的，还挺快也挺突然的，加上上午工作也不多，我回头去看过往毕业的这些日子，毫无疑问，老丨是发展最好的，他在上海，我在北京。对于他的发展，我打心底里感到高兴，做了最擅长的工作，从事着前景远大的行业，谈吐、着装、为人处世都更上一层楼了。而我细细想来，却发现自15年我们本科毕业以来，似乎除了转行成功这一件事之外，其它关于人生、关于生活、关于很多很多，都没有质的变化，诚然，我也变了不少了，但是我向来以结果论来评判一些事情，今天一天我好好又复盘了一下来京的这些日子。</p>
+<p>15年-18年7月，读研的这些就不谈了。我只想复盘一下，18年7月16入职以来，我的心理变化。</p>
+<h2 id="跌跌撞撞"><a href="#跌跌撞撞" class="headerlink" title="跌跌撞撞"></a>跌跌撞撞</h2><p>作为一个27岁转行的大龄男青年，其实我本身是很焦虑的，碰了很多壁，学习过程中，太急躁，无经验+基础不牢固，让我丢失了很多本应得到的机会，“我本应该”，这几个字其中的各种心酸真的是无奈。</p>
+<p>入职了这家公司后，大公司嘛，制度比较健全，知道我没经验，给我一个月学习<code>vue</code>，这一点我很感谢，之于这家公司，我对他的感情犹如初恋一般。</p>
+<p>8月中旬开始慢慢进入项目，一开始一个页面对接口就要好久，现在回想起来，如果是互联网公司的话，怕是要加班加到12点才能行，所幸公司节奏属于中高速，并没有催得特别急，一步步的我都克服掉了新手的问题，步入了正轨。说实话，这段时间确实成长挺快的，自己本身闲暇之余也有很高的热情去研究新的技术，到了19年3月，事情变得有些微妙了，正如我一开始说的那样，我有大龄转行者共有的很深的焦虑感，半年间我在工作里，竟然没有一样拿得出手的漂亮的谈资，完成的都是些分内之事，没有闪光点。转眼间犹豫着、彷徨着就到了19年下半年了，如果说是一个刚毕业的小鲜肉，我觉得完全没问题可以接受，可毕竟我顶着研究生的名头来从事这个行业，是想做出点事情的，我自身肯定是有一种奇怪的弱点或者说缺点在严重制约着我。一年有余，环境因素固然有所影响，可时间对于每个人来说都是一样的，我取得的这样的成绩明显浪费了一些时间。</p>
+<p>很高兴，20年3月24日的上午，老丨的结婚给我提了很大的醒，让我在奔三的道路上，又开始重新反思我过往的2年经历，古语有云，“三十而立”，我至今仍未找到这个“立”的点，我虽然知道应该立的是：独立的人格、坚守住自己的本心、明辨什么东西是该追逐的、真正的真善美，以上的边界点在哪，我仍在探寻。</p>
+<p>我觉得老丨虽然也不一定完全找到，但是同龄的他明显在路途的前方，他的沪漂我觉得挺有价值的。</p>
+<p>这一路北漂跌跌撞撞也就到而立之年了。</p>
+<h2 id="灵魂拷问"><a href="#灵魂拷问" class="headerlink" title="灵魂拷问"></a>灵魂拷问</h2><p>分析了一通，那制约我的到底是什么呢，我自己分析和结合老丨曾经对我的评价，目前来说，较大的问题也可以说性格的弱点之一就是：优柔寡断。</p>
+<p>它可以带来很多副作用，包括但不限于：关键时刻不自信（时常自我怀疑，错失大好机会）、拖延症（浪费时间的根源）。也可能是我天生的生性多疑、过度敏感导致的优柔寡断，总之这是一个恶性循环。</p>
+<ol>
+<li>因为想太多，会瞻前顾后，迟迟得不到行动，没有结果反馈，恐惧某种未知的结局导致自我否定，自信心受到打击，刺激自己不再果断的处理事情，伴随着不同程度的拖延症。</li>
+<li>同时以上的恶性循环也会带来我性格的偏激性，有时会一意孤行，太固执，唯一的好处就是：硬着头皮转行成功了。</li>
+</ol>
+<p>通过我查阅资料，目前觉得有以下三种种解决方案比较具有可实施性。</p>
+<h3 id="不要去想象没有发生的事情，不要用“万一…-会怎么怎么样”"><a href="#不要去想象没有发生的事情，不要用“万一…-会怎么怎么样”" class="headerlink" title="不要去想象没有发生的事情，不要用“万一…,会怎么怎么样”"></a>不要去想象没有发生的事情，不要用“万一…,会怎么怎么样”</h3><p>秉持着活在当下的生活态度，对于生活、职业，更重要的是对于感情。</p>
+<ul>
+<li>物来顺应。事情发生了，我们就去积极地去应对，相反的未发生的事情无须去多想。</li>
+<li>未来不迎。不是不考虑未来的事情，要做到未雨绸缪，而不是杞人忧天，未来的事没必要过分焦虑。</li>
+<li>当时不杂。把手头的事情专一的处理好，就行。</li>
+<li>既过不恋。过去的事不要浪费时间再纠结。</li>
 </ul>
-
-<div id="mobile-nav" class="side-nav sidenav">
-
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/1.png" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">风之子</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+<p>以上是曾国藩的方式，理解起来没有难度，需要设身处地的用心去感悟与体会其中的妙处。</p>
+<h3 id="为什么会犹豫不决"><a href="#为什么会犹豫不决" class="headerlink" title="为什么会犹豫不决"></a>为什么会犹豫不决</h3><p>这个问题，深究来说，可能会与从小的原生家庭教育有关，就不展开讨论了，我仔细分析了一下，确实有关，母亲的过分严格的棍棒教育与挫折教育会潜移默化的影响孩子的，再在后天某些环境的发酵下，导致了做事不果断，瞻前顾后，犹豫不决。</p>
+<p>网上说的比较好的有以下几个原因：</p>
+<ol>
+<li>信息不足不足以决策。我觉得合理，这种原因就要去积极地搜寻信息，改变条件不足的情况。</li>
+<li>解题方法不对。合理，比如处理某个事情采取了一个错误的办法，必然南辕北辙。</li>
+<li>纠结在与目标不想干的问题上。这个极为合理，通常发生在生活中，比如丢了什么东西一直懊悔、本来应该只买衣服，最后买了一堆其他东西。</li>
+<li>存在解题障碍。合理，人是一种情感动物，会受到内心隐藏的情绪的影响。例如，会害怕丢脸而羞于问别人问题，导致迟迟获取不到及时解决问题的核心信息，为了避免尴尬不敢说出自己的想法不敢大声说话与演讲。</li>
+</ol>
+<h3 id="可以相信直觉"><a href="#可以相信直觉" class="headerlink" title="可以相信直觉"></a>可以相信直觉</h3><ol>
+<li>明确作出的每个决定的合理预期。先问自己想要什么，会得到什么结果，就行了，其他的任其发展。</li>
+<li>需要哪些依据能够支撑我做出决定。现有的知识与经验能帮到什么，如果目前的经验不够，迅速百科或者问人，靠外界力量，补充后迅速行动，继续前进，不能一直卡在某一步。</li>
+<li>世界上没有完美的事，通过自己的努力解决了一些问题后，剩下的就交给直觉与时间去验证，成了就是成了，没成就总结经验教训，人生的每一步都不是浪费。</li>
+</ol>
+<p>还有最重要的一点，犹豫不决的不敢做一件事情可能是因为：自己没有强烈的想完成这件事的意愿。</p>
+<blockquote>
+<p>要想翻过一面墙，可以先把帽子扔过墙</p>
+</blockquote>
+<p>2020.0324 夜，晚安~</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
     </div>
 
     
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-    <ul class="menu-list mobile-menu-list">
         
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			首页
-		</a>
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2019/07/28/go-bian-liang-he-shu-ju-lei-xing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
           
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			标签
-		</a>
+            <a href="/2019/07/28/go-bian-liang-he-shu-ju-lei-xing/" class="post-title-link" itemprop="url">go变量和数据类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-07-28 19:06:53 / 修改时间：21:39:24" itemprop="dateCreated datePublished" datetime="2019-07-28T19:06:53+08:00">2019-07-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
           
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			分类
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			归档
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			Contact
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/codevvvv9/" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
-</div>
 
         </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/codevvvv9/" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
-
-</header>
+      </header>
 
     
-<style>
-    .carousel-control {
-        width: 45px;
-        height: 45px;
-        line-height: 55px;
-        border-radius: 45px;
-        background: transparent;
-        cursor: pointer;
-        z-index: 100;
-    }
-
-    #prev-cover {
-        position: absolute;
-        top: 48%;
-        left: 8px;
-    }
-
-    #next-cover {
-        position: absolute;
-        top: 48%;
-        right: 8px;;
-    }
-
-    #prev-cover i {
-        margin-right: 3px;
-    }
-
-    #next-cover i {
-        margin-left: 3px;
-    }
-
-    .carousel-control:hover {
-        background-color:rgba(0, 0, 0, .4);
-    }
-
-    .carousel-control i {
-        color: #fff;
-        font-size: 2.4rem;
-    }
-</style>
-
-
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
+    
+    <div class="post-body" itemprop="articleBody">
 
-    <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                我来，我见，我征服！
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: ['悟已往之不谏，知来者之可追','Know that the past cannot save, know every can try to recover in the future.'],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
-        </div>
+      
+          <p>这部分学习go的基础语法，变量的使用以及基本数据类型</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>三部曲</p>
+<ol>
+<li>声明变量</li>
+<li>赋值</li>
+<li>使用该变量</li>
+</ol>
+<h3 id="go中声明变量的三种基本形式"><a href="#go中声明变量的三种基本形式" class="headerlink" title="go中声明变量的三种基本形式"></a>go中声明变量的三种基本形式</h3><ul>
+<li>单变量的写法</li>
+</ul>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">//1、基本声明方式</span>
+<span class="token keyword">var</span> i <span class="token builtin">int</span> <span class="token comment" spellcheck="true">// 声明一个变量i,数据类型为int，默认值会被赋值为0</span>
+<span class="token comment" spellcheck="true">//2、声明与赋值写到一起，会通过类型推导</span>
+<span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">10</span> <span class="token comment" spellcheck="true">// i的数据类型会被动态判断出来是int</span>
+<span class="token comment" spellcheck="true">//3、go独特的写法, 省略var,采用冒号的写法</span>
+i <span class="token operator">:=</span> <span class="token number">10</span> 
+<span class="token comment" spellcheck="true">//这种写法等同于 var i int </span>
+<span class="token comment" spellcheck="true">//i=10</span></code></pre>
+<ul>
+<li>多变量的写法</li>
+</ul>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 1、三个相同数据类型的变量</span>
+<span class="token keyword">var</span> n1<span class="token punctuation">,</span> n2<span class="token punctuation">,</span> n3 <span class="token builtin">int</span> 
+<span class="token comment" spellcheck="true">//2、多个不同数据类型的变量</span>
+<span class="token keyword">var</span> n1<span class="token punctuation">,</span> n2<span class="token punctuation">,</span> n3 <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"string"</span><span class="token punctuation">,</span> <span class="token number">10.2</span> <span class="token comment" spellcheck="true">//类型推导</span>
+<span class="token comment" spellcheck="true">//3、同样使用冒号写法</span>
+n1<span class="token punctuation">,</span> n2<span class="token punctuation">,</span> n3 <span class="token operator">:=</span> <span class="token string">"string"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">9</span></code></pre>
+<p><strong>注意：一旦省略了var，采用了类型推导，必须赋值，不能使用默认值了</strong></p>
+<ul>
+<li>全局变量 的写法</li>
+</ul>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 在函数之外的变量被称为全局变量</span>
+<span class="token keyword">var</span> <span class="token punctuation">(</span>
+  n1 <span class="token operator">=</span> <span class="token string">"string"</span>
+  n2 <span class="token operator">=</span> <span class="token number">10</span>
+  n3 <span class="token operator">=</span> <span class="token number">10.2</span>
+<span class="token punctuation">)</span></code></pre>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>同大多数语言一样，分为基本数据类型和复杂数据类型(也叫派生数据类型)</p>
+<ul>
+<li>基本数据类型：<code>bool</code> <code>string</code> <code>int</code> <code>rune</code> <code>byte</code> <code>float32</code> <code>float64</code> <code>complex64</code> <code>complex128</code>。<code>byte</code>也可以认为是<code>uint8</code>,<code>rune</code>等同于<code>int32</code></li>
+<li>复杂数据类型： <code>function</code>  <code>map</code> <code>array</code> <code>Pointer</code> 等多种 </li>
+</ul>
+<h3 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h3><p>go的数值类型还是比较多的，比<code>js</code>复杂多了，而且要注意不同<strong>数值类型精度的问题</strong>。</p>
+<ol>
+<li><code>int</code>类型在不同位数电脑上范围不同，32位电脑是8字节，64位电脑是16字节。有符号。还有<code>int8 int16 int32 int64</code></li>
+<li><code>unit</code>无符号，还包括<code>uint8 uint16 uint32 uint64</code></li>
+<li>有时候判断某个变量到底是什么数据类型不能直接判断出，例如<code>var n = 10</code>，<code>n</code>到底是什么类型，看不出来，可以采取以下的办法：<code>fmt.Println("n is %T", n)</code>，就是打印一下<code>n</code>的type</li>
+<li>有时候需要判断一下某个变量占用的字节数，可以使用<code>fmt.Println("n is %d", unsafe.Sizeof(n))</code></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
     </div>
-</div>
 
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2019/07/27/go-ru-men/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/27/go-ru-men/" class="post-title-link" itemprop="url">go入门</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-27 23:16:52" itemprop="dateCreated datePublished" datetime="2019-07-27T23:16:52+08:00">2019-07-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-28 17:26:41" itemprop="dateModified" datetime="2019-07-28T17:26:41+08:00">2019-07-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/golang/" itemprop="url" rel="index"><span itemprop="name">golang</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="go的几个特点"><a href="#go的几个特点" class="headerlink" title="go的几个特点"></a>go的几个特点</h2><p>可以粗略的认为go = c + python</p>
+<ol>
+<li>从C语言中继承了很多理念，尤其是指针的运用</li>
+</ol>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">testPtr</span><span class="token punctuation">(</span>num <span class="token operator">*</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">*</span>num <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="2">
+<li><p>引入包的概念，用于组织程序结构。单独的go文件必须存在于package中</p>
+</li>
+<li><p>垃圾回收制度，内存自动回收。</p>
+</li>
+<li><p>语言层面天然支持高并发<br>使用了<code>goroutine</code>的语法，轻量级线程，高效利用多核</p>
+</li>
+<li><p>吸收了管道通信机制，有管道的写法，<code>channel</code>的写法，通过管道实现不同goroute之间的相互通信。</p>
+</li>
+<li><p>支持一些新的语法，例如切片（slice）和 延迟请求defer</p>
+</li>
+<li><p>函数支持多个返回值</p>
+</li>
+</ol>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">getSumAndSub</span><span class="token punctuation">(</span>num1 <span class="token builtin">int</span><span class="token punctuation">,</span> num2 <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  sum <span class="token operator">:=</span> num1 <span class="token operator">+</span> num2
+  sub <span class="token operator">:=</span> num1 <span class="token operator">+</span> num2
+  <span class="token keyword">return</span> sum<span class="token punctuation">,</span> sub
+<span class="token punctuation">}</span></code></pre>
+<h2 id="常见的go命令"><a href="#常见的go命令" class="headerlink" title="常见的go命令"></a>常见的go命令</h2><pre class=" language-go"><code class="language-go"><span class="token keyword">go</span> run test<span class="token punctuation">.</span><span class="token keyword">go</span> <span class="token comment" spellcheck="true">// 执行go文件，相当于 先编译生成可执行文件后接着执行它</span>
+
+<span class="token keyword">go</span> build test<span class="token punctuation">.</span><span class="token keyword">go</span> <span class="token comment" spellcheck="true">//编译生成可执行文件</span>
+<span class="token comment" spellcheck="true">//注意：windows平台生成exe,但是mac就是一个test,无后缀，使用方式./test即可</span>
+</code></pre>
+<p>两者的三个主要区别：</p>
+<ol>
+<li>go bulid编译后生成的可执行文件，可以直接拿到同平台下但是没有go开发环境的机器下运行。</li>
+<li>go run不会编译生成可执行文件，不能在没有go开发环境下的其它机器上运行。</li>
+<li>.go的源文件虽然很小，但是编译后会将源代码所依赖的库文件编译进来，导致生成的可执行文件很大。</li>
+</ol>
+<p>关于编译的几个参数：</p>
+<ol>
+<li>编译时可以改变生成的可执行文件的名字<br><code>go build -o hello-new hello.go</code> 可执行文件就会叫hello-new</li>
+</ol>
+<h2 id="在VSCode下搭建开发环境"><a href="#在VSCode下搭建开发环境" class="headerlink" title="在VSCode下搭建开发环境"></a>在<code>VSCode</code>下搭建开发环境</h2><ol>
+<li>毫无疑问，第一步去官网下载 <code>GO</code>的安装包，Q内需要使用<a href="https://golang.google.cn/dl/" target="_blank" rel="noopener">镜像</a>.</li>
+<li>配置<code>path</code>，即GOROOT变量的位置，代表的是安装go的路径。</li>
+</ol>
+<pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">// 在.bash_profile中配置</span>
+export PATH<span class="token operator">=</span>$PATH<span class="token punctuation">:</span><span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span><span class="token keyword">go</span><span class="token operator">/</span>bin
+<span class="token comment" spellcheck="true">//新版本的go只需要配置这一个就行，GOPATH会有默认值 </span>
+<span class="token comment" spellcheck="true">// go env可以查看所有的开发变量的配置</span></code></pre>
+<ol start="3">
+<li>在<code>VSCode</code>中安装相关插件，创建.go文件后，会提示你安装<code>Go</code>基础插件，但是其他<code>go</code>依赖的官方包由于Q内网络环境需要单独下载，详见第四步。</li>
+<li>在<code>GOPATH</code>目录的src下（一般默认是/Users/yourMacName/go/src）</li>
+</ol>
+<pre class=" language-go"><code class="language-go">cd <span class="token operator">/</span>Users<span class="token operator">/</span>yourMacName<span class="token operator">/</span><span class="token keyword">go</span><span class="token operator">/</span>src
+mkdir golang<span class="token punctuation">.</span>org
+cd golang<span class="token punctuation">.</span>org
+mkdir x
+cd x
+git clone https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>golang<span class="token operator">/</span>tools<span class="token punctuation">.</span>git tools
+git clone https<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>golang<span class="token operator">/</span>lint<span class="token punctuation">.</span>git</code></pre>
+<p>然后通过在Vscode中<code>command+shift+p</code></p>
+<p><a href="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdpulf9tj312k0bmq4g.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="输入go:install" class="fancybox"><img alt="输入go:install" title="输入go:install" data-src="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdpulf9tj312k0bmq4g.jpg" class="lazyload"></a></p>
+<p>接下来会提示有17个可以安装的依赖包(不同版本数量可能不一样，不一定你的也是17个)，全部勾选，点击<code>OK</code></p>
+<p><a href="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdux3t36j31ek0z6470.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="17个依赖包" class="fancybox"><img alt="17个依赖包" title="17个依赖包" data-src="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdux3t36j31ek0z6470.jpg" class="lazyload"></a></p>
+<p>在<code>VScode</code>的output会发现正在安装(当然上述的过程可能也会失败几次，不一定17个依赖全部一次性<code>Succeed</code>但是只要golang.org/x里面的安装安装对了，这一部就是看网络了，总会安装成功，运气不好的话多安装几次)</p>
+<p><a href="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdwzjigtj315m0r6tdr.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="安装所有的依赖包" class="fancybox"><img alt="安装所有的依赖包" title="安装所有的依赖包" data-src="http://ww1.sinaimg.cn/large/006wk7J2ly1g5fdwzjigtj315m0r6tdr.jpg" class="lazyload"></a></p>
+<p>👌，You’re readey to GO :）.</p>
+<h2 id="go的注意事项"><a href="#go的注意事项" class="headerlink" title="go的注意事项"></a>go的注意事项</h2><ol>
+<li>毫无疑问，后缀只能是go，入口文件必须是main()，严格区分大小写。</li>
+<li>凡是定义过的变量、引入的包必须在原文件中被使用，否则编译不通过。</li>
+<li>逐行写代码，不要两行写到一块，因为编译器会自动在末尾加分号。</li>
+<li>左大括号禁止换行。</li>
+<li>main函数必须存在package main中，而且不能重复定义，也就是一个package中只能有一个main函数。</li>
+<li>go的转义符(escape char)，<code>\r</code>回车的意思是，替换掉本行开头的字符，例如 小明出去吃饭了\r小刚，最终打印结果是： 小刚出去吃饭了</li>
+<li>如果一行字符实在太长了，可以使用<code>,</code>来进行换行，效果等同于<code>+</code></li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2019/07/22/gong-zuo-xiao-jie-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/07/22/gong-zuo-xiao-jie-2/" class="post-title-link" itemprop="url">工作小结-2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-07-22 21:35:00 / 修改时间：23:31:28" itemprop="dateCreated datePublished" datetime="2019-07-22T21:35:00+08:00">2019-07-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" itemprop="url" rel="index"><span itemprop="name">三省吾身</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="promise兼容IE11"><a href="#promise兼容IE11" class="headerlink" title="promise兼容IE11"></a>promise兼容IE11</h3><p>最近我开发的公司的竞赛网站被发现在IE11下排行榜无数据，但是在其他浏览器没问题，我然后打开控制台一看，发现了如下错误：</p>
+<p><img src="http://ww1.sinaimg.cn/large/006wk7J2ly1g58ycfeu0uj311x091q37.jpg" alt="Promise未定义"></p>
+<p>真是醉了，然后发现有三个可行的方案：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/07/22/gong-zuo-xiao-jie-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2019/06/08/yi-dong-duan-xiang-ying-shi-bu-ju-chu-she/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/06/08/yi-dong-duan-xiang-ying-shi-bu-ju-chu-she/" class="post-title-link" itemprop="url">移动端-响应式布局初涉</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-06-08 15:39:12 / 修改时间：15:45:36" itemprop="dateCreated datePublished" datetime="2019-06-08T15:39:12+08:00">2019-06-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">CSS学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="响应式布局五个基本点"><a href="#响应式布局五个基本点" class="headerlink" title="响应式布局五个基本点"></a>响应式布局五个基本点</h2><ol>
+<li>媒体查询</li>
+<li>移动端对应的设计图</li>
+<li>隐藏某些在PC端需要的元素</li>
+<li>添加<code>meta</code>标签</li>
+</ol>
+<pre><code class="html">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</code></pre>
+<ol start="5">
+<li>交互方式与PC端不同，没有<code>hover</code>、滑动效果、滚动条、resize。替代的是<code>touch</code>和使用两点坐标来模拟滑动效果。</li></ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/06/08/yi-dong-duan-xiang-ying-shi-bu-ju-chu-she/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2019/01/09/bian-cheng-si-xiang-za-tan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/01/09/bian-cheng-si-xiang-za-tan/" class="post-title-link" itemprop="url">编程思想杂谈</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-09 23:53:35" itemprop="dateCreated datePublished" datetime="2019-01-09T23:53:35+08:00">2019-01-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-04 23:50:05" itemprop="dateModified" datetime="2019-04-04T23:50:05+08:00">2019-04-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" itemprop="url" rel="index"><span itemprop="name">三省吾身</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><ul>
+<li>面向对象是老生常谈的一个话题了。</li>
+<li>可以自定义数据类型，工具类、实体类、将代码细节进行封装，易于编程。</li>
+</ul>
+<h2 id="用函数来编程"><a href="#用函数来编程" class="headerlink" title="用函数来编程"></a>用函数来编程</h2><ul>
+<li>首先参数一定要验证</li>
+<li>把逻辑实现，并拆分代码</li>
+</ul>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><ul>
+<li>单例</li>
+<li>适配器</li>
+<li>IOC</li>
+<li>工程模式</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/12/31/yi-ge-li-xiang-zhu-yi-zhe-de-du-bai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/31/yi-ge-li-xiang-zhu-yi-zhe-de-du-bai/" class="post-title-link" itemprop="url">一个理想主义者的独白</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-31 20:28:44" itemprop="dateCreated datePublished" datetime="2018-12-31T20:28:44+08:00">2018-12-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-01-01 12:08:57" itemprop="dateModified" datetime="2019-01-01T12:08:57+08:00">2019-01-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" itemprop="url" rel="index"><span itemprop="name">三省吾身</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>这是最好的时代，也是最差的时代。</p>
+</blockquote>
+<h2 id="为什么是2018"><a href="#为什么是2018" class="headerlink" title="为什么是2018"></a>为什么是2018</h2><p>从来没写过年终总结，好像还挺遗憾的，活的不明不白的，一年就没了。</p>
+<p>正如<code>鸡汤文化</code>宣扬的那样，这可是8120年了啊，10年前已经不是1998，而是2008年了。人们总是过分的相信自己的记忆，忽略了时间的力量，<code>事如春梦了无痕，苟不记之笔墨，未免有辜彼苍之厚</code>。</p>
+<p>那么，这种仪式感的东西就从<strong>2018年12月31日</strong>开始吧。</p>
+<p>暂且从以下几个方面给2018一个交代吧：</p>
+<ul>
+<li>毕业</li>
+<li>就业</li>
+<li>健身</li>
+<li>不安分的思想</li>
+<li>2019年展望</li>
+</ul>
+<h2 id="终于毕业了"><a href="#终于毕业了" class="headerlink" title="终于毕业了"></a>终于毕业了</h2><p>读研后，发现论文真难写，读了一些交通论文后，彷徨过很多个夜晚，有些事情适合闭上眼睛慢慢咀嚼，那是不可与别人言说的经历。</p>
+<p>慢慢的我开始明白确实不是写论文的料，条条框框的有束缚性的文章真是看着就痛苦，早早断了写论文这条道路。开始摸索自己到底该干啥，适合做什么这些都是小插曲了，每个人都应该有过这种类似的迷惘的经历，只不过大家都选择了同一个方式去面对——默默承受，表面看起来都是平静如水，内心早已汹涌澎湃，每天仍然看似没心没肺的玩乐，转变的阵痛就这么一点点过去了。</p>
+<p>2018年关乎毕业论文，好担心过不了盲审，论文进展特别慢。开年的那几个月可以用一句话来总结——做尽此生荒唐事。</p>
+<p>那几个月就是憋了一篇毕业论文，担惊受怕中也算是蓝袍加身了。</p>
+<p>这一部分经历最值得我回忆的是有几个好舍友，做的饭很好吃，可以发发牢骚，而他又很会安慰人的那种；自诩智能交通实验室的师弟师妹们，晚上集体翘了老张去看<code>头号玩家</code>，回来恶补<code>闪灵</code>，看<code>昆池岩</code>，一起吹牛、吐槽……</p>
+<p>我所焦虑的事本身没有任何价值，反而会阻碍迈向未来的脚步，能够让我走向未来的，是坚定的信心、直面现实的勇气和直面未来的行动。</p>
+<h2 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h2><ul>
+<li>我是谁</li>
+<li>我从哪里来</li>
+<li>我要到哪去</li>
+</ul>
+<p>经典的哲学三问，我倒是能回答相近的问题——我到底该干啥，3-5年内，不谈时间期限的人都是耍流氓。</p>
+<p>关于我为什么选了现在这条路，那就是另一个故事了。故事很曲折，不过结果是好的。</p>
+<ul>
+<li>找工作通用的模板是：<ol>
+<li>我喜欢，不需要理由。</li>
+<li>我不喜欢，但是钱给的多。</li>
+<li>我不喜欢，钱也给的不多，但是真的轻松。</li>
+</ol>
+</li>
+</ul>
+<p>通常情况会走第二条，但是我推荐第四条路，曲径通幽——行业外试错，去尝试，去尝试，还是去尝试。</p>
+<blockquote>
+<p>没有一条通往远方的路，不充满误解与委屈。</p>
+<p>​                                                                                          —— 致敬拉钩招聘</p>
+</blockquote>
+<p>知道什么是自己想要的，知道该用什么方式实现梦想，我曾经焦虑的问题也有了答案。我不知道命运会把我带到何方，但是我一直会用坚持去呵护好不容易找到的东西。</p>
+<p>这个时代一直在贩卖焦虑，幸好我是个理想主义者。</p>
+<ul>
+<li>找到了珍贵的东西，宁愿像个傻逼一样去守护。</li>
+</ul>
+<h3 id="进京"><a href="#进京" class="headerlink" title="进京"></a>进京</h3><p>确定要做<code>程序员</code>之后，从北京、上海、杭州、南京四个城市中我选择了帝都作为职业生涯的第一站，是一炮而红还是折戟沉沙，都已经没有退路，因为我豪赌了7年光阴，愿赌不服输。</p>
+<blockquote>
+<p>如果你有梦想，就要去捍卫它。那些一事无成的人想告诉你你也成不了大器。</p>
+</blockquote>
+<p>人生啊，它有时像一个孩子，我慢慢学会哄他，让他开心，让他知道世界不是只有黑白，也有赤橙黄绿青蓝紫，也有由我定义的乱七八糟的颜色，经历过一些事情才会成长，那些经历一定会包括好的坏的，遇到坏的时候，或许会收获更多，很多事情在一帆风顺的时候，永远发觉不了。</p>
+<ul>
+<li>这半年，<code>ofo</code>黄了，锤子被打回锤子的原型。吸了比以前多的雾霾、挤了比以前人多的地铁。认识了几个工作、生活中的朋友，让北漂这个词变得有点温暖。</li>
+<li>学到了很多以前没见到的知识，知道有些工作是要那么做的，代码是要那么写的。<ul>
+<li>每天总有新的收获，工作里没有遇到五彩斑斓的黑、也没有遇到根据手机壳改变主题颜色的需求，团队氛围极好，提升了很多东西，我知道这些气质会潜移默化的影响我，现在更多的是退居到幕后。</li>
+<li>原来现在前后台的交互是只通过接口来交流，原来还有叫<code>restful</code>的思想支配着<code>web</code>开发。</li>
+<li>编程的思想很重要。框架会过时、语言会被时代淘汰，但是思想永存，不断的敲代码是要慢慢体会背后的思想，要做平凡的思考者，停下来思考。</li>
+<li>不再执着于系统化学习的思维方式。我一直接受的教育是从0-1，系统的掌握来龙去脉，入门的、基础的、进阶的、高级的，但是对于高度抽象的计算机科学来说，这种思维方式有时会耽误很长时间，这个抽象的概念没搞明白，却又引入了另一个抽象概念来解释，最后都忘记了自己想研究哪个知识了。先把工作快速完成，有时间再去研究，但是该补的基础一点不能省，选择了这个未知的领域，探索的痛苦必须自己去承受。</li>
+<li>正在使用的技术必须精通，要做目前承担工作的专家，也要发现缺陷和不足！</li>
+<li>抽时间去学习那些未来主流、逐渐被市场认可的技术。</li>
+<li>不要停止学习新知识。保持视野的开阔，不能闭门造车，了解之后多思考，哪怕有一点点的感悟。</li>
+</ul>
+</li>
+<li>事情不是二元的，不是非对即错的。我以前虽然知道，但不承认，经历过一些事情之后，体会越发的强烈。包容比固执已见更合适而已。</li>
+</ul>
+<h2 id="身体"><a href="#身体" class="headerlink" title="身体"></a>身体</h2><p>上了岁数，熬夜多了越发的体会到了身体的重要性，作为家庭的支撑，不好好对自己的身体负责，有再多的价值也体现不出来，此处应该有<code>鸡汤</code></p>
+<blockquote>
+<p>世界上最大的不公平是每个的起点不同，但是最大的公平是每个人的终点也不同。</p>
+</blockquote>
+<p>很喜欢<code>keep</code>的广告词，<em>如果没有信仰，就将运动当做信仰</em>。</p>
+<p>对于运动来说，坚持显得尤为重要。以前我也觉得要抽时间锻炼身体好难啊，终于有一天腰酸背痛、屁股疼，我开始郑重的对待这个话题，让运动融进生活。</p>
+<ul>
+<li>每天哪怕再晚，只要抽出10分钟做一组<code>keep</code>就好，时间不用太多，免得让我产生花太多时间给健身的负罪感。</li>
+<li>一周不用每天都练。不要强度太大，让自己产生压力，反而成了一种负担。一周4-7练即可，找个本子记下来最好了。</li>
+<li>找到一种运动，它可以给你自信，让你思考，让你乐观。这件事如果用心去做，效果奇佳，其实不论什么事情，用心去做，结果都不会太差，而对于我来说，这个运动就是<strong>跑步</strong></li>
+</ul>
+<h3 id="关于跑步"><a href="#关于跑步" class="headerlink" title="关于跑步"></a>关于跑步</h3><p>跑步这项运动，是一项古老的运动，奔跑是人类的本能。</p>
+<p>感谢第二次搬家，让我在北京可以愉快的跑步，最开始我是在门口的清河边跑步，直到那个仿佛宿命般的那个夜晚，我突破了我自己。</p>
+<p>那个夜晚正如朱自清先生描述的的<code>月光如流水一般，静静的泻在这一片叶子与花上。薄薄的清雾浮起在荷塘里面。</code>，我定下了每周至少长跑10公里的计划，后来长跑便去了奥森公园开启了长跑之旅，短跑仍在门前的清河边，还是很喜欢那条河，像极了<code>荷塘月色</code>，<code>塘中的月色并不均匀，但光与影有着和谐的旋律，如梵婀玲上奏着的名曲</code>，夜晚静静的听着河水缓缓的流动，感觉棒极了。</p>
+<p>长跑时间很长，这也给了我思考的时间，慢慢的改造了我的一些思维。</p>
+<ul>
+<li>不要急于求成。这个毛病是我一直以来的问题，包括我在寻找就业方向的失败经历，都是惨痛的。循序渐进的提高跑量，不要长时间没有跑了，一下子就上强度，很容易受伤不说，还让我产生一种这运动很累，没有任何美感。于是我改进了以前的跑步策略，在慢慢的跑步，跑到心情通畅时、身体状态完美时开始提速，去享受长跑，享受带来的乐趣，缓解一天的劳累。</li>
+<li>保持自己的节奏。其实这条和上一条本质差不多，但是这一条带有一点<code>宠辱不惊</code>的色彩，我跑步时被后来者超过，总是不服的，急于把它超过，打乱自己的节奏，会变得很累，而如果保持自己的节奏，状态极好时主动地取决调节节奏，再去超越。</li>
+<li>坚持跑步。不坚持的理由有很多很多，但是坚持的理由就只有一个，<code>喂，你喜欢跑步吗，去跑步吧</code>。坚持做点什么，平凡的生活，可能会不一样吧。</li>
+<li>跑步的提高很多时候并不来源于跑步自身。我停留在6公里处好久，跑多了膝盖会酸，我知道继续单纯的跑步会伤害。这个时候跑步跑步这件事情本身已经不能再提高我的里程了。我查阅资料，开始强化核心力量，核心改造，突破了10公里，可以稳固的在这区间跑步。我联想到其他方面，当这件事情本身已经不能提高的时候，或许是其他方面的突破才能刺激这件事情。<code>它山之石可以攻玉</code>。</li>
+</ul>
+<p>要做自由的风，快乐的奔跑～</p>
+<h2 id="不安分的思想"><a href="#不安分的思想" class="headerlink" title="不安分的思想"></a>不安分的思想</h2><p>这一年又把之前看的小说刷了几遍，依然热血澎湃，引人遐想，会情不自禁的笑，也会回想起以前自己稚嫩的小说。</p>
+<p>不管怎么样吧，这些奇思妙想我还是想让他们活下去，让灵感留住，给2019年留下一个巨大的任务～</p>
+<h2 id="2019的展望"><a href="#2019的展望" class="headerlink" title="2019的展望"></a>2019的展望</h2><ul>
+<li>工作继续精益求精。深入自己涉及的领域，实践未来流行的主流技术。</li>
+<li>跑步每周10公里，争取年度突破400公里。参加1-2场半马。</li>
+</ul>
+<p><em>至于什么是理想主义者，在这个安静或不安静的夜晚，打开笔记本，于是一切都有了答案</em>。</p>
+<p>生命不息，奋斗不止，2018，再见～</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/12/29/deepin-pei-zhi-java-huan-jing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/29/deepin-pei-zhi-java-huan-jing/" class="post-title-link" itemprop="url">Deepin配置Java环境</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2018-12-29 21:56:32 / 修改时间：22:17:07" itemprop="dateCreated datePublished" datetime="2018-12-29T21:56:32+08:00">2018-12-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LearnJava/" itemprop="url" rel="index"><span itemprop="name">LearnJava</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="下载JavaSe开发包"><a href="#下载JavaSe开发包" class="headerlink" title="下载JavaSe开发包"></a>下载<code>JavaSe</code>开发包</h2><ul>
+<li><code>Oracle官网下载</code>，<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">地址</a></li>
+</ul>
+<p><a href="https://i.loli.net/2018/12/29/5c277f76ae39e.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://i.loli.net/2018/12/29/5c277f76ae39e.png" class="lazyload"></a></p>
+<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><ul>
+<li>下载完之后，解压，记住目录</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码</span>
+export JAVA_HOME<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>wsl<span class="token operator">/</span>Documents<span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token punctuation">.</span>0_191
+export JRE_HOME<span class="token operator">=</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>jre
+export CLASSPATH<span class="token operator">=</span><span class="token punctuation">.</span><span class="token punctuation">:</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>lib<span class="token operator">:</span>$<span class="token punctuation">{</span>JRE_HOME<span class="token punctuation">}</span><span class="token operator">/</span>lib
+export PATH<span class="token operator">=</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>bin<span class="token operator">:</span>$PATH
+<span class="token comment" spellcheck="true">// etc要想生效还要source</span>
+sudo vim <span class="token operator">/</span>etc<span class="token operator">/</span>profile
+source <span class="token operator">/</span>etc<span class="token operator">/</span>profile</code></pre>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
+<li><code>deepin</code>有内置的<code>openJDK</code>，会影响<code>Oracle</code>的<code>JDK</code></li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//查看版本多了一个_JAVA_OPTIONS</span>
+java <span class="token operator">-</span>version
+
+Picked up _JAVA_OPTIONS<span class="token operator">:</span>   <span class="token operator">-</span>Dawt<span class="token punctuation">.</span>useSystemAAFontSettings<span class="token operator">=</span>gasp
+java version <span class="token string">"1.8.0_05"</span>
+<span class="token function">Java</span><span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime <span class="token function">Environment</span> <span class="token punctuation">(</span>build <span class="token number">1.8</span><span class="token punctuation">.</span>0_05<span class="token operator">-</span>b13<span class="token punctuation">)</span>
+Java <span class="token function">HotSpot</span><span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span><span class="token operator">-</span>Bit Server <span class="token function">VM</span> <span class="token punctuation">(</span>build <span class="token number">25.5</span><span class="token operator">-</span>b02<span class="token punctuation">,</span> mixed mode<span class="token punctuation">)</span></code></pre>
+<p><a href="https://i.loli.net/2018/12/29/5c27810304718.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://i.loli.net/2018/12/29/5c27810304718.png" class="lazyload"></a></p>
+<ul>
+<li>多余文件的文本内容</li>
+</ul>
+<p><a href="https://i.loli.net/2018/12/29/5c2781b63bd6c.png" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="https://i.loli.net/2018/12/29/5c2781b63bd6c.png" class="lazyload"></a></p>
+<ul>
+<li>终极解决方案</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//在上面配置的环境变量前面添加</span>
+unset _JAVA_OPTIONS</code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/10/21/ji-lu-yong-hu-zhuang-tai/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/21/ji-lu-yong-hu-zhuang-tai/" class="post-title-link" itemprop="url">记录用户状态</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-21 22:56:12" itemprop="dateCreated datePublished" datetime="2018-10-21T22:56:12+08:00">2018-10-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" itemprop="url" rel="index"><span itemprop="name">三省吾身</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天主要记录本周开发中遇到的一个问题——记录用户状态。</p>
+<h3 id="问题的来源"><a href="#问题的来源" class="headerlink" title="问题的来源"></a>问题的来源</h3><p>我们做的产品是某款安检产品的数据集中管理，主要是为了处理AI所需的样本，我们通过web进行标注任务、数据传输任务、设备型号、设备类型、存储源、传输协议等等的管理与分配，以上各种东东的管理（各种简单的复杂的增删改查）是我负责。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/10/21/ji-lu-yong-hu-zhuang-tai/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/09/19/xu-ni-dom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/19/xu-ni-dom/" class="post-title-link" itemprop="url">虚拟DOM</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-19 23:46:07" itemprop="dateCreated datePublished" datetime="2018-09-19T23:46:07+08:00">2018-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue%E7%9A%84%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">Vue的学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>学习底层的虚拟DOM原理</p>
+</blockquote>
+<p>二话不说，直接上代码</p>
+<h3 id="基本的代码如下："><a href="#基本的代码如下：" class="headerlink" title="基本的代码如下："></a>基本的代码如下：</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/09/19/xu-ni-dom/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/09/02/seo-bu-wan-quan-zhi-bei/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/02/seo-bu-wan-quan-zhi-bei/" class="post-title-link" itemprop="url">SEO不完全指北</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-02 21:49:34" itemprop="dateCreated datePublished" datetime="2018-09-02T21:49:34+08:00">2018-09-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E4%B9%8B%E5%A4%96/" itemprop="url" rel="index"><span itemprop="name">前端之外</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这个周末学习了一下关于把个人站点进行SEO的初级操作，觉得很有意思，以此文记录一下，如果你也使用<code>HEXO</code>那将会有帮助。</p>
+<blockquote>
+<p><code>SEO</code>指 <code>Search Engine Optimization</code>，意指搜索引擎优化的意思，通过必要的网站结构的设计让<code>spider</code>机器人爬取有用的数据，提高网站在搜索时的排名与在相关领域的权重。</p>
+</blockquote>
+<h3 id="百度站长"><a href="#百度站长" class="headerlink" title="百度站长"></a>百度站长</h3><p>国内的话，首推<a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">百度站长</a>，前提是你要有自已 的域名了。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/09/02/seo-bu-wan-quan-zhi-bei/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/08/31/zui-qiang-de-tuan-dui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="winder">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/31/zui-qiang-de-tuan-dui/" class="post-title-link" itemprop="url">最强的团队</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-31 21:33:32" itemprop="dateCreated datePublished" datetime="2018-08-31T21:33:32+08:00">2018-08-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" itemprop="url" rel="index"><span itemprop="name">三省吾身</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="所在的团队"><a href="#所在的团队" class="headerlink" title="所在的团队"></a>所在的团队</h3><p>入职已经有一个半月了，目前的团队氛围对于我这个新人来说，就一句话<strong>如鱼得水</strong>，感谢机缘，能让我在转行的第一份工作中遇见这个团队，而我也会为了这个团队努力工作，让前端的大旗迎风飞扬。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/08/31/zui-qiang-de-tuan-dui/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
-</script>
-
-
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
-
-                
-                    <a href="https://github.com/codevvvv9" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-github-alt"></i>Github
-                    </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/codevvvv9" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:wslsdust@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=992593578" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 992593578" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-    <a href="https://www.zhihu.com/people/wu-lin-25-41/activities" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/wu-lin-25-41/activities" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">知</i>
-    </a>
-
-
-
-    <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" class="tooltipped" target="_blank" data-tooltip="关注我的掘金: https://juejin.im/user/5821e3d8bf22ec0068e631e2" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">掘</i>
-    </a>
-
-
-
-    <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" class="tooltipped" target="_blank" data-tooltip="关注我的简书: https://www.jianshu.com/u/15af43443bdb" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">简</i>
-    </a>
-
-
-
-</div>
-        </div>
-    </div>
-
-    
-</div>
-
-<script>
-    $(function () {
-        let coverSlider = $('.carousel');
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true'
-        });
-
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function() {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
-
-        let restartPlay = function () {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
     });
+  }
 </script>
 
-
-
-<main class="content">
-
-    
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;我的人生
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            “我曾七次鄙视自己的灵魂： 第一次，当它本可进取时，却故作谦卑； 第二次，当它在空虚时，用爱欲来填充； 第三次，在困难和容易之间，它选择了容易 ；第四次，它犯了错，却借由别人也会犯错来宽慰自己； 第五次，它自由软弱，却把它认为是生命的坚韧 ； 第六次，当它鄙夷一张丑恶的嘴脸时，却不知那正是自己面具中的一副； 第七次，它侧身于生活的污泥中，虽不甘心，却又畏首畏。”与君共勉~
         </div>
-    </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">吴少林</p>
+  <div class="site-description" itemprop="description"></div>
 </div>
-                    
-
-                    
-
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
-
-
-
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-    
-
-    
-
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2020/03/24/zhi-you-rou-gua-duan-de-zi-ji/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="致优柔寡断的自己">
-                            
-                            <span class="card-title">致优柔寡断的自己</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                受疫情的影响，从2月9号回京以来，一直在家里进行远程办公，虽然也享受到了国外流行的远程办公的福利，但是时间久了却有渐渐发现一些问题，其中主要就是时间太充足了，利用率上明显不高。
-在接近两个月的远程里，沟通成本极其的大，从19年12月接手50
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" class="post-category">
-                                    三省吾身
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%89%8D%E7%AB%AF%E4%B9%8B%E5%A4%96/">
-                            <span class="chip bg-color">前端之外</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/07/28/go-bian-liang-he-shu-ju-lei-xing/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="go变量和数据类型">
-                            
-                            <span class="card-title">go变量和数据类型</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                这部分学习go的基础语法，变量的使用以及基本数据类型
-变量三部曲
-
-声明变量
-赋值
-使用该变量
-
-go中声明变量的三种基本形式
-单变量的写法
-
-//1、基本声明方式
-var i int // 声明一个变量i,数据类型为int，默认值会被赋值
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-28
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/golang/" class="post-category">
-                                    golang
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/go/">
-                            <span class="chip bg-color">go</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/07/27/go-ru-men/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="go入门">
-                            
-                            <span class="card-title">go入门</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                go的几个特点可以粗略的认为go = c + python
-
-从C语言中继承了很多理念，尤其是指针的运用
-
-func testPtr(num *int) {
-  *num = 20
-}
-
-
-引入包的概念，用于组织程序结构。单独的go文件必须
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-27
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/golang/" class="post-category">
-                                    golang
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/go/">
-                            <span class="chip bg-color">go</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/07/22/gong-zuo-xiao-jie-2/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="工作小结-2">
-                            
-                            <span class="card-title">工作小结-2</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                promise兼容IE11最近我开发的公司的竞赛网站被发现在IE11下排行榜无数据，但是在其他浏览器没问题，我然后打开控制台一看，发现了如下错误：
-
-真是醉了，然后发现有三个可行的方案：
-
-直接采用polyfill
-
-在index.html
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-07-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" class="post-category">
-                                    三省吾身
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/think/">
-                            <span class="chip bg-color">think</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/06/08/yi-dong-duan-xiang-ying-shi-bu-ju-chu-she/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="移动端-响应式布局初涉">
-                            
-                            <span class="card-title">移动端-响应式布局初涉</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                响应式布局五个基本点
-媒体查询
-移动端对应的设计图
-隐藏某些在PC端需要的元素
-添加meta标签
-
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-08
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/CSS%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    CSS学习
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CSS/">
-                            <span class="chip bg-color">CSS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/01/09/bian-cheng-si-xiang-za-tan/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="编程思想杂谈">
-                            
-                            <span class="card-title">编程思想杂谈</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                面向对象
-面向对象是老生常谈的一个话题了。
-可以自定义数据类型，工具类、实体类、将代码细节进行封装，易于编程。
-
-用函数来编程
-首先参数一定要验证
-把逻辑实现，并拆分代码
-
-设计模式
-单例
-适配器
-IOC
-工程模式
-
-
-        do
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-09
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" class="post-category">
-                                    三省吾身
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%89%8D%E7%AB%AF%E4%B9%8B%E5%A4%96/">
-                            <span class="chip bg-color">前端之外</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/12/31/yi-ge-li-xiang-zhu-yi-zhe-de-du-bai/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="一个理想主义者的独白">
-                            
-                            <span class="card-title">一个理想主义者的独白</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-这是最好的时代，也是最差的时代。
-
-为什么是2018从来没写过年终总结，好像还挺遗憾的，活的不明不白的，一年就没了。
-正如鸡汤文化宣扬的那样，这可是8120年了啊，10年前已经不是1998，而是2008年了。人们总是过分的相信自己的记忆，
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-12-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" class="post-category">
-                                    三省吾身
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/2018%E6%80%BB%E7%BB%93/">
-                            <span class="chip bg-color">2018总结</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/12/29/deepin-pei-zhi-java-huan-jing/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Deepin配置Java环境">
-                            
-                            <span class="card-title">Deepin配置Java环境</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                下载JavaSe开发包
-Oracle官网下载，地址
-
-
-配置环境变量
-下载完之后，解压，记住目录
-
-//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码
-export JAVA_HOME=/home/ws
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-12-29
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/LearnJava/" class="post-category">
-                                    LearnJava
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Java/">
-                            <span class="chip bg-color">Java</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/10/21/ji-lu-yong-hu-zhuang-tai/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="记录用户状态">
-                            
-                            <span class="card-title">记录用户状态</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                今天主要记录本周开发中遇到的一个问题——记录用户状态。
-问题的来源我们做的产品是某款安检产品的数据集中管理，主要是为了处理AI所需的样本，我们通过web进行标注任务、数据传输任务、设备型号、设备类型、存储源、传输协议等等的管理与分配，以上各
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-10-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" class="post-category">
-                                    三省吾身
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/think/">
-                            <span class="chip bg-color">think</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/09/19/xu-ni-dom/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="虚拟DOM">
-                            
-                            <span class="card-title">虚拟DOM</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-学习底层的虚拟DOM原理
-
-二话不说，直接上代码
-基本的代码如下：let nodeData = {
-  tag: 'div',
-  children: [{
-      tag: 'p',
-      children: [{
-     
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-09-19
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Vue%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    Vue的学习
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Vue/">
-                            <span class="chip bg-color">Vue</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/09/02/seo-bu-wan-quan-zhi-bei/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="SEO不完全指北">
-                            
-                            <span class="card-title">SEO不完全指北</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                这个周末学习了一下关于把个人站点进行SEO的初级操作，觉得很有意思，以此文记录一下，如果你也使用HEXO那将会有帮助。
-
-SEO指 Search Engine Optimization，意指搜索引擎优化的意思，通过必要的网站结构的设计让sp
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-09-02
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%89%8D%E7%AB%AF%E4%B9%8B%E5%A4%96/" class="post-category">
-                                    前端之外
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/SEO/">
-                            <span class="chip bg-color">SEO</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2018/08/31/zui-qiang-de-tuan-dui/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="最强的团队">
-                            
-                            <span class="card-title">最强的团队</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                所在的团队入职已经有一个半月了，目前的团队氛围对于我这个新人来说，就一句话如鱼得水，感谢机缘，能让我在转行的第一份工作中遇见这个团队，而我也会为了这个团队努力工作，让前端的大旗迎风飞扬。
-团队组成由4个java后端、1个Python后端、3
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-08-31
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E4%B8%89%E7%9C%81%E5%90%BE%E8%BA%AB/" class="post-category">
-                                    三省吾身
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/think/">
-                            <span class="chip bg-color">think</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-        </div>
-    </article>
-
-</main>
-
-
-<div class="container paging">
-    <div class="row">
-        <div class="col s6 m4 l4">
-            
-            <a class="left btn-floating btn-large disabled">
-                <i class="fas fa-angle-left"></i>
-            </a>
-            
-        </div>
-        <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">1 / 4</div>
-        </div>
-        <div class="col s6 m4 l4">
-            
-            <a href="/page/2/"
-               class="right btn-floating btn-large waves-effect waves-light bg-color">
-                <i class="fas fa-angle-right"></i>
-            </a>
-            
-        </div>
-    </div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
 </div>
 
 
 
+      </div>
 
-    <footer class="page-footer bg-color">
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            <span id="year">2018</span>
-            <!-- <a href="https://codevvvv9.github.io" target="_blank">吴少林</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a> -->
-            <br>
-            
-            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">76.8k</span>&nbsp;字
-            
-            
-            
-            
-            
-            
-            <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
-                    class="white-color"></span>&nbsp;次
-            </span>
-            
-            
-            <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
-                    class="white-color"></span>&nbsp;人
-            </span>
-            
-            <br>
-            
-            <br>
-            
-        </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/codevvvv9" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:wslsdust@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=992593578" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 992593578" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-    <a href="https://www.zhihu.com/people/wu-lin-25-41/activities" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/wu-lin-25-41/activities" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">知</i>
-    </a>
-
-
-
-    <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" class="tooltipped" target="_blank" data-tooltip="关注我的掘金: https://juejin.im/user/5821e3d8bf22ec0068e631e2" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">掘</i>
-    </a>
-
-
-
-    <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" class="tooltipped" target="_blank" data-tooltip="关注我的简书: https://www.jianshu.com/u/15af43443bdb" data-position="top" data-delay="50">
-        <i class="fab fa-zhihu1">简</i>
-    </a>
-
-
-
-</div>
     </div>
-</footer>
+  </aside>
+  <div id="sidebar-dimmer"></div>
 
-<div class="progress-bar"></div>
 
+      </div>
+    </main>
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
-    </div>
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴少林</span>
 </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
 
-<script src="/js/search.js"></script>
-<script type="text/javascript">
-$(function () {
-    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
-});
-</script>
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+        
 
 
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <!-- Baidu Analytics -->
 
-    <!-- Baidu Push -->
 
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
 
-    
+      </div>
+    </footer>
+  </div>
 
-    
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-    
+<script src="/js/utils.js"></script>
 
-    
+<script src="/js/motion.js"></script>
 
-    
-    
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>
