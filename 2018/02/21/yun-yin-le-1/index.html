@@ -235,14 +235,14 @@
 <p>本文是云音乐的需求分析以及基本环境的搭建，主要是LeanCloud和七牛的使用。</p>
 </blockquote>
 <h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>先根据<a href="https://music.163.com/m/" target="_blank" rel="noopener">网易云音乐</a>移动端去分析需求，看看有哪些能做的</p>
-<h3 id="做啥"><a href="#做啥" class="headerlink" title="做啥"></a>做啥</h3><p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-20/82573501.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="用例图" class="fancybox"><img alt="用例图" title="用例图" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/82573501.jpg" class="lazyload"></a></p>
+<h3 id="做啥"><a href="#做啥" class="headerlink" title="做啥"></a>做啥</h3><p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/82573501.jpg" alt="用例图"></p>
 <p>目前初步分析的需求如上图所示，主要针对两个角色（普通用户和管理员）。</p>
 <a id="more"></a>
 
 <h3 id="用啥"><a href="#用啥" class="headerlink" title="用啥"></a>用啥</h3><p>在学习阶段主要是学会核心概念、流程、代码，能用原生JS做就用原生JS做，少用库去做事。</p>
 <p>可是到了做项目的时候项目（建立在已经学会了基本的概念与敲了足够的代码量之后），应该采取不同的策略去完成项目，例如选择合适的库、看文档、写demo、copy大神成功的代码。</p>
 <p>所以本项目采用了成熟的jQuery以及LeanCloud、七牛作为后台的数据库。</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-20/69890088.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="架构图" class="fancybox"><img alt="架构图" title="架构图" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/69890088.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/69890088.jpg" alt="架构图"></p>
 <h2 id="LeanCloud"><a href="#LeanCloud" class="headerlink" title="LeanCloud"></a>LeanCloud</h2><p>一个简单的数据库(比MySQL都简单，主要是更加形象，能与项目迅速的结合并给我很多正反馈)。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>直接去看<a href="https://leancloud.cn/docs/sdk_setup-js.html#hash1620893804" target="_blank" rel="noopener">文档</a></p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//存储服务（包括推送和统计）</span>
@@ -286,7 +286,7 @@ testObject<span class="token punctuation">.</span><span class="token function">s
      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'failed'</span><span class="token punctuation">)</span>
  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>效果如下图所示</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-20/57467194.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="LeanCloud的变化" class="fancybox"><img alt="LeanCloud的变化" title="LeanCloud的变化" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/57467194.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/57467194.jpg" alt="LeanCloud的变化"></p>
 <p>通过上图可以简单的看出LeanCloud可以存储字符串以及数组。</p>
 <p><code>ACL</code>: Access Control Layer</p>
 <p>像MP3等文件只能借助下面的七牛去存储了</p>
@@ -408,7 +408,7 @@ testObject<span class="token punctuation">.</span><span class="token function">s
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>至此，简单的上传文件的效果做完了，全部的<a href="https://github.com/codevvvv9/163-music-demo-1" target="_blank" rel="noopener">代码版本</a></p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-20/72923380.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/72923380.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-20/72923380.jpg" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

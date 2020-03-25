@@ -249,7 +249,7 @@ TCP可以看成是把石子扔到水里，UDP是把石头扔进草垛里面
 第三次 客户端说，那我就真的连接喽</code></pre>上述两个面试题可以仔细阅读这两篇文章 <a href="https://www.nowcoder.com/questionTerminal/63c8b45c91a544bd8febc1f1ff02e3b5?toCommentId=73766" target="_blank" rel="noopener">TCP与UDP的区别</a>、<a href="https://github.com/jawil/blog/issues/14" target="_blank" rel="noopener">TCP三次握手详解</a><a id="more"></a></li>
 </ul>
 </li>
-<li>路由器的基础<br>只要我们在互联网中，就要用到IP 网络协议（Internet Protocol）,IP有分为内网IP和外网IP,它们的分界线就是路由器。<br><a href="http://upload-images.jianshu.io/upload_images/5422064-98d06d574a0612b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="内网和外网.png" class="fancybox"><img alt="内网和外网.png" title="内网和外网.png" data-src="http://upload-images.jianshu.io/upload_images/5422064-98d06d574a0612b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a></li>
+<li>路由器的基础<br>只要我们在互联网中，就要用到IP 网络协议（Internet Protocol）,IP有分为内网IP和外网IP,它们的分界线就是路由器。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-98d06d574a0612b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内网和外网.png"></li>
 <li>内网之间可以自由沟通，外网之间自由沟通。但是内外网不能直接沟通，必须通过路由，路由是一夫当关万夫莫开，也叫网关。</li>
 <li>当路由器连上电信的服务器，就会获得一个外网IP(<strong>14.17.32.211</strong>),当你重启的时候又会重新分配一个。所以大多数的公司，会买一个固定的。</li>
 <li>好了，此时路由和外界可以联通了，那么如何和你联通呢。答案就是 内网</li>
@@ -267,10 +267,8 @@ TCP可以看成是把石子扔到水里，UDP是把石头扔进草垛里面
 <li>用server接收请求</li>
 </ol>
 </li>
-<li>2.用server发挥响应，完成网页的解析<br>核心代码如下所示，可以模拟一个微型的服务器<br>一定要注意，<strong>response.setHeader(‘ContentType’, ‘text/html;charset=utf-8’)</strong><br>这是告诉浏览器两件事，一是设置头文件，告诉浏览器响应的第四部分按照什么格式来响应，二是告诉浏览器字符编码采用utf-8,避免乱码。<br><a href="http://upload-images.jianshu.io/upload_images/5422064-ad3e34b3638f66e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" data-fancybox="group" data-caption="[图片上传中...(响应修改编码.png-1d11fb-1512915328362-0)]
-" class="fancybox"><img alt="[图片上传中...(响应修改编码.png-1d11fb-1512915328362-0)]
-" title="[图片上传中...(响应修改编码.png-1d11fb-1512915328362-0)]
-" data-src="http://upload-images.jianshu.io/upload_images/5422064-ad3e34b3638f66e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a><br><a href="http://upload-images.jianshu.io/upload_images/5422064-24ac1610920f0114.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="响应修改编码.png" class="fancybox"><img alt="响应修改编码.png" title="响应修改编码.png" data-src="http://upload-images.jianshu.io/upload_images/5422064-24ac1610920f0114.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a><br><a href="http://upload-images.jianshu.io/upload_images/5422064-18e4374d4d6cc371.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="响应内容.png" class="fancybox"><img alt="响应内容.png" title="响应内容.png" data-src="http://upload-images.jianshu.io/upload_images/5422064-18e4374d4d6cc371.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a></li>
+<li>2.用server发挥响应，完成网页的解析<br>核心代码如下所示，可以模拟一个微型的服务器<br>一定要注意，<strong>response.setHeader(‘ContentType’, ‘text/html;charset=utf-8’)</strong><br>这是告诉浏览器两件事，一是设置头文件，告诉浏览器响应的第四部分按照什么格式来响应，二是告诉浏览器字符编码采用utf-8,避免乱码。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-ad3e34b3638f66e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="[图片上传中...(响应修改编码.png-1d11fb-1512915328362-0)]
+"><br><img src="http://upload-images.jianshu.io/upload_images/5422064-24ac1610920f0114.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="响应修改编码.png"><br><img src="http://upload-images.jianshu.io/upload_images/5422064-18e4374d4d6cc371.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="响应内容.png"></li>
 </ul>
 <pre><code>var http = require('http')
 var fs = require('fs')
@@ -322,7 +320,7 @@ var server = http.createServer(function(request, response){
 server.listen(port)
 console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port)</code></pre><h3 id="再次强调-再次强调，后缀是废话。文件内容是有-HTTP-头中的-Content-Type-保证的"><a href="#再次强调-再次强调，后缀是废话。文件内容是有-HTTP-头中的-Content-Type-保证的" class="headerlink" title="再次强调 再次强调，后缀是废话。文件内容是有 HTTP 头中的 Content-Type 保证的"></a>再次强调 再次强调，后缀是废话。文件内容是有 HTTP 头中的 Content-Type 保证的</h3><p>HTTP 路径不是文件路径！！！/xxx.html 不一定对应 xxx.html 文件<br>HTTP 路径不是文件路径！！！/xxx.html 不一定对应 xxx.html 文件<br>HTTP 路径不是文件路径！！！/xxx.html 不一定对应 xxx.html 文件</p>
 <ul>
-<li>你请求的时候，查询的内容是？后面的内容<br><a href="http://upload-images.jianshu.io/upload_images/5422064-ecce6194cb5bb9e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="查询的参数从问好开始.png" class="fancybox"><img alt="查询的参数从问好开始.png" title="查询的参数从问好开始.png" data-src="http://upload-images.jianshu.io/upload_images/5422064-ecce6194cb5bb9e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a><h3 id="当你在地址栏输入一个网页的时候发生了什么呢？"><a href="#当你在地址栏输入一个网页的时候发生了什么呢？" class="headerlink" title="当你在地址栏输入一个网页的时候发生了什么呢？"></a>当你在地址栏输入一个网页的时候发生了什么呢？</h3>你输入完之后，缺http,浏览器帮你加上，缺路径，帮你加上/，缺端口，帮你加上80。<br><a href="http://upload-images.jianshu.io/upload_images/5422064-88448ddf960020fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="QQ图片20171210222219.png" class="fancybox"><img alt="QQ图片20171210222219.png" title="QQ图片20171210222219.png" data-src="http://upload-images.jianshu.io/upload_images/5422064-88448ddf960020fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a></li>
+<li>你请求的时候，查询的内容是？后面的内容<br><img src="http://upload-images.jianshu.io/upload_images/5422064-ecce6194cb5bb9e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查询的参数从问好开始.png"><h3 id="当你在地址栏输入一个网页的时候发生了什么呢？"><a href="#当你在地址栏输入一个网页的时候发生了什么呢？" class="headerlink" title="当你在地址栏输入一个网页的时候发生了什么呢？"></a>当你在地址栏输入一个网页的时候发生了什么呢？</h3>你输入完之后，缺http,浏览器帮你加上，缺路径，帮你加上/，缺端口，帮你加上80。<br><img src="http://upload-images.jianshu.io/upload_images/5422064-88448ddf960020fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="QQ图片20171210222219.png"></li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')

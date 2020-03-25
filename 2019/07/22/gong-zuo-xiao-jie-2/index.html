@@ -224,7 +224,7 @@
 
       
         <h3 id="promise兼容IE11"><a href="#promise兼容IE11" class="headerlink" title="promise兼容IE11"></a>promise兼容IE11</h3><p>最近我开发的公司的竞赛网站被发现在IE11下排行榜无数据，但是在其他浏览器没问题，我然后打开控制台一看，发现了如下错误：</p>
-<p><a href="http://ww1.sinaimg.cn/large/006wk7J2ly1g58ycfeu0uj311x091q37.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="Promise未定义" class="fancybox"><img alt="Promise未定义" title="Promise未定义" data-src="http://ww1.sinaimg.cn/large/006wk7J2ly1g58ycfeu0uj311x091q37.jpg" class="lazyload"></a></p>
+<p><img src="http://ww1.sinaimg.cn/large/006wk7J2ly1g58ycfeu0uj311x091q37.jpg" alt="Promise未定义"></p>
 <p>真是醉了，然后发现有三个可行的方案：<a id="more"></a></p>
 <ul>
 <li>直接采用<code>polyfill</code></li>
@@ -264,7 +264,7 @@ entry<span class="token punctuation">:</span><span class="token punctuation">{</
    <span class="token punctuation">}</span></code></pre>
 <h3 id="Vue提倡的单项数据流"><a href="#Vue提倡的单项数据流" class="headerlink" title="Vue提倡的单项数据流"></a><code>Vue</code>提倡的单项数据流</h3><p>在写<code>vue</code>组件的过程中，经常会遇到这样的情形：子组件需要的参数以<code>props</code>属性里面的<code>prop</code>来获得，父组件通过具名的<code>prop</code>来把子组件需要的内容传递给子组件，而且<code>Vue</code>提倡数据流的方向只能由父组件流向子组件。当父组件的数据发生变化时去通知子组件更改相应的属性，而不能反过来，子组件的变化影响到父组件，这种行为是被禁止的，因为这样会导致数据混乱不易于定位错误。</p>
 <p>虽然经常写着写着子组件就想图省事，子组件直接去改变父组件的状态了，但是会报错如下：</p>
-<p><a href="http://ws1.sinaimg.cn/large/006wk7J2ly1g58yf2sba8j31gg08ddg8.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="Props只允许父组件传递给子组件" class="fancybox"><img alt="Props只允许父组件传递给子组件" title="Props只允许父组件传递给子组件" data-src="http://ws1.sinaimg.cn/large/006wk7J2ly1g58yf2sba8j31gg08ddg8.jpg" class="lazyload"></a></p>
+<p><img src="http://ws1.sinaimg.cn/large/006wk7J2ly1g58yf2sba8j31gg08ddg8.jpg" alt="Props只允许父组件传递给子组件"></p>
 <p>那么，子组件为了更改父组件的状态，<code>Vue</code>提供了两种常见的解决办法：</p>
 <ul>
 <li>通过<code>data</code>中的变量将需要的<code>prop</code>初始化</li>

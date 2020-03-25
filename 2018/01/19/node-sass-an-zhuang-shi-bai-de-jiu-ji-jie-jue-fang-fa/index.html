@@ -251,19 +251,19 @@ $ npm install hexo-renderer-sass --save  #就是这货</code></pre>
 <pre class=" language-shell"><code class="language-shell">npm i -g node-sass@4.9.3 --sass_binary_path=/home/wsl/Downloads/chromeDownloads/linux-x64-64_binding.node
 # path需要替换成你系统的那个包名字</code></pre>
 <p><code>But</code>我以为下载成功了，就万事大吉了呢，发现我真是太天真了。安装完后第一件事就是检验安装的包能不能用，<code>node-sass -v</code>一下，最不济出现个<code>node-sass not found</code>这种类似的初级错误啊，结果报了个无语的错误。</p>
-<p><a href="https://i.loli.net/2018/12/01/5c02610b47259.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="找不到vendor目录" class="fancybox"><img alt="找不到vendor目录" title="找不到vendor目录" data-src="https://i.loli.net/2018/12/01/5c02610b47259.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/12/01/5c02610b47259.png" alt="找不到vendor目录"></p>
 <p>这个目录是<code>node-sass</code>规定的</p>
-<p><a href="https://i.loli.net/2018/12/01/5c0263e5ad309.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="node-sass-package.json" class="fancybox"><img alt="node-sass-package.json" title="node-sass-package.json" data-src="https://i.loli.net/2018/12/01/5c0263e5ad309.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/12/01/5c0263e5ad309.png" alt="node-sass-package.json"></p>
 <p>为啥没有这个目录呢，因为通过 我采用的是设置本地下载路径，没有通过网上的下载。所以需要手动建立一个<code>vendor</code>目录（<code>issues里面通过npm rebulid node-sass可以解决，但是我没生效</code>），接着会报第二个新错误，这就很合理了，报错一点不可怕，能看懂并解决掉就很是进步。</p>
 </li>
 </ol>
-<p><a href="https://i.loli.net/2018/12/01/5c02637aed955.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="找不到binding文件" class="fancybox"><img alt="找不到binding文件" title="找不到binding文件" data-src="https://i.loli.net/2018/12/01/5c02637aed955.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/12/01/5c02637aed955.png" alt="找不到binding文件"></p>
 <p>新的错误是需要<code>binding.node</code>文件，刚才建立的<code>vendor</code>是个空目录所以找不到，在其内部建立二级目录，并把刚才下载的包改名为<code>binding.node</code>，即<code>vendor/linux-X64-64/binding.node</code></p>
 <p><strong>至此，本地安装<code>node-sass</code></strong>完毕，以后可以随便玩<code>node-sass</code>了，管你能不能翻墙，能不能设置镜像。</p>
 <ol start="2">
 <li>本来以为全局安装完毕就可以在博客目录下直接安装<code>hexo-renderer-sass</code>，竟然还是报错。没办法，在<code>newBlog</code>目录下又<strong>按照上述的方法</strong>安装了一个<code>node-sass@4.10.0</code>，因为<code>hexo-render-sass</code>需要4.10.0版本。最后终于成功了。</li>
 </ol>
-<p><a href="https://i.loli.net/2018/12/01/5c0266bae321d.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="安装成功" class="fancybox"><img alt="安装成功" title="安装成功" data-src="https://i.loli.net/2018/12/01/5c0266bae321d.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/12/01/5c0266bae321d.png" alt="安装成功"></p>
 <p><strong>分割线以下为传统解决方法，尤其针对Linux用户</strong></p>
 <hr>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>主流的CSS预处理器有<a href="https://www.catswhocode.com/blog/8-css-preprocessors-to-speed-up-development-time" target="_blank" rel="noopener">8种</a>,我们今天介绍<code>sass</code>.它的<a href="http://sass-lang.com/" target="_blank" rel="noopener">官网</a>,不过需要安装ruby.</p>

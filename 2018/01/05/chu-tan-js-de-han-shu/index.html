@@ -350,7 +350,7 @@ a<span class="token punctuation">.</span><span class="token function">call</span
 b<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 c<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>如上的代码，先有三个函数声明，然后是三个调用。浏览器先执行a.call()，然后执行b.call()，c.call()，下面结合图具体详细分析。</p>
-<p><a href="https://user-gold-cdn.xitu.io/2018/1/5/160c5838728cf39e?w=1006&amp;h=621&amp;f=png&amp;s=37670" target="_blank" rel="noopener" data-fancybox="group" data-caption="普通调用" class="fancybox"><img alt="普通调用" title="普通调用" data-src="https://user-gold-cdn.xitu.io/2018/1/5/160c5838728cf39e?w=1006&amp;h=621&amp;f=png&amp;s=37670" class="lazyload"></a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c5838728cf39e?w=1006&amp;h=621&amp;f=png&amp;s=37670" alt="普通调用"></p>
 <ul>
 <li>第一步：浏览器入口是a.call(),a函数入栈，执行a函数内部代码</li>
 <li>第二步：console.log(‘a’)执行完毕，就出栈，接着a函数结束，出栈死亡</li>
@@ -378,7 +378,7 @@ c<span class="token punctuation">.</span><span class="token function">call</span
 <span class="token punctuation">}</span>
 a<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'end'</span><span class="token punctuation">)</span></code></pre>
-<p><a href="https://user-gold-cdn.xitu.io/2018/1/5/160c583872bdbfb8?w=1170&amp;h=754&amp;f=png&amp;s=53669" target="_blank" rel="noopener" data-fancybox="group" data-caption="嵌套调用" class="fancybox"><img alt="嵌套调用" title="嵌套调用" data-src="https://user-gold-cdn.xitu.io/2018/1/5/160c583872bdbfb8?w=1170&amp;h=754&amp;f=png&amp;s=53669" class="lazyload"></a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c583872bdbfb8?w=1170&amp;h=754&amp;f=png&amp;s=53669" alt="嵌套调用"></p>
 <ul>
 <li>第一步：浏览器的入口还是a.call()，a.call()入栈，执行a函数内部的代码</li>
 <li>第二步： a函数的第一行语句console.log(‘a1’)，入栈，打印出a1，这句话就出栈死亡。此时a函数继续执行下面的代码。</li>
@@ -433,7 +433,7 @@ f1<span class="token punctuation">.</span><span class="token function">call</spa
 f1<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>问：a是多少</p>
 <p>这个题用就近原则好做。</p>
-<p><a href="https://user-gold-cdn.xitu.io/2018/1/5/160c583872944cc1?w=821&amp;h=459&amp;f=png&amp;s=24060" target="_blank" rel="noopener" data-fancybox="group" data-caption="树形结构" class="fancybox"><img alt="树形结构" title="树形结构" data-src="https://user-gold-cdn.xitu.io/2018/1/5/160c583872944cc1?w=821&amp;h=459&amp;f=png&amp;s=24060" class="lazyload"></a></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c583872944cc1?w=821&amp;h=459&amp;f=png&amp;s=24060" alt="树形结构"></p>
 <p>用树形结构来分析，当上面的代码被浏览器渲染之后</p>
 <ul>
 <li>全局变量里面有：var a = 1，f1、f2函数</li>

@@ -240,9 +240,9 @@
 </blockquote>
 <h3 id="百度站长"><a href="#百度站长" class="headerlink" title="百度站长"></a>百度站长</h3><p>国内的话，首推<a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">百度站长</a>，前提是你要有自已 的域名了。<a id="more"></a></p>
 <h4 id="添加站点"><a href="#添加站点" class="headerlink" title="添加站点"></a>添加站点</h4><p>按照下图操作</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-9-2/21158660.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="百度添加网站" class="fancybox"><img alt="百度添加网站" title="百度添加网站" data-src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/21158660.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/21158660.jpg" alt="百度添加网站"></p>
 <p>前面两部基本没问题，注意一下第三步的操作：</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-9-2/71723786.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="第三步验证操作" class="fancybox"><img alt="第三步验证操作" title="第三步验证操作" data-src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/71723786.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/71723786.jpg" alt="第三步验证操作"></p>
 <ul>
 <li>通常选择文件验证和CNAME验证，我选择的是文件验证，这里要把百度的验证文件放到你的域名的根目录下，具体的在这里指：<code>source</code>目录下，要注意如果是html文件要使用如下代码处理，防止后续部署时把html文件给处理了。</li>
 </ul>
@@ -268,9 +268,9 @@ permalink<span class="token punctuation">:</span> <span class="token punctuation
 <ol start="4">
 <li>把上面生成的<code>sitemap.xml</code>提交给百度，按照第一章的做法把站点添加到百度后，按照下图的方式提交</li>
 </ol>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-9-2/81973081.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="链接提交" class="fancybox"><img alt="链接提交" title="链接提交" data-src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/81973081.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/81973081.jpg" alt="链接提交"></p>
 <p> 这里有两种方式提交，很明显选择自动提交——主动推送的方式，注意这里的<code>token</code>，很重要</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-9-2/21550135.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="主动提交方式" class="fancybox"><img alt="主动提交方式" title="主动提交方式" data-src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/21550135.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/21550135.jpg" alt="主动提交方式"></p>
 <p>使用如下代码完成主动推送</p>
 <pre class=" language-yaml"><code class="language-yaml">//1.先安装插件
 npm install hexo<span class="token punctuation">-</span>baidu<span class="token punctuation">-</span>url<span class="token punctuation">-</span>submit <span class="token punctuation">-</span><span class="token punctuation">-</span>save
@@ -309,7 +309,7 @@ npm install hexo<span class="token punctuation">-</span>baidu<span class="token 
 
 <span class="token key atrule">Sitemap</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//你的站点/sitemap.xml //
 <span class="token key atrule">Sitemap</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//你的站点/baidusitemap.xml</code></pre>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-9-2/8846523.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="robots.txt内容" class="fancybox"><img alt="robots.txt内容" title="robots.txt内容" data-src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/8846523.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/8846523.jpg" alt="robots.txt内容"></p>
 <h4 id="Url持久化"><a href="#Url持久化" class="headerlink" title="Url持久化"></a><code>Url</code>持久化</h4><p>还记的<code>_config.yml</code>里面关于<code>url</code>的描述嘛。<code>permalink</code>属性中的<code>/</code>决定了你的<code>url</code>有几级，通常引擎只会爬取三层，而且对于汉字的处理不完美，可是你的文章名字难免会有汉字，所以这里要进行必要的转化。</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># # URL</span>
 <span class="token comment" spellcheck="true"># ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span>
@@ -334,9 +334,9 @@ http<span class="token punctuation">:</span>//wushao.xyz/posts/77ac3545.html</co
 <ul>
 <li>此时你会发现你以前的的文章标题会有变化</li>
 </ul>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-9-2/83087096.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/83087096.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/83087096.jpg" alt=""></p>
 <h3 id="Google站长"><a href="#Google站长" class="headerlink" title="Google站长"></a><code>Google</code>站长</h3><p><code>Google</code>的方便多了，直接<a href="https://www.google.com/webmasters/#?modal_active=none" target="_blank" rel="noopener">google站长</a>，然后进<code>Search console</code>,添加属性就是添加个人站点的意思，后续步骤和上面一样，但是收录的速度快多了。</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-9-2/53903614.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="Search console" class="fancybox"><img alt="Search console" title="Search console" data-src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/53903614.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-9-2/53903614.jpg" alt="Search console"></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

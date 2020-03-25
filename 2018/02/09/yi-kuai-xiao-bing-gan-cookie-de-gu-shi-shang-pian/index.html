@@ -268,7 +268,7 @@ body, html</span><span class="token punctuation">{</span><span class="token prop
 <ol start="2">
 <li><code>label</code>标签是<code>display: inline</code>，不能设置宽度，<strong>行内元素则会根据行内内容自适应宽度</strong>，所以行内元素设置width是没有效果的。改成<code>inline-block就可以了</code></li>
 </ol>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/78722664.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="很丑的界面的" class="fancybox"><img alt="很丑的界面的" title="很丑的界面的" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/78722664.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/78722664.jpg" alt="很丑的界面的"></p>
 <h3 id="获得用户的数据"><a href="#获得用户的数据" class="headerlink" title="获得用户的数据"></a>获得用户的数据</h3><p>既然是注册的需求，那么我们首要关注的点就是–用户的注册信息我们如何获得呢</p>
 <p>选择合理的数据结构存储数据是很重要的。</p>
 <ol>
@@ -316,7 +316,7 @@ $form<span class="token punctuation">.</span><span class="token function">on</sp
 <li>如果忘记写return的话，即使你为空了还是会直接越过这一步检测，去发起ajax请求的，所以一定不要忘了写上return false.</li>
 <li>如果仅仅这么写的话会有一个bug。当出现错误提示后，你把信息填对了，错误信息依然显示，这显然是不合理的。应该填入信息后，错误信息就消失的。</li>
 </ul>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/78635036.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="bug" class="fancybox"><img alt="bug" title="bug" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/78635036.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/78635036.jpg" alt="bug"></p>
 <pre class=" language-javascript"><code class="language-javascript"> $form<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'.errors'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token punctuation">(</span>index<span class="token punctuation">,</span> span<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
      <span class="token function">$</span><span class="token punctuation">(</span>span<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
  <span class="token punctuation">}</span><span class="token punctuation">)</span> </code></pre>
@@ -383,16 +383,16 @@ $form<span class="token punctuation">.</span><span class="token function">on</sp
   response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'email is bad'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//单引号只是为了标记这是一个字符串</span>
 <span class="token punctuation">}</span> </code></pre>
 <p>很好，目前来说，事情的发展都很正常，直到一个bug的到来。</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/63886564.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="正常的也报错了" class="fancybox"><img alt="正常的也报错了" title="正常的也报错了" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/63886564.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/63886564.jpg" alt="正常的也报错了"></p>
 <p>一个合法的邮箱，却进入了非法邮箱处理的代码片段里面……</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/3076171.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="很疑惑" class="fancybox"><img alt="很疑惑" title="很疑惑" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/3076171.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/3076171.jpg" alt="很疑惑"></p>
 <p>毫无疑问，邮箱是合法的，代码也是合理的，那么出问题的必然是我，某个地方的理解有问题。</p>
 <ul>
 <li>找bug,把可能出错的代码片段分成几个区间，打log.</li>
 </ul>
 <pre class=" language-javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>email<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'@'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span></code></pre>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/74625962.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="真的是-1" class="fancybox"><img alt="真的是-1" title="真的是-1" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/74625962.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/74625962.jpg" alt="真的是-1"></p>
 <p>没错，<code>email</code>这个字符串的<code>@</code>索引真的是-1，可是我的邮箱写的明明有<code>@</code>啊。</p>
 <p>为啥呢，接着又打印出了<code>email</code>的内容，终于真相大白了，<code>email</code>字符串里面真的没有<code>@</code>，</p>
 <p>却发现了一串你没想到的<code>%40</code>，(⊙v⊙)嗯，没错了，这就是我认为的那个<code>@</code>的另一个形态。</p>
@@ -464,7 +464,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>URL不能包括空格。所以URL编码通常使用+号或者<code>20%</code>来代替空格。</li>
 </ul>
 <p>继续往下翻，找到了<code>%40</code>。</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/97404637.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="@符号的解释" class="fancybox"><img alt="@符号的解释" title="@符号的解释" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/97404637.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/97404637.jpg" alt="@符号的解释"></p>
 <p>所以要把<code>value</code>的值解码回去</p>
 <pre class=" language-javascript"><code class="language-javascript">hash<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">decodeURIComponent</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span></code></pre>
 <p><code>decodeURIComponent()</code> 方法用于解码由 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent" target="_blank" rel="noopener"><code>encodeURIComponent</code></a> 方法或者其它类似方法编码的部分统一资源标识符（URI）。毕竟<code>URL</code>属于<code>URI</code>。</p>
@@ -493,9 +493,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>忘记了错误函数里面的参数是啥了，那就都打印出来看看。</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/48577590.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="如果没用JSON的话" class="fancybox"><img alt="如果没用JSON的话" title="如果没用JSON的话" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/48577590.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/48577590.jpg" alt="如果没用JSON的话"></p>
 <p>可以看到，如果没用JSON的话，request对象里面有一个后端写的responseText属性可以利用。</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/53044190.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/53044190.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/53044190.jpg" alt=""></p>
 <p>设置了<code>Content-Type:application/json;charset=utf-8</code>之后，可以利用多出来的<code>responseJSON</code>属性，获得json的内容啊。</p>
 <p>最终失败函数里面写</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">(</span>request<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
@@ -539,8 +539,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">}</span></code></pre>
 <hr>
 <p>后端校验必须很严格，因为可以通过<code>curl</code>越过前端的校验。</p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/55736025.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="curl" class="fancybox"><img alt="curl" title="curl" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/55736025.jpg" class="lazyload"></a></p>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-2-8/7637310.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption="使用curl发起请求" class="fancybox"><img alt="使用curl发起请求" title="使用curl发起请求" data-src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/7637310.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/55736025.jpg" alt="curl"></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-2-8/7637310.jpg" alt="使用curl发起请求"></p>
 <hr>
 <h3 id="把信息写入数据库"><a href="#把信息写入数据库" class="headerlink" title="把信息写入数据库"></a>把信息写入数据库</h3><p>没有错误之后，就可以把信息写到数据库里面啦</p>
 <pre class=" language-javascript"><code class="language-javascript"> users<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>email<span class="token punctuation">:</span> email<span class="token punctuation">,</span> password<span class="token punctuation">:</span> password<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//是个对象啊</span>

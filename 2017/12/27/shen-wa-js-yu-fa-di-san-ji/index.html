@@ -279,7 +279,7 @@
 </li>
 </ul>
 <p>上面的区别都是简单类型和对象的区别，那到底有区别呢？</p>
-<p><a href="F:%5C%E9%A5%A5%E4%BA%BA%E8%B0%B7%5C12%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1JS%5C%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E8%B0%83%E7%94%A8.png" data-fancybox="group" data-caption="原型链的调用" class="fancybox"><img alt="原型链的调用" title="原型链的调用" data-src="F:%5C%E9%A5%A5%E4%BA%BA%E8%B0%B7%5C12%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1JS%5C%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E8%B0%83%E7%94%A8.png" class="lazyload"></a></p>
+<p><img src="F:%5C%E9%A5%A5%E4%BA%BA%E8%B0%B7%5C12%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1JS%5C%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%9A%84%E8%B0%83%E7%94%A8.png" alt="原型链的调用"></p>
 <p>   上图就是以Number全局函数为例的具体调用过程，<code>String()</code> <code>Boolean</code> <code>Object()</code> 都是类似的过程</p>
 <h3 id="公有属性藏到哪里了呢"><a href="#公有属性藏到哪里了呢" class="headerlink" title="公有属性藏到哪里了呢"></a>公有属性藏到哪里了呢</h3><p>通过上图我们发现，JS把一些大家都公有的东西抽离出来，放到一个单独的地方，谁想调用，就通过自己的一个<strong>proto</strong>的属性去调用，可以省的每个对象自己都存 <code>toString()</code> <code>valueOf()</code> 这种公共的方法。</p>
 <p>在调用的过程中，自己的特有属性又放到自己的对应的公有属性里面。</p>

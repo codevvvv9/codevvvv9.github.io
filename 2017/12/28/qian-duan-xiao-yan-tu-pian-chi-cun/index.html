@@ -280,7 +280,7 @@
 &lt;/html&gt;  </code></pre><p>上述代码的image和file的操作在历经寻找多个不合适的博客之后终于成功了。</p>
 <h3 id="File-API以及Image对象"><a href="#File-API以及Image对象" class="headerlink" title="File API以及Image对象"></a>File API以及Image对象</h3><p>如果input的type=file，就可以选择文件从本地上传到网页。<br>读取文件内容按照<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/File/Using_files_from_web_applications" target="_blank" rel="noopener">MDN操作files的方法</a>如下所示</p>
 <ul>
-<li>1.使用普通的类选择器选择要操作的input元素里面的文件<br>var files = document.getElementById(‘imgpath’).files;<br>要注意获得的是一个file的数组！！！<br><a href="http://upload-images.jianshu.io/upload_images/5422064-6d0f63240bb59fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="files数组的内容.png" class="fancybox"><img alt="files数组的内容.png" title="files数组的内容.png" data-src="http://upload-images.jianshu.io/upload_images/5422064-6d0f63240bb59fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a></li>
+<li>1.使用普通的类选择器选择要操作的input元素里面的文件<br>var files = document.getElementById(‘imgpath’).files;<br>要注意获得的是一个file的数组！！！<br><img src="http://upload-images.jianshu.io/upload_images/5422064-6d0f63240bb59fe6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="files数组的内容.png"></li>
 </ul>
 <p>如果只要一个文件，就可以用var file = files[0];获得file的所有信息。<br>input元素后面写上multiple，就可以上传多个文件。同理多个文件的第一个文件也使用这个方法。</p>
 <ul>

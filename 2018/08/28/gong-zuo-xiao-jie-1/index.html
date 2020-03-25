@@ -240,7 +240,7 @@
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'滑动距离小于100像素'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>isShow <span class="token operator">=</span> <span class="token boolean">false</span>
 <span class="token punctuation">}</span></code></pre>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-8-28/24266651.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="http://p3tha6q4v.bkt.clouddn.com/18-8-28/24266651.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-8-28/24266651.jpg" alt=""></p>
 <p>此时应该考虑兼容性，不应该去监听body的滚动距离，而应该去监听html元素的滚动距离</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> scrollTop <span class="token operator">=</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollTop <span class="token operator">||</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollTop
 <span class="token keyword">if</span> <span class="token punctuation">(</span>scrollTop <span class="token operator">></span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -250,7 +250,7 @@
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'滑动距离小于100像素'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>isShow <span class="token operator">=</span> <span class="token boolean">false</span>
 <span class="token punctuation">}</span></code></pre>
-<p><a href="http://p3tha6q4v.bkt.clouddn.com/18-8-28/43484629.jpg" target="_blank" rel="noopener" data-fancybox="group" data-caption class="fancybox"><img alt title data-src="http://p3tha6q4v.bkt.clouddn.com/18-8-28/43484629.jpg" class="lazyload"></a></p>
+<p><img src="http://p3tha6q4v.bkt.clouddn.com/18-8-28/43484629.jpg" alt=""></p>
 <p>上图才是正确的结果，当滚动距离大于100像素时，出现回到顶部的按钮。</p>
 <h3 id="事件戳的转化问题"><a href="#事件戳的转化问题" class="headerlink" title="事件戳的转化问题"></a>事件戳的转化问题</h3><h3 id="URL里的token分析"><a href="#URL里的token分析" class="headerlink" title="URL里的token分析"></a>URL里的token分析</h3><p>为了web安全考虑一般在路径里面后端会传入一个token来标识用户，防止反复攻击，例如<strong><a href="http://10.20.20.109/?nuctoken=111#/" target="_blank" rel="noopener">http://10.20.20.109/?nuctoken=111#/</a></strong>，只有带有nuctoken才会访问到正确的页面，如果没有就会显示errorpage</p>
 <h3 id="i18n在vue中的使用"><a href="#i18n在vue中的使用" class="headerlink" title="i18n在vue中的使用"></a>i18n在vue中的使用</h3><p>为了扩展字符的国际化语言，使用i18n，在vue中单独把汉字字端放到一个cn.js文件中，相当于一个字典。</p>

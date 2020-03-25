@@ -295,7 +295,7 @@ button2<span class="token punctuation">.</span><span class="token function">addE
 <ul>
 <li>具体的模型可以看<a href="https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture" target="_blank" rel="noopener">W3C</a></li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b57c2a5381.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="W3C的模型" class="fancybox"><img alt="W3C的模型" title="W3C的模型" data-src="https://i.loli.net/2018/01/14/5a5b57c2a5381.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b57c2a5381.png" alt="W3C的模型"></p>
 <h3 id="冒泡模型"><a href="#冒泡模型" class="headerlink" title="冒泡模型"></a>冒泡模型</h3><p>上面的官方文档中，我只研究一下捕获阶段(capture phase)和冒泡阶段(bubbling phase)。</p>
 <ul>
 <li>什么是冒泡呢？我们先看一段代码</li>
@@ -318,7 +318,7 @@ son<span class="token punctuation">.</span><span class="token function">addEvent
 </ul>
 </li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b6ce41226c.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="冒泡排序" class="fancybox"><img alt="冒泡排序" title="冒泡排序" data-src="https://i.loli.net/2018/01/14/5a5b6ce41226c.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b6ce41226c.png" alt="冒泡排序"></p>
 <ul>
 <li>如果你想实现第二种打印方式，也就是捕获阶段，应该修改代码如下</li>
 </ul>
@@ -339,7 +339,7 @@ son<span class="token punctuation">.</span><span class="token function">addEvent
 </ul>
 </li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b6ffaaaedf.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="简单的图解" class="fancybox"><img alt="简单的图解" title="简单的图解" data-src="https://i.loli.net/2018/01/14/5a5b6ffaaaedf.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b6ffaaaedf.png" alt="简单的图解"></p>
 <p>上图是简单的图解，注意优先运行为<code>true</code>的部分，再运行<code>false</code>的部分。</p>
 <p>简单的实例====================&gt;<a href="http://js.jirengu.com/yunidupexu/5/edit" target="_blank" rel="noopener">demo</a></p>
 <ul>
@@ -357,7 +357,7 @@ son<span class="token punctuation">.</span><span class="token function">addEvent
 <ul>
 <li>上述代码应该是什么顺序呢</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b715a63d20.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="变式" class="fancybox"><img alt="变式" title="变式" data-src="https://i.loli.net/2018/01/14/5a5b715a63d20.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b715a63d20.png" alt="变式"></p>
 <ul>
 <li>谁是<code>true</code>，先打印谁，都是<code>false</code>，继续按照冒泡顺序打印。</li>
 </ul>
@@ -372,9 +372,9 @@ son<span class="token punctuation">.</span><span class="token function">addEvent
 <li>给同一个元素 <code>false</code> <code>true</code>，应该打印什么呢</li>
 <li>答案是： 按照书写的顺序，谁在前面先打印谁。</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b72e180874.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="奇葩" class="fancybox"><img alt="奇葩" title="奇葩" data-src="https://i.loli.net/2018/01/14/5a5b72e180874.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b72e180874.png" alt="奇葩"></p>
 <h4 id="意想不到的Bug"><a href="#意想不到的Bug" class="headerlink" title="意想不到的Bug"></a>意想不到的Bug</h4><p><code>parent</code>是关键字不能使用，一不小心使用的话会出问题。</p>
-<p><a href="https://i.loli.net/2018/01/14/5a5b738b07586.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="意外bug" class="fancybox"><img alt="意外bug" title="意外bug" data-src="https://i.loli.net/2018/01/14/5a5b738b07586.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b738b07586.png" alt="意外bug"></p>
 <ul>
 <li>你用了关键字做变量，把鼠标点烂也看不到效果。</li>
 </ul>
@@ -388,14 +388,14 @@ son<span class="token punctuation">.</span><span class="token function">addEvent
 <ul>
 <li>第一个错误：监听错了对象</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b7729186ef.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="监听错了对象" class="fancybox"><img alt="监听错了对象" title="监听错了对象" data-src="https://i.loli.net/2018/01/14/5a5b7729186ef.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b7729186ef.png" alt="监听错了对象"></p>
 </li>
 </ul>
 <p>正常来说，应该点击body控制台打印数字1，你点烂了你的罗技鼠标也没出来。为什么呢？</p>
 <ul>
 <li>我们使用<strong>border大法</strong>，看看它到底在哪</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b78f5de70a.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="body的位置" class="fancybox"><img alt="body的位置" title="body的位置" data-src="https://i.loli.net/2018/01/14/5a5b78f5de70a.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b78f5de70a.png" alt="body的位置"></p>
 <p>使用了红色border之后，发现body的高度太矮了，点击不到啊。</p>
 <ul>
 <li>你明白监听错对象了，那你就换了一个对象，监听文档呗，肯定没问题了。</li>
@@ -405,19 +405,19 @@ son<span class="token punctuation">.</span><span class="token function">addEvent
 <ul>
 <li>第二个bug：你都能点击到，但是弹不出对话框了</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b78f8228e6.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="第二个bug" class="fancybox"><img alt="第二个bug" title="第二个bug" data-src="https://i.loli.net/2018/01/14/5a5b78f8228e6.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b78f8228e6.png" alt="第二个bug"></p>
 </li>
 </ul>
 <p>根据图片 中的控制台可以发现，确实都点击到了，监听没问题，而且点击后，也是按照冒泡的顺序打印的结果。</p>
 <ul>
 <li>那为什么没有对话框了呢</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/14/5a5b7a6cac126.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="正常的现象" class="fancybox"><img alt="正常的现象" title="正常的现象" data-src="https://i.loli.net/2018/01/14/5a5b7a6cac126.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/14/5a5b7a6cac126.png" alt="正常的现象"></p>
 <p>注释掉出问题的代码后，上图是正常的点击出现对话框啊，说明问题就出在注释的代码上。</p>
 <ul>
 <li>bug出现的原因就在于：默认冒泡的影响，当你点击的浮层那个<code>div</code>，之后，往 <code>body</code> <code>document</code>上冒泡，在<code>document</code>上立刻被杀死，display变为none，你做梦能看到 弹出框啊。</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/15/5a5c0e825be51.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="阻止冒泡" class="fancybox"><img alt="阻止冒泡" title="阻止冒泡" data-src="https://i.loli.net/2018/01/15/5a5c0e825be51.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/15/5a5c0e825be51.png" alt="阻止冒泡"></p>
 <h4 id="修复第二个bug"><a href="#修复第二个bug" class="headerlink" title="修复第二个bug"></a>修复第二个bug</h4><p>我们既然知道了第二个bug产生的原因，那么我们阻止冒泡顺序</p>
 <ul>
 <li>解决的方案，不让其往上冒泡，自己管理。</li>
@@ -463,11 +463,11 @@ document<span class="token punctuation">.</span><span class="token function">add
 <li>只有点击的时候才用，设置settimeout是为了让他异步，不至于立刻隐藏，产生第一个bug。</li>
 <li>注意一下，jQuery的 <code>show()</code> <code>hide()</code></li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/15/5a5cb3e12cfb0.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="jQuery节省内存" class="fancybox"><img alt="jQuery节省内存" title="jQuery节省内存" data-src="https://i.loli.net/2018/01/15/5a5cb3e12cfb0.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/15/5a5cb3e12cfb0.png" alt="jQuery节省内存"></p>
 <ul>
 <li>当你点击按钮，只会打印图中这两句话，另外两句只有再次点击才会打印。</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/15/5a5cb4fa846d8.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="具体的分析" class="fancybox"><img alt="具体的分析" title="具体的分析" data-src="https://i.loli.net/2018/01/15/5a5cb4fa846d8.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/15/5a5cb4fa846d8.png" alt="具体的分析"></p>
 <p>JS版本的节省内存的版本==================&gt;<a href="http://js.jirengu.com/pepetixevo/1/edit?html,js,output" target="_blank" rel="noopener">节省内存</a></p>
 <p>jQuery版本的节省内存版本=================&gt;<a href="http://js.jirengu.com/zufemacina/1/edit?html,js,output" target="_blank" rel="noopener">jQuery节省内存</a></p>
 <h4 id="对话框小三角的制作"><a href="#对话框小三角的制作" class="headerlink" title="对话框小三角的制作"></a>对话框小三角的制作</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">.</span>popover<span class="token punctuation">{</span>

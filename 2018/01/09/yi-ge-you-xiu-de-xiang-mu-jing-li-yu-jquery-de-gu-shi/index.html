@@ -292,9 +292,9 @@
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><a href="http://upload-images.jianshu.io/upload_images/5422064-206dccfbff3de493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="没有使用方法的时候" class="fancybox"><img alt="没有使用方法的时候" title="没有使用方法的时候" data-src="http://upload-images.jianshu.io/upload_images/5422064-206dccfbff3de493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/5422064-206dccfbff3de493.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="没有使用方法的时候"></p>
 <p>上图是为添加元素的时候的<code>item2</code>的模样，记住它，待会和下图对比。</p>
-<p><a href="http://upload-images.jianshu.io/upload_images/5422064-a8ff43b3970d4d09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="执行方法后" class="fancybox"><img alt="执行方法后" title="执行方法后" data-src="http://upload-images.jianshu.io/upload_images/5422064-a8ff43b3970d4d09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/5422064-a8ff43b3970d4d09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行方法后"></p>
 <p>可以看到，执行方法后，<code>item2</code>的类名变为b、c，这是因为你是<code>addClass(item2, {a: 0, b: 1, c: true})</code>这么调用的，意思是类名不应该有a,删除<code>a</code>，并加上<code>b c</code>。</p>
 <hr>
 <p>以上对象的遍历并取值用到了<code>falsey</code>值</p>
@@ -346,7 +346,7 @@ shaolin<span class="token punctuation">.</span>getSibling <span class="token ope
 <p>那我咋用呢，该咋用就咋用呗。</p>
 <pre class=" language-javascript"><code class="language-javascript">shaolinDom<span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span>item5<span class="token punctuation">,</span> <span class="token punctuation">{</span>a<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//把item5上原本的b c类名删掉，加上 a类名</span>
 shaolinDom<span class="token punctuation">.</span><span class="token function">getSiblings</span><span class="token punctuation">(</span>item6<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//获得item6的所有兄弟元素</span></code></pre>
-<p><a href="http://upload-images.jianshu.io/upload_images/5422064-5c1a1c1fd1e9f213.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="命名空间" class="fancybox"><img alt="命名空间" title="命名空间" data-src="http://upload-images.jianshu.io/upload_images/5422064-5c1a1c1fd1e9f213.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/5422064-5c1a1c1fd1e9f213.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命名空间"></p>
 <ul>
 <li>看着上面的代码，我就在想啊，还是自己由优化一下吧，免得回来改。</li>
 </ul>
@@ -540,7 +540,7 @@ node2<span class="token punctuation">.</span><span class="token function">addCla
 <p>所以</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//var node2 = JQuery('#item3')与下列代码作用相同，把item3变红</span>
 <span class="token keyword">var</span> node2 <span class="token operator">=</span> <span class="token function">JQuery</span><span class="token punctuation">(</span><span class="token string">'ul > li:nth-child(3)'</span><span class="token punctuation">)</span></code></pre>
-<p><a href="http://upload-images.jianshu.io/upload_images/5422064-410050d168ba44ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-fancybox="group" data-caption="变红啦" class="fancybox"><img alt="变红啦" title="变红啦" data-src="http://upload-images.jianshu.io/upload_images/5422064-410050d168ba44ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" class="lazyload"></a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/5422064-410050d168ba44ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="变红啦"></p>
 <p>jQuery的雏形======================&gt;<a href="http://js.jirengu.com/hohejohime/1/edit" target="_blank" rel="noopener">demo</a></p>
 <h3 id="使用一下自己的jQuery，写一个API"><a href="#使用一下自己的jQuery，写一个API" class="headerlink" title="使用一下自己的jQuery，写一个API"></a>使用一下自己的jQuery，写一个<code>API</code></h3><ul>
 <li>少林那，你也会用初级的jQuery了，咱们练习一下，你把修改一下所有的<code>&lt;li&gt;</code>的内容吧，可以使用<code>querySelectorAll() 返回一个NodeList的伪数组</code></li>
@@ -615,13 +615,13 @@ nodes<span class="token punctuation">.</span>addClass <span class="token operato
       <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 </code></pre>
-<p><a href="https://i.loli.net/2018/01/09/5a548dc772412.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="添加class属性" class="fancybox"><img alt="添加class属性" title="添加class属性" data-src="https://i.loli.net/2018/01/09/5a548dc772412.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/09/5a548dc772412.png" alt="添加class属性"></p>
 </li>
 </ul>
 <ul>
 <li>可是一开始却是这样</li>
 </ul>
-<p><a href="https://i.loli.net/2018/01/09/5a548ebd461f4.png" target="_blank" rel="noopener" data-fancybox="group" data-caption="低级错误" class="fancybox"><img alt="低级错误" title="低级错误" data-src="https://i.loli.net/2018/01/09/5a548ebd461f4.png" class="lazyload"></a></p>
+<p><img src="https://i.loli.net/2018/01/09/5a548ebd461f4.png" alt="低级错误"></p>
 <p><strong>变量命名一定要规范啊</strong></p>
 <h4 id="由jQuery构造的变量尽量-来表示"><a href="#由jQuery构造的变量尽量-来表示" class="headerlink" title="由jQuery构造的变量尽量`#### 来表示"></a>由jQuery构造的变量尽量`#### 来表示</h4><p>比如 </p>
 <pre class=" language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>$ <span class="token operator">=</span> jQuery
