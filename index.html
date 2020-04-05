@@ -166,6 +166,300 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2020/04/04/hui-du-hua-tu-pian-xiao-gong-ju/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shaolin">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/04/hui-du-hua-tu-pian-xiao-gong-ju/" class="post-title-link" itemprop="url">灰度化图片小工具</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-04 11:29:18" itemprop="dateCreated datePublished" datetime="2020-04-04T11:29:18+08:00">2020-04-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-05 18:48:12" itemprop="dateModified" datetime="2020-04-05T18:48:12+08:00">2020-04-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E7%B2%BE%E8%BF%9B/" itemprop="url" rel="index"><span itemprop="name">前端精进</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="gray-image"><a href="#gray-image" class="headerlink" title="gray-image"></a>gray-image</h1><p>简易的灰度化图片的工具</p>
+<h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>今天对于全国同胞来说是个庄严肃穆的日子，是纪念在抗击新冠疫情牺牲的烈士与广大同胞的纪念日，也是中国的四大传统节日「清明节」。</p>
+<p>自古以来，清明节就是我们用来纪念先人，缅怀祖先的，20 年这个不平静的年份又赋予了它更伟大的意义。</p>
+<p>人类的情感需要寄托，烧纸、扫墓都是与故人交流的方式，国家层面今日降半旗缅怀英烈，对于互联网人员来说，将网页灰度化也是必备的致敬方式之一。</p>
+<p>正好，编程群里面大家发了各种灰度化主页的方案，最简单的是采用<strong><em>css</em></strong></p>
+<pre class=" language-css"><code class="language-css">
+<span class="token selector">body,
+
+html </span><span class="token punctuation">{</span>
+
+  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">grayscale</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这种方案统一的采用 css 方案，我受到其他一个<a href="http://daijiangtao.name/gray-image/?nsukey=UhKFqU8vcWFGYfhMxXkISdYsMzjq6S1HFvVLEQxs%2B%2F7iRNZpJY56vTEZDKZ91VSmJqWcXipmp0DBntQcwW5lSc1A1A27cxHXE1B792ZHPy7vy2nSqLiLxD4C5ltEFW5qb%2BHwnGKDKeTe%2BT9Uq7kI%2FkNNm6X8AMWAvyxVwEiVNCIvka2Vq%2FkJLGltfWTq4tHluN4FI%2BbbvqYjgajtmAgWiQ%3D%3D" target="_blank" rel="noopener">小伙伴</a>用<code>js</code>操作<code>canvas</code>的思路的启发，模仿着他的思路把 demo 又重新写了一遍，再次梳理一下这种方案的原理，代码都是基础代码，大同小异，就是很多细节平常不用<code>canvas</code>不会去注意这些细节，再次感谢这个小伙伴乐于分享它的demo，大家可以多关注他的<a href="http://daijiangtao.name" target="_blank" rel="noopener">博客</a>。</p>
+<p>接下来我只是分享我从它的demo里面学到的知识，与一些自己的心得。</p>
+<h2 id="具体的实现"><a href="#具体的实现" class="headerlink" title="具体的实现"></a>具体的实现</h2><p>主要采用<code>input</code>元素与<code>canvas</code>操作。</p>
+<p>###input[type=file]</p>
+<p>主体<code>html</code>很简单</p>
+<pre class=" language-html"><code class="language-html">
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>input<span class="token punctuation">"</span></span> <span class="token attr-name">accept</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>.jpeg,.png,jpg<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>canvas<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>selectImage<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>选择需要灰度化的图片<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>采用 button 的点击去调用 input 的点击事件</p>
+<pre class=" language-javascript"><code class="language-javascript">
+selectImage<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  input<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+input<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>当选择完要灰度化的图片之后，进入<code>callback</code>回调</p>
+<pre class=" language-javascript"><code class="language-javascript">
+<span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> file <span class="token operator">=</span> input<span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 得到图片项</span>
+
+  <span class="token keyword">const</span> imgName <span class="token operator">=</span> file<span class="token punctuation">.</span>name<span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 创建file blob</span>
+
+  reader<span class="token punctuation">.</span><span class="token function">readAsDataURL</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  reader<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token operator">*</span>_file<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+​    <span class="token keyword">const</span> image <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Image</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+​    image<span class="token punctuation">.</span>src <span class="token operator">=</span> _file<span class="token punctuation">.</span>target<span class="token punctuation">.</span>result<span class="token punctuation">;</span>
+
+​    image<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+​      <span class="token keyword">const</span> a <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+​      a<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token function">gray</span><span class="token punctuation">(</span>image<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//最核心的算法，后续着重分析</span>
+
+​      a<span class="token punctuation">.</span>download <span class="token operator">=</span> imgName<span class="token punctuation">;</span>
+
+​      a<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"downloadGrayImage"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+​      <span class="token comment" spellcheck="true">// 防止重复添加</span>
+
+​      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"downloadGrayImage"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+​        document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+​      <span class="token punctuation">}</span>
+
+​      a<span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+​    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>到此为止，都是基础的<code>js</code>操作本地文件上传，并用<code>a</code>标签模拟点击下载的功能。</p>
+<p>接下来重点使用<code>canvas</code>操作以及基础的灰度算法。</p>
+<h3 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">Canvas API</a>主要用来构建<code>2D</code>图像，基本属性只有<code>width</code> <code>height</code>,然后使用<code>HTMLCanvasElement.getContext()</code>获得上下文来进行绘制。</p>
+<hr>
+<p>使用<code>canvas</code>的主要目的是：可以来获得图像的<code>像素数据</code>以及最后处理成渲染图像<code>所必备的源</code>。</p>
+<hr>
+<pre class=" language-javascript"><code class="language-javascript">
+<span class="token keyword">function</span> <span class="token function">gray</span><span class="token punctuation">(</span><span class="token operator">*</span>imgObj<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> width <span class="token operator">=</span> imgObj<span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> height <span class="token operator">=</span> imgObj<span class="token punctuation">.</span>height<span class="token punctuation">;</span>
+
+
+
+  <span class="token keyword">const</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"canvas"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>canvas<span class="token punctuation">.</span>getContext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+​    <span class="token keyword">const</span> context <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">"2d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+​    canvas<span class="token punctuation">.</span>width <span class="token operator">=</span> width<span class="token punctuation">;</span>
+
+​    canvas<span class="token punctuation">.</span>height <span class="token operator">=</span> height<span class="token punctuation">;</span>
+
+
+
+​    context<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>imgObj<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//画一个图</span>
+
+​    <span class="token comment" spellcheck="true">// 获得隐含区域的像素数据, 返回ImageData 对象，其中的data属性包含了所需的数据</span>
+
+​    <span class="token keyword">const</span> imageData <span class="token operator">=</span> context<span class="token punctuation">.</span><span class="token function">getImageData</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+​    <span class="token keyword">let</span> pixelData <span class="token operator">=</span> imageData<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+
+​    <span class="token comment" spellcheck="true">//重点来了，逐行遍历上述的像素数组</span>
+
+​    <span class="token comment" spellcheck="true">//多行代码在下面核心代码分析...</span>
+
+
+
+​    <span class="token comment" spellcheck="true">// 将重新赋值的像素点重新归位到context中</span>
+
+​    context<span class="token punctuation">.</span><span class="token function">putImageData</span><span class="token punctuation">(</span>imageData<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> imageData<span class="token punctuation">.</span>width<span class="token punctuation">,</span> imageData<span class="token punctuation">.</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+
+​    <span class="token comment" spellcheck="true">// 能变成图片的最重要的一步</span>
+
+​    <span class="token keyword">return</span> canvas<span class="token punctuation">.</span><span class="token function">toDataURL</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//把当前构造的canvas对象变成img可使用的uri</span>
+
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+​    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"抱歉，你的浏览器不支持"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="平均像素值灰度化算法"><a href="#平均像素值灰度化算法" class="headerlink" title="平均像素值灰度化算法"></a>平均像素值灰度化算法</h3><p>这个是灰度化最简单、最易操作的算法。核心原理就是把每个像素的值取均值。</p>
+<pre><code>
+//伪代码
+
+everyPixel = (pixelR + pixelG + pixelB) / 3
+</code></pre><p>对于像我一样的没有啥科班知识，并且图像学知识极度匮乏的人来说，先来补一补图像的入门知识。</p>
+<ul>
+<li>像素个数与宽高的关系</li>
+</ul>
+<p>对于一幅图像我们常说<code>720*480</code>的图像，说的是宽720个像素，高480个像素，每个像素有<strong><em>四个值</em></strong>构成，分别是<code>R G B A</code>,具体代表红 绿 蓝 三原色和透明度。</p>
+<ul>
+<li><p>像素数据从哪来就显得很关键了。上述的例子我们使用<code>context.getImageData(0, 0, width, height);</code>可以得到一个<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData" target="_blank" rel="noopener">ImageData</a>,这是一个极其重要的接口，它包含了图像的所有像素数据，只不过有了这个数据，到目前为止似乎与颜色仍然没有关系，我们仍然无法直接操作。</p>
+</li>
+<li><p>如何操作上述的像素呢？<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ImageData/data" target="_blank" rel="noopener">ImageData.data</a>是一个只读属性，返回所有像素值转换成的第一步说的四个值后的一维<code>TypedArray</code>数组，按照像素点顺序铺开的数组，更具体的来说是<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray" target="_blank" rel="noopener">Uint8ClampedArray</a>,不过不需要再深入了。</p>
+</li>
+</ul>
+<p>至此，准备知识结束，对于一幅<code>720*480</code>的图像，我们最终会转换成一个<code>720*480*4=1382400</code>长度的数组，操作数组对于程序员来说就很容易了。</p>
+<hr>
+<p>我们完成了一幅具象的图像到抽象的数组的<code>转变</code>。</p>
+<hr>
+<ul>
+<li>核心的算法</li>
+</ul>
+<p>最基础的写法其实就是双重遍历，外层循环先逐行从上至下按照高度遍历，内层循环再逐列从左至右按照宽度遍历。</p>
+<pre class=" language-javascript"><code class="language-javascript">
+<span class="token comment" spellcheck="true">//重点来了，逐行遍历上述的像素数组</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> h <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> h <span class="token operator">&lt;</span> height<span class="token punctuation">;</span> h<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> w <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> w <span class="token operator">&lt;</span> width<span class="token punctuation">;</span> w<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+​    <span class="token keyword">const</span> i <span class="token operator">=</span> h <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">*</span> width <span class="token operator">+</span> w <span class="token operator">*</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获得每个像素值的四个点位的值，最核心</span>
+
+​    <span class="token keyword">const</span> avgPixel <span class="token operator">=</span> <span class="token punctuation">(</span>pixelData<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> pixelData<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> pixelData<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 最简单的平均值算法</span>
+
+
+​    <span class="token comment" spellcheck="true">// 使用平均化的像素点去重新赋值RGB三个值</span>
+
+​    pixelData<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> avgPixel<span class="token punctuation">;</span>
+
+​    pixelData<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> avgPixel<span class="token punctuation">;</span>
+
+​    pixelData<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> avgPixel<span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p>上面的双层遍历很容易看懂，就是中间的那句<code>const i = h * 4 * width + w * 4;</code>让我思索了一会，我下面画个草图便于理解这句话。</p>
+<p><img src="http://ww1.sinaimg.cn/large/006wk7J2ly1gdj2zuzyvcj31hd0om0uf.jpg" alt="81586014159_.pic的副本.jpg"></p>
+<p>上面的示例图是一个4*4的图</p>
+<ul>
+<li><p>其中第一行的第一个像素点<code>0</code>由四个值构成{0, 1, 2, 3},第二个像素点由四个值构成{4, 5, 6, 7}，以此类推。上述的公式是首先要确定一个基准点，目前基准点选取的是左边开始的第一个值，也就是<code>R</code>值，也就是红色的值的<code>index</code></p>
+</li>
+<li><p>先看公式的第一部分<code>h * 4 * width</code>代表的是每一行的左起点的值的index，那么第几行就是h,走几列数据就是<code>4*width</code>。</p>
+</li>
+<li><p>公式的第二部分是本行的基准点每次移动的步长，很明显是<code>w*4</code>。</p>
+</li>
+<li><p>确定了起始点计算方法后，后续的<code>G</code> <code>B</code> 的<code>index</code>只需要依次累加即可。</p>
+</li>
+</ul>
+<hr>
+<p>至此，把一幅图像用最简单的平均值像素法灰度化的方案就完成了，大家可以手打一遍试试，挺好玩的，也就花费3-4个小时，做一个小demo，看似简单其实知识点也不少的。</p>
+<p>关于其他的5种灰度算法可以参考<a href="https://github.com/aooy/blog/issues/4" target="_blank" rel="noopener">这篇博客</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2020/03/26/di-yi-ji-du-li-cai-zong-jie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1112,91 +1406,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/09/02/seo-bu-wan-quan-zhi-bei/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="吴少林">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="shaolin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/09/02/seo-bu-wan-quan-zhi-bei/" class="post-title-link" itemprop="url">SEO不完全指北</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-02 21:49:34" itemprop="dateCreated datePublished" datetime="2018-09-02T21:49:34+08:00">2018-09-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF%E4%B9%8B%E5%A4%96/" itemprop="url" rel="index"><span itemprop="name">前端之外</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这个周末学习了一下关于把个人站点进行SEO的初级操作，觉得很有意思，以此文记录一下，如果你也使用<code>HEXO</code>那将会有帮助。</p>
-<blockquote>
-<p><code>SEO</code>指 <code>Search Engine Optimization</code>，意指搜索引擎优化的意思，通过必要的网站结构的设计让<code>spider</code>机器人爬取有用的数据，提高网站在搜索时的排名与在相关领域的权重。</p>
-</blockquote>
-<h3 id="百度站长"><a href="#百度站长" class="headerlink" title="百度站长"></a>百度站长</h3><p>国内的话，首推<a href="https://ziyuan.baidu.com/" target="_blank" rel="noopener">百度站长</a>，前提是你要有自已 的域名了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/09/02/seo-bu-wan-quan-zhi-bei/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1269,14 +1478,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
