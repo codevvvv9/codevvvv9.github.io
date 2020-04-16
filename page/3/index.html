@@ -166,6 +166,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/02/09/yi-kuai-xiao-bing-gan-cookie-de-gu-shi-shang-pian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shaolin">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/09/yi-kuai-xiao-bing-gan-cookie-de-gu-shi-shang-pian/" class="post-title-link" itemprop="url">一块小饼干-Cookie-的故事-上篇</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-02-09 23:28:24" itemprop="dateCreated datePublished" datetime="2018-02-09T23:28:24+08:00">2018-02-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTTP%E9%AB%98%E7%BA%A7%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">HTTP高级知识</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>cookie 如果非要用汉语理解的话应该是 一段小型文本文件，由网景的创始人之一的<a href="https://zh.wikipedia.org/wiki/%E7%9B%A7%C2%B7%E8%92%99%E7%89%B9%E5%88%A9" target="_blank" rel="noopener">卢 蒙特利</a>在93年发明。</p>
+<p>上篇是熟悉一下注册的大致流程，下篇熟悉登录流程以及真正的Cookie</p>
+</blockquote>
+<h2 id="实现基本的注册功能"><a href="#实现基本的注册功能" class="headerlink" title="实现基本的注册功能"></a>实现基本的注册功能</h2><p>我们打开网站，浏览网站，最常见的两个操作就是注册以及登录，所以有必要探索一下这两个功能如何实现的。</p>
+<p>本地模拟，当输入<code>localhost:8080/sign_up</code>的时候，浏览器发起<code>get</code>请求，服务器给你响应<code>sign_up.html</code></p>
+<pre><code class="javascript">//服务器端代码
+if (path === '/sign_up' &amp;&amp; method === 'GET') {
+    let string = fs.readFileSync('./sign_up.html', 'utf8')
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'text/html;charset=utf-8')
+    response.write(string)
+    response.end()
+ }</code></pre>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/02/09/yi-kuai-xiao-bing-gan-cookie-de-gu-shi-shang-pian/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/02/03/ke-xue-shang-wang/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1204,96 +1298,11 @@ $ npm install hexo-renderer-sass --save  #就是这货</code></pre>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2017/12/28/qian-duan-xiao-yan-tu-pian-chi-cun/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="吴少林">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="shaolin">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/12/28/qian-duan-xiao-yan-tu-pian-chi-cun/" class="post-title-link" itemprop="url">前端校验图片尺寸</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-12-28 01:00:13" itemprop="dateCreated datePublished" datetime="2017-12-28T01:00:13+08:00">2017-12-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>这篇文章主要记录最近实习工作中遇到的前端检查图片尺寸的问题，在这个过程明白的一些道理。</p>
-</blockquote>
-<p>我由于目前的水平有限，只能借助网络来完成这个功能。在这个查找的过程中，发现很多博客都写的有问题，虽然表面完成了，但是一测试，很多不对的地方，感觉都是抄的别人的，没抄完整。<br>那么我希望我写的文章，读者都是可以完美复写的。</p>
-<h3 id="先上完美运行的代码"><a href="#先上完美运行的代码" class="headerlink" title="先上完美运行的代码"></a>先上完美运行的代码</h3><p>以下是我亲测可以运行的代码。连我这种前端0.1年的人都能学会。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/12/28/qian-duan-xiao-yan-tu-pian-chi-cun/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1361,14 +1370,14 @@ $ npm install hexo-renderer-sass --save  #就是这货</code></pre>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
