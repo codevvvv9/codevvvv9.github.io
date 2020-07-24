@@ -28,10 +28,14 @@
 <meta property="og:description" content="初识mybatis在第一节中学习了如何初始化一个项目，并且写了一个最最最最😄简单的接口，但是项目中数据肯定是来自数据库，在传统java中使用JDBC来操作数据库，进入web部分后，现在主要采用mybatis持久层框架做SQL映射（把数据库内容映射成对象，Object Relational Mapping）来操作数据库，在spring boot中集成到了mybatis-spring-boot-st">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://codevvvv9.github.io/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/1.png">
+<meta property="og:image" content="https://codevvvv9.github.io/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/2.gif">
 <meta property="og:image" content="https://codevvvv9.github.io/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/3.gif">
 <meta property="og:image" content="https://codevvvv9.github.io/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/4.png">
+<meta property="og:image" content="https://codevvvv9.github.io/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/5.gif">
+<meta property="og:image" content="https://codevvvv9.github.io/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/tool.png">
+<meta property="og:image" content="https://codevvvv9.github.io/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/last.gif">
 <meta property="article:published_time" content="2020-07-24T15:00:35.000Z">
-<meta property="article:modified_time" content="2020-07-24T15:27:47.810Z">
+<meta property="article:modified_time" content="2020-07-24T15:37:43.370Z">
 <meta property="article:author" content="吴少林">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -199,7 +203,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-07-24 23:00:35 / 修改时间：23:27:47" itemprop="dateCreated datePublished" datetime="2020-07-24T23:00:35+08:00">2020-07-24</time>
+              <time title="创建时间：2020-07-24 23:00:35 / 修改时间：23:37:43" itemprop="dateCreated datePublished" datetime="2020-07-24T23:00:35+08:00">2020-07-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,9 +265,12 @@ spring:
 </ul>
 </li>
 <li><code>driver-class-name</code>:<ul>
-<li>含义：数据库驱动类名<h2 id="使用mybatis"><a href="#使用mybatis" class="headerlink" title="使用mybatis"></a>使用<code>mybatis</code></h2>通常来说有两种方式来使用<code>mybatis</code>:</li>
+<li>含义：数据库驱动类名</li>
 </ul>
 </li>
+</ul>
+<h2 id="使用mybatis"><a href="#使用mybatis" class="headerlink" title="使用mybatis"></a>使用<code>mybatis</code></h2><p>通常来说有两种方式来使用<code>mybatis</code>:</p>
+<ul>
 <li>使用注解</li>
 <li>使用<code>mapper</code><br>接下来通过基本的数据库操作-<strong>查询数据库</strong>来分别实践两种方式，然后再把<strong>增删改查</strong>四种方式都实现一遍。<h3 id="几个约定"><a href="#几个约定" class="headerlink" title="几个约定"></a>几个约定</h3>我是<code>约定大于配置</code>的拥趸，同样的，在<code>springboot</code>开发中也有一套约定，目前我觉得有两个好约定：代码结构和书写顺序：</li>
 <li>代码结构最好是如下的组织结构：</li>
@@ -274,161 +281,173 @@ spring:
 <li>书写顺序<br>通常在<code>web</code>开发中，按照如下的四个顺序写代码，比较快、也比较容易组织代码<h3 id="使用注解完成数据库查询"><a href="#使用注解完成数据库查询" class="headerlink" title="使用注解完成数据库查询"></a>使用注解完成数据库查询</h3></li>
 </ul>
 <ol>
-<li>把数据库中要用到的表用实体类映射出来<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>wushao<span class="token punctuation">.</span>springbootdemo<span class="token punctuation">.</span>entity<span class="token punctuation">;</span>
-</code></pre>
-</li>
+<li>把数据库中要用到的表用实体类映射出来</li>
 </ol>
-<p>import java.util.Objects;</p>
-<p>public class User {<br>    private Integer id;<br>    private  String name;</p>
-<pre><code>public Integer getId() {
-    return id;
-}
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>wushao<span class="token punctuation">.</span>springbootdemo<span class="token punctuation">.</span>entity<span class="token punctuation">;</span>
 
-public void setId(Integer id) {
-    this.id = id;
-}
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Objects<span class="token punctuation">;</span>
 
-public String getName() {
-    return name;
-}
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span>  String name<span class="token punctuation">;</span>
 
-public void setName(String name) {
-    this.name = name;
-}
+    <span class="token keyword">public</span> Integer <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-@Override
-public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    User user = (User) o;
-    return id.equals(user.id) &amp;&amp;
-            name.equals(user.name);
-}
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setId</span><span class="token punctuation">(</span>Integer id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-@Override
-public int hashCode() {
-    return Objects.hash(id, name);
-}</code></pre><p>}</p>
-<pre><code>对于以上的属性，直接利用`IDEA`的快捷键`alt+insert`进行`getter setter equals hashCode`的快速实现，也可以借助`lombok`的注解快速实现。
-```java
-import lombok.Data;
+    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-@Data
-public class User {
-    private Integer id;
-    private String name;
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span>String name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-}</code></pre><ol start="2">
-<li><p>面向顶层来写代码，也就是对接的前端展示层，即<code>controller层</code>，可以认为是<strong>接口层</strong>。</p>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> o<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>o <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> o<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        User user <span class="token operator">=</span> <span class="token punctuation">(</span>User<span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> id<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>id<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+                name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Objects<span class="token punctuation">.</span><span class="token function">hash</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>对于以上的属性，直接利用<code>IDEA</code>的快捷键<code>alt+insert</code>进行<code>getter setter equals hashCode</code>的快速实现，也可以借助<code>lombok</code>的注解快速实现。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> lombok<span class="token punctuation">.</span>Data<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> Integer id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span></code></pre>
+<ol start="2">
+<li>面向顶层来写代码，也就是对接的前端展示层，即<code>controller层</code>，可以认为是<strong>接口层</strong>。</li>
+</ol>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"users"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
- <span class="token annotation punctuation">@Autowired</span>
- UserService userService<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    UserService userService<span class="token punctuation">;</span>
 
- <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">,</span> produces <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"application/json;charset=UTF-8"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
- <span class="token keyword">public</span> List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">getAllUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     <span class="token keyword">return</span> userService<span class="token punctuation">.</span><span class="token function">listUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">,</span> produces <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"application/json;charset=UTF-8"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">getAllUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> userService<span class="token punctuation">.</span><span class="token function">listUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-</code></pre>
-</li>
+
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"/getUsers"</span><span class="token punctuation">,</span> produces <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"application/json;charset=UTF-8"</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">getUsersByCondition</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> userService<span class="token punctuation">.</span><span class="token function">listUsersByCondition</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre>
+<p>对于<code>control</code>层来说</p>
+<ul>
+<li>首先要打上<code>@RestController</code>的注解，告诉容器我是一个<code>restful</code>风格的api层</li>
+<li>其次使用<code>@RequestMapping</code>注解标识接口的根路径为<code>/users</code></li>
+<li>使用<code>@Autowired</code>自动注入<code>Service</code>层的逻辑接口。</li>
+<li>使用<code>@GetMapping @PostMapping @PutMapping @DeleteMapping</code>四种注解完成<code>Restful</code>接口</li>
+</ul>
+<ol start="3">
+<li>在<code>service</code>中完成业务</li>
 </ol>
-<pre><code>@PostMapping(value = "/getUsers", produces = {"application/json;charset=UTF-8"})
-public List&lt;User&gt; getUsersByCondition(@RequestBody User user) {
-    return userService.listUsersByCondition(user);
-}</code></pre><p>}</p>
-<pre><code>对于`control`层来说
-- 首先要打上`@RestController`的注解，告诉容器我是一个`restful`风格的api层
-- 其次使用`@RequestMapping`注解标识接口的根路径为`/users`
-- 使用`@Autowired`自动注入`Service`层的逻辑接口。
-- 使用`@GetMapping @PostMapping @PutMapping @DeleteMapping`四种注解完成`Restful`接口
+<p>这一层是后端实现逻辑的主要<strong>业务层</strong>，通常来说，这一层的代码结构采用两层来进行细化（详见上图的目录结构）</p>
+<ul>
+<li>外层是接口定义</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
+    List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">listUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-3. 在`service`中完成业务
-
-这一层是后端实现逻辑的主要**业务层**，通常来说，这一层的代码结构采用两层来进行细化（详见上图的目录结构）
-
-- 外层是接口定义
-
-```java
-public interface UserService {
-    List&lt;User&gt; listUsers();
-
-    List&lt;User&gt; listUsersByCondition(User user);
-}</code></pre><ul>
-<li><p>内层<code>impl/</code>去实现上面的<code>interface</code></p>
+    List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">listUsersByCondition</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li>内层<code>impl/</code>去实现上面的<code>interface</code></li>
+</ul>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">UserService</span> <span class="token punctuation">{</span>
-  <span class="token annotation punctuation">@Autowired</span>
-  UserDao userDao<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    UserDao userDao<span class="token punctuation">;</span>
 
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">listUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> userDao<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">listUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> userDao<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">listUsersByCondition</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> userDao<span class="token punctuation">.</span><span class="token function">findUsersByCondition</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-</code></pre>
-</li>
-</ul>
-<p>}</p>
-<pre><code>对于`Service层`来说，使用`Spring框架`的注解`@Service`告诉容器我是`Spring的一个Bean`
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">listUsersByCondition</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> userDao<span class="token punctuation">.</span><span class="token function">findUsersByCondition</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-{% asset_img 2.gif This is an image %}
+<span class="token punctuation">}</span></code></pre>
+<p>对于<code>Service层</code>来说，使用<code>Spring框架</code>的注解<code>@Service</code>告诉容器我是<code>Spring的一个Bean</code></p>
+<img src="/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/2.gif" class="" title="This is an image">
 
-4. `service`中调用`dao`层相关`sql`去操作数据库
 
-最后一步重要操作是通过`ibatis`的注解`@Select`操作数据库查询数据，`mybatis`是它后来改的名字，也就是说必须先引入了`mybatis`的依赖，才能使用`@Select`。
-```java
-@Repository
-public interface UserDao {
-    @Select("select * from test_spring.user;")
-    List&lt;User&gt; findAll();
+<ol start="4">
+<li><code>service</code>中调用<code>dao</code>层相关<code>sql</code>去操作数据库</li>
+</ol>
+<p>最后一步重要操作是通过<code>ibatis</code>的注解<code>@Select</code>操作数据库查询数据，<code>mybatis</code>是它后来改的名字，也就是说必须先引入了<code>mybatis</code>的依赖，才能使用<code>@Select</code>。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserDao</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Select</span><span class="token punctuation">(</span><span class="token string">"select * from test_spring.user;"</span><span class="token punctuation">)</span>
+    List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    List&lt;User&gt; findUsersByCondition(User user);
-}</code></pre><p>对于<code>Dao层</code>来说，使用<code>Spring框架</code>的注解<code>@Repository</code>告诉容器我是<code>Spring的一个Bean</code></p>
+    List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findUsersByCondition</span><span class="token punctuation">(</span>User user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>对于<code>Dao层</code>来说，使用<code>Spring框架</code>的注解<code>@Repository</code>告诉容器我是<code>Spring的一个Bean</code></p>
 <img src="/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/3.gif" class="" title="This is an image">
+
 <p>上述的两个注解可以帮助开发人员在<code>Bean类</code>与容器入口类之间直接进行跳转。</p>
 <p><code>@Select</code>注解后面的就是<code>sql语句</code>，<code>@Select("select * from test_spring.user;")</code>, 查询<code>test_spring库的user表</code>完成查询数据库的操作。</p>
 <img src="/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/4.png" class="" title="This is an image">
 <h3 id="使用mapper的方式完成模糊查询"><a href="#使用mapper的方式完成模糊查询" class="headerlink" title="使用mapper的方式完成模糊查询"></a>使用<code>mapper</code>的方式完成模糊查询</h3><p>要想使用<code>mapper</code>方式：</p>
 <ol>
-<li>首先需要在配置文件<code>application.yml</code>中写入<code>mapper</code>的扫描路径<pre class=" language-yml"><code class="language-yml"># 上面的基础配置
+<li>首先需要在配置文件<code>application.yml</code>中写入<code>mapper</code>的扫描路径</li>
+</ol>
+<pre class=" language-yml"><code class="language-yml"># 上面的基础配置
 mybatis:
-mapper-locations: classpath:mapper/*.xml</code></pre>
-</li>
-<li>在<code>resources/mapper</code>目录下建立对应的<code>user-mapper.xml</code>，一张表一个<code>mapper</code><br>```xml<!--?xml version="1.0" encoding="UTF-8" ?-->
+  mapper-locations: classpath:mapper/*.xml</code></pre>
+<ol start="2">
+<li>在<code>resources/mapper</code>目录下建立对应的<code>user-mapper.xml</code>，一张表一个<code>mapper</code></li>
+</ol>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
+&lt;mapper namespace="com.wushao.springbootdemo.dao.UserDao"&gt;
+        &lt;select id="findUsersByCondition" resultType="com.wushao.springbootdemo.entity.User" parameterType="com.wushao.springbootdemo.entity.User"&gt;
+--            SELECT * FROM test_spring.user WHERE name LIKE '%${name}%'
+               SELECT * FROM test_spring.user WHERE name LIKE "%"#{name}"%"
 
-<mapper namespace="com.wushao.springbootdemo.dao.UserDao">
-     <select id="findUsersByCondition" resulttype="com.wushao.springbootdemo.entity.User" parametertype="com.wushao.springbootdemo.entity.User">
+        &lt;/select&gt;
+&lt;/mapper&gt;</code></pre><p>上面的<code>xml</code>中</p>
+<ul>
+<li><code>mapper标签</code>的<code>namespace</code>是<code>dao层目录</code></li>
+<li><code>select标签</code>表示这是查询数据库的操作，它的<code>id</code>是<code>dao层</code>的方法名字</li>
+<li><code>resultType</code>是实体类的路径，也是返回结果类型</li>
+<li><code>parameterType</code>的参数的类型，也是实体类。如果在<code>dao</code>使用下面的写法可以不用这个参数:</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//    List&lt;User> findUsersByCondition(User user);</span>
+    List<span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token function">findUsersByCondition</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"user"</span><span class="token punctuation">)</span> User user<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>对于具体的<code>sql语句</code>，有如下两种模糊查询的写法</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> test_spring<span class="token punctuation">.</span><span class="token keyword">user</span> <span class="token keyword">WHERE</span> name <span class="token operator">LIKE</span> <span class="token string">'%${name}%'</span>
+<span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> test_spring<span class="token punctuation">.</span><span class="token keyword">user</span> <span class="token keyword">WHERE</span> name <span class="token operator">LIKE</span> <span class="token string">"%"</span><span class="token comment" spellcheck="true">#{name}"%"</span></code></pre>
+<img src="/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/5.gif" class="" title="This is an image">
+<h3 id="支持dao层和mapper之间的跳转工具"><a href="#支持dao层和mapper之间的跳转工具" class="headerlink" title="支持dao层和mapper之间的跳转工具"></a>支持<code>dao</code>层和<code>mapper</code>之间的跳转工具</h3><img src="/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/tool.png" class="" title="This is an image">
+<p>实现效果如下图所示：</p>
+<img src="/2020/07/24/qian-duan-chu-xue-springboot-xi-lie-er-shi-yong-mybatis-wan-cheng-shu-ju-ku-de-cha-xun/last.gif" class="" title="This is an image">
 
-–            SELECT * FROM test_spring.user WHERE name LIKE ‘%${name}%’               SELECT * FROM test_spring.user WHERE name LIKE “%”#{name}”%”
-    &lt;/select&gt;
-```
-上面的`xml`中
-- `mapper标签`的`namespace`是`dao层目录`
-- `select标签`表示这是查询数据库的操作，它的`id`是`dao层`的方法名字
-- `resultType`是实体类的路径，也是返回结果类型
-- `parameterType`的参数的类型，也是实体类。如果在`dao`使用下面的写法可以不用这个参数:
-```java
-//    List findUsersByCondition(User user);
-    List findUsersByCondition(@Param("user") User user);
-```
-- 对于具体的`sql语句`，有如下两种模糊查询的写法
-```sql
-SELECT * FROM test_spring.user WHERE name LIKE '%${name}%'
-SELECT * FROM test_spring.user WHERE name LIKE "%"#{name}"%"
-```
-
-
-支持dao层和mapper之间的跳转工具
-实现效果如下图所示：
-
-
-加下来继续完成数据的增 删 改的操作~</select></mapper></li></ol><script>
+<h2 id="加下来继续完成数据的增-删-改的操作"><a href="#加下来继续完成数据的增-删-改的操作" class="headerlink" title="加下来继续完成数据的增 删 改的操作~"></a>加下来继续完成数据的增 删 改的操作<del>~</del></h2><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -544,7 +563,7 @@ SELECT * FROM test_spring.user WHERE name LIKE "%"#{name}"%"
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识mybatis"><span class="nav-number">1.</span> <span class="nav-text">初识mybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入必备依赖"><span class="nav-number">1.1.</span> <span class="nav-text">引入必备依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置datasource"><span class="nav-number">1.2.</span> <span class="nav-text">配置datasource</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用mybatis"><span class="nav-number">2.</span> <span class="nav-text">使用mybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个约定"><span class="nav-number">2.1.</span> <span class="nav-text">几个约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用注解完成数据库查询"><span class="nav-number">2.2.</span> <span class="nav-text">使用注解完成数据库查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用mapper的方式完成模糊查询"><span class="nav-number">2.3.</span> <span class="nav-text">使用mapper的方式完成模糊查询</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识mybatis"><span class="nav-number">1.</span> <span class="nav-text">初识mybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入必备依赖"><span class="nav-number">1.1.</span> <span class="nav-text">引入必备依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置datasource"><span class="nav-number">1.2.</span> <span class="nav-text">配置datasource</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用mybatis"><span class="nav-number">2.</span> <span class="nav-text">使用mybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#几个约定"><span class="nav-number">2.1.</span> <span class="nav-text">几个约定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用注解完成数据库查询"><span class="nav-number">2.2.</span> <span class="nav-text">使用注解完成数据库查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用mapper的方式完成模糊查询"><span class="nav-number">2.3.</span> <span class="nav-text">使用mapper的方式完成模糊查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#支持dao层和mapper之间的跳转工具"><span class="nav-number">2.4.</span> <span class="nav-text">支持dao层和mapper之间的跳转工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加下来继续完成数据的增-删-改的操作"><span class="nav-number">3.</span> <span class="nav-text">加下来继续完成数据的增 删 改的操作~</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
