@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"codevvvv9.github.io","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="学习源码的第一步是下载源码，然后分析代码的目录结构。 web应用的大门通常，.&#x2F;src目录是源码目录，对于当前项目来说，src&#x2F;platforms&#x2F;web&#x2F;entry-runtime-with-compiler.js,以这个文件作为突破口，这只是一道门🚪，虚掩着。">
+  <meta name="description" content="学习源码的第一步是下载源码，然后分析代码的目录结构。 Vue源码起手式🤚通常，.&#x2F;src目录是源码目录，对于当前项目来说，src&#x2F;platforms&#x2F;web&#x2F;entry-runtime-with-compiler.js,以这个文件作为突破口，这只是一道门🚪，虚掩着。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue源码入门">
 <meta property="og:url" content="https://codevvvv9.github.io/2020/11/09/vue-yuan-ma-ru-men/index.html">
 <meta property="og:site_name" content="shaolin">
-<meta property="og:description" content="学习源码的第一步是下载源码，然后分析代码的目录结构。 web应用的大门通常，.&#x2F;src目录是源码目录，对于当前项目来说，src&#x2F;platforms&#x2F;web&#x2F;entry-runtime-with-compiler.js,以这个文件作为突破口，这只是一道门🚪，虚掩着。">
+<meta property="og:description" content="学习源码的第一步是下载源码，然后分析代码的目录结构。 Vue源码起手式🤚通常，.&#x2F;src目录是源码目录，对于当前项目来说，src&#x2F;platforms&#x2F;web&#x2F;entry-runtime-with-compiler.js,以这个文件作为突破口，这只是一道门🚪，虚掩着。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-09T14:50:40.000Z">
-<meta property="article:modified_time" content="2020-11-09T15:08:45.513Z">
+<meta property="article:modified_time" content="2020-11-11T14:56:16.928Z">
 <meta property="article:author" content="吴少林">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
@@ -193,10 +193,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-09 22:50:40 / 修改时间：23:08:45" itemprop="dateCreated datePublished" datetime="2020-11-09T22:50:40+08:00">2020-11-09</time>
+              <time title="创建时间：2020-11-09 22:50:40" itemprop="dateCreated datePublished" datetime="2020-11-09T22:50:40+08:00">2020-11-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-11 22:56:16" itemprop="dateModified" datetime="2020-11-11T22:56:16+08:00">2020-11-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -219,7 +225,7 @@
 
       
         <p>学习源码的第一步是下载源码，然后分析代码的目录结构。</p>
-<h3 id="web应用的大门"><a href="#web应用的大门" class="headerlink" title="web应用的大门"></a><strong>web应用的大门</strong></h3><p>通常，<code>./src</code>目录是源码目录，对于当前项目来说，<code>src/platforms/web/entry-runtime-with-compiler.js</code>,以这个文件作为突破口，这只是一道门🚪，虚掩着。<a id="more"></a></p>
+<h2 id="Vue源码起手式🤚"><a href="#Vue源码起手式🤚" class="headerlink" title="Vue源码起手式🤚"></a>Vue源码起手式🤚</h2><p>通常，<code>./src</code>目录是源码目录，对于当前项目来说，<code>src/platforms/web/entry-runtime-with-compiler.js</code>,以这个文件作为突破口，这只是一道门🚪，虚掩着。<a id="more"></a></p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/* @flow */</span>
 
 <span class="token keyword">import</span> config <span class="token keyword">from</span> <span class="token string">'core/config'</span>
@@ -430,6 +436,31 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> Vue
 </code></pre>
+<p>上面代码的前两行是非常重要的线索，<code>import Vue from './instance/index'</code> Vue的定义和<code>initGlobalAPI</code> 初始化全局API</p>
+<h2 id="Vue的定义🤩"><a href="#Vue的定义🤩" class="headerlink" title="Vue的定义🤩"></a>Vue的定义🤩</h2><p>上面的<code>import Vue from './instance/index'</code>就是Vue的定义</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> initMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./init'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> stateMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./state'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> renderMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./render'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> eventsMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./events'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> lifecycleMixin <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./lifecycle'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> warn <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../util/index'</span>
+
+<span class="token keyword">function</span> Vue <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>NODE_ENV <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">&amp;&amp;</span>
+    <span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token keyword">instanceof</span> <span class="token class-name">Vue</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'Vue is a constructor and should be called with the `new` keyword'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_init</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">initMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
+<span class="token function">stateMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
+<span class="token function">eventsMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
+<span class="token function">lifecycleMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
+<span class="token function">renderMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Vue</code></pre>
 <p>Vue<code>真实的面目是一个js中常见的用函数构建的类。仔细看似乎没啥东西，就有一个内部方法</code>_init<code>，它哪来的呢，是下面的</code>initMixin<code>做的处理，往下连续4个mixin在vue的原型上做了一些处理，使之具备了很多内部有用的方法，其中我们首先关注</code>_init</p>
 <h3 id="init方法"><a href="#init方法" class="headerlink" title="_init方法"></a><code>_init</code>方法</h3><p>这个重要的方法里面做了什么呢</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span> initMixin <span class="token punctuation">(</span>Vue<span class="token punctuation">:</span> Class<span class="token operator">&lt;</span>Component<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -509,6 +540,7 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
 <li><p>判断用户是否传入了<code>el</code>，有这个挂载点，则开始挂载实例。</p>
 </li>
 </ol>
+<p>接下来重点分析挂载实例这一部分是如何实现的💪</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -565,7 +597,10 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
     <a href="/2020/07/25/mac-10-15-de-bug/" rel="prev" title="Mac-10.15的bug">
       <i class="fa fa-chevron-left"></i> Mac-10.15的bug
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/11/vue-shi-li-gua-zai-de-nei-zai/" rel="next" title="Vue实例挂载的内在">
+      Vue实例挂载的内在 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -625,7 +660,7 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#web应用的大门"><span class="nav-number">1.</span> <span class="nav-text">web应用的大门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线索1-import-Vue-from-39-runtime-index-39"><span class="nav-number">2.</span> <span class="nav-text">线索1-import Vue from &#39;.&#x2F;runtime&#x2F;index&#39;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线索2-import-Vue-from-39-core-index-39"><span class="nav-number">3.</span> <span class="nav-text">线索2-import Vue from &#39;core&#x2F;index&#39;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#init方法"><span class="nav-number">4.</span> <span class="nav-text">_init方法</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue源码起手式🤚"><span class="nav-number">1.</span> <span class="nav-text">Vue源码起手式🤚</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线索1-import-Vue-from-39-runtime-index-39"><span class="nav-number">1.1.</span> <span class="nav-text">线索1-import Vue from &#39;.&#x2F;runtime&#x2F;index&#39;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线索2-import-Vue-from-39-core-index-39"><span class="nav-number">1.2.</span> <span class="nav-text">线索2-import Vue from &#39;core&#x2F;index&#39;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue的定义🤩"><span class="nav-number">2.</span> <span class="nav-text">Vue的定义🤩</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#init方法"><span class="nav-number">2.1.</span> <span class="nav-text">_init方法</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -641,7 +676,7 @@ Vue<span class="token punctuation">.</span>version <span class="token operator">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
