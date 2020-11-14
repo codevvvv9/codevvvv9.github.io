@@ -189,10 +189,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-11 21:33:08 / 修改时间：23:10:38" itemprop="dateCreated datePublished" datetime="2020-11-11T21:33:08+08:00">2020-11-11</time>
+              <time title="创建时间：2020-11-11 21:33:08" itemprop="dateCreated datePublished" datetime="2020-11-11T21:33:08+08:00">2020-11-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-14 23:06:40" itemprop="dateModified" datetime="2020-11-14T23:06:40+08:00">2020-11-14</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -318,6 +324,17 @@ Vue<span class="token punctuation">.</span>prototype<span class="token punctuati
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> mount<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> el<span class="token punctuation">,</span> hydrating<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
+<h3 id="mount方法干了啥"><a href="#mount方法干了啥" class="headerlink" title="mount方法干了啥"></a>mount方法干了啥</h3><p>上述代码的第一句<code>const mount = Vue.prototype.$mount</code>，使用一个局部变量<code>mount</code>用来缓存原型上的<code>$mount</code>，接下来又重新定义了该方法。</p>
+<p>原型上的<code>$mount方法</code>在<code>src/platforms/web/runtime/index.js</code></p>
+<pre class=" language-javas"><code class="language-javas">// public mount method
+Vue.prototype.$mount = function (
+  el?: string | Element,
+  hydrating?: boolean
+): Component {
+  el = el && inBrowser ? query(el) : undefined
+  return mountComponent(this, el, hydrating)
+}</code></pre>
+<p>重新定义的方法中首先对挂载点<code>el</code>的类型做了限制-<code>不能是document.body document.documentElement</code>，也就是不能是<code>body html</code>这样的根节点。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
