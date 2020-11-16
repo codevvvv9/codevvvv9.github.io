@@ -197,7 +197,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-14 23:09:26" itemprop="dateModified" datetime="2020-11-14T23:09:26+08:00">2020-11-14</time>
+                <time title="修改时间：2020-11-15 21:13:58" itemprop="dateModified" datetime="2020-11-15T21:13:58+08:00">2020-11-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -335,6 +335,7 @@ Vue.prototype.$mount = function (
   return mountComponent(this, el, hydrating)
 }</code></pre>
 <p>重新定义的方法中首先对挂载点<code>el</code>的类型做了限制-<code>不能是document.body document.documentElement</code>，也就是不能是<code>body html</code>这样的根节点。</p>
+<p>其次，如果没有定义render方法的话，会把el或者template字符串转换成render方法，也就是说，Vue组件最终都会需要render方法。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
