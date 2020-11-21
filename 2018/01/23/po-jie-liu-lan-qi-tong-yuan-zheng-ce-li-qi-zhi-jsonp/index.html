@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/f1.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"codevvvv9.github.io","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="本文是在了解了浏览器的同源规则之后，学习了破解这个规则的一个简单有效的方法-&gt;JSONP。主要通过阮一峰老师的博客学习  浏览器的同源规则 有这样一个背景，如果你通过银行的网站进行的取钱的交易，而其他用户可以通过某个渠道获得你在银行网站的信息，那将是很可怕的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="破解浏览器同源政策利器之JSONP">
+<meta property="og:url" content="https://codevvvv9.github.io/2018/01/23/po-jie-liu-lan-qi-tong-yuan-zheng-ce-li-qi-zhi-jsonp/index.html">
+<meta property="og:site_name" content="shaolin">
+<meta property="og:description" content="本文是在了解了浏览器的同源规则之后，学习了破解这个规则的一个简单有效的方法-&gt;JSONP。主要通过阮一峰老师的博客学习  浏览器的同源规则 有这样一个背景，如果你通过银行的网站进行的取钱的交易，而其他用户可以通过某个渠道获得你在银行网站的信息，那将是很可怕的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-23T14:35:46.000Z">
+<meta property="article:modified_time" content="2020-07-25T15:02:41.984Z">
+<meta property="article:author" content="吴少林">
+<meta property="article:tag" content="JSONP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://codevvvv9.github.io/2018/01/23/po-jie-liu-lan-qi-tong-yuan-zheng-ce-li-qi-zhi-jsonp/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>破解浏览器同源政策利器之JSONP | shaolin</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="shaolin" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">shaolin</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/codevvvv9" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2018/01/23/po-jie-liu-lan-qi-tong-yuan-zheng-ce-li-qi-zhi-jsonp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shaolin">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          破解浏览器同源政策利器之JSONP
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-01-23 22:35:46" itemprop="dateCreated datePublished" datetime="2018-01-23T22:35:46+08:00">2018-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-25 23:02:41" itemprop="dateModified" datetime="2020-07-25T23:02:41+08:00">2020-07-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">Web基础</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>本文是在了解了浏览器的同源规则之后，学习了破解这个规则的一个简单有效的方法-&gt;JSONP。主要通过阮一峰老师的<a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank" rel="noopener">博客</a>学习</p>
+</blockquote>
+<h3 id="浏览器的同源规则"><a href="#浏览器的同源规则" class="headerlink" title="浏览器的同源规则"></a>浏览器的同源规则</h3><ul>
+<li><p>有这样一个背景，如果你通过银行的网站进行的取钱的交易，而其他用户可以通过某个渠道获得你在银行网站的信息，那将是很可怕的。</p>
+<a id="more"></a>
+</li>
+<li><p>所以，1995年NetScape公司(火狐的前身),提出了浏览器的同源政策，目的是保护使用网站的用户的信息安全。那么何谓同源呢</p>
+<ul>
+<li>协议相同</li>
+<li>域名相同</li>
+<li>端口号相同</li>
+</ul>
+</li>
+</ul>
+<p>不过，随着互联网的发展，有些时候我们需要破解同源，所以要先学习一下，古老而有效的JSONP方法。</p>
+<h3 id="浏览器如何向服务器提交数据"><a href="#浏览器如何向服务器提交数据" class="headerlink" title="浏览器如何向服务器提交数据"></a>浏览器如何向服务器提交数据</h3><ul>
+<li>有一天，程序员小白在自学，看到JSONP很牛，就向大神程序员小黑请教。小黑，小黑，这个JSONP是啥啊，感觉很牛( ⊙ o ⊙ )！。</li>
+<li>小黑扶了扶500度的眼镜，摸了一下头顶的几根头发，若有所思的问小白。</li>
+<li>小白啊，你说，浏览器怎么向服务器提交数据啊，比如说，你要付款这个情形。</li>
+<li>form表单啊，我规定<code>&lt;form method="POST" action="/..."&gt;&lt;/form&gt;</code>，我不用get请求。</li>
+</ul>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span><span class="token punctuation">></span></span>您的账户余额是<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>amount<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>200<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>付款1块钱<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/pay<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>number<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>付款<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+<ul>
+<li>恩，还是不错的啊，知道用<code>POST</code>发起请求。那你这提交完了之后，是不是还要在当前页面刷新一下，才能看到余额啊。</li>
+<li>……哎，是啊，不过我可以给你加一个<code>iframe</code>，就在当前页面刷新</li>
+</ul>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/pay<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>result<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>number<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>付款<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>iframe</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>result<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>about:blank<span class="token punctuation">"</span></span> <span class="token attr-name">frameborder</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span></code></pre>
+<p>有什么反馈信息都在iframe显示。</p>
+<ul>
+<li>恩，也还行，不过你为啥要把总额200写死在页面呢，不应该动态从数据库中获得吗</li>
+<li>╮(╯▽╰)╭，稍等我改一哈</li>
+</ul>
+<pre class=" language-html"><code class="language-html">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span><span class="token punctuation">></span></span>您的账户余额是<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>amount<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>&amp;&amp;&amp;amount&amp;&amp;&amp;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>付款1块钱<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+  ...
+  button.addEventListener('click', (e) => {
+      let n = amount.innerText
+      let number = parseInt(n, 10)
+      let newNumber = number - 1
+      amount.innerText = newNumber
+  }</code></pre>
+<p> 我用<code>&amp;&amp;&amp;amount&amp;&amp;&amp;</code>占位符表示总额，服务器端可以如下处理</p>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token keyword">var</span> amount <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'./db'</span><span class="token punctuation">,</span> <span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//从db中读取</span>
+  string <span class="token operator">=</span> string<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'&amp;&amp;&amp;amount&amp;&amp;&amp;'</span><span class="token punctuation">,</span> amount<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//把占位的数据换成真的数据</span>
+  <span class="token operator">...</span>
+  response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span></code></pre>
+<ul>
+<li>恩，不错，你再想想有没有其他的方式也可以发送数据到服务器端啊，不用刷新页面的那种</li>
+<li>……还有其他的( ⊙ o ⊙ )啊！</li>
+<li>那我老黑我给你讲讲前辈程序员们试过的方法吧</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">  <span class="token comment" spellcheck="true">//用图片发起get请求</span>
+  <span class="token keyword">let</span> image <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span>
+  image<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'/pay'</span>
+  image<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'打钱成功'</span><span class="token punctuation">)</span>
+    amount<span class="token punctuation">.</span>innerText <span class="token operator">=</span> amount<span class="token punctuation">.</span>innerText <span class="token operator">-</span> <span class="token number">1</span>
+  <span class="token punctuation">}</span>
+  image<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'打钱失败'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span></code></pre>
+<p> 这种也是可以的，而且也会用提示给用户，交互性还可以，不过只能发起<code>GET</code>请求，哈哈，我就是秀一下黑科技，很少用啦……</p>
+<ul>
+<li>(<em>@ο@</em>) 哇～这也可以，小黑，你好棒，又长见识啦,不过还是没给我讲JSONP啊,你是不是忘了……</li>
+</ul>
+<ul>
+<li>没忘啦，不要着急，接下来，就给你好好讲讲这个JSONP</li>
+</ul>
+<h3 id="动态创建JS脚本发数据"><a href="#动态创建JS脚本发数据" class="headerlink" title="动态创建JS脚本发数据"></a>动态创建JS脚本发数据</h3><ul>
+<li>小白啊，你平常用的最多的是哪门语言啊</li>
+<li>中文啊，英语不大好。</li>
+<li>……我说编程的时候</li>
+<li>呃呃，那个用的JavaScript多啊</li>
+<li>好，那咱们就用js脚本发数据呗</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">    <span class="token comment" spellcheck="true">//用js脚本发起请求  </span>
+      <span class="token keyword">let</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span>
+      script<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'/pay'</span>
+      document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span>
+      script<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'failed'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+
+     <span class="token operator">...</span>
+     <span class="token comment" spellcheck="true">//服务器端一般这么干</span>
+     <span class="token keyword">if</span><span class="token punctuation">(</span>path <span class="token operator">===</span> <span class="token string">'/pay'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">var</span> amount <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'./db'</span><span class="token punctuation">,</span> <span class="token string">'utf8'</span><span class="token punctuation">)</span>
+      <span class="token keyword">var</span> newAmount <span class="token operator">=</span> amount <span class="token operator">-</span> <span class="token number">1</span>
+
+      fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'./db'</span><span class="token punctuation">,</span> newAmount<span class="token punctuation">)</span>
+      response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'application/javascript'</span><span class="token punctuation">)</span>
+      response<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span>
+      response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`
+        amount.innerText = amount.innerText - 1
+      `</span></span><span class="token punctuation">)</span>
+
+      response<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span></code></pre>
+<p> 以上是js脚本的大致意思，细节不要深究，明白就行。注意一下，添加<code>script</code>后，要记得<code>document.body.appendChild(script)</code></p>
+<ul>
+<li>不过，小黑啊，你这动态加上了<code>script</code>没错，可是你每次都往我的html底部加js，这破坏我的html啊</li>
+<li>恩，小白啊，你思考能力还是可以的，目前确实有这个弊端，我给你处理一下</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">      <span class="token comment" spellcheck="true">//用js脚本发起请求  </span>
+      <span class="token keyword">let</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span>
+      script<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'/pay'</span>
+      document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span>
+      script<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//加载完了，就移除</span>
+      <span class="token punctuation">}</span>
+      script<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'failed'</span><span class="token punctuation">)</span>
+        e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//加载完了，就移除</span>
+      <span class="token punctuation">}</span></code></pre>
+<ul>
+<li><p>可以可以，小黑你这波操作可以的。快让我见识见识JSONP吧</p>
+</li>
+<li><p>好，这就给你变出来</p>
+</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">   button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">//用js脚本发起请求  </span>
+      <span class="token keyword">let</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span>
+      <span class="token keyword">let</span> functionName <span class="token operator">=</span> <span class="token string">'wushao'</span> <span class="token operator">+</span> <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">100000</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+      window<span class="token punctuation">[</span>functionName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">===</span> <span class="token string">'success'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          amount<span class="token punctuation">.</span>innerText <span class="token operator">=</span> amount<span class="token punctuation">.</span>innerText <span class="token operator">-</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      script<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'http://想访问的另一个网站:端口号/pay?callback='</span> <span class="token operator">+</span> functionName
+      document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span>
+      script<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+      script<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'failed'</span><span class="token punctuation">)</span>
+        e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>ヾ(｡｀Д´｡)黑神，你这跨度有点大，咋变了个大魔术。</li>
+<li>O(∩_∩)O哈哈~，你让我给你快点讲的……，我给你讲讲细节吧<ol>
+<li>let functionName = ‘wushao’ + parseInt((Math.random()*100000), 10) 使用一个随机函数构建自己的函数名字，可以与服务器端代码完美解耦，服务器端只需要，获得查询参数<code>?callback=functionName</code> 里面的functionName就可以了。</li>
+<li><code>window[functionName] = function (result) { }</code> 在window全局对象上添加<code>functionName</code>属性，它的值是一个函数，当服务器端响应回来后，浏览器端的写的函数的参数就是服务器端的<code>success</code>，我们就知道我的数据成功了。</li>
+</ol>
+</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">     <span class="token comment" spellcheck="true">//服务器端只需要这样就可以了，不关心你写的是什么函数名字</span>
+     response<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`
+        </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>query<span class="token punctuation">.</span>callback<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.call(undefined, 'success')
+     `</span></span><span class="token punctuation">)</span></code></pre>
+<ul>
+<li>哇，厉害啊，不过你又犯了一个相同的错误啦，哈哈，每次要把添加的全局对象的属性去掉哦～</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">  script<span class="token punctuation">.</span>onload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">delete</span> window<span class="token punctuation">[</span>functionName<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+  script<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'failed'</span><span class="token punctuation">)</span>
+    e<span class="token punctuation">.</span>currentTarget<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">delete</span> window<span class="token punctuation">[</span>functionName<span class="token punctuation">]</span>
+  <span class="token punctuation">}</span></code></pre>
+<ul>
+<li>O(∩_∩)O哈！，这样子就对了，小白啊，既然你学过jQuery，你试一试jQuery的写法吧</li>
+<li>(^o^)/~行，小黑，我也给你变一个</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript">  $<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    url<span class="token punctuation">:</span> <span class="token string">"http://想访问的另一个网站:端口号/pay"</span><span class="token punctuation">,</span>
+
+    <span class="token comment" spellcheck="true">// The name of the callback parameter, as specified by the YQL service</span>
+    jsonp<span class="token punctuation">:</span> <span class="token string">"callback"</span><span class="token punctuation">,</span>
+
+    <span class="token comment" spellcheck="true">// Tell jQuery we're expecting JSONP</span>
+    dataType<span class="token punctuation">:</span> <span class="token string">"jsonp"</span><span class="token punctuation">,</span>
+
+    <span class="token comment" spellcheck="true">// Work with the response</span>
+    success<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>response <span class="token operator">===</span> <span class="token string">'success'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      amount<span class="token punctuation">.</span>innerText <span class="token operator">=</span> amount<span class="token punctuation">.</span>innerText <span class="token operator">-</span> <span class="token number">1</span> 
+      <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<ul>
+<li>哎呦，不错呦，小白～</li>
+<li>O(∩_∩)O哈哈~，我就是Google的 <code>jquery jsonp</code></li>
+<li>不过，这个可和ajax，没啥关系啊，不明白为啥jquery为啥这么写。</li>
+</ul>
+<p><strong>具体的代码链接</strong>在============&gt;<a href="https://github.com/codevvvv9/nodejsServer/blob/master/index.html" target="_blank" rel="noopener">传送门</a></p>
+<h3 id="什么是JSONP呢"><a href="#什么是JSONP呢" class="headerlink" title="什么是JSONP呢"></a>什么是JSONP呢</h3><p>请求方是一个网站(浏览器端)，响应方是另一个网站（服务器端）</p>
+<ol>
+<li><p>请求方动态的创建一个script脚本，src属性是响应方的地址，同时传递一个查询查参数<code>？callback=functionName</code>，一般functionName使用随机函数构造。</p>
+</li>
+<li><p>响应方根据收到的查询参数callback=functionName,去构造形如</p>
+<p>2.1 <code>functionName.call(undefined, 'success')</code></p>
+<p>2.2 或者直接<code>functionName.('success')</code></p>
+<p>这样的响应。</p>
+</li>
+<li><p>浏览器收到响应之后，就会执行<code>functionName.call(undefined, 'success')</code>或者<code>functionName.('success')</code></p>
+</li>
+<li><p>然后，请求方就知道了他想要获得的数据如何了。</p>
+</li>
+</ol>
+<p>这就是JSONP的原理</p>
+<h3 id="为什么JSONP不支持POST请求呢"><a href="#为什么JSONP不支持POST请求呢" class="headerlink" title="为什么JSONP不支持POST请求呢"></a>为什么JSONP不支持POST请求呢</h3><p>答曰：JSONP是动态创建的js脚本，这个方法只能发起GET请求，不能发起POST请求。</p>
+<blockquote>
+<p>接下来学习ajax啦～加油↖(^ω^)↗</p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>吴少林
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://codevvvv9.github.io/2018/01/23/po-jie-liu-lan-qi-tong-yuan-zheng-ce-li-qi-zhi-jsonp/" title="破解浏览器同源政策利器之JSONP">https://codevvvv9.github.io/2018/01/23/po-jie-liu-lan-qi-tong-yuan-zheng-ce-li-qi-zhi-jsonp/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JSONP/" rel="tag"># JSONP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/01/19/node-sass-an-zhuang-shi-bai-de-jiu-ji-jie-jue-fang-fa/" rel="prev" title="node-sass安装失败的究极解决方法.md">
+      <i class="fa fa-chevron-left"></i> node-sass安装失败的究极解决方法.md
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/01/31/ajax-de-chu-xian-yu-kua-yu/" rel="next" title="AJAX的出现与跨域">
+      AJAX的出现与跨域 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器的同源规则"><span class="nav-number">1.</span> <span class="nav-text">浏览器的同源规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器如何向服务器提交数据"><span class="nav-number">2.</span> <span class="nav-text">浏览器如何向服务器提交数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态创建JS脚本发数据"><span class="nav-number">3.</span> <span class="nav-text">动态创建JS脚本发数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是JSONP呢"><span class="nav-number">4.</span> <span class="nav-text">什么是JSONP呢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么JSONP不支持POST请求呢"><span class="nav-number">5.</span> <span class="nav-text">为什么JSONP不支持POST请求呢</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="吴少林"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">吴少林</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/codevvvv9" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;codevvvv9" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/15af43443bdb" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;15af43443bdb" rel="noopener" target="_blank"><i class="fa fa-fw fa-rss-square"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" title="掘金 → https:&#x2F;&#x2F;juejin.im&#x2F;user&#x2F;5821e3d8bf22ec0068e631e2" rel="noopener" target="_blank"><i class="fa fa-fw fa-balance-scale"></i>掘金</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wu-lin-25-41/posts" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wu-lin-25-41&#x2F;posts" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>知乎</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴少林</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
