@@ -166,6 +166,358 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2017/12/23/shen-wa-javascript-yu-fa-di-er-ji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shaolin">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/23/shen-wa-javascript-yu-fa-di-er-ji/" class="post-title-link" itemprop="url">深挖JavaScript第二集</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-23 18:15:26" itemprop="dateCreated datePublished" datetime="2017-12-23T18:15:26+08:00">2017-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-18 17:46:05" itemprop="dateModified" datetime="2018-11-18T17:46:05+08:00">2018-11-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/" itemprop="url" rel="index"><span itemprop="name">JS语法详解</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>JS一定要抠细节，逻辑性。我们这次探讨 内存 的问题、一个IE的BUG以及深拷贝和浅拷贝，和typeof运算符的小技巧</p>
+</blockquote>
+<p>在第一集里面知道了7个基本的数据类型<br>number string boolean symbol null underdefined object<br>那么这七个数据类型如何转换呢</p>
+<h3 id="其他数据类型转string"><a href="#其他数据类型转string" class="headerlink" title="其他数据类型转string"></a>其他数据类型转string</h3><ul>
+<li>String()函数</li>
+</ul>
+<pre><code>String(0)
+"0"
+String(true)
+"true"
+String(false)
+"false"
+String(null)
+"null"
+String(undefined)
+"undefined"
+String({})
+"[object Object]"
+String({name: 9})
+"[object Object]"</code></pre><ul>
+<li>toString()属性<br>注意null和undefined只是两个值，没有toString()属性</li>
+</ul>
+<pre><code>null.toString()
+VM371:1 Uncaught TypeError: Cannot read property 'toString' of null
+    at &lt;anonymous&gt;:1:6
+(anonymous) @ VM371:1
+undefined.toString()
+VM400:1 Uncaught TypeError: Cannot read property 'toString' of undefined
+    at &lt;anonymous&gt;:1:11
+(anonymous) @ VM400:1</code></pre><p>还有一个要注意的</p>
+<pre><code>{}.toString()
+VM91:1 Uncaught SyntaxError: Unexpected token .
+({}).toString()
+"[object Object]"</code></pre><p>其他的都可以</p>
+<pre><code>var a = 8;
+a.toString()
+"8"
+var a = true
+a.toString()
+"true"
+var a = {}
+a.toString()
+"[object Object]"</code></pre><ul>
+<li>最常见的方法 ‘ ‘+<br>无敌的方法</li>
+</ul>
+<pre><code>'' +1
+"1"
+''+ true
+"true"
+''+ null
+"null"
+''+ undefined
+"undefined"</code></pre><h3 id="其它数据类型转number"><a href="#其它数据类型转number" class="headerlink" title="其它数据类型转number"></a>其它数据类型转number</h3><ul>
+<li>Number()函数</li>
+</ul>
+<pre><code>Number('fff')
+NaN
+Number('30')
+30
+Number(null) //注意是0
+0
+Number(undefined) //注意是NaN
+NaN
+Number(true)
+1
+Number(false)
+0</code></pre><ul>
+<li>parseInt()和parseFloat()属性<br>parseInt()有个大坑，是从左边第一个字符开始看，不是数字，就停下了，而不是我理解 的有几个数字就打印几个数字</li>
+</ul>
+<pre><code>parseInt('122') //默认是十进制
+122
+parseInt('011')
+11
+parseInt('011', 2) //规定是二进制
+3
+parseInt('123', 10)
+123
+parseInt('011', 8) //规定是八进制
+9
+parseInt('A09') //发现第一个字符就不是数字，不往后面判断了
+NaN
+parseInt('09A12')
+9
+parseFloat('11.4')
+11.4</code></pre><ul>
+<li>没见过的操作 <code>其他数据类型-0</code></li>
+</ul>
+<pre><code>null-0
+0
+undefined-0
+NaN
+'91' - 0
+91
+'91.09' - 0
+91.09
+'str' - 0
+NaN
+var a = {}
+a-0
+NaN
+var a = '123'
+a-0
+123</code></pre><ul>
+<li>又是一个没见过的操作 <code>+ ''</code></li>
+</ul>
+<pre><code>+'124'
+124
++'12.4'
+12.4
++false
+0
++true
+1
++null
+0
++undefined
+NaN</code></pre><h3 id="其它数据类型转成boolean"><a href="#其它数据类型转成boolean" class="headerlink" title="其它数据类型转成boolean"></a>其它数据类型转成boolean</h3><p>注意5个特殊的falsey值，当然了false必然也是falsey值</p>
+<hr>
+<p><strong>0</strong><br><strong>NaN</strong><br><strong>‘ ‘</strong>    这是空字符串，啥也没有，空格也没有<br><strong>null</strong><br><strong>undefined</strong></p>
+<hr>
+<p>除了以上6个falsey值，其他的都是true</p>
+<ul>
+<li>Boolean()函数</li>
+</ul>
+<pre><code>Boolean('')
+false
+Boolean(' ')
+true
+Boolean(0)
+false
+Boolean(NaN)
+false
+Boolean(null)
+false
+Boolean(undefined)
+false
+Boolean([])
+true
+Boolean({})
+true
+Boolean(9)
+true
+Boolean('pp')
+true</code></pre><ul>
+<li><code>!!</code>的操作<br>怎么理解呢，一个<code>!</code>是取反的操作，再加一个就是双重取反，就是我们想要的结果了</li>
+</ul>
+<pre><code>!0
+true
+!1
+false</code></pre><pre><code>!!0
+false
+!!NaN
+false
+!!''
+false
+!!null
+false
+!!undefined
+false
+!!1
+true
+!!'pp'
+true
+!![]
+true
+!!{}
+true</code></pre><h3 id="四个经典的内存题"><a href="#四个经典的内存题" class="headerlink" title="四个经典的内存题"></a>四个经典的内存题</h3><ul>
+<li><p>粗糙的内存图的引入<br>var a = 1 和var a = new Number(1)分别发生了什么<br>简单数据类型存在stack中，存储位置是连续的，像弹匣一样，与数据结构中的栈一样，先进后出(FILO)，而复杂数据类型存储在heap中，存储位置不连续，与数据结构中的堆一样，是树状的发散结构，这一点<strong><em>超级重要啊</em></strong>。时时刻刻要记着数据结构啊。</p>
+</li>
+<li><p>第一个题 简单数据类型的判断 a=? </p>
+<pre><code>var a = 1
+b = a
+b = 2
+</code></pre></li>
+</ul>
+<p>a<br>1</p>
+<pre><code>答案是a=1
+![第一题.png](http://upload-images.jianshu.io/upload_images/5422064-0560e23bd6357f1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+- 第二个题 复杂数据类型 的判断 a =?</code></pre><p>var a = {name: ‘wushao’}<br>b =a<br>b={name: ‘shao’}</p>
+<p>a<br>{name: “wushao”}</p>
+<pre><code>答案是a={name: 'wushao'}，结果不变
+![第二题.png](http://upload-images.jianshu.io/upload_images/5422064-156139ea55efe504.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 第三个题 复杂数据类型 的判断 a.name=?
+</code></pre><p>var a = {name: ‘wushao’}<br>b =a<br>b.name = ‘qwert’</p>
+<p>a.name<br>“qwert”</p>
+<pre><code>答案是a.name = 'qwert',已经被b.name改变了
+![第三题.png](http://upload-images.jianshu.io/upload_images/5422064-95dccf49795dfd5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+- 第四个题 复杂数据类型 的判断 a=?
+</code></pre><p>var a = {name: ‘a’}<br>var b = a<br>b = null</p>
+<p>a<br>{name: “a”}</p>
+<pre><code>答案是 a  = {name: "a"} 不受b的影响
+![第四题.png](http://upload-images.jianshu.io/upload_images/5422064-2f71c0ad29ba7a84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+如图所示
+
+### 一个很贱的面试题
+</code></pre><p>var a = {n: 1}<br>var b = a<br>a.x = a = {n: 2}</p>
+<p>alert(a.x) //是啥呢 undefined<br>alert(b.x) //是啥呢 [object Object]</p>
+<pre><code>![面试题.png](http://upload-images.jianshu.io/upload_images/5422064-535a5ce55e971e93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+大坑之处在于那个a.x一开始浏览器先从左边看的
+
+### IE6 的关于垃圾回收机制的一个BUG
+
+有以下情形
+</code></pre><p>var fn = function( ){ }<br>document.body.onclick = fn<br>fn = null<br>问你 function(){}是不是垃圾</p>
+<pre><code>- 第一种情况，你没有关闭这个tab页
+  那么function不是垃圾
+  ![是否是一个垃圾.png](http://upload-images.jianshu.io/upload_images/5422064-c2d28691f8e0081c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+- 第二种情况，我关闭了这个tab页,那么function就是垃圾了
+  ![关闭网页后就是一个垃圾了.png](http://upload-images.jianshu.io/upload_images/5422064-e569b8f33c9d0b08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+IE6的BUG在于，你关闭了网页，但是蓝色圆里面的他不认为是垃圾，除非你关闭浏览器。所以你要在网页关闭的时候手动加上一个</code></pre><p>//onunload不加载，就是关闭了嘛<br>window.onunload = function(){<br>  document.body.onclick = null; //所有的都要有<br>}</p>
+<pre><code>### 由以上几个题引出深拷贝和浅拷贝 的问题
+深拷贝是你改变了，原来的不受改变的影响，而浅拷贝会改变原来的属性。
+对于简单类型的数据来说，赋值就是深拷贝。
+对于复杂类型的数据（对象）来说，才要区分浅拷贝和深拷贝。
+![深拷贝.png](http://upload-images.jianshu.io/upload_images/5422064-ced7663ffb4f6530.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+右边蓝色框才是一个完整的复制
+
+### typeof运算符的坑
+
+&gt; JavaScript有三种方法，可以确定一个值到底是什么类型。
+&gt; typeof 运算符
+&gt; instanceof 运算符
+&gt; Object.prototype.toString方法
+
+typeof运算符可以判断你要的值得数据类型，有如下结果
+先看大坑
+</code></pre><p>typeof null<br>“object”<br>typeof Function<br>“function”<br>function f(){}<br>typeof f<br>“function”</p>
+<pre><code>
+函数竟然是function类型的数据，坑爹啊。
+null竟然是object，尼玛，吓坏了，一查原来是历史遗留问题。
+
+&gt; 1995年JavaScript语言的第一版，所有值都设计成32位，其中最低的3位用来表述数据类型，object对应的值是000。当时，只设计了五种数据类型（对象、整数、浮点数、字符串和布尔值），完全没考虑null，只把它当作object的一种特殊值，32位全部为0。这是typeof null返回object的根本原因。
+&gt; 为了兼容以前的代码，后来就没法修改了。这并不是说null就属于对象，本质上null是一个类似于undefined的特殊值。
+
+你只需要记住，null不是对象 ！null不是对象！ null不是对象！就是一个值null。
+其他的类型是符合预期的
+</code></pre><p>typeof 123<br>“number”<br>typeof ‘123’<br>“string”<br>typeof true<br>“boolean”<br>typeof []<br>“object”<br>typeof {}<br>“object”</p>
+<pre><code>
+### 一个小技巧
+</code></pre><p>typeof undefined<br>“undefined”<br>typeof a<br>“undefined”</p>
+<pre><code>
+上面的a未声明,直接使用会报错
+</code></pre><p>a<br>VM412:1 Uncaught ReferenceError: a is not defined<br>    at <anonymous>:1:1</anonymous></p>
+<pre><code>
+但是用了typeof就可以啦
+可以用来判断某个变量是否声明了
+</code></pre><p>if (typeof v === “undefined”) {<br>  // …<br>}</p>
+<pre><code>
+- 第二个小技巧
+  既然typeof对数组（array）和对象（object）的显示结果都是object，那么怎么区分它们呢？instanceof运算符可以做到。
+</code></pre><p>var o = {};<br>var a = [];</p>
+<p>o instanceof Array // false<br>a instanceof Array // true<br>```</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2017/12/21/form-biao-dan-de-liang-ge-xin-shu-xing/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -985,14 +1337,14 @@ TCP可以看成是把石子扔到水里，UDP是把石头扔进草垛里面
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

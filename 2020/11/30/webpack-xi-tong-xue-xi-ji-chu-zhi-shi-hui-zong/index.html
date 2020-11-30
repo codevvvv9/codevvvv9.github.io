@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/1.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/f1.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"codevvvv9.github.io","root":"/","scheme":"Mist","version":"7.7.2","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="开篇词 🤗这是一个系统学习webpack的系列文章，在多年的编程学习之后，我知道：这个系列注定不会一帆风顺🙄，同样我也知道在这些失败的背后隐藏着通往美好未来的秘密，星光不问赶路人，时光不负有心人，出发吧。 友情提示 🤣本系列开始之前，请调整好心态，我们要做好长（总）期（有）作（报）战（错）的准备😌。经过我的的第二次折腾webpack，得出一个重要结论：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack系统学习-基础知识汇总">
+<meta property="og:url" content="https://codevvvv9.github.io/2020/11/30/webpack-xi-tong-xue-xi-ji-chu-zhi-shi-hui-zong/index.html">
+<meta property="og:site_name" content="shaolin">
+<meta property="og:description" content="开篇词 🤗这是一个系统学习webpack的系列文章，在多年的编程学习之后，我知道：这个系列注定不会一帆风顺🙄，同样我也知道在这些失败的背后隐藏着通往美好未来的秘密，星光不问赶路人，时光不负有心人，出发吧。 友情提示 🤣本系列开始之前，请调整好心态，我们要做好长（总）期（有）作（报）战（错）的准备😌。经过我的的第二次折腾webpack，得出一个重要结论：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://codevvvv9.github.io/2020/11/30/webpack-xi-tong-xue-xi-ji-chu-zhi-shi-hui-zong/webpack.gif">
+<meta property="article:published_time" content="2020-11-30T13:47:05.000Z">
+<meta property="article:modified_time" content="2020-11-30T15:56:01.913Z">
+<meta property="article:author" content="吴少林">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://codevvvv9.github.io/2020/11/30/webpack-xi-tong-xue-xi-ji-chu-zhi-shi-hui-zong/webpack.gif">
+
+<link rel="canonical" href="https://codevvvv9.github.io/2020/11/30/webpack-xi-tong-xue-xi-ji-chu-zhi-shi-hui-zong/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>webpack系统学习-基础知识汇总 | shaolin</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="shaolin" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">shaolin</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">悟已往之不谏，知来者之可追！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/codevvvv9" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://codevvvv9.github.io/2020/11/30/webpack-xi-tong-xue-xi-ji-chu-zhi-shi-hui-zong/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="吴少林">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shaolin">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          webpack系统学习-基础知识汇总
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-30 21:47:05 / 修改时间：23:56:01" itemprop="dateCreated datePublished" datetime="2020-11-30T21:47:05+08:00">2020-11-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="开篇词-🤗"><a href="#开篇词-🤗" class="headerlink" title="开篇词 🤗"></a>开篇词 🤗</h2><p>这是一个系统学习webpack的系列文章，在多年的编程学习之后，我知道：这个系列注定不会一帆风顺🙄，同样我也知道在这些失败的背后隐藏着通往美好未来的秘密，星光不问赶路人，时光不负有心人，出发吧。</p>
+<h3 id="友情提示-🤣"><a href="#友情提示-🤣" class="headerlink" title="友情提示 🤣"></a>友情提示 🤣</h3><p>本系列开始之前，请调整好心态，我们要做好长（总）期（有）作（报）战（错）的准备😌。经过我的的第二次折腾webpack，得出一个重要结论：<a id="more"></a></p>
+<blockquote>
+<p>当你依赖多个包时，一定要小心不同版本之间的细微的语法差别。尤其是webpack这种考验配置管理的打包器，这个结论适用于其他<em>所有</em>需要借助配置项、存在多版本交叉依赖的工具使用 🙃</p>
+</blockquote>
+<h3 id="什么是webpack-📦"><a href="#什么是webpack-📦" class="headerlink" title="什么是webpack 📦"></a>什么是webpack 📦</h3><p>一言以蔽之，webpack把所有的外部依赖都视为文件，统一处理成web最终能够处理的<code>js css jpg等静态资源</code></p>
+<img src="/2020/11/30/webpack-xi-tong-xue-xi-ji-chu-zhi-shi-hui-zong/webpack.gif" class="" title="This is an image">
+
+<p>总之，是一个🐄的打包器，可以说是web工程化的道路上的最强利器之一，现代化的web开发必备工具，再多溢美之词详见<a href="https://webpack.docschina.org/guides/getting-started/" target="_blank" rel="noopener">webpack</a>。</p>
+<h3 id="起步-✍️"><a href="#起步-✍️" class="headerlink" title="起步 ✍️"></a>起步 ✍️</h3><p>巧妇难为无米之炊，当然要先安装webpack相关工具链。本系列的webpack版本是基于<code>webpack5.8 webpack-cli 4.2</code>，理论上webpack4以上都可以适用，同时node版本要求10.13.0(LTS)及以上，我选择采用yarn安装，也可以选择npm安装，两者细微的区别：</p>
+<ul>
+<li>npm i === yarn add</li>
+<li>npm uninstall === yarn remove </li>
+<li>其它的命令基本上把npm 换成 yarn即可</li>
+</ul>
+<p>极简项目搭建的初始化脚本如下所示：</p>
+<pre class=" language-shell"><code class="language-shell">mkdir webpack-demo
+cd webpack-demo
+yarn init -y
+yarn add webpack webpack-cli -D</code></pre>
+<h2 id="配置文件-📖"><a href="#配置文件-📖" class="headerlink" title="配置文件 📖"></a>配置文件 📖</h2><p>项目初始化成功后，我们可以书写<code>es6、sass 、less</code>等其它浏览器不能直接解析的代码了，但是要做到上述功能，我们还需要各一个配置文件<code>webpack.config.js</code>，这是一个最基本的配置文件，后面我会拆分成开发、生产两套配置文件。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//webpack.config.js</span>
+<span class="token string">"use strict"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  entry<span class="token punctuation">:</span> <span class="token string">"./src/index.js"</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//在当前目录下的dist目录</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"dist"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">"bundle.js"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  mode<span class="token punctuation">:</span> <span class="token string">"production"</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<p>借助安装的webpack-cli，此时我们已经可以在命令行使用webpack进行打包了，这里为了方便的使用webpack，修改<code>package.json</code>的<code>scripts</code></p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+  //...
+  <span class="token property">"script"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"webpack"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  //...
+<span class="token punctuation">}</span></code></pre>
+<p>项目编译查看效果是直接<code>yarn run build</code>，此时会通过在<code>.node_modules/.bin/webpack</code>的软连接编译项目。</p>
+<h3 id="核心基础概念"><a href="#核心基础概念" class="headerlink" title="核心基础概念"></a>核心基础概念</h3><p>webpack的配置中有很多项，其中有五个最核心的概念：</p>
+<ul>
+<li><code>entry</code> 入口，有单入口和多入口。</li>
+<li><code>output</code> 输出，根据单入口 多入口有两种写法。</li>
+<li><code>mode</code> 模式，三个值 <code>production（默认值） development none</code></li>
+<li><code>loader</code></li>
+<li><code>plugin</code></li>
+</ul>
+<h3 id="entry"><a href="#entry" class="headerlink" title="entry"></a><code>entry</code></h3><p>这是webpack编译项目的入口文件，通常可以有两种写法:</p>
+<ol>
+<li>单文件入口写法,如上面的基本配置所示。</li>
+<li>多入口文件写法，采用对象的形式，对应output则变为使用占位符<code>[name]</code></li>
+</ol>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+  entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'index'</span><span class="token punctuation">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span>
+    <span class="token string">'search'</span><span class="token punctuation">:</span> <span class="token string">'./src/search.js'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[name].js'</span> <span class="token comment" spellcheck="true">//这里的name即上面entry对象的key值</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">//...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="ouput"><a href="#ouput" class="headerlink" title="ouput"></a><code>ouput</code></h3><p>项目编译构建成功后的输出目录和输出文件的名字，有两种写法，分别对应单入口和多入口写法</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//单入口文件对应的写法</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"dist"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">"bundle.js"</span><span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true">//or 多入口文件对应的写法</span>
+    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    filename<span class="token punctuation">:</span> <span class="token string">'[name].js'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">//...</span>
+<span class="token punctuation">}</span></code></pre>
+<p>可以看出来，<code>entry</code>和<code>output</code>这两个概念是配合着使用。</p>
+<h3 id="mode"><a href="#mode" class="headerlink" title="mode"></a><code>mode</code></h3><p>启用不同的mode，会开启不同的内置函数进行优化，并没有特别需要注意的要点。</p>
+<table>
+<thead>
+<tr>
+<th><code>development</code></th>
+<th>会将 <code>DefinePlugin</code> 中 <code>process.env.NODE_ENV</code> 的值设置为 <code>development</code>. 为模块和 chunk 启用有效的名。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>production</code></td>
+<td>会将 <code>DefinePlugin</code> 中 <code>process.env.NODE_ENV</code> 的值设置为 <code>production</code>。为模块和 chunk 启用确定性的混淆名称，<code>FlagDependencyUsagePlugin</code>，<code>FlagIncludedChunksPlugin</code>，<code>ModuleConcatenationPlugin</code>，<code>NoEmitOnErrorsPlugin</code> 和 <code>TerserPlugin</code> 。</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>不使用任何默认优化选项</td>
+</tr>
+</tbody></table>
+<p>对于剩下的两个概念，极其重要，需要仔细研究一下🤓</p>
+<h2 id="Loaders"><a href="#Loaders" class="headerlink" title="Loaders"></a><code>Loaders</code></h2><p><code>loader</code>这个概念是对依赖的文件进行预处理，对于需要打包的资源选用不同的loader进行处理，会起到事半功倍的效果😋。</p>
+<p>通常来说，工程开发中（目前我暂时涉猎的）用到以下几种的<code>loader</code>:</p>
+<h3 id="loader的简单分类"><a href="#loader的简单分类" class="headerlink" title="loader的简单分类"></a><code>loader</code>的简单分类</h3><p>文件相关的loader：</p>
+<ul>
+<li><code>url-loader</code>,可以用来预处理图片、文字等静态资源。</li>
+<li><code>file-loader</code>,基本上与<code>url-loader</code>作用一样，但是可以通过options配置项启用base64编码来处理上述静态资源。</li>
+</ul>
+<p>语法转换相关的：</p>
+<ul>
+<li><code>babel-loader</code>，大名鼎鼎的<code>babel</code>转换，把es6等高阶语法降级成基础js语法，提高老版本项目的兼容性。</li>
+</ul>
+<p>样式相关的：</p>
+<ul>
+<li><p><code>style-loader</code>，将导出的css文件插入到<code>style标签</code>里 再插入到<code>head标签</code>内，实现<code>html</code>的加载<code>css代码</code>。</p>
+</li>
+<li><p><code>css-loader</code>，加载其它css预处理器处理后的css文件并解析import的css文件</p>
+</li>
+<li><p><code>less-loader or sass-loader or stylus-loader</code>，加载并编译less sass文件</p>
+</li>
+</ul>
+<p>框架相关的：</p>
+<ul>
+<li><code>vue-loader</code>，加载并编译vue单文件组件。</li>
+</ul>
+<p>上面是几种常用的loader的分类，下面就使用一下它们。</p>
+<h3 id="babel-loader的使用"><a href="#babel-loader的使用" class="headerlink" title="babel-loader的使用"></a><code>babel-loader</code>的使用</h3><p>在使用<code>babel-loder</code>的时候需要配合另外的几个依赖，一起食用才会更加美味😋。</p>
+<p><code>yarn add @babel/core @babel/preset-env babel-loader -D</code> ，安装成功后修改配置文件</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+  <span class="token comment" spellcheck="true">//4、loader的使用</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//4.1 解析js文件，需要安装@babel/core @babel/preset-env babel-loader 配置.babelrc</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/.js$/</span><span class="token punctuation">,</span>
+        use<span class="token punctuation">:</span> <span class="token string">'babel-loader'</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>loader</code>的写法稍微有一点点小麻烦，同时<code>babel-loader</code>还需要配置<code>.babelrc</code></p>
+<pre class=" language-json"><code class="language-json">//项目根目录下新建.babelrc
+<span class="token punctuation">{</span>
+  <span class="token property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"@babel/preset-env"</span><span class="token punctuation">,</span> //es6的预设
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="css相关loader的使用"><a href="#css相关loader的使用" class="headerlink" title="css相关loader的使用"></a><code>css</code>相关<code>loader</code>的使用</h3><p>本文使用<code>less</code>做<code>css预处理器</code>，所以配合使用的依赖有四个：</p>
+<p><code>yarn add less less-loader css-loader style-loader -D</code>。</p>
+<p>对应的配置文件修改如下：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//webpack.config.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//...</span>
+  <span class="token comment" spellcheck="true">//4、loader的使用</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//4.1 解析js文件，需要安装@babel/core @babel/preset-env babel-loader 配置.babelrc</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/.js$/</span><span class="token punctuation">,</span>
+        use<span class="token punctuation">:</span> <span class="token string">'babel-loader'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//4.2 解析.css文件，需要style-loader css-loader,链式调用，从右往左,必须先解析.css文件</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/.css$/</span><span class="token punctuation">,</span>
+        use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//把css放到style标签里面插进head标签里面</span>
+          <span class="token string">'css-loader'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//加载css文件，并转换成commonjs对象</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//4.3 解析.css文件，需要style-loader css-loader less-loader, 链式调用，从右往左,必须先解析.less文件</span>
+        test<span class="token punctuation">:</span> <span class="token regex">/.less$/</span><span class="token punctuation">,</span>
+        use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+          <span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//把css放到style标签里面插进head标签里面</span>
+          <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+          <span class="token string">'less-loader'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">//把less转换成css文件</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<hr>
+<p>多个loader加载时注意顺序：链式调用多个loader，从右往左，所以一定要注意加载的先后顺序。</p>
+<hr>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>吴少林
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://codevvvv9.github.io/2020/11/30/webpack-xi-tong-xue-xi-ji-chu-zhi-shi-hui-zong/" title="webpack系统学习-基础知识汇总">https://codevvvv9.github.io/2020/11/30/webpack-xi-tong-xue-xi-ji-chu-zhi-shi-hui-zong/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/webpack/" rel="tag"># webpack</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/21/vue-sui-bi/" rel="prev" title="Vue随笔">
+      <i class="fa fa-chevron-left"></i> Vue随笔
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开篇词-🤗"><span class="nav-number">1.</span> <span class="nav-text">开篇词 🤗</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#友情提示-🤣"><span class="nav-number">1.1.</span> <span class="nav-text">友情提示 🤣</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是webpack-📦"><span class="nav-number">1.2.</span> <span class="nav-text">什么是webpack 📦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#起步-✍️"><span class="nav-number">1.3.</span> <span class="nav-text">起步 ✍️</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件-📖"><span class="nav-number">2.</span> <span class="nav-text">配置文件 📖</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核心基础概念"><span class="nav-number">2.1.</span> <span class="nav-text">核心基础概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entry"><span class="nav-number">2.2.</span> <span class="nav-text">entry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ouput"><span class="nav-number">2.3.</span> <span class="nav-text">ouput</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mode"><span class="nav-number">2.4.</span> <span class="nav-text">mode</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loaders"><span class="nav-number">3.</span> <span class="nav-text">Loaders</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#loader的简单分类"><span class="nav-number">3.1.</span> <span class="nav-text">loader的简单分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#babel-loader的使用"><span class="nav-number">3.2.</span> <span class="nav-text">babel-loader的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css相关loader的使用"><span class="nav-number">3.3.</span> <span class="nav-text">css相关loader的使用</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="吴少林"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">吴少林</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/codevvvv9" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;codevvvv9" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="http://www.jianshu.com/u/15af43443bdb" title="简书 → http:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;15af43443bdb" rel="noopener" target="_blank"><i class="fa fa-fw fa-rss-square"></i>简书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://juejin.im/user/5821e3d8bf22ec0068e631e2" title="掘金 → https:&#x2F;&#x2F;juejin.im&#x2F;user&#x2F;5821e3d8bf22ec0068e631e2" rel="noopener" target="_blank"><i class="fa fa-fw fa-balance-scale"></i>掘金</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/wu-lin-25-41/posts" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;wu-lin-25-41&#x2F;posts" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>知乎</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">吴少林</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
