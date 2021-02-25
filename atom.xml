@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://codevvvv9.github.io/"/>
-  <updated>2020-12-20T05:00:29.352Z</updated>
+  <updated>2021-02-25T15:17:24.251Z</updated>
   <id>https://codevvvv9.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx入门</title>
+    <link href="https://codevvvv9.github.io/2021/02/25/nginx-ru-men/"/>
+    <id>https://codevvvv9.github.io/2021/02/25/nginx-ru-men/</id>
+    <published>2021-02-25T14:15:12.000Z</published>
+    <updated>2021-02-25T15:17:24.251Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数据源安装Nginx"><a href="#数据源安装Nginx" class="headerlink" title="数据源安装Nginx"></a><a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">数据源</a>安装Nginx</h2><p>本次通过数据源安装Nginx是在Ubuntu系统下进行演示：</p><ol><li>通过数据源地址下载Nginx压缩包</li></ol><p><code>wget https://nginx.org/download/nginx-1.19.7.tar.gz</code></p><img src="/2021/02/25/nginx-ru-men/1.png" class="" title="This is an image"><ol start="2"><li><p>解压上面的压缩包<code>tar -zxvf ...</code>  <img src="/2021/02/25/nginx-ru-men/2.png" class="" title="This is an image"></p></li><li><p>进入到上面的解压目录后，首先检查C的编译环境<code>./configure</code> <img src="/2021/02/25/nginx-ru-men/3.png" class="" title="This is an image"></p></li><li><p>不出意外的话，这里会报错，有的包缺失。<img src="/2021/02/25/nginx-ru-men/3-error.png" class="" title="This is an image"></p></li><li><p>安装缺失的包</p><p>通过Ubuntu的apt-get安装上面缺失的包,  <img src="/2021/02/25/nginx-ru-men/5.png" class="" title="This is an image"> <code>apt-get install libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev</code></p></li><li><p>再次检查配置项内容<code>./configure</code><img src="/2021/02/25/nginx-ru-men/6.png" class="" title="This is an image"></p></li><li><p>指定目录下安装</p></li></ol><p>通过自定义配置项进行安装配置项<img src="/2021/02/25/nginx-ru-men/6.png" class="" title="This is an image"> </p><p><code>./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --with-pcre --with-http_ssl_module</code></p><ol start="8"><li>根据前面生成的makefile，用<code>make</code>命令去编译</li><li>继续安装<code>make install</code></li><li>此时就安装全部完成了，<code>nginx -V</code> 会正常显示，直接输入<code>nginx</code>也不会报错</li><li>最后查看进程 <code>ps aux | grep nginx</code>也正常显示</li></ol><img src="/2021/02/25/nginx-ru-men/10.png" class="" title="This is an image"><p>直接输入购买的阿里云ECS服务器的公网IP可以看到Nginx的欢迎页面了。</p><img src="/2021/02/25/nginx-ru-men/welcome.png" class="" title="This is an image"><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数据源安装Nginx&quot;&gt;&lt;a href=&quot;#数据源安装Nginx&quot; class=&quot;headerlink&quot; title=&quot;数据源安装Nginx&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://nginx.org/en/download.html&quot; target=&quot;_bl
+      
+    
+    </summary>
+    
+    
+      <category term="Web基础" scheme="https://codevvvv9.github.io/categories/Web%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Nginx" scheme="https://codevvvv9.github.io/tags/Nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>GoLand优化</title>
@@ -570,30 +596,6 @@ console.log(&quot;test04&quot;, test04)&lt;/code&gt;&lt;/pre&gt;
     
     
       <category term="2018总结" scheme="https://codevvvv9.github.io/tags/2018%E6%80%BB%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Deepin配置Java环境</title>
-    <link href="https://codevvvv9.github.io/2018/12/29/deepin-pei-zhi-java-huan-jing/"/>
-    <id>https://codevvvv9.github.io/2018/12/29/deepin-pei-zhi-java-huan-jing/</id>
-    <published>2018-12-29T13:56:32.000Z</published>
-    <updated>2020-07-25T14:54:56.929Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="下载JavaSe开发包"><a href="#下载JavaSe开发包" class="headerlink" title="下载JavaSe开发包"></a>下载<code>JavaSe</code>开发包</h2><ul><li><code>Oracle官网下载</code>，<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">地址</a> <a id="more"></a></li></ul><p><img src="https://i.loli.net/2018/12/29/5c277f76ae39e.png" alt=""></p><h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><ul><li>下载完之后，解压，记住目录</li></ul><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//在你的.bashrc 或者 .zshrc，以及 /etc/profile添加如下代码</span>export JAVA_HOME<span class="token operator">=</span><span class="token operator">/</span>home<span class="token operator">/</span>wsl<span class="token operator">/</span>Documents<span class="token operator">/</span>jdk1<span class="token number">.8</span><span class="token punctuation">.</span>0_191export JRE_HOME<span class="token operator">=</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>jreexport CLASSPATH<span class="token operator">=</span><span class="token punctuation">.</span><span class="token punctuation">:</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>lib<span class="token operator">:</span>$<span class="token punctuation">{</span>JRE_HOME<span class="token punctuation">}</span><span class="token operator">/</span>libexport PATH<span class="token operator">=</span>$<span class="token punctuation">{</span>JAVA_HOME<span class="token punctuation">}</span><span class="token operator">/</span>bin<span class="token operator">:</span>$PATH<span class="token comment" spellcheck="true">// etc要想生效还要source</span>sudo vim <span class="token operator">/</span>etc<span class="token operator">/</span>profilesource <span class="token operator">/</span>etc<span class="token operator">/</span>profile</code></pre><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul><li><code>deepin</code>有内置的<code>openJDK</code>，会影响<code>Oracle</code>的<code>JDK</code></li></ul><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//查看版本多了一个_JAVA_OPTIONS</span>java <span class="token operator">-</span>versionPicked up _JAVA_OPTIONS<span class="token operator">:</span>   <span class="token operator">-</span>Dawt<span class="token punctuation">.</span>useSystemAAFontSettings<span class="token operator">=</span>gaspjava version <span class="token string">"1.8.0_05"</span><span class="token function">Java</span><span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime <span class="token function">Environment</span> <span class="token punctuation">(</span>build <span class="token number">1.8</span><span class="token punctuation">.</span>0_05<span class="token operator">-</span>b13<span class="token punctuation">)</span>Java <span class="token function">HotSpot</span><span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span><span class="token operator">-</span>Bit Server <span class="token function">VM</span> <span class="token punctuation">(</span>build <span class="token number">25.5</span><span class="token operator">-</span>b02<span class="token punctuation">,</span> mixed mode<span class="token punctuation">)</span></code></pre><p><img src="https://i.loli.net/2018/12/29/5c27810304718.png" alt=""></p><ul><li>多余文件的文本内容</li></ul><p><img src="https://i.loli.net/2018/12/29/5c2781b63bd6c.png" alt=""></p><ul><li>终极解决方案</li></ul><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//在上面配置的环境变量前面添加</span>unset _JAVA_OPTIONS</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;下载JavaSe开发包&quot;&gt;&lt;a href=&quot;#下载JavaSe开发包&quot; class=&quot;headerlink&quot; title=&quot;下载JavaSe开发包&quot;&gt;&lt;/a&gt;下载&lt;code&gt;JavaSe&lt;/code&gt;开发包&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Oracle官网下载&lt;/code&gt;，&lt;a href=&quot;https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;地址&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="前端之外" scheme="https://codevvvv9.github.io/categories/%E5%89%8D%E7%AB%AF%E4%B9%8B%E5%A4%96/"/>
-    
-    
-      <category term="Java" scheme="https://codevvvv9.github.io/tags/Java/"/>
     
   </entry>
   
